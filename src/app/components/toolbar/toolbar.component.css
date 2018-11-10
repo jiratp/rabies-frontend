@@ -1,0 +1,103 @@
+.bg-success {
+    /* min-height: 100px; */
+    background: #39B062 !important;
+}
+
+.logo {
+    width: 45px;
+}
+
+.padding-16 {
+    padding: 16px;
+}
+
+.padding-9 {
+    padding: 9px;
+}
+
+.image-right {
+    position: absolute;
+    right: 0;
+}
+
+.color-white {
+    color: white;
+}
+
+.icon {
+    width: 24px;
+}
+
+li {
+    padding: 10px !important;
+    cursor: pointer;
+}
+
+.collapsing {
+    background: white !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    margin-bottom: -10px !important;
+}
+
+.bg-white {
+    background: white;
+    margin-left: -20px !important;
+    margin-right: -20px;
+    margin-bottom: -10px;
+}
+
+.bg-white .nav-item {
+    border-bottom: 1px solid #535454;
+}
+
+.item-center {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.flex-direction-row {
+    flex-direction: row;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.padding-0 {
+    padding: 0 0 0 16px;
+}
+
+.navbar p {
+    margin-bottom: 0 !important;
+}
+
+.bg-white-menu {
+    background: white;
+}
+
+.bg-white-menu p {
+    color: black;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.navbar-light .navbar-toggler {
+    color: transparent !important;
+    border-color: transparent !important;
+}
+
+button:focus {
+    background: #37a15b;
+}
+
+.active {
+    background: #37a15b;
+}
