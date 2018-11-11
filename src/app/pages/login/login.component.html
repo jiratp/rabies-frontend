@@ -6,22 +6,27 @@
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
     <div class="row mb-3 mt-3">
-      <div class="checkbox py-2 col-5 text-left">
-        <label>
+      <div class="checkbox py-2 col-12 col-sm-12 col-md-5 col-lg-5 text-left">
+        <label class="d-none d-sm-none d-md-block">
           <input type="checkbox" value="remember-me"> จดจำฉัน
         </label>
+        <label class="d-block d-sm-block d-md-none text-center">
+            <input type="checkbox" value="remember-me"> จดจำฉัน
+          </label>
       </div>
-      <div class="col-7">
+      <div class="col-12 col-sm-12 col-md-7 col-lg-7">
         <button class="btn btn-theme btn-block" type="submit">เข้าสู่ระบบ</button>
       </div>
     </div>
     <hr>
     <div class="row">
-      <div class="col-6 text-left">
-        <label for="" class="cursor">ลืมพาสเวิร์ด?</label>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-left">
+        <label for="" class="cursor d-none d-sm-none d-md-block">ลืมพาสเวิร์ด?</label>
+        <label for="" class="cursor d-block d-sm-block d-md-none text-center">ลืมพาสเวิร์ด?</label>
       </div>
-      <div class="col-6 text-right" (click)="register()">
-        <label for="" class="cursor">สมัครสมาชิก</label>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-right" (click)="register()">
+        <label for="" class="cursor d-none d-sm-none d-md-block">สมัครสมาชิก</label>
+        <label for="" class="cursor d-block d-sm-block d-md-none text-center">สมัครสมาชิก</label>
       </div>
     </div>
   </form>
