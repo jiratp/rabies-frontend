@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PagesComponent } from './pages.component';
 import { InformationComponent } from './information/information.component';
+import { ViewInformationComponent } from './information/modals/view-information/view-information.component';
+import { AddEditInformationComponent } from './information/modals/add-edit-information/add-edit-information.component';
 
 const routes: Routes = [
     {
@@ -33,7 +35,9 @@ const routes: Routes = [
     declarations: [
         PagesComponent,
         HomeComponent,
-        InformationComponent
+        InformationComponent,
+        ViewInformationComponent,
+        AddEditInformationComponent
     ],
     imports: [
         BrowserModule,
@@ -42,6 +46,10 @@ const routes: Routes = [
     providers: [],
     exports: [
         PagesComponent
+    ],
+    entryComponents: [
+        ViewInformationComponent,
+        AddEditInformationComponent
     ]
 })
 export class PagesModule { }
