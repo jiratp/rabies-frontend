@@ -9,6 +9,17 @@
     background-color: #39B062;
     color: white;
 }
-.cursor{
+.cursor {
     cursor: pointer;
+}
+.container {
+    min-height: 75vh;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+}
+
+.require {
+    color: red;
 }

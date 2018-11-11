@@ -18,3 +18,16 @@
 .require {
     color: red;
 }
+
+.container {
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    padding-bottom: 136px;
+}
+
+.w50 {
+    width: 50%;
+}
