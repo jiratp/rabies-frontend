@@ -11,3 +11,11 @@
 .margin-0 {
     margin: 0;
 }
+
+.w50 {
+    width: 50%;
+}
+
+.btn-success {
+    background: #39B062 !important;
+}

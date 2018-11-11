@@ -4,6 +4,7 @@
     padding-left: 50px !important;
     margin-right: auto;
     margin-left: auto;
+    padding-bottom: 136px;
 }
 
 .item-center {
@@ -92,4 +93,8 @@
 
 .cursor{
     cursor: pointer;
+}
+
+.padding-l-1-25{
+    padding-left: 1.25rem;
 }
