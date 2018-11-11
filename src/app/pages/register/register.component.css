@@ -1,0 +1,20 @@
+.form-register {
+    width: 100%;
+    max-width: 700px;
+    padding: 60px 60px 30px 60px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.btn-theme {
+    background-color: #39B062;
+    color: white;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.require {
+    color: red;
+}
