@@ -15,11 +15,13 @@ import {
   NgbTooltipModule,
   NgbProgressbarModule
 } from '@ng-bootstrap/ng-bootstrap';
+import { ConfigService } from './core/config.service';
+import { Platform } from '@angular/cdk/platform';
 
 const appRoutes: Routes = [
   {
-      path: '**',
-      redirectTo: 'home'
+    path: '**',
+    redirectTo: 'home'
   }
 ];
 
@@ -42,7 +44,7 @@ const appRoutes: Routes = [
     NgbTooltipModule,
     NgbProgressbarModule
   ],
-  providers: [],
+  providers: [ConfigService, Platform],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
