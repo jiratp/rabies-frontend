@@ -7,6 +7,8 @@ import { PagesComponent } from './pages.component';
 import { InformationComponent } from './information/information.component';
 import { ViewInformationComponent } from './information/modals/view-information/view-information.component';
 import { AddEditInformationComponent } from './information/modals/add-edit-information/add-edit-information.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
     {
@@ -27,6 +29,16 @@ const routes: Routes = [
                 path: 'information',
                 component: InformationComponent
             }
+            ,
+            {
+                path: 'login',
+                component: LoginComponent
+            }
+            ,
+            {
+                path: 'register',
+                component: RegisterComponent
+            }
         ]
     }
 ];
@@ -37,7 +49,9 @@ const routes: Routes = [
         HomeComponent,
         InformationComponent,
         ViewInformationComponent,
-        AddEditInformationComponent
+        AddEditInformationComponent,
+        LoginComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,

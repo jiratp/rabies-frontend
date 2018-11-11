@@ -1,0 +1,28 @@
+<div class="container text-center">
+  <form class="form-signin mt-3">
+    <img class="mb-4" src="./assets/images/logo-g.png" alt="" width="50" height="50">
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="email" id="inputUsername" class="form-control mb-4" placeholder="Username" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <div class="row mb-3 mt-3">
+      <div class="checkbox py-2 col-5 text-left">
+        <label>
+          <input type="checkbox" value="remember-me"> จดจำฉัน
+        </label>
+      </div>
+      <div class="col-7">
+        <button class="btn btn-theme btn-block" type="submit">เข้าสู่ระบบ</button>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-6 text-left">
+        <label for="" class="cursor">ลืมพาสเวิร์ด?</label>
+      </div>
+      <div class="col-6 text-right" (click)="register()">
+        <label for="" class="cursor">สมัครสมาชิก</label>
+      </div>
+    </div>
+  </form>
+</div>
