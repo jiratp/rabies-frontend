@@ -151,7 +151,7 @@
       <div class="card-body">
         <div class="row padding-00016">
           <div class="col-2 col-sm-2 d-md-none d-lg-none"></div>
-          <button class="btn btn-theme col-8 col-sm-8 col-md-2 col-lg-2">เพิ่มข้อมูล</button>
+          <button class="btn btn-theme col-8 col-sm-8 col-md-2 col-lg-2" (click)="addInformation()">เพิ่มข้อมูล</button>
           <div class="col-2 col-sm-2 d-md-none d-lg-none"></div>
 
           <div class="col-md-4 col-lg-6"></div>
@@ -187,10 +187,10 @@
           <div class="col-6 col-sm-6 col-md-8 col-lg-2 padding-5">
             สุนัข
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-right padding-5">
+          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-right padding-5 cursor" (click)="viewInformation()">
             view <i class="fa fa-search"></i>
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-center padding-5">
+          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-center padding-5 cursor" (click)="editInformation()">
             edit <i class="fa fa-pencil"></i>
           </div>
         </div>
