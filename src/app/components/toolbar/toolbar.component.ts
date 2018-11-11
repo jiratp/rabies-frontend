@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,9 +12,16 @@ export class ToolbarComponent implements OnInit {
     private router: Router
   ) {
     this.currentPage = 'home';
+    router.events.subscribe((val: any) => {
+      if (val.url) {
+        const url = val.url.replace('/','');
+        this.currentPage = url;
+      }
+    });
   }
 
   ngOnInit() {
+
   }
 
   navigation(page) {
