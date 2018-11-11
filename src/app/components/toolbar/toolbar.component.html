@@ -33,7 +33,7 @@
           <img class="icon" src="./assets/images/icon-menu-6.png" alt="">
           <p>รายงาน</p>
         </li>
-        <li class="nav-item bg-white-menu">
+        <li class="nav-item bg-white-menu" [ngClass]="currentPage == 'login' ? 'active' : ''" (click)="navigation('login')">
           <img class="icon" src="./assets/images/icon-menu-7-gr.png" alt="">
           <p>เข้าสู่ระบบ</p>
         </li>

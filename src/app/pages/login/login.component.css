@@ -1,0 +1,14 @@
+.form-signin {
+    width: 100%;
+    max-width: 470px;
+    padding: 60px;
+    margin: 0 auto;
+    background: #fff;
+}
+.btn-theme {
+    background-color: #39B062;
+    color: white;
+}
+.cursor{
+    cursor: pointer;
+}
