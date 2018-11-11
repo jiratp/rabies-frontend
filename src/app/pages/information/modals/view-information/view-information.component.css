@@ -15,3 +15,7 @@
     border: 1px solid #000000;
     padding: 10px;
 }
+
+.btn-success {
+    background: #39B062 !important;
+}

@@ -4,13 +4,15 @@
 <div class="modal-body">
   <form>
     <div class="form-group row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-lg-4">
         <input type="text" class="form-control" id="inputName" placeholder="ชื่อ">
       </div>
-      <div class="col-sm-4">
+      <div class="col-12 d-block d-sm-block d-md-none d-lg-none mt-3"></div>
+      <div class="col-md-4 col-lg-4">
         <input type="text" class="form-control" id="inputName" placeholder="รูปร่างลักษณะ">
       </div>
-      <div class="col-sm-4">
+      <div class="col-12 d-block d-sm-block d-md-none d-lg-none mt-3"></div>
+      <div class="col-md-4 col-lg-4">
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
           <option selected>สี</option>
           <option value="1">One</option>
@@ -20,7 +22,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-lg-4">
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
           <option selected>สายพันธ์</option>
           <option value="1">One</option>
@@ -28,7 +30,8 @@
           <option value="3">Three</option>
         </select>
       </div>
-      <div class="col-sm-4">
+      <div class="col-12 d-block d-sm-block d-md-none d-lg-none mt-3"></div>
+      <div class="col-md-4 col-lg-4">
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
           <option selected>เพศ</option>
           <option value="1">One</option>
@@ -38,13 +41,15 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-lg-4">
         <input type="text" class="form-control" id="inputPlace" placeholder="วันเกิด">
       </div>
-      <div class="col-sm-4">
+      <div class="col-12 d-block d-sm-block d-md-none d-lg-none mt-3"></div>
+      <div class="col-md-4 col-lg-4">
         <input type="text" class="form-control" id="inputPlace" placeholder="อายุ">
       </div>
-      <div class="col-sm-4">
+      <div class="col-12 d-block d-sm-block d-md-none d-lg-none mt-3"></div>
+      <div class="col-md-4 col-lg-4">
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
           <option selected>ลักษณะการเลี้ยง</option>
           <option value="1">One</option>
@@ -54,7 +59,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-lg-4">
         <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
           <option selected>สถานที่เลี้ยง</option>
           <option value="1">One</option>
@@ -65,8 +70,8 @@
     </div>
     <fieldset class="form-group">
       <div class="row">
-        <legend class="col-form-label col-4 pt-0">ทำหมัน</legend>
-        <div class="col-sm-4">
+        <legend class="col-form-label col-12 col-sm-12 col-md-4 col-lg-4 pt-0">ทำหมัน</legend>
+        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
             <label class="form-check-label" for="gridRadios1">
@@ -74,7 +79,7 @@
             </label>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
             <label class="form-check-label" for="gridRadios2">
@@ -86,8 +91,8 @@
     </fieldset>
     <fieldset class="form-group">
       <div class="row">
-        <legend class="col-form-label col-4 pt-0">ฉีดวัคซีน</legend>
-        <div class="col-sm-4">
+        <legend class="col-form-label col-12 col-sm-12 col-md-4 col-lg-4 pt-0">ฉีดวัคซีน</legend>
+        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
             <label class="form-check-label" for="gridRadios1">
@@ -95,7 +100,7 @@
             </label>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
             <label class="form-check-label" for="gridRadios2">
@@ -106,23 +111,31 @@
       </div>
     </fieldset>
     <div class="form-group row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-lg-4">
         <input type="text" class="form-control" id="inputPlace" placeholder="dd/mm/yyyy">
       </div>
-      <div class="col-sm-4 py-1">
+      <div class="col-md-4 col-lg-4 py-1">
         <i class="fa fa-trash-o"></i> Delete
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2">เพิ่ม...</label>
+      <label class="col-md-2 col-lg-2">เพิ่ม...</label>
     </div>
   </form>
 </div>
 <div class="modal-footer item-center">
-  <button id="btn-close-modal" type="button" class="btn btn-success btn-block col-md-3">
-    บันทึก
-  </button>
-  <button id="btn-confirm-modal" type="button" class="btn btn-light btn-block col-md-3 margin-0">
-    ยกเลิก
-  </button>
+  <div class="row w50">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <button id="btn-close-modal" type="button" class="btn btn-success btn-block">
+        บันทึก
+      </button>
+    </div>
+    <div class="col-12 d-block d-sm-block d-md-none d-lg-none mt-3"></div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <button id="btn-confirm-modal" type="button" class="btn btn-light btn-block margin-0">
+        ยกเลิก
+      </button>
+    </div>
+  </div>
+
 </div>
