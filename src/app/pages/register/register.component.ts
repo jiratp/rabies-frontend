@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConfigService } from '../../core/config.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private themeConfig: ConfigService, private cdr: ChangeDetectorRef) {
+    this.cdr.detectChanges();
+    this.themeConfig.setSettings({
+      layout: {
+        toolbar: 'none',
+      }
+    });
+  }
 
   ngOnInit() {
   }
-
+  home() {
+    this.router.navigate(['home']);
+  }
 }
