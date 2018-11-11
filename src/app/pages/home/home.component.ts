@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  tab: string;
+  constructor() {
+    this.tab = 'news';
+  }
 
   ngOnInit() {
+  }
+
+  tabSelected(tab) {
+    this.tab = tab;
   }
 
 }

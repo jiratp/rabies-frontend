@@ -1,5 +1,4 @@
 .bg-success {
-    /* min-height: 100px; */
     background: #39B062 !important;
 }
 
@@ -70,7 +69,7 @@ li {
 }
 
 .padding-0 {
-    padding: 0 0 0 16px;
+    padding: 0;
 }
 
 .navbar p {
@@ -100,4 +99,14 @@ button:focus {
 
 .active {
     background: #37a15b;
+}
+
+.p0-m0 {
+    padding: 0;
+    margin: 0;
+}
+
+.p-md-toolbar {
+    padding: 16px 0;
+    margin: 0;
 }
