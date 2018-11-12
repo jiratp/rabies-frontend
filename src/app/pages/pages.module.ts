@@ -14,6 +14,8 @@ import { LoginService } from '../providers/login/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsComponent } from './news/news.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { ChangePasswordComponent } from './profile/modals/change-password/change-password.component';
+import { ChangeMapComponent } from './profile/modals/change-map/change-map.component';
 
 const routes: Routes = [
     {
@@ -71,7 +73,9 @@ const routes: Routes = [
         RegisterComponent,
         ProfileComponent,
         NewsComponent,
-        NewsDetailComponent
+        NewsDetailComponent,
+        ChangePasswordComponent,
+        ChangeMapComponent
     ],
     imports: [
         BrowserModule,
@@ -87,7 +91,9 @@ const routes: Routes = [
     ],
     entryComponents: [
         ViewInformationComponent,
-        AddEditInformationComponent
+        AddEditInformationComponent,
+        ChangePasswordComponent,
+        ChangeMapComponent
     ]
 })
 export class PagesModule { }

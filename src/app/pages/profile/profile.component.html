@@ -1,3 +1,255 @@
-<p>
-  profile works!
-</p>
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="card col-md-12">
+      <div class="card-header">
+        ข้อมูลส่วนตัว
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-2 text-center">
+              <div class="col-12 col-sm-12">
+                <img src="./assets/images/profile.png" alt="" height="130">
+              </div>
+              <div class="col-12 col-sm-12">
+                <button class="btn-custom btn-theme">อัพโหลดรูปภาพ</button>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-9 col-lg-10 mt-3">
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label d-block col-6 d-sm-none d-md-block col-md-3 col-lg-2 pt-0">คำนำหน้าชื่อ</legend>
+                  <legend class="col-form-label d-none col-sm-4 d-sm-block d-md-none d-lg-none pt-0 text-right">คำนำหน้าชื่อ</legend>
+                  <div class="col-6 col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                        checked>
+                      <label class="form-check-label" for="gridRadios1">
+                        ชาย
+                      </label>
+                    </div>
+                  </div>
+                  <span class="col-6 d-block d-sm-none d-md-none d-lg-none"></span>
+                  <div class="col-6 col-sm-5 col-md-3 col-lg-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                      <label class="form-check-label" for="gridRadios2">
+                        หญิง
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group row">
+                <label for="inputName" class="d-block col-12 d-sm-none d-md-block col-md-3 col-lg-2 col-form-label">ชื่อ-นามสกุล</label>
+                <label for="inputName" class="d-none d-sm-block col-sm-4 d-md-none d-lg-none col-form-label text-right">ชื่อ-นามสกุล</label>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-6">
+                  <input type="text" class="form-control" id="inputName" placeholder="ชื่อ-นามสกุล">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputId" class="d-block col-12 d-sm-none d-md-block col-md-3 col-lg-2 col-form-label">หมายเลขบัตรประชาชน</label>
+                <label for="inputId" class="d-none d-sm-block col-sm-4 d-md-none d-lg-none col-form-label text-right">หมายเลขบัตรประชาชน</label>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-6">
+                  <input type="text" class="form-control" id="inputId" placeholder="หมายเลขบัตรประชาชน">
+                </div>
+                <div class="d-none d-sm-none d-md-none d-lg-block col-lg-2">
+                  <button class="btn btn-theme btn-block" (click)="changePassword()">เปลี่ยนรหัส</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="card col-md-12">
+      <div class="card-header">
+        ข้อมูลสถานที่เลี้ยง
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group row">
+            <label for="inputEmail3" class="d-none d-sm-none d-md-block col-md-2 col-lg-2 col-form-label text-right">ลักษณะสถานที่เลี้ยง</label>
+            <label for="inputEmail3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">สถานที่เลี้ยง</label>
+
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <select class="custom-select my-1 mr-sm-2" id="home">
+                <option selected>บ้านพักอาศัย</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="d-none d-sm-non d-md-block col-md-2 col-lg-2 col-form-label text-right">ที่อยู่ปัจจุบัน</label>
+            <label for="inputPassword3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">ที่อยู่ปัจจุบัน</label>
+
+            <div class="col-12 col-sm-12 col-md-8 col-lg-3">
+              <input type="text" class="form-control" id="no1" placeholder="บ้านเลขที่">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-2 col-lg-1">
+              <input type="text" class="form-control" id="moo1" placeholder="หมู่">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="soi2" placeholder="ซอย">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="road2" placeholder="ถนน">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
+
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="tambol2" placeholder="แขวง/ตำบล">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="amphur1" placeholder="เขต/อำเภอ">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <select class="custom-select mr-sm-2" id="province2">
+                <option selected>จังหวัด</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="code2" placeholder="รหัสไปรษณีย์">
+            </div>
+
+            <div class="d-block d-sm-block d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <div class="d-block d-sm-block col-4 col-sm-4 d-md-block col-md-4 d-lg-none">
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-2">
+              <button class="btn btn-block btn-theme" (click)="changeMap()">แผนที่ตั้ง</button>
+            </div>
+            <div class="d-block d-sm-block col-4 col-sm-4 d-md-block col-md-4 d-lg-none">
+            </div>
+          </div>
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label d-none d-sm-none d-md-block col-md-2 pt-0 text-right">สถานที่เลี้ยง</legend>
+              <legend class="col-form-label col-12 d-block d-sm-block col-sm-12 d-md-none pt-0">สถานที่เลี้ยง</legend>
+              <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="add" value="option1" checked>
+                  <label class="form-check-label" for="add">
+                    ที่อยู่ปัจจุบัน
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="add2" value="option2">
+                  <label class="form-check-label" for="add2">
+                    ที่อื่น
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <form>
+          <div class="form-group row">
+            <label for="inputPassword3" class="d-none d-sm-non d-md-block col-md-2 col-lg-2 col-form-label text-right">ที่อยู่</label>
+            <label for="inputPassword3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">ที่อยู่</label>
+
+            <div class="col-12 col-sm-12 col-md-8 col-lg-3">
+              <input type="text" class="form-control" id="no2" placeholder="บ้านเลขที่">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-2 col-lg-1">
+              <input type="text" class="form-control" id="moo2" placeholder="หมู่">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="soi1" placeholder="ซอย">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="road1" placeholder="ถนน">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
+
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="tambol1" placeholder="แขวง/ตำบล">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="amphur2" placeholder="เขต/อำเภอ">
+            </div>
+            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <select class="custom-select mr-sm-2" id="province">
+                <option selected>จังหวัด</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+              <input type="text" class="form-control" id="code1" placeholder="รหัสไปรษณีย์">
+            </div>
+            <div class="d-block d-sm-block d-md-block col-md-12 d-lg-none mt-3">
+            </div>
+            <div class="d-block d-sm-block col-4 col-sm-4 d-md-block col-md-4 d-lg-none">
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-2">
+              <button class="btn btn-block btn-theme" (click)="changeMap()">แผนที่ตั้ง</button>
+            </div>
+            <div class="d-block d-sm-block col-4 col-sm-4 d-md-block col-md-4 d-lg-none">
+            </div>
+          </div>
+          <div class="form-group row item-center mt-2">
+            <div class="row w50">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <button id="btn-close-modal" type="button" class="btn btn-theme btn-block">
+                  บันทึก
+                </button>
+              </div>
+              <div class="col-12 d-block d-sm-none d-md-none d-lg-none mt-3"></div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <button id="btn-confirm-modal" type="button" class="btn btn-light btn-block margin-0">
+                  ยกเลิก
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
