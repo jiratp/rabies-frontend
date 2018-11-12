@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   tab: string;
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.tab = 'news';
   }
 
@@ -16,6 +19,10 @@ export class HomeComponent implements OnInit {
 
   tabSelected(tab) {
     this.tab = tab;
+  }
+
+  newsDetail(){
+    this.router.navigate(['news-detail']);
   }
 
 }

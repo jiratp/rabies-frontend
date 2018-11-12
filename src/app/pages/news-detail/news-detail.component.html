@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">หน้าหลัก</li>
+      <li class="breadcrumb-item active" aria-current="page">ข่าวประชาสัมพันธ์</li>
+    </ol>
+  </nav>
+  <div class="card">
+    <div class="row card-body padding48">
+      <div class="col-md-12 col-lg-6">
+        <form>
+          <div class="form-group row margin-0">
+            <div class="padding-img-slide w100" *ngIf="currentImg === 1">
+              <img class="d-block w-100" src="./assets/images/ex-img-426x240.jpg" alt="First slide">
+            </div>
+            <div class="padding-img-slide w100" *ngIf="currentImg === 2">
+              <img class="d-block w-100" src="./assets/images/ex-img-426x240.jpg" alt="Second slide">
+            </div>
+            <div class="padding-img-slide w100" *ngIf="currentImg === 3">
+              <img class="d-block w-100" src="./assets/images/ex-img-426x240.jpg" alt="Third slide">
+            </div>
+            <div class="padding-img-slide w100" *ngIf="currentImg === 4">
+              <img class="d-block w-100" src="./assets/images/ex-img-426x240.jpg" alt="4 slide">
+            </div>
+          </div>
+
+          <div class="mt-3 form-group row margin-0">
+            <div class="col-3 img-seleted" (click)="seletedImg(1)">
+              <img [ngClass]="currentImg === 1 ? 'img-active' : ''" src="./assets/images/ex-img-426x240.jpg" width="100%"
+                height="100%" alt="">
+            </div>
+            <div class="col-3 img-seleted" (click)="seletedImg(2)">
+              <img [ngClass]="currentImg === 2 ? 'img-active' : ''" src="./assets/images/ex-img-426x240.jpg" width="100%"
+                height="100%" alt="">
+            </div>
+            <div class="col-3 img-seleted" (click)="seletedImg(3)">
+              <img [ngClass]="currentImg === 3 ? 'img-active' : ''" src="./assets/images/ex-img-426x240.jpg" width="100%"
+                height="100%" alt="">
+            </div>
+            <div class="col-3 img-seleted" (click)="seletedImg(4)">
+              <img [ngClass]="currentImg === 4 ? 'img-active' : ''" src="./assets/images/ex-img-426x240.jpg" width="100%"
+                height="100%" alt="">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <form>
+          <div class="form-group row margin-0">
+            <div class="col-12">
+              How it works
+            </div>
+            <div class="col-12 mt-3">
+              The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a
+              bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for
+              previous/next controls and indicators.
+            </div>
+            <div class="col-12 mt-3">
+              In browsers where the Page Visibility API is supported, the carousel will avoid sliding when the webpage
+              is not visible to the user (such as when the browser tab is inactive, the browser window is minimized,
+              etc.).
+            </div>
+            <div class="col-12 mt-3 mb-3">
+              Please be aware that nested carousels are not supported, and carousels are generally not compliant with
+              accessibility standards.
+            </div>
+            <div class="col-12">
+              <hr>
+            </div>
+            <div class="col-12 mt-3 mb-3">
+              <p>อ้างอิง</p>
+              -http://localhost:4200/news-detail -http://localhost:4200/news-detail -http://localhost:4200/news-detail
+            </div>
+            <div class="col-12">
+              <hr>
+            </div>
+            <div class="col-12 mt-3 mb-3">
+              <p>ไฟล์แนบ</p>
+              <div>- เอกสารแบบฟอร์ม 01</div>
+              <div>- เอกสารแบบฟอร์ม 02</div>
+              <div>- เอกสารแบบฟอร์ม 03</div>
+              <div>- เอกสารแบบฟอร์ม 04</div>
+              <div>- เอกสารแบบฟอร์ม 05</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+        <hr>
+      </div>
+      <div class="col-12">
+          <img src="./assets/images/time.jpg" alt=""> 13 มี.ค. 2561
+      </div>
+    </div>
+  </div>
+
+</div>

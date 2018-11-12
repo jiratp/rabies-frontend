@@ -19,7 +19,10 @@ export class ToolbarComponent implements OnInit {
     this.currentPage = 'home';
     router.events.subscribe((val: any) => {
       if (val.url) {
-        const url = val.url.replace('/', '');
+        let url = val.url.replace('/', '');
+        if (url == 'news' || url == 'news-detail') {
+          url = 'home';
+        }
         this.currentPage = url;
       }
     });

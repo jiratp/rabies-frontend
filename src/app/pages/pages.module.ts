@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginService } from '../providers/login/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewsComponent } from './news/news.component';
+import { NewsDetailComponent } from './news-detail/news-detail.component';
 
 const routes: Routes = [
     {
@@ -45,6 +47,14 @@ const routes: Routes = [
             {
                 path: 'profile',
                 component: ProfileComponent
+            },
+            {
+                path: 'news',
+                component: NewsComponent
+            },
+            {
+                path: 'news-detail',
+                component: NewsDetailComponent
             }
         ]
     }
@@ -59,7 +69,9 @@ const routes: Routes = [
         AddEditInformationComponent,
         LoginComponent,
         RegisterComponent,
-        ProfileComponent
+        ProfileComponent,
+        NewsComponent,
+        NewsDetailComponent
     ],
     imports: [
         BrowserModule,
