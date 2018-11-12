@@ -1,0 +1,114 @@
+.container-fluid {
+    width: 100%;
+    padding-right: 50px !important;
+    padding-left: 50px !important;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 136px;
+}
+
+.item-center {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+}
+
+.card {
+    background-color: unset !important;
+    border: unset !important;
+    border-radius: unset !important;
+}
+
+.card-body {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.mh-card {
+    min-height: 162px;
+}
+
+.color-white {
+    color: white;
+}
+
+.padding0-50 {
+    padding: 0 50px;
+}
+
+.bg-success {
+    background: #39B062 !important;
+}
+
+.color-green {
+    color: #39B062;
+}
+
+.padding0 {
+    padding: 0;
+}
+
+.padding16 {
+    padding: 16px;
+}
+
+.card-header {
+    background-color: #fff !important;
+}
+
+.btn-theme {
+    background-color: #39B062;
+    color: white;
+}
+
+.bg-gray {
+    background: #f7f7f7;
+}
+.padding-5 {
+    padding: 5px;
+}
+
+.item-center-box {
+    display: flex;
+    align-items: center;
+}
+
+.padding-00016 {
+    padding: 0 0 0 16px;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.margin-top-1rem {
+    margin-top: -1rem;
+}
+
+.padding-l-0 {
+    padding-left: 0;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.padding-l-1-25{
+    padding-left: 1.25rem;
+}
+.btn-custom {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 1.75rem;
+    font-size: 11px;
+}
