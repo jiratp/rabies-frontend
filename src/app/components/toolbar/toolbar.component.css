@@ -110,3 +110,6 @@ button:focus {
     padding: 16px 0;
     margin: 0;
 }
+.dropdown-menu {
+    left: -15px !important;
+}

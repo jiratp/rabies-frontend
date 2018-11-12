@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import { LoginService } from '../../providers/login/login.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,15 +10,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
   currentPage: string;
+  onSigninChange: Subscription;
+  userName: string;
   constructor(
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     this.currentPage = 'home';
     router.events.subscribe((val: any) => {
       if (val.url) {
-        const url = val.url.replace('/','');
+        const url = val.url.replace('/', '');
         this.currentPage = url;
       }
+    });
+    this.onSigninChange = this.loginService.onSignin.subscribe(data => {
+      this.userName = data;
     });
   }
 

@@ -33,9 +33,21 @@
           <img class="icon" src="./assets/images/icon-menu-6.png" alt="">
           <p>รายงาน</p>
         </li>
-        <li class="nav-item bg-white-menu" [ngClass]="currentPage == 'login' ? 'active' : ''" (click)="navigation('login')">
+        <li *ngIf="!userName" class="nav-item bg-white-menu" [ngClass]="currentPage == 'login' ? 'active' : ''" (click)="navigation('login')">
           <img class="icon" src="./assets/images/icon-menu-7-gr.png" alt="">
           <p>เข้าสู่ระบบ</p>
+        </li>
+        <li *ngIf="userName" class="nav-item dropdown bg-white-menu"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngClass]="currentPage == 'login' ? 'active' : ''">
+          <img class="icon" src="./assets/images/icon-menu-usr.png" alt="">
+          <p>{{userName}}</p>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"(click)="navigation('profile')">User Profile</a>
+            <a *ngIf="userName === 'admin'" class="dropdown-item">News</a>
+            <a *ngIf="userName === 'admin'" class="dropdown-item">Suspicious</a>
+            <a *ngIf="userName === 'admin'" class="dropdown-item">Report</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
         </li>
       </ul>
     </div>

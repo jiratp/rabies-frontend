@@ -9,6 +9,9 @@ import { ViewInformationComponent } from './information/modals/view-information/
 import { AddEditInformationComponent } from './information/modals/add-edit-information/add-edit-information.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginService } from '../providers/login/login.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     {
@@ -38,6 +41,10 @@ const routes: Routes = [
             {
                 path: 'register',
                 component: RegisterComponent
+            },
+            {
+                path: 'profile',
+                component: ProfileComponent
             }
         ]
     }
@@ -51,13 +58,18 @@ const routes: Routes = [
         ViewInformationComponent,
         AddEditInformationComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(routes)
     ],
-    providers: [],
+    providers: [
+        LoginService
+    ],
     exports: [
         PagesComponent
     ],
