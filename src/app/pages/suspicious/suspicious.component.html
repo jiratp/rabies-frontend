@@ -14,36 +14,49 @@
       <div class="card-body">
         <form>
           <div class="form-group row">
-            <label for="inputEmail3" class="d-none d-sm-none d-md-block col-md-2 col-lg-2 col-form-label">รหัส</label>
-            <label for="inputEmail3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">สถานที่</label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-2">
+            <label for="inputEmail3" class="d-block col-12 d-sm-none d-md-none d-lg-block col-lg-2 col-form-label">รหัส</label>
+            <label for="inputEmail3" class="d-none d-sm-block col-sm-2 col-md-2 d-lg-none col-form-label text-center">รหัส</label>
+            <!-- <label for="inputEmail3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">สถานที่</label> -->
+            <div class="col-12 col-sm-5 col-md-5 col-lg-2">
               <input type="text" class="form-control" id="inputName" placeholder="รหัส">
             </div>
-            <label for="inputEmail3" class="d-none d-sm-none d-md-block col-md-1 col-lg-1 col-form-label">วันที่ จาก</label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-3">
+            <div class="d-none d-sm-block col-sm-5 col-md-5 d-lg-none"></div>
+            <div class="d-none d-sm-block col-md-12 mt-3 d-lg-none"></div>
+            <label for="inputEmail3" class="d-block col-12 d-sm-none d-md-none col-lg-1 col-form-label">วันที่ จาก</label>
+            <label for="inputEmail3" class="d-none d-sm-block col-sm-2 col-md-2 d-lg-none col-form-label text-center">วันที่
+              จาก</label>
+            <div class="col-12 col-sm-3 col-md-3 col-lg-3">
               <input type="text" class="form-control" id="inputName" placeholder="dd/MM/yyyy">
             </div>
-            <label for="inputEmail3" class="d-none d-sm-none d-md-block col-md-1 col-lg-1 col-form-label">ถึง</label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-3">
+            <label for="inputEmail3" class="d-block col-12 d-sm-none d-md-none col-lg-1 col-form-label">ถึง</label>
+            <label for="inputEmail3" class="d-none d-sm-block col-sm-1 col-md-1 col-lg-1 text-center">ถึง</label>
+            <div class="col-12 col-sm-3 col-md-3 col-lg-3">
               <input type="text" class="form-control" id="inputName" placeholder="dd/MM/yyyy">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputPassword3" class="d-none d-sm-non d-md-block col-md-2 col-lg-2 col-form-label">สถานที่</label>
-            <label for="inputPassword3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">สถานที่</label>
+            <label for="inputPassword3" class="d-block col-12 d-sm-none d-md-none d-lg-block col-lg-2 col-form-label">สถานที่</label>
+            <label for="inputPassword3" class="d-none d-sm-block col-sm-2 d-md-block col-md-2 d-lg-none col-form-label padding-l-1-25 text-center">สถานที่</label>
 
-            <div class="col-12 col-sm-12 col-md-8 col-lg-2">
+            <div class="col-12 col-sm-3 col-md-2 col-lg-2">
               <input type="text" class="form-control" id="inputPlace" placeholder="จังหวัด">
             </div>
-            <div class="col-12 col-sm-12 col-md-8 col-lg-2">
+            <div class="d-block col-12 d-sm-none col-md-none d-lg-none mt-3">
+            </div>
+            <div class="col-12 col-sm-3 col-md-3 col-lg-2">
               <input type="text" class="form-control" id="inputPlace" placeholder="อำเภอ">
             </div>
-            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
+            <!-- <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
             </div>
-            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-2">
+            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label> -->
+            <div class="d-block col-12 d-sm-none col-md-none d-lg-none mt-3">
+            </div>
+            <div class="col-12 col-sm-3 col-md-3 col-lg-2">
               <input type="text" class="form-control" id="inputPlace" placeholder="ตำบล">
             </div>
+          </div>
+          <div class="row padding-00016">
+            <button class="btn btn-theme col-12 col-sm-4 col-md-2 col-lg-2">ค้นหา</button>
           </div>
         </form>
       </div>
@@ -57,67 +70,74 @@
       </div>
       <div class="card-body">
         <div class="row padding-00016">
-          <div class="col-lg-10"></div>
-          <div class="col-2 col-sm-2 d-md-none d-lg-none"></div>
-          <button class="btn btn-theme col-8 col-sm-8 col-md-2 col-lg-2" (click)="addSuspicious()">แจ้งพบสัตว์ต้องสงสัย</button>
-          <div class="col-2 col-sm-2 d-md-none d-lg-none"></div>
+          <div class="d-none d-sm-block col-sm-8 col-md-9 col-lg-10"></div>
+          <button class="btn btn-theme col-12 col-sm-4 col-md-3 col-lg-2" (click)="addSuspicious()">แจ้งพบสัตว์ต้องสงสัย</button>
+          <div class="d-none d-sm-block col-sm-2 d-md-none d-lg-none"></div>
         </div>
         <div class="row mt-3 bg-gray margin-0">
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 padding-5">
+          <div class="col-12 col-sm-2 col-md-2 col-lg-1 padding-5">
             00001
           </div>
-          <div class="col-6 col-sm-6 col-md-7 col-lg-1 padding-5">
+          <div class="col-6 col-sm-3 col-md-3 col-lg-1 padding-5">
             06 ส.ค. 61
           </div>
-          <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1 padding-5">
+          <div class="col-6 col-sm-3 col-md-3 col-lg-1 padding-5">
             สุนัข
           </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-3 padding-5">
+          <div class="col-12 col-sm-4 col-md-4 col-lg-3 padding-5">
             น้ำลายยืด ตาขวาง เดินโซเซ
           </div>
-          <div class="col-6 col-sm-6 col-md-8 col-lg-3 padding-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 padding-5">
             ตำบลบางค้อ อำเภอจอมทอง กรุงเทพ
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 padding-5 text-right">
+          <div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 padding-5 text-right">
             สถานะ
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 padding-5 text-center">
+          <div class="d-block col-4 d-sm-none d-md-none d-lg-none padding-5">
+            สถานะ
+          </div>
+          <div class="col-4 col-sm-2 col-md-2 col-lg-1 padding-5 text-center">
             <i class="fa fa-times-circle-o fa-2x text-danger" aria-hidden="true"></i>
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-center padding-5 cursor" (click)="editInformation()">
+          <div class="col-4 col-sm-2 col-md-2 col-lg-1 text-center padding-5 cursor" (click)="editInformation()">
             ดู
           </div>
         </div>
         <div class="row mt-3 bg-gray margin-0">
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 padding-5">
+          <div class="col-12 col-sm-2 col-md-2 col-lg-1 padding-5">
             00001
           </div>
-          <div class="col-6 col-sm-6 col-md-7 col-lg-1 padding-5">
+          <div class="col-6 col-sm-3 col-md-3 col-lg-1 padding-5">
             06 ส.ค. 61
           </div>
-          <div class="d-none d-sm-none d-md-none d-lg-block col-lg-1 padding-5">
+          <div class="col-6 col-sm-3 col-md-3 col-lg-1 padding-5">
             สุนัข
           </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-3 padding-5">
+          <div class="col-12 col-sm-4 col-md-4 col-lg-3 padding-5">
             น้ำลายยืด ตาขวาง เดินโซเซ
           </div>
-          <div class="col-6 col-sm-6 col-md-8 col-lg-3 padding-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 padding-5">
             ตำบลบางค้อ อำเภอจอมทอง กรุงเทพ
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 padding-5 text-right">
+          <div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-1 padding-5 text-right">
             สถานะ
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 padding-5 text-center">
+          <div class="d-block col-4 d-sm-none d-md-none d-lg-none padding-5">
+            สถานะ
+          </div>
+          <div class="col-4 col-sm-2 col-md-2 col-lg-1 padding-5 text-center">
             <i class="fa fa-check-circle-o fa-2x text-success" aria-hidden="true"></i>
           </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-center padding-5 cursor" (click)="editInformation()">
+          <div class="col-4 col-sm-2 col-md-2 col-lg-1 text-center padding-5 cursor" (click)="editInformation()">
             ดู
           </div>
         </div>
         <div class="row mt-3 padding-00016">
-          <div class="col-lg-10"></div>
-          <button class="btn btn-light col-8 col-sm-8 col-md-1 col-lg-1 item-center" (click)="previous()"><i class="fa fa-caret-left fa-2x color-gray" aria-hidden="true"></i> &nbsp; ย้อนกลับ</button>
-          <button class="btn btn-light col-8 col-sm-8 col-md-1 col-lg-1 item-center" (click)="next()">ถัดไป &nbsp;<i class="fa fa-caret-right fa-2x color-gray" aria-hidden="true"></i></button>
+          <div class="col-12 col-sm-6 col-md-8 col-lg-10"></div>
+          <button class="btn btn-light col-6 col-sm-3 col-md-2 col-lg-1 item-center" (click)="previous()"><i class="fa fa-caret-left fa-2x color-gray"
+              aria-hidden="true"></i> &nbsp; ย้อนกลับ</button>
+          <button class="btn btn-light col-6 col-sm-3 col-md-2 col-lg-1 item-center" (click)="next()">ถัดไป &nbsp;<i
+              class="fa fa-caret-right fa-2x color-gray" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>

@@ -1,3 +1,264 @@
-<p>
-  news works!
-</p>
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">หน้าหลัก</li>
+      <li class="breadcrumb-item active" aria-current="page">ข่าวประชาสัมพันธ์</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="card col-md-12">
+      <div class="card-body">
+        <form>
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label d-none  d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 pt-0 text-right">ประเภท</legend>
+              <legend class="col-form-label d-block col-12 d-sm-none d-md-none d-lg-none pt-0">ประเภท</legend>
+              <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                    checked>
+                  <label class="form-check-label" for="gridRadios1">
+                    ข่าว / บทความ
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 d-block d-sm-none d-md-none d-lg-none mt-2"></div>
+              <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    วีดีโอ
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 d-block d-sm-none d-md-none d-lg-none mt-2"></div>
+              <div class="col-12 col-sm-4 col-md-4 col-lg-6">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    ไฟล์เพื่อดาวน์โหลด
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-group row">
+            <label for="inputEmail3" class="d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 col-form-label text-right">หัวข้อ</label>
+            <label for="inputEmail3" class="d-block d-sm-none d-md-none d-lg-none col-form-label padding-l-1-25">หัวข้อ</label>
+            <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+              <input type="text" class="form-control" id="inputName" placeholder="หัวข้อ">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputPassword3" class="d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 col-form-label text-right">รายละเอียด</label>
+            <label for="inputPassword3" class="d-block d-sm-none d-md-none d-lg-none col-form-label padding-l-1-25">รายละเอียด</label>
+
+            <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+              <textarea type="text" rows="3" class="form-control" id="inputPlace" placeholder="รายละเอียด"></textarea>
+            </div>
+          </div>
+
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 pt-0 text-right">รูปภาพ</legend>
+              <legend class="col-form-label d-block col-sm-4 d-sm-none d-md-none d-lg-none pt-0">รูปภาพ</legend>
+              <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-check padding16bg3333">
+                      <div class="row">
+                        <div class="col-12 col-sm-4 col-md-3 col-lg-3">
+                          Picture1
+                        </div>
+                        <div class="col-2 d-block d-sm-none d-md-none d-lg-none mt-2"></div>
+                        <div class="col-4 col-sm-5 col-md-6 col-lg-6">
+                          <div>
+                            <input class="form-check-input" type="radio" name="gridRadiosPic" id="gridRadiosPic1" value="option1"
+                              checked>
+                            <label class="form-check-label" for="gridRadios1">
+                              ภาพหลัก
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-6 col-sm-3 col-md-3 col-lg-3 text-right">
+                          ลบ
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col">
+                    <div class="form-check padding16bg3333">
+                      <div class="row">
+                        <div class="col-12 col-sm-4 col-md-3 col-lg-3">
+                          Picture2
+                        </div>
+                        <div class="col-2 d-block d-sm-none d-md-none d-lg-none mt-2"></div>
+
+                        <div class="col-4 col-sm-5 col-md-6 col-lg-6">
+                          <input class="form-check-input col-lg-4" type="radio" name="gridRadiosPic" id="gridRadiosPic1"
+                            value="option1">
+                          <label class="form-check-label" for="gridRadios1">
+                            ภาพหลัก
+                          </label>
+                        </div>
+                        <div class="col-6 col-sm-3 col-md-3 col-lg-3 text-right">
+                          ลบ
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-2 col-md-2 col-lg-2">
+
+              </div>
+              <div class="col-sm-4 col-md-3 col-lg-2">
+                <button class="btn btn-theme btn-block">เพิ่มรูป</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-group row">
+            <label for="inputEmail3" class="d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 col-form-label text-right">วันที่เริ่มเผยแพร่</label>
+            <label for="inputEmail3" class="d-block d-sm-none d-md-none d-lg-none col-form-label padding-l-1-25">วันที่เริ่มเผยแพร่</label>
+            <div class="col-12 col-sm-5 col-md-3 col-lg-3">
+              <input type="text" class="form-control" id="inputName" placeholder="13/05/2559">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputEmail3" class="d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 col-form-label text-right">วันที่สิ้นสุดการเผยแพร่</label>
+            <label for="inputEmail3" class="d-block d-sm-none d-md-none d-lg-none col-form-label padding-l-1-25">วันที่สิ้นสุดการเผยแพร่</label>
+            <div class="col-12 col-sm-5 col-md-3 col-lg-3">
+              <input type="text" class="form-control" id="inputName" placeholder="13/05/2559">
+            </div>
+          </div>
+
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 pt-0 text-right">สถานะข้อ</legend>
+              <legend class="col-form-label d-block col-12 d-sm-none d-md-none d-lg-none pt-0">สถานะข้อ</legend>
+
+              <div class="col-6 col-sm-3 col-md-2 col-lg-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios4" value="option4"
+                    checked>
+                  <label class="form-check-label" for="gridRadios4">
+                    สร้าง
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 d-block d-sm-none d-md-none d-lg-none mt-2"></div>              
+              <div class="col-6 col-sm-3 col-md-2 col-lg-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios5" value="option5">
+                  <label class="form-check-label" for="gridRadios5">
+                    เผยแพร่
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 d-block d-sm-none d-md-none d-lg-none mt-2"></div>
+              <div class="col-6 col-sm-3 col-md-2 col-lg-6">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios6" value="option6">
+                  <label class="form-check-label" for="gridRadios6">
+                    ยกเลิก
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 pt-0 text-right">Link
+                อ้างอิง 01</legend>
+              <legend class="col-form-label d-block col-12 d-sm-none d-md-none d-lg-none pt-0">Link
+                อ้างอิง 01</legend>
+              <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+                <div class="row">
+                  <div class="col-10 col-sm-10 col-md-10 col-lg-11">
+                    <input type="text" class="form-control" id="inputName" placeholder="Link">
+                  </div>
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-1">
+                    ลบ
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-10 col-sm-10 col-md-10 col-lg-11">
+                    <input type="text" class="form-control" id="inputName" placeholder="Link">
+                  </div>
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-1">
+                    ลบ
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-10 col-sm-10 col-md-10 col-lg-11">
+                    <input type="text" class="form-control" id="inputName" placeholder="Link">
+                  </div>
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-1">
+                    ลบ
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label d-none d-sm-block col-sm-2 d-md-block col-md-2 col-lg-2 pt-0 text-right">เอกสารอ้างอิง</legend>
+              <legend class="col-form-label d-block col-12 d-sm-none d-md-none d-lg-none pt-0">เอกสารอ้างอิง</legend>
+              <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-check padding16bg3333">
+                      <div class="row">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                          File
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right">
+                          ลบ
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-2 col-md-2 col-lg-2">
+
+              </div>
+              <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+                <button class="btn btn-theme btn-block">เพิ่มเอกสาร</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-group row item-center mt-2">
+            <div class="row w50">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <button id="btn-close-modal" type="button" class="btn btn-theme btn-block">
+                  บันทึก
+                </button>
+              </div>
+              <div class="col-12 d-block d-sm-none d-md-none d-lg-none mt-3"></div>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <button id="btn-confirm-modal" type="button" class="btn btn-light btn-block margin-0">
+                  ยกเลิก
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

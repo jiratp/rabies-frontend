@@ -42,7 +42,7 @@
           <p>{{userName}}</p>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" (click)="navigation('profile')">User Profile</a>
-            <a *ngIf="userName === 'admin'" class="dropdown-item">News</a>
+            <a *ngIf="userName === 'admin'" (click)="navigation('news')" class="dropdown-item">News</a>
             <a *ngIf="userName === 'admin'" class="dropdown-item">Suspicious</a>
             <a *ngIf="userName === 'admin'" class="dropdown-item">Report</a>
             <div class="dropdown-divider"></div>
