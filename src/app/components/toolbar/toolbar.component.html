@@ -21,7 +21,7 @@
           <img class="icon" src="./assets/images/icon-menu-3.png" alt="">
           <p>แบบสำรวจ</p>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="navigation('suspicious')">
           <img class="icon" src="./assets/images/icon-menu-4.png" alt="">
           <p>แจ้งพบสัตว์</p>
         </li>
@@ -41,7 +41,7 @@
           <img class="icon" src="./assets/images/icon-menu-usr.png" alt="">
           <p>{{userName}}</p>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"(click)="navigation('profile')">User Profile</a>
+            <a class="dropdown-item" (click)="navigation('profile')">User Profile</a>
             <a *ngIf="userName === 'admin'" class="dropdown-item">News</a>
             <a *ngIf="userName === 'admin'" class="dropdown-item">Suspicious</a>
             <a *ngIf="userName === 'admin'" class="dropdown-item">Report</a>

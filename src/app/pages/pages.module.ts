@@ -16,6 +16,7 @@ import { NewsComponent } from './news/news.component';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { ChangePasswordComponent } from './profile/modals/change-password/change-password.component';
 import { ChangeMapComponent } from './profile/modals/change-map/change-map.component';
+import { SuspiciousComponent } from './suspicious/suspicious.component';
 
 const routes: Routes = [
     {
@@ -57,6 +58,10 @@ const routes: Routes = [
             {
                 path: 'news-detail',
                 component: NewsDetailComponent
+            },
+            {
+                path: 'suspicious',
+                component: SuspiciousComponent
             }
         ]
     }
@@ -75,7 +80,8 @@ const routes: Routes = [
         NewsComponent,
         NewsDetailComponent,
         ChangePasswordComponent,
-        ChangeMapComponent
+        ChangeMapComponent,
+        SuspiciousComponent
     ],
     imports: [
         BrowserModule,
