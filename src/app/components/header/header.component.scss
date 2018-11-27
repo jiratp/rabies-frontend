@@ -409,48 +409,5 @@
   and (min-width: 1024px) 
   and (max-width: 1366px) {
 
-    .navbar{
-        &.header-theme-bg{
-            height: $header-height-sm;
-
-            .navbar-brand{
-                height: $header-height-sm;
-
-                .logo{
-                    margin-top: 15px;
-                    width: 35px;
-                }
-    
-                .brand-name{
-                    margin-top: 6px;
-                    span{
-                        font-size: 14px;
-                    }
-    
-                    p{
-                        font-size: 12px;
-                    }
-                }
-            }
-
-            .navbar-toggler{
-                padding: 5px 5px;
-                margin-right: 15px;
-                position: relative;
-                background: #FFFFFF;
-
-                .navbar-toggler-icon{
-                    width: 1em;
-                    height: 1em;
-                }
-            }
-
-            .collapse{
-                &.navbar-collapse{
-                    display: none !important;
-                }
-            }
-        }
-    }
     
 }
