@@ -1,0 +1,472 @@
+<div class="container-fluid breadcrumb">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">แบบสำรวจข้อมูลสัตว์</li>
+            <li class="breadcrumb-item">รายการขึ้นทะเบียนสัตว์ (มีเจ้าของ)</li>
+            <li class="breadcrumb-item">ข้อมูลเจ้าของสัตว์</li>
+            <li class="breadcrumb-item active" aria-current="page">เพิ่มข้อมูลเจ้าของสัตว์</li>
+        </ol>
+    </nav>     
+
+    <div class="container-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-survey-card">
+                <div class="card-body tab-survey-card-body">
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item tab-no-header" [ngClass]="tab === 'surveyer-info' ? 'tab-active' : ''">
+                                <span class="nav-link active" href="#surveyer-info" role="tab" data-toggle="tab" (click)="tabSelected('surveyer-info')">ข้อมูลผู้สำรวจ</span>
+                            </li>
+                            <li class="nav-item tab-item tab-no-header" [ngClass]="tab === 'animal-owner-info' ? 'tab-active' : ''">
+                                <span class="nav-link" href="#animal-owner-info" role="tab" data-toggle="tab" (click)="tabSelected('animal-owner-info')">ข้อมูลเจ้าของสัตว์</span>
+                            </li>
+                            <li class="nav-item tab-item tab-no-header" [ngClass]="tab === 'animal-list' ? 'tab-active' : ''">
+                                <span class="nav-link" href="#animal-list" role="tab" data-toggle="tab" (click)="tabSelected('animal-list')">รายการสัตว์เลี้ยง</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!-- ข้อมูลผู้สำรวจ -->
+                        <div role="tabpanel" class="tab-pane active" id="surveyer-info">
+                            <div class="content-container">
+                                <form class="form-information mt-3" name="surveyerForm" [formGroup]="surveyerForm">
+                                    <div class="card-body form-information-card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                                                
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> ข้อมูลผู้สำรวจ </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="SurveyerName" class="form-label">ชื่อ-นามสกุล</label>
+                                                                                <input type="text" class="form-control" id="SurveyerName" placeholder="ชื่อ-นามสกุล">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="SurveyerIDCard" class="form-label">หมายเลขบัตรประชาชน</label>
+                                                                                <input type="text" class="form-control" id="SurveyerIDCard" placeholder="หมายเลขบัตรประชาชน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="surveyญชPhoneNumber" class="form-label">เบอร์โทรศัพท์</label>
+                                                                                <input type="text" class="form-control" id="surveyญชPhoneNumber" placeholder="เบอร์โทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="surveyDate" class="form-label">วัน/เดือน/ปี ที่สำรวจ</label>
+                                                                                <input type="text" class="form-control" id="surveyDate" placeholder="วัน/เดือน/ปี ที่สำรวจ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> สถานที่สำรวจ </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="provinceName" class="form-label">จังหวัด</label>
+                                                                                <p-dropdown placeholder="เลือกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterProvinceShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="provinceName"></p-dropdown>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="subDistrictName" class="form-label">ตำบล</label>
+                                                                                <p-dropdown placeholder="เลือกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterSubDistrictShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrictName"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="districtName" class="form-label">อำเภอ</label>
+                                                                                <p-dropdown placeholder="เลือกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterDistrictShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="districtName"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="zipCode" class="form-label">รหัสไปรษณีย์</label>
+                                                                                <input type="text" class="form-control" id="zipCode" placeholder="รหัสไปรษณีย์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                                            <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                                            <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- ข้อมูลเจ้่าของ -->
+                        <div role="tabpanel" class="tab-pane" id="animal-owner-info">
+                            <div class="content-container">
+                                <form class="form-information mt-3" name="informationForm" [formGroup]="informationForm">
+                                    <div class="card-body form-information-card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                                                <!-- ประวัติเจ้าของ -->
+                                                <div class="form-group-panel clear-fix">
+
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> ประวัติเจ้าของ </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'general-customer'">
+                                                                                <label for="generalCustomerName" class="form-label">ชื่อ-นามสกุล</label>
+                                                                                <input type="text" class="form-control" id="generalCustomerName" placeholder="ชื่อ-นามสกุล">
+                                                                            </div>
+
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'corporation-customer'">
+                                                                                <label for="corporationCustomerName" class="form-label">ชื่อสถานประกอบการ</label>
+                                                                                <input type="text" class="form-control" id="corporationCustomerName" placeholder="ชื่อสถานประกอบการ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'general-customer'">
+                                                                                <label for="generalCustomerIDCard" class="form-label">หมายเลขบัตรประชาชน</label>
+                                                                                <input type="text" class="form-control" id="generalCustomerIDCard" placeholder="หมายเลขบัตรประชาชน">
+                                                                            </div>
+
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'corporation-customer'">
+                                                                                <label for="corporationCustomerTaxID" class="form-label">หมายเลขผู้เสียภาษี</label>
+                                                                                <input type="text" class="form-control" id="corporationCustomerTaxID" placeholder="หมายเลขผู้เสียภาษี">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- สถานที่เลี้ยงปัจจุบัน -->
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> สถานที่เลี้ยงปัจจุบัน </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-8 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="addressNo" class="form-label">บ้านเลขที่</label>
+                                                                                <input type="text" class="form-control" id="addressNo" placeholder="บ้านเลขที่">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="mooName" class="form-label">หมู่ที่</label>
+                                                                                <input type="text" class="form-control" id="mooName" placeholder="หมู่ที่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="streetName" class="form-label">ถนน</label>
+                                                                                <input type="text" class="form-control" id="streetName" placeholder="ถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="districtName" class="form-label">อำเภอ</label>
+                                                                                <p-dropdown placeholder="เลือกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterDistrictShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="districtName"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="zipCode" class="form-label">รหัสไปรษณีย์</label>
+                                                                                <input type="text" class="form-control" id="zipCode" placeholder="รหัสไปรษณีย์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="placeID" class="form-label">สถานที่เลี้ยง</label>
+                                                                                <p-dropdown placeholder="เลือกสถานที่เลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterPlaceIDShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="placeID"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="soiName" class="form-label">ซอย</label>
+                                                                                <input type="text" class="form-control" id="soiName" placeholder="ซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="provinceName" class="form-label">จังหวัด</label>
+                                                                                <p-dropdown placeholder="เลือกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterProvinceShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="provinceName"></p-dropdown>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="subDistrictName" class="form-label">ตำบล</label>
+                                                                                <p-dropdown placeholder="เลือกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterSubDistrictShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrictName"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="phoneNumber" class="form-label">เบอร์โทรศัพท์</label>
+                                                                                <input type="text" class="form-control" id="phoneNumber" placeholder="เบอร์โทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="supportId" class="form-label">ลักษณะการเลี้ยง</label>
+                                                                                <p-dropdown placeholder="เลือกลักษณะการเลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterSupportIDShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="supportId"></p-dropdown>
+                                            
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- สถานที่เลี้ยงปัจจุบัน -->
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> พิกัดสถานที่เลี้ยงปัจจุบัน </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel"> 
+
+                                                                    </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="longitude" class="form-label">ลองจิจูด</label>
+                                                                                <input type="text" class="form-control" id="longitude" placeholder="ลองจิจูด">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="latitude" class="form-label">ละติจูด</label>
+                                                                                <input type="text" class="form-control" id="latitude" placeholder="ละติจูด">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                                            <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                                            <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- รายการสัตว์ที่ลงทะเบียน -->
+                        <div role="tabpanel" class="tab-pane" id="animal-list">
+                            <div class="content-container">
+                                <div class="card-body form-information-card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel"> 
+                                            <div class="form-group-panel clear-fix">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 searchbar">
+                                                        <button type="submit" class="btn btn-block btn-light btn-insert-animal-info" (click)="formAnimalInformation('add')">
+                                                           <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูลสัตว์
+                                                        </button> 
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar text-box-panel"> 
+                                                        <div class="form-group clear-fix">
+                                                            <label for="filterAnimal" class="form-label sr-only">เลือกประเภทของสัตว์</label>
+                                                            <p-dropdown placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล"  [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-dropdown-filter" selectId="filterAnimal"></p-dropdown>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 data-table-group">  
+                                                        <p-table [value]="animalInformations"  [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
+                                                            <ng-template pTemplate="caption">
+                                                                รายการสัตว์ที่ลงทะเบียน
+                                                            </ng-template>
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                    <th rowspan="2">ชื่อ/ลักษณะสัตว์</th>
+                                                                    <th rowspan="2">เพศ</th>
+                                                                    <th rowspan="2">ประวัติการฉีดวัคซีน</th>
+                                                                    <th rowspan="2">วัคซีนครั้งล่าสุดประมาณ</th>
+                                                                    <th rowspan="2">การทำหมัน</th>
+                                                                    <th colspan="2">อายุ</th>
+                                                                    <th rowspan="2">จัดการ</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>ปี</th>
+                                                                    <th>เดือน</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-rowData>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ชื่อ/ลักษณะสัตว์</span>
+                                                                        {{rowData.identity}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">เพศ</span>
+                                                                        {{rowData.gender}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ประวัติการฉีดวัคซีน</span>
+                                                                        {{rowData.vaccinationHistoryFlg}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">วัคซีนครั้งล่าสุดประมาณ</span>
+                                                                        {{rowData.vaccinationLastDate}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">การทำหมัน</span>
+                                                                        {{rowData.sterilizationFlg}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">อายุ (ปี)</span>
+                                                                        {{rowData.yearAge}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">อายุ (เดือน)</span>
+                                                                        {{rowData.monthAge}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">จัดการ</span>
+                                                                        {{rowData.animalInfoID}}
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="emptymessage">
+                                                                <tr>
+                                                                    <td colspan="8" class="emptymessage">
+                                                                        ไม่มีรายการ
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>              
+</div>

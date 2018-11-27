@@ -1,46 +1,51 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfigService } from '../../core/config.service';
-import { LoginService } from '../../providers/login/login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+import { DialogAlertComponent } from './../../components/dialog-alert/dialog.alert.component';
+
+import { ConfigService } from '../../core/config.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent implements OnInit {
-  signinForm: FormGroup;
-  constructor(private router: Router,
-    private themeConfig: ConfigService,
-    private cdr: ChangeDetectorRef,
-    private loginService: LoginService) {
-    // this.cdr.detectChanges();
-    this.themeConfig.setSettings({
-      layout: {
-        toolbar: 'none',
-      }
-    });
-    this.signinForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
-    });
-  }
 
-  ngOnInit() {
-  }
-  login() {
-    if (this.signinForm.value.username && this.signinForm.value.password) {
-      if (this.signinForm.value.username === 'user') {
-        this.loginService.sendData('user');
-        this.router.navigate(['home']);
-      } else if (this.signinForm.value.username === 'admin') {
-        this.loginService.sendData('admin');
-        this.router.navigate(['home']);
-      }
+export class LoginComponent implements OnInit {
+    modalRef: BsModalRef;
+    signinForm: FormGroup;
+    constructor(
+        private router: Router,
+        private ModalService: BsModalService,
+        private themeConfig: ConfigService
+    ) {
+
+        this.themeConfig.setSettings({
+            layout: {
+                toolbar: 'none',
+            }
+        });
+
+
+        this.signinForm = new FormGroup({
+            username: new FormControl('', Validators.required),
+            password: new FormControl('', Validators.required),
+            cookieChecked: new FormControl(false),
+        });
     }
-  }
-  register() {
-    this.router.navigate(['register']);
-  }
+    ngOnInit() {
+
+    }
+    login() {
+        this.modalRef = this.ModalService.show(DialogAlertComponent, this.themeConfig.defaultSettings.dialogAlertSetting);
+    }
+    register() {
+        this.router.navigate(['register']);
+    }
+    forgetPassword() {
+        this.router.navigate(['forget-password']);
+    }
 }

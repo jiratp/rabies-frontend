@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: #e1e1e1;
+      border: 0px none #ffffff;
+      border-radius: 0px;
+      &:hover{
+          background: #cccccc;
+      }
+      &:active{
+          background: #888888;
+      }
+  }
+  ::-webkit-scrollbar-track {
+      background: #666666;
+      border: 0px none #ffffff;
+      border-radius: 0px;
+      &:hover{
+          background: #666666;
+      }
+      &:active{
+          background: #333333;
+      }
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+
+/******** GLOBAL SETTING *******/
+.clear-fix{
+    clear: both;
+  }
+  
+.item-center-flex {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+}
+

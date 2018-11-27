@@ -1,0 +1,96 @@
+<div class="container-fluid breadcrumb">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">แบบสำรวจข้อมูลสัตว์</li>
+            <li class="breadcrumb-item">รายการขึ้นทะเบียนสัตว์ (มีเจ้าของ)</li>
+            <li class="breadcrumb-item active" aria-current="page">ข้อมูลเจ้าของสัตว์</li>
+        </ol>
+    </nav>     
+
+    <div class="container-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-survey-card">
+                <div class="card-body tab-survey-card-body">
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item tab-header" [ngClass]="tab === 'owner-information-group' ? 'tab-active' : ''">
+                                <span class="nav-link active" href="#owner-information-group" role="tab" data-toggle="tab" (click)="tabSelected('owner-information-group')">ข้อมูลเจ้าของสัตว์</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="owner-information-group">
+                            <div class="content-container">
+                                <div class="card-body form-survey-card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel"> 
+                                            <div class="form-group-panel clear-fix">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 searchbar">
+                                                        <button type="submit" class="btn btn-block btn-light btn-insert-animal-info" (click)="ManageOwnerInformation()">
+                                                           <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูลสัตว์
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar text-box-panel"> 
+                                                        <div class="form-group clear-fix">
+                                                            <label for="filterAnimal" class="form-label sr-only">เลือกประเภทของสัตว์</label>
+                                                            <p-dropdown placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-dropdown-filter" selectId="filterAnimal"></p-dropdown>
+                                                        </div>  
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 data-table-group">  
+                                                        <p-table [value]="ownerInfomationGroup"  [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
+                                                            <ng-template pTemplate="caption">
+                                                                ข้อมูลเจ้าของสัตว์
+                                                            </ng-template>
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                    <th>ลำดับ</th>
+                                                                    <th>ชื่อ-สกุล</th>
+                                                                    <th>สถานที่เลี้ยง</th>
+                                                                    <th>จำนวนสัตว์</th>
+                                                                    <th>จัดการ</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-rowData>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ลำดับ</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ชื่อ-สกุล</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">สถานที่เลี้ยง</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">จำนวนสัตว์</span>
+                                                                    </td>
+                                                                    <td>
+                                                                       
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="emptymessage">
+                                                                <tr>
+                                                                    <td colspan="5" class="emptymessage">
+                                                                        ไม่มีรายการ
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>              
+</div>

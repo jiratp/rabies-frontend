@@ -1,0 +1,249 @@
+@import "../../themes/styles/variables";
+
+.clear-fix{
+  clear: both;
+}
+
+.item-center {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  display: flex;
+}
+
+.container-fluid {
+  width: 100%;
+  min-height: calc(100vh - 20vh);
+  padding-top: $layout-page-top;
+  padding-right: $layout-page-right;
+  padding-left: $layout-page-left;
+  padding-bottom: $layout-page-bottom;
+  margin-right: auto;
+  margin-left: auto;
+  
+
+  .form-signin{
+    width: 100%;
+    max-width: 470px;
+    padding: 60px;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    background: #FFFFFF;
+
+    .container-body{
+      .row{
+        margin-left: 0px;
+        margin-right: 0px;
+        .login-card{
+          .text-box-panel{
+            .logo-images{
+              width: 50px;
+              height: 50px;
+              margin-bottom:30px;
+            }
+  
+            .form-group{
+              width: 100%;
+              .form-control{
+                height: $form-control-height;
+                font-family: $ff-title-narmal;
+                font-size: $form-control-size;
+              }
+            }
+          }
+
+          .set-cookie-panel{
+            padding-right: 0px !important;
+            text-align:left;
+            font-family: $ff-title-narmal;
+            font-size: 12px;
+
+            .form-group{
+              width: 100%;
+              padding-top: 22px;
+              
+              .form-label{
+                display:  table-cell;
+                text-align: left;
+              }
+            }
+          }
+
+          .btn-login-panel{
+            padding-top: 12px;
+            padding-left: 0px !important;
+            .btn-theme{
+              background: #39B062;
+              color: white;
+              font-family: $ff-title-narmal;
+              font-size: $form-control-size;
+            }
+          }
+        }
+
+        .bottom-panel{
+          padding-left: 0px;
+          padding-right: 0px;
+          .hr-panel{
+            width: 100%;
+            margin-top: 10px;
+          }
+
+          .forget-password-panel{
+            text-align: left;
+            padding-left: 0px;
+            a{
+              font-family: $ff-title-med;
+              font-size: 14px;
+              cursor: pointer;
+            }
+          }
+
+          .register-panel{
+            text-align: right;
+            padding-right: 0px;
+            a{
+              font-family: $ff-title-med;
+              font-size: 14px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 667px) { 
+
+    .container-fluid {
+        width: 100%;
+        min-height: auto;
+        padding-top: $layout-page-top-sm;
+        padding-right: $layout-page-right-sm;
+        padding-left: $layout-page-left-sm;
+        padding-bottom: $layout-page-bottom-sm;
+        margin-right: auto;
+        margin-left: auto;
+
+        .form-signin{
+          .container-body{
+            .row{
+              
+              .login-card{
+                padding-right: 0px !important;
+                padding-left: 0px !important;
+                .text-box-panel{
+                  padding-right: 0px !important;
+                  padding-left: 0px !important;
+                }
+
+      
+                .set-cookie-panel{
+                  padding-right: 0px !important;
+                  padding-left: 0px !important;
+                  font-family: $ff-title-narmal;
+                  font-size: 12px;
+      
+                  .form-group{
+                    width: 100%;
+                    padding-top: 22px;
+                    
+                    .form-label{
+                      display:  table-cell;
+                      text-align: left;
+                    }
+                  }
+                }
+      
+                .btn-login-panel{
+                  padding-top: 12px;
+                  padding-right: 0px !important;
+                  padding-left: 0px !important;
+                }
+              }
+      
+              .bottom-panel{
+                padding-left: 0px;
+                padding-right: 0px;
+                .hr-panel{
+                  width: 100%;
+                  margin-top: 10px;
+                }
+      
+                .forget-password-panel{
+                  text-align: left;
+                  padding-left: 0px;
+                  a{
+                    font-family: $ff-title-med;
+                    font-size: 14px;
+                    cursor: pointer;
+                  }
+                }
+      
+                .register-panel{
+                  text-align: right;
+                  padding-right: 0px;
+                  a{
+                    font-family: $ff-title-med;
+                    font-size: 14px;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+    
+}
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    
+    .container-fluid {
+        width: 100%;
+        padding-top: $layout-page-top-sm;
+        padding-right: $layout-page-right-sm;
+        padding-left: $layout-page-left-sm;
+        padding-bottom: $layout-page-bottom-sm;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+
+}

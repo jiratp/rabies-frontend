@@ -1,200 +1,408 @@
-<div class="container-fluid">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">หน้าหลัก</li>
-      <li class="breadcrumb-item active" aria-current="page">ข้อมูลสัตว์</li>
-    </ol>
-  </nav>
+<div class="container-fluid breadcrumb">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">ลงทะเบียน</li>
+            <li class="breadcrumb-item active" aria-current="page">เพิ่มข้อมูลเจ้าของสัตว์</li>
+        </ol>
+    </nav>     
 
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-4 card text-center mb-3 mh-card">
-      <div class="card-body item-center bg-success">
+    <div class="container-body">
         <div class="row">
-          <div class="col-12 color-white">
-            <div>สรุปจำนวนสุนัข - แมว</div>
-            <h2 class="mt-0">4,339,210 ตัว</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-4 card mb-3">
-      <div class="card-body">
+            <!-- Summary Animal -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 card text-center mb-3 mh-card summary-card">
+                <div class="card-body item-center bg-success summary-card-body">
+                    <div class="row summary-card-body-row">
+                        <div class="col-12 color-white summary-body">
+                            <h3>สรุปจำนวนสัตว์ที่ลงทะเบียน</h3>
+                                <span class="mt-0">4,339,210 ตัว</span>
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-7 col-sm-7 col-md-7 col-lg-7 summary-card-title">
+                                    <h3>ลงทะเบียนทั้งหมด (ตัว)</h3>
+                                </div>
+                                <div class="col-5 col-sm-5 col-md-5 col-lg-5 summary-card-data">
+                                    <span class="summary">4,208,276</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Animal 1 -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 card mb-3 summary-animal-card">
+                <div class="card-body item-center summary-animal-card-body">
+                    <div class="row">
+                        <div class="col-5 text-center animal-info">
+                            <img src="./assets/images/icon-dog.png" alt="">
+                            <h5 class="animal-name">สุนัข</h5>
+                        </div>
+                        <div class="col-7 item-center animal-summary">
+                            <div class="row">
+                                <div class="col-12 animal-summary-header">
+                                    <h3> ลงทะเบียน (ตัว) </h3>
+                                </div>
+                                <div class="col-12 animal-summary-data">
+                                    <span>39,210</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Animal 2 -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 card mb-3 summary-animal-card">
+                <div class="card-body item-center summary-animal-card-body">
+                    <div class="row">
+                        <div class="col-5 text-center animal-info">
+                            <img src="./assets/images/icon-cat.png" alt="">
+                            <h5 class="animal-name">แมว</h5>
+                        </div>
+                        <div class="col-7 item-center animal-summary">
+                            <div class="row">
+                                <div class="col-12 animal-summary-header">
+                                    <h3> ลงทะเบียน (ตัว) </h3>
+                                </div>
+                                <div class="col-12 animal-summary-data">
+                                    <span>39,210</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
         <div class="row">
-          <div class="col-5 text-center item-center">
-            <div>
-              <img src="./assets/images/icon-dog.png" height="70px" alt="">
-              <h5 class="mt-2">สุนัข</h5>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 information-card">
+                <div class="card-body tab-information-card-body">
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item" [ngClass]="tab === 'animal-owner-info' ? 'tab-active' : ''">
+                                <span class="nav-link active" href="#animal-owner-info" role="tab" data-toggle="tab" (click)="tabSelected('animal-owner-info')">ข้อมูลเจ้าของสัตว์</span>
+                            </li>
+                            <li class="nav-item tab-item" [ngClass]="tab === 'animal-list' ? 'tab-active' : ''">
+                                <span class="nav-link" href="#animal-list" role="tab" data-toggle="tab" (click)="tabSelected('animal-list')">รายการสัตว์เลี้ยง</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="animal-owner-info">
+                            <div class="content-container">
+                                <form class="form-information mt-3" name="informationForm" [formGroup]="informationForm">
+                                    <div class="card-body form-information-card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                                                <!-- ประวัติเจ้าของ -->
+                                                <div class="form-group-panel clear-fix">
+
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> ประวัติเจ้าของ </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'general-customer'">
+                                                                                <label for="generalCustomerName" class="form-label">ชื่อ-นามสกุล</label>
+                                                                                <input type="text" class="form-control" id="generalCustomerName" placeholder="ชื่อ-นามสกุล">
+                                                                            </div>
+
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'corporation-customer'">
+                                                                                <label for="corporationCustomerName" class="form-label">ชื่อสถานประกอบการ</label>
+                                                                                <input type="text" class="form-control" id="corporationCustomerName" placeholder="ชื่อสถานประกอบการ">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'general-customer'">
+                                                                                <label for="generalCustomerIDCard" class="form-label">หมายเลขบัตรประชาชน</label>
+                                                                                <input type="text" class="form-control" id="generalCustomerIDCard" placeholder="หมายเลขบัตรประชาชน">
+                                                                            </div>
+
+                                                                            <div class="form-group clear-fix" *ngIf="informationForm.controls['customerType'].value == 'corporation-customer'">
+                                                                                <label for="corporationCustomerTaxID" class="form-label">หมายเลขผู้เสียภาษี</label>
+                                                                                <input type="text" class="form-control" id="corporationCustomerTaxID" placeholder="หมายเลขผู้เสียภาษี">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- สถานที่เลี้ยงปัจจุบัน -->
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> สถานที่เลี้ยงปัจจุบัน </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-8 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="addressNo" class="form-label">บ้านเลขที่</label>
+                                                                                <input type="text" class="form-control" id="addressNo" placeholder="บ้านเลขที่">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="mooName" class="form-label">หมู่ที่</label>
+                                                                                <input type="text" class="form-control" id="mooName" placeholder="หมู่ที่">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="streetName" class="form-label">ถนน</label>
+                                                                                <input type="text" class="form-control" id="streetName" placeholder="ถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="districtName" class="form-label">อำเภอ</label>
+                                                                                <p-dropdown placeholder="เลือกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterDistrictShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="districtName"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="zipCode" class="form-label">รหัสไปรษณีย์</label>
+                                                                                <input type="text" class="form-control" id="zipCode" placeholder="รหัสไปรษณีย์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="placeID" class="form-label">สถานที่เลี้ยง</label>
+                                                                                <p-dropdown placeholder="เลือกสถานที่เลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterPlaceIDShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="placeID"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="soiName" class="form-label">ซอย</label>
+                                                                                <input type="text" class="form-control" id="soiName" placeholder="ซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="provinceName" class="form-label">จังหวัด</label>
+                                                                                <p-dropdown placeholder="เลือกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterProvinceShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="provinceName"></p-dropdown>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="subDistrictName" class="form-label">ตำบล</label>
+                                                                                <p-dropdown placeholder="เลือกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterSubDistrictShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrictName"></p-dropdown>
+                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="phoneNumber" class="form-label">เบอร์โทรศัพท์</label>
+                                                                                <input type="text" class="form-control" id="phoneNumber" placeholder="เบอร์โทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="supportId" class="form-label">ลักษณะการเลี้ยง</label>
+                                                                                <p-dropdown placeholder="เลือกลักษณะการเลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterSupportIDShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="supportId"></p-dropdown>
+                                            
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- สถานที่เลี้ยงปัจจุบัน -->
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> พิกัดสถานที่เลี้ยงปัจจุบัน </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <div class="row">
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel"> 
+
+                                                                    </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="longitude" class="form-label">ลองจิจูด</label>
+                                                                                <input type="text" class="form-control" id="longitude" placeholder="ลองจิจูด">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-body-panel form-text-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="latitude" class="form-label">ละติจูด</label>
+                                                                                <input type="text" class="form-control" id="latitude" placeholder="ละติจูด">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group-panel clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                                            <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                                            <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="animal-list">
+                            <div class="content-container">
+                                <div class="card-body form-information-card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel"> 
+                                            <!--
+
+                                            <div class="form-header clear-fix">
+                                                <h3>
+                                                    รายการสัตว์เลี้ยง
+                                                </h3>
+                                                <hr class="form-header-line" />
+                                            </div>
+
+                                            -->
+                                            
+                                            <!-- Search Bar -->
+                                            <div class="form-group-panel clear-fix">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 searchbar">
+                                                        <button type="submit" class="btn btn-block btn-light btn-insert-animal-info" (click)="formAnimalInformation('add')">
+                                                           <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูลสัตว์
+                                                        </button> 
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar text-box-panel"> 
+                                                        <div class="form-group clear-fix">
+                                                            <label for="filterAnimal" class="form-label sr-only">เลือกประเภทของสัตว์</label>
+                                                            <p-dropdown placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterAnimalRegisterShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-dropdown-filter" selectId="filterAnimal"></p-dropdown>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 data-table-group">  
+                                                        <p-table [value]="animalInformations"  [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
+                                                            <ng-template pTemplate="caption">
+                                                                รายการสัตว์เลี้ยงที่ลงทะเบียน
+                                                            </ng-template>
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                    <th rowspan="2">ชื่อ/ลักษณะสัตว์</th>
+                                                                    <th rowspan="2">เพศ</th>
+                                                                    <th rowspan="2">ประวัติการฉีดวัคซีน</th>
+                                                                    <th rowspan="2">วัคซีนครั้งล่าสุดประมาณ</th>
+                                                                    <th rowspan="2">การทำหมัน</th>
+                                                                    <th colspan="2">อายุ</th>
+                                                                    <th rowspan="2">จัดการ</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>ปี</th>
+                                                                    <th>เดือน</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-rowData>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ชื่อ/ลักษณะสัตว์</span>
+                                                                        {{rowData.identity}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">เพศ</span>
+                                                                        {{rowData.gender}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ประวัติการฉีดวัคซีน</span>
+                                                                        {{rowData.vaccinationHistoryFlg}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">วัคซีนครั้งล่าสุดประมาณ</span>
+                                                                        {{rowData.vaccinationLastDate}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">การทำหมัน</span>
+                                                                        {{rowData.sterilizationFlg}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">อายุ (ปี)</span>
+                                                                        {{rowData.yearAge}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">อายุ (เดือน)</span>
+                                                                        {{rowData.monthAge}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">จัดการ</span>
+                                                                        {{rowData.animalInfoID}}
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="emptymessage">
+                                                                <tr>
+                                                                    <td colspan="8" class="emptymessage">
+                                                                        ไม่มีรายการ
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-7 item-center-box">
-            <div class="row mt-2 w-100">
-              <div class="col-12 color-green">
-                <h5>1,339,210 ตัว</h5>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-4 card mb-3">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-5 text-center item-center">
-            <div>
-              <img src="./assets/images/icon-cat.png" height="70px" alt="">
-              <h5 class="mt-2">แมว</h5>
-            </div>
-          </div>
-          <div class="col-7 item-center-box">
-            <div class="row mt-2 w-100">
-              <div class="col-12 color-green">
-                <h5>1,339,210 ตัว</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="card col-md-12">
-      <div class="card-header">
-        ข้อมูลส่วนตัว
-      </div>
-      <div class="card-body">
-        <form>
-          <div class="form-group row">
-            <label for="inputEmail3" class="d-none d-sm-none d-md-block col-md-2 col-lg-2 col-form-label text-right">ชื่อ-นามสกุล</label>
-            <label for="inputEmail3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">ชื่อ-นามสกุล</label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <input type="text" class="form-control" id="inputName" placeholder="ชื่อ-นามสกุล">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="d-none d-sm-non d-md-block col-md-2 col-lg-2 col-form-label text-right">สถานที่เลี้ยง</label>
-            <label for="inputPassword3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">สถานที่เลี้ยง</label>
-
-            <div class="col-12 col-sm-12 col-md-8 col-lg-3">
-              <input type="text" class="form-control" id="inputPlace" placeholder="บ้านเลขที่">
-            </div>
-            <div class="d-none d-sm-none d-md-block col-md-2 col-lg-1">
-              <input type="text" class="form-control" id="inputPlace" placeholder="หมู่">
-            </div>
-            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
-            </div>
-            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <input type="text" class="form-control" id="inputPlace" placeholder="ซอย">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <input type="text" class="form-control" id="inputPlace" placeholder="ถนน">
-            </div>
-            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
-            </div>
-            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
-
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <input type="text" class="form-control" id="inputPlace" placeholder="แขวง/ตำบล">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <input type="text" class="form-control" id="inputPlace" placeholder="เขต/อำเภอ">
-            </div>
-            <div class="d-none d-sm-none d-md-block col-md-12 d-lg-none mt-3">
-            </div>
-            <label class="col-12 col-sm-12 col-md-2 d-lg-none"></label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
-                <option selected>จังหวัด</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-12 col-sm-12 col-md-2 col-lg-2 col-form-label text-right margin-top-1rem"></label>
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <input type="text" class="form-control" id="inputName" placeholder="รหัสไปรษณีย์">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="d-none d-sm-none d-md-block col-md-2 col-lg-2 col-form-label text-right">ลักษณะสถานที่เลี้ยง</label>
-            <label for="inputEmail3" class="d-block d-sm-block d-md-none d-lg-none col-form-label padding-l-1-25">สถานที่เลี้ยง</label>
-
-            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
-              <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                <option selected>บ้านพักอาศัย</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="card col-md-12">
-      <div class="card-header">
-        ข้อมูลสัตว์
-      </div>
-      <div class="card-body">
-        <div class="row padding-00016">
-          <div class="col-2 col-sm-2 d-md-none d-lg-none"></div>
-          <button class="btn btn-theme col-8 col-sm-8 col-md-2 col-lg-2" (click)="addInformation()">เพิ่มข้อมูล</button>
-          <div class="col-2 col-sm-2 d-md-none d-lg-none"></div>
-
-          <div class="col-md-4 col-lg-6"></div>
-          <div class="d-block d-sm-block d-md-none d-lg-none mt-3">
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-2 padding-l-0">
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref">
-              <option selected>ประเภท</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="d-block d-sm-block d-md-block col-md-12 d-lg-none mt-3">
-          </div>
-          <div class="col-md-12 col-lg-2 padding-l-0">
-            <input type="text" class="form-control" id="inputName" placeholder="ค้นหา">
-          </div>
-        </div>
-        <div class="row mt-3 bg-gray margin-0">
-          <div class="col-6 col-sm-6 col-md-2 col-lg-2 padding-5">
-            1. จีจี
-          </div>
-          <div class="col-6 col-sm-6 col-md-7 col-lg-2 padding-5">
-            เมีย
-          </div>
-          <div class="d-none d-sm-none d-md-none d-lg-block col-lg-2 padding-5">
-            ลาบาดอ
-          </div>
-          <div class="col-6 col-sm-6 col-md-3 col-lg-2 padding-5">
-            บ้านพักอาศัย
-          </div>
-          <div class="col-6 col-sm-6 col-md-8 col-lg-2 padding-5">
-            สุนัข
-          </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-right padding-5 cursor" (click)="viewInformation()">
-            view <i class="fa fa-search"></i>
-          </div>
-          <div class="col-6 col-sm-6 col-md-2 col-lg-1 text-center padding-5 cursor" (click)="editInformation()">
-            edit <i class="fa fa-pencil"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+    </div>              
 </div>

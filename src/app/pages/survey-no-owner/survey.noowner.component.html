@@ -1,0 +1,84 @@
+<div class="container-fluid breadcrumb">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">แบบสำรวจข้อมูลสัตว์</li>
+            <li class="breadcrumb-item active" aria-current="page">รายการขึ้นทะเบียนสัตว์ (ไม่มีเจ้าของ)</li>
+        </ol>
+    </nav>     
+
+    <div class="container-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-survey-card">
+                <div class="card-body tab-survey-card-body">
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item" [ngClass]="tab === 'report-animal-noowner-group' ? 'tab-active' : ''">
+                                <span class="nav-link active" href="#report-animal-noowner-group" role="tab" data-toggle="tab" (click)="tabSelected('report-animal-noowner-group')">รายการขึ้นทะเบียนสัตว์ (ไม่มีเจ้าของ)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="report-animal-noowner-group">
+                            <div class="content-container">
+                                <div class="card-body form-survey-card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel"> 
+                                            <div class="form-group-panel clear-fix">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 data-table-group">  
+                                                        <p-table [value]="roundAnimalNoownerGroup"  [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
+                                                            <ng-template pTemplate="caption">
+                                                                รายการขึ้นทะเบียนสัตว์ (ไม่มีเจ้าของ)
+                                                            </ng-template>
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                    <th>รายการขึ้นทะเบียนสัตว์</th>
+                                                                    <th>วันที่เริ่มต้น - สิ้นสุดของรายการ</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th>จัดการ</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-rowData>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="ui-column-title">รายการขึ้นทะเบียนสัตว์</span>
+                                                                        {{rowData.roundName}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">วันที่เริ่มต้น - สิ้นสุดของรายการ</span>
+                                                                        {{rowData.roundStartDate}} - {{rowData.roundEndDate}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">สถานะ</span>
+                                                                        {{rowData.roundStatus}} อยู่ในระยะเวลา
+                                                                    </td>
+                                                                    <td class="col-btn-group">
+
+                                                                        <a class="btn-content btn-icon" (click)="ManageNoOwnerList()"> 
+                                                                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="emptymessage">
+                                                                <tr>
+                                                                    <td colspan="4" class="emptymessage">
+                                                                        ไม่มีรายการ
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>              
+</div>

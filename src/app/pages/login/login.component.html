@@ -1,34 +1,55 @@
-<div class="container text-center">
-  <form class="form-signin mt-3" name="signinForm" [formGroup]="signinForm">
-    <img class="mb-4" src="./assets/images/logo-g.png" alt="" width="50" height="50">
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="email" id="inputUsername" class="form-control mb-4" placeholder="Username" required="" autofocus="" formControlName="username">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" formControlName="password">
-    <label class="require mt-3">* คุณใส่รหัสผ่านหรือยูสเซอร์เนมผิด โปรดลองอีกครั้ง</label>
-    <div class="row mb-3 mt-3">
-      <div class="checkbox py-2 col-12 col-sm-12 col-md-5 col-lg-5 text-left">
-        <label class="d-none d-sm-none d-md-block">
-          <input type="checkbox" value="remember-me"> จดจำฉัน
-        </label>
-        <label class="d-block d-sm-block d-md-none text-center">
-            <input type="checkbox" value="remember-me"> จดจำฉัน
-          </label>
-      </div>
-      <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-        <button class="btn btn-theme btn-block" type="button" (click)=" login()">เข้าสู่ระบบ</button>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-left">
-        <label for="" class="cursor d-none d-sm-none d-md-block">ลืมพาสเวิร์ด?</label>
-        <label for="" class="cursor d-block d-sm-block d-md-none text-center">ลืมพาสเวิร์ด?</label>
-      </div>
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-right" (click)="register()">
-        <label for="" class="cursor d-none d-sm-none d-md-block">สมัครสมาชิก</label>
-        <label for="" class="cursor d-block d-sm-block d-md-none text-center">สมัครสมาชิก</label>
-      </div>
-    </div>
-  </form>
+<div class="container-fluid item-center">
+    <form class="form-signin mt-3" name="signinForm" [formGroup]="signinForm">
+        <div class="container-body text-center">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mb-3 login-card">    
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                            <img class="logo-images" src="./assets/images/logo-g.png" alt="">
+                            <div class="form-group">
+                                <label for="inputUsername" class="form-label sr-only">ชื่อผู้ใช้งาน / อีเมลล์</label>
+                                <input type="text" class="form-control" id="inputUsername" placeholder="ชื่อผู้ใช้งาน / อีเมลล์" required="" autofocus="" formControlName="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="form-label sr-only">รหัสผ่าน</label>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="รหัสผ่าน" required="" autofocus="" formControlName="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-sm-5 col-md-5 col-lg-4 set-cookie-panel">  
+                            <div class="form-group">
+                                <p-checkbox [formControl]="signinForm.controls['cookieChecked']" binary="true" label="จดจำฉัน"></p-checkbox>
+                            </div>
+                        </div>
+                        <div class="col-7 col-sm-7 col-md-7 col-lg-8 btn-login-panel">  
+                            <button class="btn btn-theme btn-block" type="button" (click)="login()">เข้าสู่ระบบ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mb-3 bottom-panel"> 
+                    <div class="row">
+                        <hr class="hr-panel" />
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 forget-password-panel">  
+                            <a class="forget-password-link" (click)="forgetPassword()">
+                                <span>ลืมพาสเวิร์ด?</span>
+                            </a>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 register-panel">  
+                            <a class="register-link" (click)="register()">
+                                <span>สมัครสมาชิก</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </form>           
 </div>
+ 
+                    
+

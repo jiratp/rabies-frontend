@@ -1,0 +1,131 @@
+/**** App roots ****/
+
+$assets-root: '~/assets/';
+$images-root: $assets-root+'images/';
+$fonts-root: $assets-root+'fonts/';
+
+/**** General ****/
+$ff-title-bd: 'promptbold', 'sans-serif';
+$ff-title-med: 'promptmedium', 'sans-serif';
+$ff-title-narmal: 'promptregular', 'sans-serif';
+
+$ff-content-bd: 'pridibold', 'sans-serif';
+$ff-content-med: 'pridimedium', 'sans-serif';
+$ff-content-narmal: 'pridiregular', 'sans-serif';
+
+/**** themes background ****/
+
+$main-color: #39B062;
+$header-bg: #39B062;
+$access-bg: #FFFFFF;
+$body-bg: #FFFFFF;
+$wrapper-bg: #ECEDEF;
+
+/**** Reset ****/
+$reset-margin: 0px !important;
+$reset-padding: 0px !important;
+
+
+
+
+
+/***** Component Header *****/
+$header-height: 11vh;//87px;
+$logo-width: 65px;
+$font-logo-size: 18px;
+$font-logo-color: #FFFFFF;
+$font-menu-size: 16px;
+$font-menu-color: #FFFFFF;
+$font-menu-login-color: #39B062;
+
+$footer-height: 9vh;
+$footer-min-height: 70px;
+$font-footer-size: 16px;
+$font-footer-color: #FFFFFF;
+
+
+/***** Component Header Responsive *****/
+
+$header-height-md: 67px;
+$header-height-sm: 67px;
+
+/***** Layout Page *****/
+$layout-page-top: 30px;
+$layout-page-left: 95px !important;
+$layout-page-right: 95px !important;
+$layout-page-bottom: 60px;
+$layout-card-margin-bottom: 20px;
+
+$layout-page-breadcrum-top: 10px;
+$layout-page-breadcrum-fontsize: 14px;
+
+/***** Layout Page Responsive *****/
+$layout-page-top-sm: 20px;
+$layout-page-left-sm: 20px !important;
+$layout-page-right-sm: 20px !important;
+$layout-page-bottom-sm: 40px;
+$layout-card-margin-bottom-sm: 10px;
+
+
+$layout-page-top-md: 30px;
+$layout-page-left-md: 30px !important;
+$layout-page-right-md: 30px !important;
+$layout-page-bottom-md: 50px;
+$layout-card-margin-bottom-md: 30px;
+
+
+/***** Form Contral *****/
+$form-control-height: calc(2.25rem + 10px);
+$form-control-size: 18px;
+
+/***** Form Style *****/
+$form-header-font-family: $ff-title-bd;
+$form-header-font-size: 32px;
+$form-header-font-color: rgb(77, 77, 77);
+$form-title-font-family: $ff-title-med;
+$form-title-font-size: 18px;
+$form-body-font-family: $ff-title-narmal;
+$form-body-font-size: 16px;
+$form-body-font-color: rgb(77, 77, 77);
+$form-line-height: 42px;
+
+/***** Form Style Responsive *****/
+$form-header-font-family-responsive: $ff-title-bd;
+$form-header-font-size-responsive: 28px;
+
+
+$form-group-font-family: $ff-title-bd;
+$form-group-font-size: 26px;
+$form-group-font-color: rgba(0, 0, 0, 0.4);
+
+
+
+
+/***** Modal Style *****/
+$modal-header-font-size: 20px;
+$modal-header-font-family: $ff-title-med;
+$modal-message-font-size: 16px;
+$modal-message-font-family: $ff-content-narmal;
+$modal-button-font-size: 18px;
+$modal-button-font-family: $ff-title-med;
+$modal-error-bg: rgba(205, 79, 74, 1);
+$modal-error-font-color: #ffffff;
+
+$modal-success-bg: rgba(140, 194, 139, 1);
+$modal-success-font-color: #FFFFFF;
+
+
+/***** DATATABLE *****/
+$datatable-caption-font-family: $ff-title-med;
+$datatable-caption-font-size: 18px;
+$datatable-caption-font-color: rgba(241, 240, 240, 1);
+$datatable-caption-bg: rgba(57, 176, 98, 0.7);
+
+$datatable-thead-font-family: $ff-title-med;
+$datatable-thead-font-size: 14px;
+$datatable-thead-font-color: rgba(241, 240, 240, 1);
+$datatable-thead-bg: rgba(57, 176, 98, 0.7);
+
+$datatable-tbody-font-family: $ff-content-narmal;
+$datatable-tbody-font-size: 14px;
+$datatable-tbody-font-color: rgba(51, 51, 51, 1);

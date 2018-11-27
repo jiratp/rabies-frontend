@@ -1,0 +1,15 @@
+<div class="modal-header" [ngClass]="responseStatus === 'success' ? 'responseSuccess' : (responseStatus === 'error' ? 'responseError' : '')"> <!-- responseError || responseSuccess -->
+  <div class="dialog-header-body">
+    <h4 class="modal-title">ข้อความจากระบบ</h4>
+  </div> 
+</div>
+<div class="modal-body">
+  <div class="dialog-content-body">
+    <span> ไม่สามารถเข้าสู่ระบบได้ เนื่องจากข้อมูลผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง </span>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="dialog-footer-body">
+    <button type="button" class="btn btn-light" [ngClass]="responseStatus === 'success' ? 'btn-response-success' : (responseStatus === 'error' ? 'btn-response-error' : '')" (click)="endProcessClose()">ตกลง</button>
+  </div>
+</div>

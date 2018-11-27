@@ -1,0 +1,164 @@
+@import "themes/styles/variables";
+
+* {
+    /* personal preference */
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    font-family: $ff-content-narmal;
+    background: $body-bg;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4d545a;
+    overflow-x: hidden;
+    line-height: 1.42857143;
+    height: 100%;
+    width: 100%;
+}
+
+#wrapper{
+    background: $wrapper-bg;
+    height:auto !important; /* real browsers */
+    height:100%; /* IE6: treaded as min-height*/
+    min-height:100%; /* real browsers */
+    
+    
+    .header{
+        min-height: 87px;
+        position: relative;
+        background: $header-bg;
+        height: $header-height;
+    }
+
+    #content-wrapper{
+        position: relative;
+    }  
+    
+    .page-footer{
+        
+        clear: both;
+        position: relative;
+        bottom: 0px;
+        background-color: #39b062;
+        height: $footer-height;
+        min-height: $footer-min-height;
+    }
+}
+
+.clear-fix{
+    clear: both;
+}
+  
+.item-center {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+}
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 667px) { 
+    #wrapper{
+        background: $wrapper-bg;
+        min-height: 100%;
+        
+        .header{
+            background: $header-bg;
+            min-height: $header-height-sm;
+        }
+
+        .page-footer{
+            height: auto;
+            min-height: auto;
+        }
+    }
+}
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    #wrapper{
+        background: $wrapper-bg;
+        min-height: 100%;
+        
+        .header{
+            background: $header-bg;
+            min-height: $header-height-sm;
+        }
+        .page-footer{
+            height: auto;
+            min-height: auto;
+        }
+    }
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    #wrapper{
+        background: $wrapper-bg;
+        min-height: 100%;
+        
+        .header{
+            background: $header-bg;
+            min-height: $header-height-md;
+        }
+        .page-footer{
+            height: auto;
+            min-height: auto;
+        }
+    }
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+    #wrapper{
+        background: $wrapper-bg;
+        min-height: 100%;
+        
+        .header{
+            background: $header-bg;
+            min-height: $header-height-md;
+        }
+        .page-footer{
+            height: auto;
+            min-height: auto;
+        }
+    }
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+    #wrapper{
+        background: $wrapper-bg;
+        min-height: 100%;
+        
+        .header{
+            background: $header-bg;
+            min-height: $header-height-md;
+        }
+        .page-footer{
+            height: auto;
+            min-height: auto;
+        }
+    }
+}

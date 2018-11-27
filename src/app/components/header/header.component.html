@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg navbar-light padding-0 header-theme-bg" role="navigation">
+    <a class="navbar-brand" href="#">
+        <img src="./assets/images/logo.png" alt="" class="logo d-inline-block align-top" alt="">
+        <div class="brand-name d-inline-block align-top">
+            <span>ฐานข้อมูลเพื่อการขึ้นทะเบียนสุนัข-แมว</span>
+            <p>Pet Register</p>
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar(display)">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse menu-lg-panel">
+        <ul class="navbar-nav">
+            <li class="nav-item" [ngClass]="currentPage == 'home' ? 'active' : ''" (click)="navigation('home')">
+                <img class="icon" src="./assets/images/icon-menu-1.png" alt="">
+                <p>หน้าหลัก</p>
+            </li>
+            <li class="nav-item" [ngClass]="currentPage == 'information' ? 'active' : ''" (click)="navigation('information')">
+                <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
+                <p>ลงทะเบียน</p>
+            </li>
+            <li class="nav-item dropdown" [ngClass]="
+            currentPage == 'survey/dashboard' 
+            || currentPage == 'survey/animal-has-owner' 
+            || currentPage == 'survey/animal-no-owner' 
+            || currentPage == 'survey/animal-has-owner/owner-information' 
+            || currentPage == 'survey/animal-no-owner/noowner-information-list' 
+            || currentPage == 'survey/animal-has-owner/owner-information-list'
+            || currentPage == 'survey/animal-no-owner/noowner-information'  ? 'active' : ''"> 
+
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-SURVEY" class="dropdown-toggle" data-toggle="dropdown">
+                    <img class="icon" src="./assets/images/icon-menu-3.png" alt="">
+                    <p>แบบสำรวจ</p>
+                </a>
+
+                <ul role="menu" class="dropdown-menu">
+                    <li><a data-x-sig="SV-PET-01" (click)="navigation('survey/dashboard')">สรุปข้อมูลแบบสำรวจ</a></li>
+                    <li><a data-x-sig="SV-PET-02" (click)="navigation('survey/animal-has-owner')">สัตว์มีเจ้าของ</a></li>
+                    <li><a data-x-sig="SV-PET-03" (click)="navigation('survey/animal-no-owner')">สัตว์ไม่มีเจ้าของ</a></li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item" (click)="navigation('suspicious')">
+                <img class="icon" src="./assets/images/icon-menu-4.png" alt="">
+                <p>แจ้งพบสัตว์</p>
+            </li>
+            <li class="nav-item dropdown" [ngClass]="currentPage == 'simple/dashboard' || currentPage == 'laboratory/dashboard' || currentPage == 'simple/animal-simple-list'  ? 'active' : '' || currentPage == 'laboratory/laboratory-simple-list'  ? 'active' : ''">
+
+
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-SIMPLE" class="dropdown-toggle" data-toggle="dropdown">
+                    <img class="icon" src="./assets/images/icon-menu-5.png" alt="">
+                    <p>ส่งตัวอย่าง</p>
+                </a>
+
+                <ul role="menu" class="dropdown-menu">
+                    <li><a data-x-sig="SP-PET-01" (click)="navigation('simple/dashboard')">สรุปข้อมูลการส่งตัวอย่าง</a></li>
+                    <li><a data-x-sig="SP-PET-02" (click)="navigation('simple/animal-simple-list')">รายการส่งตัวอย่าง</a></li>
+                    <li><a data-x-sig="SP-PET-03" (click)="navigation('laboratory/dashboard')">สรุปข้อมูลการวินิจฉัยตัวอย่าง (ห้องวิจัย)</a></li>
+                    <li><a data-x-sig="SP-PET-04" (click)="navigation('laboratory/laboratory-simple-list')">รายการส่งตัวอย่าง (ห้องวิจัย)</a></li>
+                </ul>
+
+            </li>                
+            <li class="nav-item dropdown">
+
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-REPORT" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img class="icon" src="./assets/images/icon-menu-6.png" alt="">
+                    <p>รายงาน</p>
+                </a>
+                
+                <ul role="menu" class="dropdown-menu">
+                    <li><a data-x-sig="RP-PET-01" (click)="navigation('report/dashboard')">Dashboard</a></li>
+                    <li><a data-x-sig="RP-PET-02" (click)="navigation('report/animal-has-owner')">สรุปข้อมูลสัตว์มีเจ้าของ</a></li>
+                    <li><a data-x-sig="RP-PET-03" (click)="navigation('report/animal-no-owner')">สรุปข้อมูลสัตว์ไม่มีเจ้าของ</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-SETTING" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-cogs"> </i>
+                    <p>ตั้งค่าระบบ </p>
+                </a>
+                
+                <ul role="menu" class="dropdown-menu">
+                    <li><a data-x-sig="ST-PET-01" href="#">จัดการข้อมูลผู้ใช้งาน</a></li>
+                    <li><a data-x-sig="ST-PET-02" href="#">จัดการข้อมูลข่าวสาร</a></li>
+                    <li><a data-x-sig="ST-PET-03" href="#">จัดการข้อมูลระบบ</a></li>
+                </ul>
+            </li>
+            <li class="nav-item bg-white-menu user-access" [ngClass]="currentPage == 'login' ? 'active' : ''" (click)="navigation('login')">
+                <img class="icon" src="./assets/images/icon-menu-7-gr.png" alt="">
+                <p>เข้าสู่ระบบ</p>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<p-sidebar [(visible)]="display" position="right">
+
+</p-sidebar>

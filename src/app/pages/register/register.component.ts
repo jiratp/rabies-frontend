@@ -1,26 +1,32 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../core/config.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
+    registerForm: FormGroup;
 
-  constructor(private router: Router, private themeConfig: ConfigService, private cdr: ChangeDetectorRef) {
-    this.cdr.detectChanges();
-    this.themeConfig.setSettings({
-      layout: {
-        toolbar: 'none',
-      }
-    });
-  }
+    constructor(private router: Router, private themeConfig: ConfigService) {
+        this.themeConfig.setSettings({
+            layout: {
+                toolbar: 'none',
+            }
+        });
 
-  ngOnInit() {
-  }
-  home() {
-    this.router.navigate(['home']);
-  }
+        this.registerForm = new FormGroup({
+            customerType: new FormControl('general-customer', Validators.required),
+        });
+    }
+
+    ngOnInit() {
+    }
+    home() {
+        this.router.navigate(['home']);
+    }
 }

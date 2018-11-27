@@ -1,14 +1,13 @@
 <div id="wrapper">
-
-    <div class="content-wrapper">
-
-        <ng-container *ngIf="themeConfigs.layout.toolbar === 'below'">
-            <app-toolbar></app-toolbar>
-        </ng-container>
-
+    <header class="header">
+        <app-header></app-header>
+    </header>
+    <div id="content-wrapper" class="gray-bg">
         <app-pages></app-pages>
-
     </div>
-    <!-- <app-footer></app-footer> -->
+    <footer class="page-footer">
+        <app-footer></app-footer>
+    </footer>
 </div>
-<app-footer></app-footer>
+
+

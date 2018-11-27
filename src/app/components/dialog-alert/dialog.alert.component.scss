@@ -1,0 +1,144 @@
+@import "../../themes/styles/variables";
+
+.modal-header{
+  &.responseError{
+    background: $modal-error-bg;
+    .dialog-header-body{
+      width: 100%;
+      .modal-title{
+        color: $modal-error-font-color;
+      }
+      
+      button{
+        &.close{
+          color: $modal-error-font-color;
+        }
+      }
+    }
+  }
+
+  &.responseSuccess{
+    background: $modal-success-bg;
+    .dialog-header-body{
+      width: 100%;
+      .modal-title{
+        color: $modal-success-font-color;
+      }
+      
+      button{
+        &.close{
+          color: $modal-success-font-color;
+        }
+      }
+    }
+  }
+
+
+  .dialog-header-body{
+    width: 100%;
+    .modal-title{
+      display: inline-block;
+      font-family: $modal-header-font-family;
+      font-size: $modal-header-font-size;
+    }
+    
+    button{
+      &.close{
+        display: inline-block;
+        padding-top: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+
+.modal-body{
+  .dialog-content-body{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    span{
+      font-family: $modal-message-font-family;
+      font-size: $modal-message-font-size;
+    }
+  }
+}
+
+.modal-footer{
+  .dialog-footer-body{
+    button{
+      padding-left: 30px;
+      padding-right: 30px;
+      font-family: $modal-button-font-family;
+      font-size: $modal-button-font-size;
+
+      &.btn-response-error{
+        background: $modal-error-bg;
+        color: $modal-error-font-color;
+      }
+
+      &.btn-response-success{
+        background: $modal-success-bg;
+        color: $modal-success-font-color;
+      }
+    }
+  }
+}
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 667px) { 
+
+
+    
+}
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    
+    .container-fluid {
+        width: 100%;
+        padding-top: $layout-page-top-sm;
+        padding-right: $layout-page-right-sm;
+        padding-left: $layout-page-left-sm;
+        padding-bottom: $layout-page-bottom-sm;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+
+}

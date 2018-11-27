@@ -26,13 +26,32 @@ export class ConfigService {
                 footer          : 'none', // 'above', 'below', 'none'
                 mode            : 'fullwidth' // 'boxed', 'fullwidth'
             },
-            colorClasses    : {
-                toolbar: 'mat-mychannel-500-bg',
-                navbar : 'mat-fuse-dark-700-bg',
-                footer : 'mat-fuse-dark-900-bg'
-            },
             customScrollbars: true,
-            routerAnimation : 'fadeIn' // fadeIn, slideUp, slideDown, slideRight, slideLeft, none
+            routerAnimation : 'fadeIn', // fadeIn, slideUp, slideDown, slideRight, slideLeft, none
+            dialogAlertSetting : {
+                animated: true,
+                backdrop: true,
+                ignoreBackdropClick: true,
+                class: 'modal-dialog-centered',
+            },
+            dialogFormSetting : {
+                animated: true,
+                backdrop: true,
+                ignoreBackdropClick: false,
+                class: 'modal-lg modal-dialog-centered',
+            },
+            lacaleTH : {
+                firstDayOfWeek: 0,
+                dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
+                dayNamesShort: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+                dayNamesMin: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+                // tslint:disable-next-line:max-line-length
+                monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+                monthNamesShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+                today: 'วันนี้',
+                clear: 'ยกเลิก'
+            },
+            dateTimeFormat: 'dd/mm/yy'
         };
 
         /**
@@ -53,6 +72,9 @@ export class ConfigService {
                 }
             }
         );
+
+
+
 
         // Create the behavior subject
         this.onSettingsChanged = new BehaviorSubject(this.settings);

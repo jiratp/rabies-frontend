@@ -1,74 +1,63 @@
-<div class="container">
-  <form class="form-register mt-3">
-    <div class="form-group row">
-      <label for="inputName" class="col-lg-4 col-form-label">ชื่อผู้ใช้งาน <span class="require">*</span></label>
-      <div class="col-lg-8">
-        <input type="text" class="form-control" id="inputName" placeholder="ชื่อผู้ใช้งาน">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputPassword3" class="col-lg-4 col-form-label">รหัสผ่าน <span class="require">*</span></label>
-      <div class="col-lg-8">
-        <input type="password" class="form-control" id="inputPassword3" placeholder="รหัสผ่าน">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputPassword" class="col-lg-4 col-form-label">ยืนยันรหัสผ่าน <span class="require">*</span></label>
-      <div class="col-lg-8">
-        <input type="password" class="form-control" id="inputPassword" placeholder="รหัสผ่าน">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputEmail3" class="col-lg-4 col-form-label">อีเมล์ <span class="require">*</span></label>
-      <div class="col-lg-8">
-        <input type="email" class="form-control" id="inputEmail3" placeholder="อีเมล์">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputTel" class="col-lg-4 col-form-label">เบอร์โทรศัพท์</label>
-      <div class="col-lg-8">
-        <input type="tel" class="form-control" id="inputTel" placeholder="เบอร์โทรศัพท์">
-      </div>
-    </div>
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-form-label col-lg-4 pt-0">ประเภท</legend>
-        <div class="col-lg-8">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-            <label class="form-check-label" for="gridRadios1">
-              บุคคลทั่วไป
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-            <label class="form-check-label" for="gridRadios2">
-              สถานที่ประกอบการบำบัดโรค
-            </label>
-          </div>
-        </div>
-      </div>
-    </fieldset>
-    <div class="form-group row">
-      <label for="inputplace" class="col-lg-4 col-form-label">ชื่อสถานประกอบการ <span class="require">*</span></label>
-      <div class="col-lg-8">
-        <input type="text" class="form-control" id="inputplace" placeholder="ชื่อสถานประกอบการ">
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="d-none d-sm-none d-md-none d-lg-block col-lg-6">
-        <button type="submit" class="btn btn-block btn-light">ยกเลิก</button>
-      </div>
-      <div class="d-none d-sm-none d-md-none d-lg-block col-lg-6">
-        <button type="submit" class="btn btn-block btn-theme" (click)="home()">สมัคร</button>
-      </div>
-      <div class="d-md-block d-lg-none col-md-12">
-        <button type="submit" class="btn btn-block btn-theme" (click)="home()">สมัคร</button>
-      </div>
-      <div class="d-md-block d-lg-none col-md-12 mt-3">
-        <button type="submit" class="btn btn-block btn-light">ยกเลิก</button>
-      </div>
-
-    </div>
-  </form>
+<div class="container-fluid">
+    <form class="form-register mt-3" name="registerForm" [formGroup]="registerForm">
+        <div class="container-body text-center">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mb-3 register-card">    
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                            <div class="form-header clear-fix">
+                                <h3>
+                                    สมัครสมาชิก
+                                </h3>
+                                <hr class="form-header-line" />
+                            </div>
+                            <div class="form-group clear-fix">
+                                <label for="customerType" class="form-label">ประเภทผู้ใช้งาน</label>
+                                <div class="form-control form-group">
+                                    <p-radioButton name="customerType" styleClass="form-control-radio" labelStyleClass="form-control-radio-label" value="general-customer" label="บุคคลทั่วไป" [formControl]="registerForm.controls['customerType']"></p-radioButton>
+                                    <p-radioButton name="customerType" styleClass="form-control-radio" labelStyleClass="form-control-radio-label" value="corporation-customer" label="สถานประกอบการ" [formControl]="registerForm.controls['customerType']"></p-radioButton>
+                                </div>
+                            </div>
+                            <div class="form-group clear-fix" *ngIf="registerForm.controls['customerType'].value == 'general-customer'">
+                                <label for="customerName" class="form-label">ชื่อ-นามสกุล</label>
+                                <input type="text" class="form-control" id="customerName" placeholder="ชื่อ-นามสกุล">
+                            </div>
+                            <div class="form-group clear-fix" *ngIf="registerForm.controls['customerType'].value == 'corporation-customer'">
+                                <label for="corporationName" class="form-label">ชื่อสถานประกอบการ</label>
+                                <input type="text" class="form-control" id="corporationName" placeholder="ชื่อสถานประกอบการ">
+                            </div>
+                            <div class="form-group clear-fix">
+                                <label for="email" class="form-label">อีเมลล์</label>
+                                <input type="text" class="form-control" id="email" placeholder="อีเมลล์">
+                            </div>
+                            <div class="form-group clear-fix">
+                                <label for="mobileNumber" class="form-label">เบอร์โทรศัพท์</label>
+                                <input type="text" class="form-control" id="mobileNumber" placeholder="เบอร์โทรศัพท์">
+                            </div>
+                            <div class="form-group clear-fix">
+                                <label for="username" class="form-label">ชื่อผู้ใช้งาน</label>
+                                <input type="text" class="form-control" id="username" placeholder="ชื่อผู้ใช้งาน">
+                            </div>
+                            <div class="form-group clear-fix">
+                                <label for="password" class="form-label">รหัสผ่าน</label>
+                                <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
+                            </div>
+                            <div class="form-group clear-fix">
+                                <label for="confirm-password" class="form-label">ยืนยันรหัสผ่าน</label>
+                                <input type="password" class="form-control" id="confirm-password" placeholder="ยืนยันรหัสผ่าน">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 button-panel"> 
+                            <button type="submit" class="btn btn-block btn-light btn-register">สมัคร</button>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 button-panel"> 
+                            <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </form>           
 </div>

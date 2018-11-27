@@ -1,0 +1,132 @@
+<div class="modal-header">
+    <div class="dialog-form-header-body">
+        <h4 class="modal-title">{{titleModal}}</h4>
+    </div> 
+    <button type="button" class="close dialog-form-close pull-right" aria-label="Close" (click)="modalClose()">
+        <span aria-hidden="true">&times;</span> 
+    </button>
+</div>
+<div class="modal-body">
+    <div class="dialog-form-content-body">
+        <form class="form-animal-information mt-3" name="animalInformationForm" [formGroup]="animalInformationForm">
+            <div class="card-body form-animal-information-card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                        <div class="form-group-panel clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body"> 
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="identityName" class="form-label">ชื่อ</label>
+                                                        <input type="text" class="form-control" id="identityName" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="identityAttr" class="form-label">ลักษณะสัตว์</label>
+                                                        <input type="text" class="form-control" id="identityAttr">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalCategory" class="form-label">ประเภทสัตว์</label>
+                                                        <p-dropdown placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalCategory"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="species" class="form-label">สายพันธ์ุ</label>
+                                                        <p-dropdown placeholder="เลือกสายพันธ์ุ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="species"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="color" class="form-label">สี</label>
+                                                        <p-dropdown placeholder="เลือกสี" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="color"></p-dropdown>
+                                                    
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="gender" class="form-label">เพศ</label>
+                                                        <p-dropdown placeholder="เลือกเพศ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="gender"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="placeID" class="form-label">สถานที่เลี้ยง</label>
+                                                        <p-dropdown placeholder="เลือกสถานที่เลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterPlaceIDShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="placeID"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="supportId" class="form-label">ลักษณะการเลี้ยง</label>
+                                                        <p-dropdown placeholder="เลือกลักษณะการเลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [options]="masterSupportIDShow" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="supportId"></p-dropdown>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="vaccinationHistoryFlg" class="form-label">ประวัติการฉีดวัคซีน</label>
+                                                        <p-dropdown placeholder="เลือกประวัติการฉีดวัคซีน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="vaccinationHistoryFlg"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="vaccinationLastDate" class="form-label">วัคซีนครั้งล่าสุดประมาณ</label>
+                                                        <p-calendar [locale]="lacaleTH" placeholder="วัคซีนครั้งล่าสุดประมาณ" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="vaccinationLastDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2040"></p-calendar>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="yearAge" class="form-label">อายุ (ปี)</label>
+                                                        <input type="text" class="form-control" id="yearAge" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="monthAge" class="form-label">อายุ (เดือน)</label>
+                                                        <input type="text" class="form-control" id="monthAge" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="dialog-form-footer-body">
+        <div class="card-body form-animal-information-card-body">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                    <div class="form-group-panel clear-fix">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

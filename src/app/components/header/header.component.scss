@@ -1,0 +1,456 @@
+@import "../../themes/styles/variables";
+
+.navbar{
+    &.header-theme-bg{
+        height: $header-height;
+        padding-top: $reset-padding;
+        padding-right: $reset-padding;
+        padding-bottom: $reset-padding;
+        .navbar-brand{
+            float: left;
+            height: $header-height;
+            padding-top: $reset-padding;
+            padding-bottom: $reset-padding;
+            .logo{
+                margin-top: 12px;
+                width: $logo-width;
+                margin-right: 10px;
+            }
+
+            .brand-name{
+                margin-top: 14px;
+                span{
+                    font-family: $ff-title-med;
+                    color: $font-logo-color;
+                    font-size: $font-logo-size;
+                }
+
+                p{
+                    font-family: $ff-title-med;
+                    margin-bottom: $reset-margin;
+                    color: $font-logo-color;
+                    font-size: $font-logo-size;
+                }
+            }
+        }
+
+        .collapse{
+            height: 100%;
+            width: 100%;
+            float: left;
+            &.navbar-collapse{
+                display: block !important;
+            }
+
+            .navbar-nav{
+                height: 100%;
+                text-align: right;
+                margin: $reset-margin;
+                padding: $reset-padding;
+
+                &.navbar-nav{
+                    display: inherit !important;
+                }
+
+                .nav-item{
+                    
+                    &.active{
+                        background: rgba(0,0,0,0.2);
+                    }
+
+                    &:hover{
+                        background: rgba(0,0,0,0.2);
+                    }
+
+                    .dropdown-toggle{
+                        i{
+                            color: #FFFFFF;
+                            font-size: 20px;
+                            margin-bottom: 6px;
+                        }
+
+                        &:hover{
+                            text-decoration: none;
+                        }
+
+                        &:link {
+                            text-decoration: none;
+                        }
+
+                        &:visited {
+                            text-decoration: none;
+                        }
+
+                        &:active {
+                            text-decoration: none;
+                        }
+
+                        &::after{
+                            content: none;
+                        }
+                    }
+
+                    .dropdown-menu{
+                        border: 1px solid #e7eaec;
+                        margin-top: -10px !important;
+                        box-shadow: 1px 2px 2px 0.5px rgba(0, 0, 0, 0.1) !important;
+                        border-radius: 3px !important;
+                        float: left;
+                        font-size: 12px;
+                        left: 0;
+                        list-style: none outside none;
+                        padding: 0;
+                        position: absolute;
+                        text-shadow: none;
+                        top: 100%;
+                        z-index: 1000;
+                        min-width: 160px;
+                        text-align: left;
+                        background-color: #fff;
+                        background-clip: padding-box;
+
+                        &::before{
+                            display: block;
+                            position: absolute;
+                            left: 50px;
+                            content: "";
+                            border-style: none double solid;
+                            width: 0;
+                            height: 0;
+                            top: -11px;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-bottom: 11px solid #FFFFFF;
+                        }
+
+                        li{
+                            padding-top: 5px !important;
+                            padding-bottom: 5px !important;
+                            padding-right: 30px;
+                            &:nth-child(1){
+                                padding-top: 15px !important;
+                                border-top-left-radius: 3px;
+                                border-top-right-radius: 3px;
+                            }
+
+                            &:last-child:not(:only-child){
+                                padding-bottom: 10px !important;
+                            }
+
+                            a{
+                                clear: both;
+                                white-space: nowrap;
+                                text-align: left;
+                                font-weight: normal;
+                                border-radius: 3px;
+                                color: inherit;
+                                line-height: 25px;
+                                padding: 3px 20px !important;
+                                font-family: "promptmedium", "sans-serif";
+                                color: #676a6c;
+                                font-size: 14px;
+                                &:hover{
+                                    text-decoration: none;
+                                    color: #39B062;
+                                }
+                            }
+                        }
+                    }
+
+                    cursor: pointer;
+                    text-align: center;
+                    padding-top: 20px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    height: 100%;
+                    display: inline-table;
+                    min-width: 100px;
+
+                    .icon{
+                        width: 24px;
+                        padding-bottom: 5px;
+                    }
+
+                    p{
+                        font-family: $ff-title-med;
+                        color: $font-menu-color;
+                        font-size: $font-menu-size;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+
+
+                    &.user-access{
+                        width: 155px;
+                        background: $access-bg;
+                        .icon{
+                            color: $font-menu-login-color;
+                        }
+    
+                        p{
+                            color: $font-menu-login-color;
+                        }
+                    }
+                }                
+            }
+        }
+    }
+}
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 667px) { 
+    .navbar{
+        &.header-theme-bg{
+            height: $header-height-sm;
+
+            .navbar-brand{
+                height: $header-height-sm;
+
+                .logo{
+                    margin-top: 15px;
+                    width: 35px;
+                }
+    
+                .brand-name{
+                    margin-top: 6px;
+                    span{
+                        font-size: 14px;
+                    }
+    
+                    p{
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .navbar-toggler{
+                padding: 5px 5px;
+                margin-right: 15px;
+                position: relative;
+                background: #FFFFFF;
+
+                .navbar-toggler-icon{
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+
+            .collapse{
+                &.navbar-collapse{
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    .navbar{
+        &.header-theme-bg{
+            height: $header-height-sm;
+
+            .navbar-brand{
+                height: $header-height-sm;
+
+                .logo{
+                    margin-top: 15px;
+                    width: 35px;
+                }
+    
+                .brand-name{
+                    margin-top: 6px;
+                    span{
+                        font-size: 14px;
+                    }
+    
+                    p{
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .navbar-toggler{
+                padding: 5px 5px;
+                margin-right: 15px;
+                position: relative;
+                background: #FFFFFF;
+
+                .navbar-toggler-icon{
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+
+            .collapse{
+                &.navbar-collapse{
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    .navbar{
+        &.header-theme-bg{
+            height: $header-height-sm;
+
+            .navbar-brand{
+                height: $header-height-sm;
+
+                .logo{
+                    margin-top: 15px;
+                    width: 35px;
+                }
+    
+                .brand-name{
+                    margin-top: 6px;
+                    span{
+                        font-size: 14px;
+                    }
+    
+                    p{
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .navbar-toggler{
+                padding: 5px 5px;
+                margin-right: 15px;
+                position: relative;
+                background: #FFFFFF;
+
+                .navbar-toggler-icon{
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+
+            .collapse{
+                &.navbar-collapse{
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+
+    .navbar{
+        &.header-theme-bg{
+            height: $header-height-sm;
+
+            .navbar-brand{
+                height: $header-height-sm;
+
+                .logo{
+                    margin-top: 15px;
+                    width: 35px;
+                }
+    
+                .brand-name{
+                    margin-top: 6px;
+                    span{
+                        font-size: 14px;
+                    }
+    
+                    p{
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .navbar-toggler{
+                padding: 5px 5px;
+                margin-right: 15px;
+                position: relative;
+                background: #FFFFFF;
+
+                .navbar-toggler-icon{
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+
+            .collapse{
+                &.navbar-collapse{
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+
+    .navbar{
+        &.header-theme-bg{
+            height: $header-height-sm;
+
+            .navbar-brand{
+                height: $header-height-sm;
+
+                .logo{
+                    margin-top: 15px;
+                    width: 35px;
+                }
+    
+                .brand-name{
+                    margin-top: 6px;
+                    span{
+                        font-size: 14px;
+                    }
+    
+                    p{
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .navbar-toggler{
+                padding: 5px 5px;
+                margin-right: 15px;
+                position: relative;
+                background: #FFFFFF;
+
+                .navbar-toggler-icon{
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+
+            .collapse{
+                &.navbar-collapse{
+                    display: none !important;
+                }
+            }
+        }
+    }
+    
+}
