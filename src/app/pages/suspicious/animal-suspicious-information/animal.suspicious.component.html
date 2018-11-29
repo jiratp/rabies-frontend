@@ -1,0 +1,308 @@
+<div class="modal-header">
+    <div class="dialog-form-header-body">
+        <h4 class="modal-title">{{titleModal}}</h4>
+    </div> 
+    <button type="button" class="close dialog-form-close pull-right" aria-label="Close" (click)="modalClose()">
+        <span aria-hidden="true">&times;</span> 
+    </button>
+</div>
+<div class="modal-body">
+    <div class="dialog-form-content-body dialog-animal-suspicious-information">
+        <form class="form-dialog-information mt-3" name="ASForm" [formGroup]="ASForm">
+            <div class="card-body form-dialog-information-card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                        
+                        <div class="form-group-panel clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> ข้อมูลทั่วไป </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="notificationDate" class="form-label">วันที่แจ้ง</label>
+                                                        <p-calendar [locale]="lacaleTH" formControlName="notificationDate"  placeholder="วันที่แจ้ง" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="notificationDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2040"></p-calendar>
+                                                        <input type="hidden" formControlName="notificationDate" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-text-panel"> 
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-panel clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> ข้อมูลผู้แจ้ง </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="title" class="form-label">คำนำหน้าชื่อ</label>
+                                                        <p-dropdown formControlName="title" placeholder="เลิอกคำนำหน้าชื่อ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="title"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-text-panel"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fullname" class="form-label">ชื่อ-นามสกุล</label>
+                                                        <input type="text" formControlName="fullname" class="form-control" id="fullname" placeholder="ชื่อ-นามสกุล">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="mobileNumber" class="form-label">เบอร์โทรศัพท์</label>
+                                                        <input type="text" formControlName="mobileNumber" class="form-control" id="mobileNumber" placeholder="เบอร์โทรศัพท์">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="addressNo" class="form-label">บ้านเลขที่</label>
+                                                        <input type="text" formControlName="addressNo" class="form-control" id="addressNo" placeholder="บ้านเลขที่">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="moo" class="form-label">หมู่ที่</label>
+                                                        <input type="text" formControlName="moo" class="form-control" id="moo" placeholder="หมู่ที่">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="soi" class="form-label">ซอย</label>
+                                                        <input type="text" formControlName="soi" class="form-control" id="soi" placeholder="ซอย">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="street" class="form-label">ถนน</label>
+                                                        <input type="text" formControlName="street" class="form-control" id="street" placeholder="ถนน">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 3 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="province" class="form-label">จังหวัด</label>
+                                                        <p-dropdown formControlName="province" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="province"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="district" class="form-label">อำเภอ</label>
+                                                        <p-dropdown formControlName="district" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="district"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="subDistrict" class="form-label">ตำบล</label>
+                                                        <p-dropdown formControlName="subDistrict" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrict"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="zipcode" class="form-label">รหัสไปรษณีย์</label>
+                                                        <input type="text" formControlName="zipcode" class="form-control" id="zipcode" placeholder="รหัสไปรษณีย์">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group-panel clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> สถานที่พบสัตว์สงสัย </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                    <!-- Row 0 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel"> 
+                                                    <div class="form-group no-header-field clear-fix">
+                                                        <p-checkbox name="isAddressNotifier" binary="true" value="true" label="ที่อยู่เดียวกันกับผู้แจ้ง" [formControl]="ASForm.controls['isAddressNotifier']" (onChange)="duplicateAddress($event)"></p-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="addressNoNotifier" class="form-label">บ้านเลขที่</label>
+                                                        <input type="text" formControlName="addressNoNotifier" class="form-control" id="addressNoNotifier" placeholder="บ้านเลขที่">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="mooNotifier" class="form-label">หมู่ที่</label>
+                                                        <input type="text" formControlName="mooNotifier" class="form-control" id="mooNotifier" placeholder="หมู่ที่">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="soiNotifier" class="form-label">ซอย</label>
+                                                        <input type="text" formControlName="soiNotifier" class="form-control" id="soiNotifier" placeholder="ซอย">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="streetNotifier" class="form-label">ถนน</label>
+                                                        <input type="text" formControlName="streetNotifier" class="form-control" id="streetNotifier" placeholder="ถนน">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 3 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="provinceNotifier" class="form-label">จังหวัด</label>
+                                                        <p-dropdown formControlName="provinceNotifier" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="provinceNotifier"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="districtNotifier" class="form-label">อำเภอ</label>
+                                                        <p-dropdown formControlName="districtNotifier" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="districtNotifier"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="subDistrictNotifier" class="form-label">ตำบล</label>
+                                                        <p-dropdown formControlName="subDistrictNotifier" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrictNotifier"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="zipcodeNotifier" class="form-label">รหัสไปรษณีย์</label>
+                                                        <input type="text" formControlName="zipcodeNotifier" class="form-control" id="zipcodeNotifier" placeholder="รหัสไปรษณีย์">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div class="form-group-panel clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> อาการเบื้องต้น </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="symptomInformation" class="form-label">อาการผิดปกติ</label>
+                                                        <textarea [rows]="5"  formControlName="symptomInformation" class="form-control custom-textarea" id="symptomInformation" placeholder="อาการผิดปกติ" pInputTextarea autoResize="false"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel form-text-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-text-panel">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalImage" class="form-label">แนบไฟล์</label>
+                                                        <p-fileUpload styleClass="content-upload-form" name="uploadedFiles[]" 
+                                                            (onSelect)="handleFileInput($event)" 
+                                                            (onRemove)="removeFileInput($event)" 
+                                                            (onClear)="clearFileInput()" 
+                                                            chooseLabel="อัพโหลดไฟล์" 
+                                                            cancelLabel="ยกเลิก" 
+                                                            customUpload="true" 
+                                                            showUploadButton="true" 
+                                                            multiple="multiple" 
+                                                            accept="image/*" 
+                                                            maxFileSize="10000000">
+
+                                                            <ng-template pTemplate="content">
+                                                                <ul *ngIf="uploadedFiles.length">
+                                                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                                                </ul>
+                                                            </ng-template>
+
+                                                        </p-fileUpload>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                  
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="dialog-form-footer-body">
+        <div class="card-body form-animal-information-card-body">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
+                    <div class="form-group-panel clear-fix">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
+                                <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

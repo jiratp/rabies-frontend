@@ -9,6 +9,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { EsriMapComponent } from './../components/esri-map/esri-map.component';
 
@@ -47,8 +49,12 @@ import { NoOwnerInformationComponent } from './survey-no-owner/no-owner-informat
 import { SurveyAnimalInformationComponent } from './survey-no-owner/survey-animal-information/survey.animal.information.component';
 import { SurveyAnimalSuspiciousComponent } from './survey-no-owner/survey-animal-suspicious/survey.animal.suspicious.component';
 
-
 /******** End Survey ****** */
+
+/******** Suspicious ****** */
+import { AnimalSuspiciousComponent } from './suspicious/animal-suspicious-information/animal.suspicious.component';
+/******** End Suspicious ****** */
+
 
 import { ReportDashboardComponent } from './report-dashboard/report.dashboard.component';
 import { ReportHasOwnerComponent } from './report-has-owner/report.hasowner.component';
@@ -211,6 +217,7 @@ const routes: Routes = [
         AnimalInfomationComponent,
         SurveyAnimalInformationComponent,
         SurveyAnimalSuspiciousComponent,
+        AnimalSuspiciousComponent,
     ],
     imports: [
         BrowserModule,
@@ -220,6 +227,8 @@ const routes: Routes = [
         TableModule,
         DropdownModule,
         CalendarModule,
+        InputTextareaModule,
+        FileUploadModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot(routes)
@@ -236,6 +245,7 @@ const routes: Routes = [
         AnimalInfomationComponent,
         SurveyAnimalInformationComponent,
         SurveyAnimalSuspiciousComponent,
+        AnimalSuspiciousComponent,
     ]
 })
 

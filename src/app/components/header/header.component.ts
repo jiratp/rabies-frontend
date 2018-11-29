@@ -59,6 +59,9 @@ export class HeaderComponent implements OnInit {
           case 'survey/animal-no-owner/noowner-information':
             this.currentPage = 'survey/animal-no-owner/noowner-information';
             break;
+          case 'suspicious':
+            this.currentPage = 'suspicious';
+            break;
           default:
             this.currentPage = 'home';
         }

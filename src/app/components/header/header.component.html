@@ -42,9 +42,13 @@
             </li>
 
 
-            <li class="nav-item" (click)="navigation('suspicious')">
-                <img class="icon" src="./assets/images/icon-menu-4.png" alt="">
-                <p>แจ้งพบสัตว์</p>
+            <li class="nav-item" [ngClass]="
+                currentPage == 'suspicious'  ? 'active' : ''"> 
+            
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-SUSPICIOUS"  (click)="navigation('suspicious')">
+                    <img class="icon" src="./assets/images/icon-menu-4.png" alt="">
+                    <p>แจ้งพบสัตว์</p>
+                </a>
             </li>
             <li class="nav-item dropdown" [ngClass]="currentPage == 'simple/dashboard' || currentPage == 'laboratory/dashboard' || currentPage == 'simple/animal-simple-list'  ? 'active' : '' || currentPage == 'laboratory/laboratory-simple-list'  ? 'active' : ''">
 
