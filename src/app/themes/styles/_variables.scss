@@ -26,11 +26,8 @@ $reset-margin: 0px !important;
 $reset-padding: 0px !important;
 
 
-
-
-
 /***** Component Header *****/
-$header-height: 11vh;//87px;
+$header-height: 87px;//87px;
 $logo-width: 65px;
 $font-logo-size: 18px;
 $font-logo-color: #FFFFFF;
@@ -53,7 +50,7 @@ $header-height-sm: 67px;
 $layout-page-top: 30px;
 $layout-page-left: 95px !important;
 $layout-page-right: 95px !important;
-$layout-page-bottom: 60px;
+$layout-page-bottom: 0px;
 $layout-card-margin-bottom: 20px;
 
 $layout-page-breadcrum-top: 10px;
@@ -87,7 +84,7 @@ $form-title-font-size: 18px;
 $form-body-font-family: $ff-title-narmal;
 $form-body-font-size: 14px;
 $form-body-font-color: rgb(77, 77, 77);
-$form-line-height: 42px;
+$form-line-height: 24px;
 
 /***** Form Style Responsive *****/
 $form-header-font-family-responsive: $ff-title-bd;
@@ -117,15 +114,15 @@ $modal-success-font-color: #FFFFFF;
 
 /***** DATATABLE *****/
 $datatable-caption-font-family: $ff-title-med;
-$datatable-caption-font-size: 18px;
+$datatable-caption-font-size: 20px;
 $datatable-caption-font-color: rgba(241, 240, 240, 1);
 $datatable-caption-bg: rgba(57, 176, 98, 0.7);
 
 $datatable-thead-font-family: $ff-title-med;
-$datatable-thead-font-size: 14px;
+$datatable-thead-font-size: 16px;
 $datatable-thead-font-color: rgba(241, 240, 240, 1);
 $datatable-thead-bg: rgba(57, 176, 98, 0.7);
 
 $datatable-tbody-font-family: $ff-content-narmal;
-$datatable-tbody-font-size: 14px;
-$datatable-tbody-font-color: rgba(51, 51, 51, 1);
+$datatable-tbody-font-size: 16px;
+$datatable-tbody-font-color: rgb(88, 88, 88);

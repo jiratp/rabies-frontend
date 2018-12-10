@@ -1,9 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light padding-0 header-theme-bg" role="navigation">
     <a class="navbar-brand" href="#">
-        <img src="./assets/images/logo.png" alt="" class="logo d-inline-block align-top" alt="">
-        <div class="brand-name d-inline-block align-top">
-            <span>ฐานข้อมูลเพื่อการขึ้นทะเบียนสุนัข-แมว</span>
-            <p>Pet Register</p>
+        <div class="navbar-brand-panel">
+            <img src="./assets/images/logo.png" alt="" class="logo d-inline-block align-top" alt="">
+            <div class="brand-name d-inline-block align-top">
+                <span>ฐานข้อมูลเพื่อการขึ้นทะเบียนสุนัข-แมว</span>
+                <p>Pet Register</p>
+            </div>
         </div>
     </a>
     <button class="navbar-toggler" type="button" (click)="toggleSidebar(display)">
@@ -16,9 +18,23 @@
                 <img class="icon" src="./assets/images/icon-menu-1.png" alt="">
                 <p>หน้าหลัก</p>
             </li>
-            <li class="nav-item" [ngClass]="currentPage == 'information' ? 'active' : ''" (click)="navigation('information')">
-                <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
-                <p>ลงทะเบียน</p>
+            <li class="nav-item dropdown" [ngClass]="
+            currentPage == 'information/clinic' 
+            || currentPage == 'information/clinic/individual'
+            || currentPage == 'information/clinic/individual/register'
+            || currentPage == 'information/individual'
+            || currentPage == 'information/individual/register' ? 'active' : ''">
+                
+                
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" class="dropdown-toggle" data-toggle="dropdown">
+                    <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
+                    <p>ลงทะเบียน</p>
+                </a>
+
+                <ul role="menu" class="dropdown-menu">
+                    <li><a data-x-sig="REG-PET-02" (click)="navigation('information/individual')">ลงทะเบียนบุคคลทั่วไป</a></li>
+                    <li><a data-x-sig="REG-PET-03" (click)="navigation('information/clinic')">ลงทะเบียนสถานประกอบการ</a></li>
+                </ul>
             </li>
             <li class="nav-item dropdown" [ngClass]="
             currentPage == 'survey/dashboard' 
@@ -35,7 +51,6 @@
                 </a>
 
                 <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="SV-PET-01" (click)="navigation('survey/dashboard')">สรุปข้อมูลแบบสำรวจ</a></li>
                     <li><a data-x-sig="SV-PET-02" (click)="navigation('survey/animal-has-owner')">สัตว์มีเจ้าของ</a></li>
                     <li><a data-x-sig="SV-PET-03" (click)="navigation('survey/animal-no-owner')">สัตว์ไม่มีเจ้าของ</a></li>
                 </ul>
@@ -50,7 +65,9 @@
                     <p>แจ้งพบสัตว์</p>
                 </a>
             </li>
-            <li class="nav-item dropdown" [ngClass]="currentPage == 'simple/dashboard' || currentPage == 'laboratory/dashboard' || currentPage == 'simple/animal-simple-list'  ? 'active' : '' || currentPage == 'laboratory/laboratory-simple-list'  ? 'active' : ''">
+            <li class="nav-item dropdown" [ngClass]="
+            currentPage == 'sample/animal-sample-list' 
+            || currentPage == 'sample/animal-sample-form' ? 'active' : ''">
 
 
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SIMPLE" class="dropdown-toggle" data-toggle="dropdown">
@@ -59,36 +76,45 @@
                 </a>
 
                 <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="SP-PET-01" (click)="navigation('simple/dashboard')">สรุปข้อมูลการส่งตัวอย่าง</a></li>
-                    <li><a data-x-sig="SP-PET-02" (click)="navigation('simple/animal-simple-list')">รายการส่งตัวอย่าง</a></li>
-                    <li><a data-x-sig="SP-PET-03" (click)="navigation('laboratory/dashboard')">สรุปข้อมูลการวินิจฉัยตัวอย่าง (ห้องวิจัย)</a></li>
-                    <li><a data-x-sig="SP-PET-04" (click)="navigation('laboratory/laboratory-simple-list')">รายการส่งตัวอย่าง (ห้องวิจัย)</a></li>
+                    <li><a data-x-sig="SP-PET-02" (click)="navigation('sample/animal-sample-list')">รายการส่งตัวอย่าง</a></li>
                 </ul>
 
-            </li>                
-            <li class="nav-item dropdown">
+            </li>    
+            <li class="nav-item dropdown" [ngClass]="
+            currentPage == 'setting/user-management' 
+            || currentPage == 'setting/permission-management'
+            || currentPage == 'setting/access-transaction'
+            || currentPage == 'setting/region-management'
+            || currentPage == 'setting/province-management'
+            || currentPage == 'setting/district-management'
+            || currentPage == 'setting/subdistrict-management'
+            || currentPage == 'setting/department-management'
+            || currentPage == 'sample/animal-sample-formaaa' ? 'active' : ''">
 
-                <a aria-expanded="false" role="button" data-x-sig="PETREG-REPORT" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img class="icon" src="./assets/images/icon-menu-6.png" alt="">
-                    <p>รายงาน</p>
-                </a>
-                
-                <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="RP-PET-01" (click)="navigation('report/dashboard')">Dashboard</a></li>
-                    <li><a data-x-sig="RP-PET-02" (click)="navigation('report/animal-has-owner')">สรุปข้อมูลสัตว์มีเจ้าของ</a></li>
-                    <li><a data-x-sig="RP-PET-03" (click)="navigation('report/animal-no-owner')">สรุปข้อมูลสัตว์ไม่มีเจ้าของ</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
+
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SETTING" href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-cogs"> </i>
                     <p>ตั้งค่าระบบ </p>
                 </a>
                 
                 <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="ST-PET-01" href="#">จัดการข้อมูลผู้ใช้งาน</a></li>
-                    <li><a data-x-sig="ST-PET-02" href="#">จัดการข้อมูลข่าวสาร</a></li>
-                    <li><a data-x-sig="ST-PET-03" href="#">จัดการข้อมูลระบบ</a></li>
+                    <li><a data-x-sig="ST-PET-01" href="setting/user-management">ผู้ใช้งาน</a></li>
+                    <li><a data-x-sig="ST-PET-02" href="setting/permission-management">สิทธิการใช้งาน</a></li>
+                    <li><a data-x-sig="ST-PET-03" href="setting/access-transaction">ประวัติการใช้งานระบบ</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a data-x-sig="ST-PET-04" href="setting/region-management">เขตของปศุสัตว์</a></li>
+                    <li><a data-x-sig="ST-PET-05" href="setting/province-management">จังหวัด</a></li>
+                    <li><a data-x-sig="ST-PET-06" href="setting/district-management">อำเภอ</a></li>
+                    <li><a data-x-sig="ST-PET-07" href="setting/subdistrict-management">ตำบล</a></li>
+                    <li><a data-x-sig="ST-PET-08" href="setting/department-management">หน่วยงาน</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a data-x-sig="ST-PET-09" href="#">จัดการรายการขึ้นทะเบียนสัตว์</a></li>
+                    <li><a data-x-sig="ST-PET-10" href="#">จัดการอาการผิดปกติของสัตว์</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a data-x-sig="ST-PET-11" href="#">จัดการข่าว</a></li>
+                    <li><a data-x-sig="ST-PET-12" href="#">จัดการไฟล์</a></li>
+                    <li><a data-x-sig="ST-PET-13" href="#">จัดการ VDO</a></li>
+                    <li><a data-x-sig="ST-PET-14" href="#">จัดการหมวดหมู่</a></li>
                 </ul>
             </li>
             <li class="nav-item bg-white-menu user-access" [ngClass]="currentPage == 'login' ? 'active' : ''" (click)="navigation('login')">

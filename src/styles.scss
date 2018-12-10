@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -34,16 +33,4 @@
     background: transparent;
   }
 
-
-/******** GLOBAL SETTING *******/
-.clear-fix{
-    clear: both;
-  }
-  
-.item-center-flex {
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    display: flex;
-}
 

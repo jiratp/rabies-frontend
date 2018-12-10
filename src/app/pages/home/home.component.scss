@@ -1,351 +1,269 @@
 @import "../../themes/styles/variables";
 
 .container-fluid {
-    width: 100%;
     &.no-breadcrumb{
         padding-top: $layout-page-top;
     }
-    padding-right: $layout-page-right;
-    padding-left: $layout-page-left;
-    padding-bottom: $layout-page-bottom;
-    margin-right: auto;
-    margin-left: auto;
-}
 
-.item-center {
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    display: flex;
-}
+    &.home-component{
+        width: 100%;
+        padding-right: $layout-page-right;
+        padding-left: $layout-page-left;
+        padding-bottom: 60px;
+        margin-right: auto;
+        margin-left: auto;
 
-.card {
-    background-color: unset !important;
-    border: unset !important;
-    border-radius: unset !important;
-
-}
-
-.card-body {
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, .125);
-    box-shadow: 1px 3px 5px 1px rgba(0,0,0,.05);
-    border-radius: 4px;
-    margin-bottom: $layout-card-margin-bottom;
-
-    &.summary-animal-card-body{
-        .animal-info{
-            .animal-name{
-                margin-top: 15px;
-                font-size: 19px;
-                font-family: $ff-title-narmal;
-            }
-        }
-
-        .animal-summary-header{
-            h3{
-                font-size: 19px;
-                font-family: $ff-title-narmal;
-            }
-        }
-
-        .animal-summary-data{
-            padding-bottom: 15px;
-
-            span{
-
-                font-size: 24px;
-                font-family: $ff-title-bd;
-                color: #39B062;
-            }
-        }
-    }
-
-    &.summary-card-body{
-        h3{
-            font-size: 19px;
-            font-family: $ff-title-narmal;
-        }
-
-        span{
-            font-size: 32px;
-            font-family: $ff-title-med;
-        }
-
-        hr{
-            border-bottom: 1px solid #FFFFFF;
-        }
-
-        .summary-card-title{
-            text-align: left;
-        }
-
-        .summary-card-data{
-            text-align: right;
-            
-            .summary{
-                font-size: 19px;
-                font-family: $ff-title-narmal;
-            }
-
-            .persen{
-                font-size: 12px;
-                margin-right: 5px;
-                font-family: $ff-title-narmal;
-            }
-        }
-    }
-
-    
-    &.filter-card-body{
-        padding:0px;
-
-        .map-filter-panel{
-            img{
-                height: 100%;
-                width: 100%;
-            }
+        .card {
+            background-color: unset !important;
+            border: unset !important;
+            border-radius: unset !important;
+        
         }
         
-
-        .content-filter-panel{
-            padding-top: 20px;
-            padding-bottom: 30px;
-
-            h3{
-                font-family: $ff-title-med;
-                font-size: 18px;
-                margin-bottom: 15px;
-            }
-
-
-            .content-filter-container{
-                display: inline;
-                button{
-                    float: left;
-                    width: 125px;
-                    margin-right: 10px;
-                    margin-bottom: 10px;
-                    font-family: $ff-title-narmal;
-                    font-size: 16px;
-                    &.active{
-                        background: #39B062;
-                        color: #FFFFFF;
-                    }
-                }
-            }
-
-            .filter-rule-header{
-                margin-top: 20px;
-                margin-bottom: 20px;
-
-            }
-
-            .filter-rule-color{
-                width: 26px !important;
-                height: 26px !important;
-                margin-bottom: 15px;
-            }
-
-            .filter-rule-text{
-                font-family: $ff-title-narmal;
-                font-size: 16px;
-            }
-
-            .filter-last-updated{
-                margin-top: 20px;
-                font-family: $ff-title-med;
-                font-size: 14px;
-            }
-        }
-    }
-
-    &.tab-card-body{
-        margin-bottom: 0px;
-        border: none;
-        border-radius:0px;
-        border-bottom: none;
-        .tab-body{
-            padding-left: 15px;
-            padding-right: 15px;
-            .nav{
-                border-bottom: 1px solid #DDDDDD;
-                .nav-item{
-                    padding-left: 20px;
-                    padding-right: 20px;
-                    padding-top: 13px;
-                    padding-bottom: 8px;
-                    .nav-link{
-                        font-family: $ff-title-med;
+        .card-body {
+            background-color: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, .125);
+            box-shadow: 1px 3px 5px 1px rgba(0,0,0,.05);
+            border-radius: 4px;
+            margin-bottom: $layout-card-margin-bottom;
+        
+            /*********************************** SUMMARY ANIMAL CARD BODY ***********************************/
+            &.summary-animal-card-body{
+                .animal-info{
+                    .animal-name{
+                        margin-top: 15px;
                         font-size: 19px;
-                        &.active{
-                            color: #39B062;
-                        }
+                        font-family: $ff-title-narmal;
+                    }
+                }
+        
+                .animal-summary-header{
+                    h3{
+                        font-size: 19px;
+                        font-family: $ff-title-narmal;
+                    }
+                }
+        
+                .animal-summary-data{
+                    padding-bottom: 15px;
+        
+                    span{
+        
+                        font-size: 24px;
+                        font-family: $ff-title-bd;
+                        color: #39B062;
                     }
                 }
             }
-        }
-
-        .tab-content{
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 40px;
-            .tab-pane{
-                .content-container{
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap:wrap;
-
-                    .card{
-                        margin-bottom: 40px;
-                        cursor: pointer;
-                        .card-img-top{
-                            -webkit-border-top-left-radius: 10px;
-                            -webkit-border-top-right-radius: 10px;
-                            -moz-border-radius-topleft: 10px;
-                            -moz-border-radius-topright: 10px;
-                            border-top-left-radius: 10px;
-                            border-top-right-radius: 10px;
+        
+            /*********************************** SUMMARY CARD BODY ***********************************/
+            &.summary-card-body{
+                h3{
+                    font-size: 19px;
+                    font-family: $ff-title-narmal;
+                }
+        
+                span{
+                    font-size: 32px;
+                    font-family: $ff-title-med;
+                }
+        
+                hr{
+                    border-bottom: 1px solid #FFFFFF;
+                }
+        
+                .summary-card-title{
+                    text-align: left;
+                }
+        
+                .summary-card-data{
+                    text-align: right;
+                    
+                    .summary{
+                        font-size: 19px;
+                        font-family: $ff-title-narmal;
+                    }
+        
+                    .persen{
+                        font-size: 12px;
+                        margin-right: 5px;
+                        font-family: $ff-title-narmal;
+                    }
+                }
+            }
+        
+            /*********************************** FILTER CARD BODY ***********************************/
+            &.filter-card-body{
+                padding:0px;
+        
+                .map-filter-panel{
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                
+        
+                .content-filter-panel{
+                    padding-top: 20px;
+                    padding-bottom: 30px;
+        
+                    h3{
+                        font-family: $ff-title-med;
+                        font-size: 18px;
+                        margin-bottom: 15px;
+                    }
+        
+        
+                    .content-filter-container{
+                        display: inline;
+                        button{
+                            float: left;
+                            width: 125px;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-family: $ff-title-narmal;
+                            font-size: 16px;
+                            &.active{
+                                background: #39B062;
+                                color: #FFFFFF;
+                            }
                         }
-
-                        .card-body-custom{
-                            padding-top: 23px;
-                            font-family: $ff-content-narmal;
-                            font-size: 14px;
-                            .card-title{
+                    }
+        
+                    .filter-rule-header{
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+        
+                    }
+        
+                    .filter-rule-color{
+                        width: 26px !important;
+                        height: 26px !important;
+                        margin-bottom: 15px;
+                    }
+        
+                    .filter-rule-text{
+                        font-family: $ff-title-narmal;
+                        font-size: 16px;
+                    }
+        
+                    .filter-last-updated{
+                        margin-top: 20px;
+                        font-family: $ff-title-med;
+                        font-size: 14px;
+                    }
+                }
+            }
+        
+            /*********************************** START TAB CARD BODY ***********************************/
+            &.tab-card-body{
+                padding: 0px;
+                margin-bottom: 0px;
+                border: none;
+                border-radius:0px;
+                border-bottom: none;
+        
+                /*********************************** START TAB HEADER  ***********************************/
+                .tab-body{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    .nav{
+                        border-bottom: 1px solid #DDDDDD;
+                        .nav-item{
+                            padding-left: 20px;
+                            padding-right: 20px;
+                            padding-top: 13px;
+                            padding-bottom: 8px;
+                            .nav-link{
                                 font-family: $ff-title-med;
-                                font-size: 22px;
-                            }
-
-                            .card-text{
-                                font-family: $ff-content-narmal;
-                                font-size: 16px;
-                            }
-                        }
-
-
-                        &:hover{
-                            .card-body-custom{
-                                .card-title{
+                                font-size: 19px;
+                                &.active{
                                     color: #39B062;
                                 }
                             }
                         }
                     }
                 }
+                /*********************************** END TAB HEADER ***********************************/
+        
+                /*********************************** START TAB BODY ***********************************/
+                .tab-content{
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: 40px;
+                    .tab-pane{
+        
+                        /*********************************** START CARD CONTENT ***********************************/
+                        .content-container{
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap:wrap;
+        
+                            .card{
+                                margin-bottom: 40px;
+                                cursor: pointer;
+                                .card-img-top{
+                                    -webkit-border-top-left-radius: 10px;
+                                    -webkit-border-top-right-radius: 10px;
+                                    -moz-border-radius-topleft: 10px;
+                                    -moz-border-radius-topright: 10px;
+                                    border-top-left-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                }
+        
+                                .card-body-custom{
+                                    padding-top: 23px;
+                                    font-family: $ff-content-narmal;
+                                    font-size: 14px;
+                                    background-color: #fff !important;
+                                    border-top: 1px solid rgba(0, 0, 0, .125) !important;
+        
+                                    .card-title{
+                                        font-family: $ff-title-med;
+                                        font-size: 22px;
+                                    }
+        
+                                    .card-text{
+                                        font-family: $ff-content-narmal;
+                                        font-size: 16px;
+                                    }
+                                }
+        
+        
+                                &:hover{
+                                    .card-body-custom{
+                                        .card-title{
+                                            color: #39B062;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+        
+                        .content-paginate{
+                            .pagination{
+                                .page-item{
+                                    .page-link {
+                                        color: #000000 !important;
+                                        background-color: #fff !important;
+                                        border: unset !important;
+                                    }
+                                }
+                            }
+                        }
+                        /*********************************** END CARD CONTENT ***********************************/
+                    }
+                }
+                /*********************************** END TAB BODY ***********************************/
             }
         }
     }
 }
 
-.mh-card {
-    min-height: 162px;
-}
-
-.color-white {
-    color: white;
-}
 
 
-.padding0-50 {
-    padding: 0 50px;
-}
 
-.bg-success {
-    background: #39B062 !important;
-}
-
-.color-green {
-    color: #39B062;
-}
-
-.padding0 {
-    padding: 0;
-}
-
-.padding16 {
-    padding: 16px;
-}
-
-.tab-active {
-    border-bottom: 5px solid #39B062;
-}
-
-.padding-l-20 {
-    padding-left: 20px;
-}
-
-.border-sm {
-    border-bottom: 1px solid rgba(0, 0, 0, .125);
-}
-
-.tab-sm-active {
-    border-bottom: 5px solid #39B062;
-}
-
-.padding-r-0 {
-    padding-right: 0;
-}
-
-.btn-custom {
-    background: #F88957;
-}
-
-.btn-success {
-    background: #63CDAA !important;
-    border-color: #63CDAA !important;
-}
-
-.btn-info {
-    background: #92C8E9 !important;
-    border-color: #92C8E9 !important;
-}
-
-.btn-warning {
-    background: #EDC936 !important;
-    border-color: #EDC936 !important;
-}
-
-.btn-danger {
-    background: #F05241 !important;
-    border-color: #F05241 !important;
-}
-
-.wh100 {
-    width: 100%;
-    height: 100%;
-}
-
-.m-r-0 {
-    margin-right: 0;
-}
-
-.padding-16 {
-    padding: 16px;
-}
-
-.padding-l-24 {
-    padding-left: 24px;
-}
-
-.border-left {
-    border-left: 1px solid;
-}
-.card-text{
-    font-size: 15px;
-}
-li{
-    cursor: pointer;
-}
-.card-body-custom{
-    background-color: #fff !important;
-    border-top: 1px solid rgba(0, 0, 0, .125) !important;
-}
-.page-link {
-    color: #000000 !important;
-    background-color: #fff !important;
-    border: unset !important;
-}
 
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -355,117 +273,122 @@ li{
   and (max-width: 667px) { 
     
     .container-fluid {
-        width: 100%;
-        padding-top: $layout-page-top-sm;
-        padding-right: $layout-page-right-sm;
-        padding-left: $layout-page-left-sm;
-        padding-bottom: $layout-page-bottom-sm;
-        margin-right: auto;
-        margin-left: auto;
-    }
+        &.home-component{
+            width: 100%;
+            padding-top: $layout-page-top-sm;
+            padding-right: $layout-page-right-sm;
+            padding-left: $layout-page-left-sm;
+            padding-bottom: $layout-page-bottom-sm;
+            margin-right: auto;
+            margin-left: auto;
 
-
-    .card-body {
-        margin-bottom: $layout-card-margin-bottom-sm;
-
-        &.filter-card-body{
-            padding:0px;
-    
-            .map-filter-panel{
-                min-height: 350px;
-                img{
-                    height: 100%;
-                    width: 100%;
-                }
-            }
+            .card-body {
+                margin-bottom: $layout-card-margin-bottom-sm;
+        
+                &.filter-card-body{
+                    padding:0px;
             
-    
-            .content-filter-panel{
-                padding-top: 20px;
-                padding-bottom: 30px;
-                padding-left: 40px;
-                padding-right: 40px;
-    
-                .content-filter-container{
-                    display: inline;
-                    button{
-                        width: 100%;
-                        padding-top: 10px;
-                        padding-bottom: 10px;
-                    }
-                }
-            }
-        }
-
-        &.summary-card-body{
-            h3{
-                font-size: 16px;
-                font-family: $ff-title-narmal;
-            }
-    
-            span{
-                font-size: 26px;
-                font-family: $ff-title-med;
-            }
-    
-            hr{
-                border-bottom: 1px solid #FFFFFF;
-            }
-    
-            .summary-card-title{
-                text-align: left;
-            }
-    
-            .summary-card-data{
-                text-align: right;
-                
-                .summary{
-                    font-size: 16px;
-                    font-family: $ff-title-narmal;
-                }
-            }
-        }
-
-        &.summary-animal-card-body{
-            .animal-info{
-                img{
-                    width: 95px;
-                    margin-top: 10px;
-                }
-                .animal-name{
-                    margin-top: 15px;
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-header{
-                h3{
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-data{
-                span{
-                    font-size: 26px;
-                }
-            }
-        }
-    
-        &.tab-card-body{
-            .tab-body{
-                .nav{
-                    .nav-item{
-                        &:not(.tab-active){
-                            border-bottom: 1px solid #DDDDDD;
+                    .map-filter-panel{
+                        min-height: 350px;
+                        img{
+                            height: 100%;
+                            width: 100%;
                         }
-
+                    }
+                    
+            
+                    .content-filter-panel{
+                        padding-top: 20px;
+                        padding-bottom: 30px;
+                        padding-left: 40px;
+                        padding-right: 40px;
+            
+                        .content-filter-container{
+                            display: inline;
+                            button{
+                                width: 100%;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+        
+                &.summary-card-body{
+                    h3{
+                        font-size: 16px;
+                        font-family: $ff-title-narmal;
+                    }
+            
+                    span{
+                        font-size: 26px;
+                        font-family: $ff-title-med;
+                    }
+            
+                    hr{
+                        border-bottom: 1px solid #FFFFFF;
+                    }
+            
+                    .summary-card-title{
                         text-align: left;
-                        width: 100%;
+                    }
+            
+                    .summary-card-data{
+                        text-align: right;
+                        
+                        .summary{
+                            font-size: 16px;
+                            font-family: $ff-title-narmal;
+                        }
+                    }
+                }
+        
+                &.summary-animal-card-body{
+                    .animal-info{
+                        img{
+                            width: 95px;
+                            margin-top: 10px;
+                        }
+                        .animal-name{
+                            margin-top: 15px;
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-header{
+                        h3{
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-data{
+                        span{
+                            font-size: 26px;
+                        }
+                    }
+                }
+            
+                &.tab-card-body{
+                    .tab-body{
+                        .nav{
+                            .nav-item{
+                                &:not(.tab-active){
+                                    border-bottom: 1px solid #DDDDDD;
+                                }
+        
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
         }
+
     }
+
+
+    
 }
 
 /* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
@@ -475,118 +398,117 @@ li{
   and (max-width: 736px) { 
     
     .container-fluid {
-        width: 100%;
-        padding-top: $layout-page-top-sm;
-        padding-right: $layout-page-right-sm;
-        padding-left: $layout-page-left-sm;
-        padding-bottom: $layout-page-bottom-sm;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-
-    .card-body {
-        margin-bottom: $layout-card-margin-bottom-sm;
-
-        &.filter-card-body{
-            padding:0px;
-    
-            .map-filter-panel{
-                min-height: 350px;
-                img{
-                    height: 100%;
-                    width: 100%;
-                }
-            }
+        &.home-component{
+            width: 100%;
+            padding-top: $layout-page-top-sm;
+            padding-right: $layout-page-right-sm;
+            padding-left: $layout-page-left-sm;
+            padding-bottom: $layout-page-bottom-sm;
+            margin-right: auto;
+            margin-left: auto;
+            .card-body {
+                margin-bottom: $layout-card-margin-bottom-sm;
+        
+                &.filter-card-body{
+                    padding:0px;
             
-    
-            .content-filter-panel{
-                padding-top: 20px;
-                padding-bottom: 30px;
-                padding-left: 40px;
-                padding-right: 40px;
-    
-                .content-filter-container{
-                    display: inline;
-                    button{
-                        width: 100%;
-                        padding-top: 10px;
-                        padding-bottom: 10px;
+                    .map-filter-panel{
+                        min-height: 350px;
+                        img{
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    
+            
+                    .content-filter-panel{
+                        padding-top: 20px;
+                        padding-bottom: 30px;
+                        padding-left: 40px;
+                        padding-right: 40px;
+            
+                        .content-filter-container{
+                            display: inline;
+                            button{
+                                width: 100%;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                            }
+                        }
                     }
                 }
-            }
-        }
-
-        &.summary-card-body{
-            h3{
-                font-size: 16px;
-                font-family: $ff-title-narmal;
-            }
-    
-            span{
-                font-size: 26px;
-                font-family: $ff-title-med;
-            }
-    
-            hr{
-                border-bottom: 1px solid #FFFFFF;
-            }
-    
-            .summary-card-title{
-                text-align: left;
-            }
-    
-            .summary-card-data{
-                text-align: right;
-                
-                .summary{
-                    font-size: 16px;
-                    font-family: $ff-title-narmal;
-                }
-            }
-        }
-
-        &.summary-animal-card-body{
-            .animal-info{
-                img{
-                    width: 95px;
-                    margin-top: 10px;
-                }
-                .animal-name{
-                    margin-top: 15px;
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-header{
-                h3{
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-data{
-                span{
-                    font-size: 26px;
-                }
-            }
-        }
-    
-        &.tab-card-body{
-            .tab-body{
-                .nav{
-                    .nav-item{
-                        &:not(.tab-active){
-                            border-bottom: 1px solid #DDDDDD;
-                        }
-
+        
+                &.summary-card-body{
+                    h3{
+                        font-size: 16px;
+                        font-family: $ff-title-narmal;
+                    }
+            
+                    span{
+                        font-size: 26px;
+                        font-family: $ff-title-med;
+                    }
+            
+                    hr{
+                        border-bottom: 1px solid #FFFFFF;
+                    }
+            
+                    .summary-card-title{
                         text-align: left;
-                        width: 100%;
+                    }
+            
+                    .summary-card-data{
+                        text-align: right;
+                        
+                        .summary{
+                            font-size: 16px;
+                            font-family: $ff-title-narmal;
+                        }
+                    }
+                }
+        
+                &.summary-animal-card-body{
+                    .animal-info{
+                        img{
+                            width: 95px;
+                            margin-top: 10px;
+                        }
+                        .animal-name{
+                            margin-top: 15px;
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-header{
+                        h3{
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-data{
+                        span{
+                            font-size: 26px;
+                        }
+                    }
+                }
+            
+                &.tab-card-body{
+                    .tab-body{
+                        .nav{
+                            .nav-item{
+                                &:not(.tab-active){
+                                    border-bottom: 1px solid #DDDDDD;
+                                }
+        
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
         }
     }
-
 }
 
 /* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
@@ -596,117 +518,121 @@ li{
   and (max-width: 1024px) {
     
     .container-fluid {
-        width: 100%;
-        padding-top: $layout-page-top-md;
-        padding-right: $layout-page-right-md;
-        padding-left: $layout-page-left-md;
-        padding-bottom: $layout-page-bottom-md;
-        margin-right: auto;
-        margin-left: auto;
-    }
+        &.home-component{
+            width: 100%;
+            padding-top: $layout-page-top-md;
+            padding-right: $layout-page-right-md;
+            padding-left: $layout-page-left-md;
+            padding-bottom: $layout-page-bottom-md;
+            margin-right: auto;
+            margin-left: auto;
 
-
-    .card-body {
-        margin-bottom: $layout-card-margin-bottom-md;
-
-        &.filter-card-body{
-            padding:0px;
-    
-            .map-filter-panel{
-                min-height: 350px;
-                img{
-                    height: 100%;
-                    width: 100%;
-                }
-            }
+            .card-body {
+                margin-bottom: $layout-card-margin-bottom-md;
+        
+                &.filter-card-body{
+                    padding:0px;
             
-    
-            .content-filter-panel{
-                padding-top: 20px;
-                padding-bottom: 30px;
-                padding-left: 40px;
-                padding-right: 40px;
-    
-                .content-filter-container{
-                    display: inline;
-                    button{
-                        width: 100%;
-                        padding-top: 10px;
-                        padding-bottom: 10px;
+                    .map-filter-panel{
+                        min-height: 350px;
+                        img{
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    
+            
+                    .content-filter-panel{
+                        padding-top: 20px;
+                        padding-bottom: 30px;
+                        padding-left: 40px;
+                        padding-right: 40px;
+            
+                        .content-filter-container{
+                            display: inline;
+                            button{
+                                width: 100%;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                            }
+                        }
                     }
                 }
-            }
-        }
-
-        &.summary-card-body{
-            h3{
-                font-size: 16px;
-                font-family: $ff-title-narmal;
-            }
-    
-            span{
-                font-size: 26px;
-                font-family: $ff-title-med;
-            }
-    
-            hr{
-                border-bottom: 1px solid #FFFFFF;
-            }
-    
-            .summary-card-title{
-                text-align: left;
-            }
-    
-            .summary-card-data{
-                text-align: right;
-                
-                .summary{
-                    font-size: 16px;
-                    font-family: $ff-title-narmal;
-                }
-            }
-        }
-
-        &.summary-animal-card-body{
-            .animal-info{
-                img{
-                    width: 95px;
-                    margin-top: 10px;
-                }
-                .animal-name{
-                    margin-top: 15px;
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-header{
-                h3{
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-data{
-                span{
-                    font-size: 26px;
-                }
-            }
-        }
-    
-        &.tab-card-body{
-            .tab-body{
-                .nav{
-                    .nav-item{
-                        &:not(.tab-active){
-                            border-bottom: 1px solid #DDDDDD;
-                        }
-
+        
+                &.summary-card-body{
+                    h3{
+                        font-size: 16px;
+                        font-family: $ff-title-narmal;
+                    }
+            
+                    span{
+                        font-size: 26px;
+                        font-family: $ff-title-med;
+                    }
+            
+                    hr{
+                        border-bottom: 1px solid #FFFFFF;
+                    }
+            
+                    .summary-card-title{
                         text-align: left;
-                        width: 100%;
+                    }
+            
+                    .summary-card-data{
+                        text-align: right;
+                        
+                        .summary{
+                            font-size: 16px;
+                            font-family: $ff-title-narmal;
+                        }
+                    }
+                }
+        
+                &.summary-animal-card-body{
+                    .animal-info{
+                        img{
+                            width: 95px;
+                            margin-top: 10px;
+                        }
+                        .animal-name{
+                            margin-top: 15px;
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-header{
+                        h3{
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-data{
+                        span{
+                            font-size: 26px;
+                        }
+                    }
+                }
+            
+                &.tab-card-body{
+                    .tab-body{
+                        .nav{
+                            .nav-item{
+                                &:not(.tab-active){
+                                    border-bottom: 1px solid #DDDDDD;
+                                }
+        
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
         }
     }
+
+
+    
 }
 
 /* ----------- iPad Pro 10.5" ----------- */
@@ -717,112 +643,113 @@ li{
   and (max-width: 1112px) {
 
     .container-fluid {
-        width: 100%;
-        padding-top: $layout-page-top-md;
-        padding-right: $layout-page-right-md;
-        padding-left: $layout-page-left-md;
-        padding-bottom: $layout-page-bottom-md;
-        margin-right: auto;
-        margin-left: auto;
-    }
+        &.home-component{
+            width: 100%;
+            padding-top: $layout-page-top-md;
+            padding-right: $layout-page-right-md;
+            padding-left: $layout-page-left-md;
+            padding-bottom: $layout-page-bottom-md;
+            margin-right: auto;
+            margin-left: auto;
 
-
-    .card-body {
-        margin-bottom: $layout-card-margin-bottom-md;
-
-        &.filter-card-body{
-            padding:0px;
-    
-            .map-filter-panel{
-                min-height: 350px;
-                img{
-                    height: 100%;
-                    width: 100%;
-                }
-            }
+            .card-body {
+                margin-bottom: $layout-card-margin-bottom-md;
+        
+                &.filter-card-body{
+                    padding:0px;
             
-    
-            .content-filter-panel{
-                padding-top: 20px;
-                padding-bottom: 30px;
-                padding-left: 40px;
-                padding-right: 40px;
-    
-                .content-filter-container{
-                    display: inline;
-                    button{
-                        width: 100%;
-                        padding-top: 10px;
-                        padding-bottom: 10px;
+                    .map-filter-panel{
+                        min-height: 350px;
+                        img{
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    
+            
+                    .content-filter-panel{
+                        padding-top: 20px;
+                        padding-bottom: 30px;
+                        padding-left: 40px;
+                        padding-right: 40px;
+            
+                        .content-filter-container{
+                            display: inline;
+                            button{
+                                width: 100%;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                            }
+                        }
                     }
                 }
-            }
-        }
-
-        &.summary-card-body{
-            h3{
-                font-size: 16px;
-                font-family: $ff-title-narmal;
-            }
-    
-            span{
-                font-size: 26px;
-                font-family: $ff-title-med;
-            }
-    
-            hr{
-                border-bottom: 1px solid #FFFFFF;
-            }
-    
-            .summary-card-title{
-                text-align: left;
-            }
-    
-            .summary-card-data{
-                text-align: right;
-                
-                .summary{
-                    font-size: 16px;
-                    font-family: $ff-title-narmal;
-                }
-            }
-        }
-
-        &.summary-animal-card-body{
-            .animal-info{
-                img{
-                    width: 95px;
-                    margin-top: 10px;
-                }
-                .animal-name{
-                    margin-top: 15px;
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-header{
-                h3{
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-data{
-                span{
-                    font-size: 26px;
-                }
-            }
-        }
-    
-        &.tab-card-body{
-            .tab-body{
-                .nav{
-                    .nav-item{
-                        &:not(.tab-active){
-                            border-bottom: 1px solid #DDDDDD;
-                        }
-
+        
+                &.summary-card-body{
+                    h3{
+                        font-size: 16px;
+                        font-family: $ff-title-narmal;
+                    }
+            
+                    span{
+                        font-size: 26px;
+                        font-family: $ff-title-med;
+                    }
+            
+                    hr{
+                        border-bottom: 1px solid #FFFFFF;
+                    }
+            
+                    .summary-card-title{
                         text-align: left;
-                        width: 100%;
+                    }
+            
+                    .summary-card-data{
+                        text-align: right;
+                        
+                        .summary{
+                            font-size: 16px;
+                            font-family: $ff-title-narmal;
+                        }
+                    }
+                }
+        
+                &.summary-animal-card-body{
+                    .animal-info{
+                        img{
+                            width: 95px;
+                            margin-top: 10px;
+                        }
+                        .animal-name{
+                            margin-top: 15px;
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-header{
+                        h3{
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-data{
+                        span{
+                            font-size: 26px;
+                        }
+                    }
+                }
+            
+                &.tab-card-body{
+                    .tab-body{
+                        .nav{
+                            .nav-item{
+                                &:not(.tab-active){
+                                    border-bottom: 1px solid #DDDDDD;
+                                }
+        
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
@@ -839,115 +766,116 @@ li{
   and (max-width: 1366px) {
 
     .container-fluid {
-        width: 100%;
-        padding-top: $layout-page-top-md;
-        padding-right: $layout-page-right-md;
-        padding-left: $layout-page-left-md;
-        padding-bottom: $layout-page-bottom-md;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    
+        &.home-component{
+            width: 100%;
+            padding-top: $layout-page-top-md;
+            padding-right: $layout-page-right-md;
+            padding-left: $layout-page-left-md;
+            padding-bottom: $layout-page-bottom-md;
+            margin-right: auto;
+            margin-left: auto;
 
-    .card-body {
-        margin-bottom: $layout-card-margin-bottom-md;
-
-        &.filter-card-body{
-            padding:0px;
-    
-            .map-filter-panel{
-                min-height: 350px;
-                img{
-                    height: 100%;
-                    width: 100%;
-                }
-            }
+            .card-body {
+                margin-bottom: $layout-card-margin-bottom-md;
+        
+                &.filter-card-body{
+                    padding:0px;
             
-    
-            .content-filter-panel{
-                padding-top: 20px;
-                padding-bottom: 30px;
-                padding-left: 40px;
-                padding-right: 40px;
-    
-                .content-filter-container{
-                    display: inline;
-                    button{
-                        width: 100%;
-                        padding-top: 10px;
-                        padding-bottom: 10px;
-                    }
-                }
-            }
-        }
-
-        &.summary-card-body{
-            h3{
-                font-size: 16px;
-                font-family: $ff-title-narmal;
-            }
-    
-            span{
-                font-size: 26px;
-                font-family: $ff-title-med;
-            }
-    
-            hr{
-                border-bottom: 1px solid #FFFFFF;
-            }
-    
-            .summary-card-title{
-                text-align: left;
-            }
-    
-            .summary-card-data{
-                text-align: right;
-                
-                .summary{
-                    font-size: 16px;
-                    font-family: $ff-title-narmal;
-                }
-            }
-        }
-
-        &.summary-animal-card-body{
-            .animal-info{
-                img{
-                    width: 95px;
-                    margin-top: 10px;
-                }
-                .animal-name{
-                    margin-top: 15px;
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-header{
-                h3{
-                    font-size: 16px;
-                }
-            }
-    
-            .animal-summary-data{
-                span{
-                    font-size: 26px;
-                }
-            }
-        }
-    
-        &.tab-card-body{
-            .tab-body{
-                .nav{
-                    .nav-item{
-                        &:not(.tab-active){
-                            border-bottom: 1px solid #DDDDDD;
+                    .map-filter-panel{
+                        min-height: 350px;
+                        img{
+                            height: 100%;
+                            width: 100%;
                         }
-
+                    }
+                    
+            
+                    .content-filter-panel{
+                        padding-top: 20px;
+                        padding-bottom: 30px;
+                        padding-left: 40px;
+                        padding-right: 40px;
+            
+                        .content-filter-container{
+                            display: inline;
+                            button{
+                                width: 100%;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+        
+                &.summary-card-body{
+                    h3{
+                        font-size: 16px;
+                        font-family: $ff-title-narmal;
+                    }
+            
+                    span{
+                        font-size: 26px;
+                        font-family: $ff-title-med;
+                    }
+            
+                    hr{
+                        border-bottom: 1px solid #FFFFFF;
+                    }
+            
+                    .summary-card-title{
                         text-align: left;
-                        width: 100%;
+                    }
+            
+                    .summary-card-data{
+                        text-align: right;
+                        
+                        .summary{
+                            font-size: 16px;
+                            font-family: $ff-title-narmal;
+                        }
+                    }
+                }
+        
+                &.summary-animal-card-body{
+                    .animal-info{
+                        img{
+                            width: 95px;
+                            margin-top: 10px;
+                        }
+                        .animal-name{
+                            margin-top: 15px;
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-header{
+                        h3{
+                            font-size: 16px;
+                        }
+                    }
+            
+                    .animal-summary-data{
+                        span{
+                            font-size: 26px;
+                        }
+                    }
+                }
+            
+                &.tab-card-body{
+                    .tab-body{
+                        .nav{
+                            .nav-item{
+                                &:not(.tab-active){
+                                    border-bottom: 1px solid #DDDDDD;
+                                }
+        
+                                text-align: left;
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
         }
-    }
+    } 
 }

@@ -7,44 +7,41 @@
     </button>
 </div>
 <div class="modal-body">
-    <div class="dialog-form-content-body">
-        <form class="form-dialog-information mt-3" name="SAIForm" [formGroup]="SAIForm">
-            <div class="card-body form-dialog-information-card-body">
+    <div class="dialog-content-body-form dialog-survey-animal-information">
+        <form class="form-dialog mt-3" name="SAIForm" [formGroup]="SAIForm">
+            <div class="card-body dialog-card-body-form">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
-                        
-                        <div class="form-group-panel clear-fix">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">
+                        <div class="form-group-fieldset clear-fix">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
-                                    <h3> ข้อมูลผู้สำรวจ </h3>
+                                    <h3> ข้อมูลสัตว์ </h3>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalCategory" class="form-label">ประเภทสัตว์</label>
+                                                        <p-dropdown formControlName="animalCategory" placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalCategory"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalAmount" class="form-label">จำนวนสัตว์ (ตัว)</label>
+                                                        <input type="text" formControlName="animalAmount" class="form-control" id="animalAmount" placeholder="จำนวนสัตว์ (ตัว)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group-panel clear-fix">
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
-                                    <h3> ข้อมูลการสำรวจ </h3>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group-panel clear-fix">
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
-                                    <h3> ข้อมูลผู้ติดต่อ </h3>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
-
-                                </div>
-                            </div>
-                        </div>                    
                     </div>
                 </div>
             </div>
@@ -53,18 +50,14 @@
 </div>
 <div class="modal-footer">
     <div class="dialog-form-footer-body">
-        <div class="card-body form-animal-information-card-body">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel">  
-                    <div class="form-group-panel clear-fix">
-                        <div class="row">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
-                                <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-group-button">  
-                                <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
-                            </div>
-                        </div>
+       <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+            <div class="form-group clear-fix">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
+                        <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
+                        <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
                     </div>
                 </div>
             </div>

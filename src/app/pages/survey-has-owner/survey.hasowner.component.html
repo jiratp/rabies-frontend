@@ -1,4 +1,4 @@
-<div class="container-fluid breadcrumb">
+<div class="container-fluid survey-owner-component breadcrumb">
     <nav class="nav-breadcrumb" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">แบบสำรวจข้อมูลสัตว์</li>
@@ -8,24 +8,24 @@
 
     <div class="container-body">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-survey-card">
-                <div class="card-body tab-survey-card-body">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-component-card">
+                <div class="card-body tab-component-card-body">
                     <div class="tab-body">
                         <ul class="nav text-center" role="tablist">
-                            <li class="nav-item tab-item tab-header" [ngClass]="tab === 'report-animal-owner-group' ? 'tab-active' : ''">
-                                <span class="nav-link active" href="#report-animal-owner-group" role="tab" data-toggle="tab" (click)="tabSelected('report-animal-owner-group')">รายการขึ้นทะเบียนสัตว์ (มีเจ้าของ)</span>
+                            <li class="nav-item tab-item tab-header">
+                                <span class="nav-link" href="#report-animal-owner-group" role="tab" data-toggle="tab">รายการขึ้นทะเบียนสัตว์ (มีเจ้าของ)</span>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="report-animal-owner-group">
-                            <div class="content-container">
-                                <div class="card-body form-survey-card-body">
+                            <div class="content-container content-body-form">
+                                <div class="card-body content-card-body content-data-grid">
                                     <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel"> 
-                                            <div class="form-group-panel clear-fix">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body"> 
+                                            <div class="content-group-panel clear-fix">
                                                 <div class="row">
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 data-table-group">  
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-data-table-group">  
                                                         <p-table [value]="roundAnimalOwnerGroup"  [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
                                                             <ng-template pTemplate="caption">
                                                                 รายการขึ้นทะเบียนสัตว์ (มีเจ้าของ)

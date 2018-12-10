@@ -37,11 +37,13 @@ export class ConfigService {
             dialogFormSetting : {
                 animated: true,
                 backdrop: true,
-                ignoreBackdropClick: false,
+                show: true,
+                ignoreBackdropClick: true,
                 class: 'modal-lg modal-dialog-centered',
             },
             lacaleTH : {
                 firstDayOfWeek: 0,
+                lang: 'th',
                 dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
                 dayNamesShort: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
                 dayNamesMin: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],

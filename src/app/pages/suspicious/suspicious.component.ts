@@ -4,6 +4,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LazyLoadEvent } from 'primeng/primeng';
 import { SelectItem } from 'primeng/api';
+import * as moment from 'moment';
 
 import { ConfigService } from './../../core/config.service';
 
@@ -17,6 +18,11 @@ import { AnimalSuspiciousComponent } from './animal-suspicious-information/anima
   encapsulation: ViewEncapsulation.None
 })
 export class SuspiciousComponent implements OnInit {
+  searchForm: FormGroup;
+
+  dateTimeFormat: string;
+  dateNow: string = moment().format('DD/MM/YYYY');
+  lacaleTH: any;
 
   modalASnRef: BsModalRef;
 
@@ -36,6 +42,27 @@ export class SuspiciousComponent implements OnInit {
     /****** dataTable ******/
     this.totalRecords = 0;
     this.loading = true;
+
+    this.setupFormGroup();
+    this.setupCalendar();
+  }
+
+  setupFormGroup() {
+    this.searchForm = new FormGroup({
+      notifierName: new FormControl(''),
+      notifierMobileNumber: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
+      animalCategory: new FormControl(''),
+      provinceNotifier: new FormControl(''),
+      districtNotifier: new FormControl(''),
+      subDistrictNotifier: new FormControl(''),
+    });
+  }
+
+  setupCalendar() {
+    this.dateTimeFormat = this.themeConfig.defaultSettings.dateTimeFormat;
+    this.lacaleTH = this.themeConfig.defaultSettings.lacaleTH;
   }
 
   ManageAnimalSuspicious() {

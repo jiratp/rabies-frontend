@@ -1,0 +1,171 @@
+@import "../../../themes/styles/variables";
+
+.container-fluid {
+    &.breadcrumb{
+        padding-top: $layout-page-breadcrum-top;
+    }
+
+    &.setting-user-management-component{
+        width: 100%;
+        padding-right: $layout-page-right;
+        padding-left: $layout-page-left;
+        padding-bottom: $layout-page-bottom;
+        margin-right: auto;
+        margin-left: auto;
+        
+        .container-body{
+          .row{
+            .card {
+                &.tab-component-card{
+                  .card-body {
+                    &.tab-component-card-body{
+                        .tab-content{
+                            .tab-pane{
+                                .content-body-form{
+                                    .content-card-body{
+                                        .content-body{
+                                            .content-group-panel{
+                                                .searchbar{
+                                                    padding-bottom: 10px;
+                                                    &.form-component{
+                                                        text-align: left;
+                                                        padding-bottom: 0px !important;
+                                                        .form-group{
+                                                            width: auto;
+                                                            float: left;
+                                                            padding-top: 4px;
+                                                            .form-control{
+                                                                width: 35%;
+                                                            }
+                                                        }
+                                                    }
+                                        
+                                                    &.button-panel{
+                                                        button{
+                                                            float: right;
+                                                            width: auto;
+                                                        }
+                                                    }
+                                                }
+
+                                                .content-data-table-group{
+                                                    .ui-table{
+                                                        .ui-table-wrapper{
+                                                            .ui-table-thead{
+                                                                th{
+                                                                    /*
+                                                                    &:nth-child(1){
+                                                                        width: 8%;
+                                                                        text-align: center;
+                                                                    }
+
+                                                                    &:nth-child(2){
+                                                                        width: 12%;
+                                                                        text-align: center;
+                                                                    }
+
+                                                                    &:nth-child(3){
+                                                                        width: 15%;
+                                                                        text-align: left;
+                                                                    }
+
+                                                                    &:nth-child(4){
+                                                                        width: 20%;
+                                                                        text-align: left;
+                                                                    }
+
+                                                                    &:nth-child(5){
+                                                                        width: 25%;
+                                                                        text-align: left;
+                                                                    }
+
+                                                                    &:nth-child(6){
+                                                                        width: 10%;
+                                                                        text-align: center;
+                                                                    }
+
+                                                                    &:nth-child(7){
+                                                                        width: 10%;
+                                                                        text-align: center;
+                                                                    }
+                                                                    */
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                  }
+                }
+            }
+          }
+        }
+    }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 667px) { 
+
+    .container-fluid {
+        width: 100%;
+        padding-top: $layout-page-top-sm;
+        padding-right: $layout-page-right-sm;
+        padding-left: $layout-page-left-sm;
+        padding-bottom: $layout-page-bottom-sm;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    
+    .container-fluid {
+        width: 100%;
+        padding-top: $layout-page-top-sm;
+        padding-right: $layout-page-right-sm;
+        padding-left: $layout-page-left-sm;
+        padding-bottom: $layout-page-bottom-sm;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+
+}

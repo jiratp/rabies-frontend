@@ -4,213 +4,92 @@
     &.breadcrumb{
       padding-top: $layout-page-breadcrum-top;
     }
-    
-    width: 100%;
-    padding-right: $layout-page-right;
-    padding-left: $layout-page-left;
-    padding-bottom: $layout-page-bottom;
-    margin-right: auto;
-    margin-left: auto;
-    
-    .container-body{
-      .row{
-        margin-left: 0px;
-        margin-right: 0px;
-      }
-    }
-}
 
-.nav-breadcrumb{
-  margin-bottom: 20px;
-  .breadcrumb{
-    padding: 0px;
-    margin: 0px;
-    padding-top: 10px;
-    color: rgba(0,0,0,.4);
-    font-size: $layout-page-breadcrum-fontsize;
-    font-family: $ff-title-med;
-    .breadcrumb-item{
-      &:not(:first-child){
-        &::before{
-          content: ">";
-        }
-      }
+    &.survey-noowner-component{
+      width: 100%;
+      padding-right: $layout-page-right;
+      padding-left: $layout-page-left;
+      padding-bottom: $layout-page-bottom;
+      margin-right: auto;
+      margin-left: auto;
 
-      &.active{
-        color: $main-color;
-        &::before{
-          color: $main-color;
-        }
-      }
-    }
-  }
-}
+      .container-body{
+        .row{
+          .card {
+              &.tab-component-card{
+                .card-body {
+                  &.tab-component-card-body{
+                      .tab-content{
+                          .tab-pane{
+                              .content-body-form{
+                                  .content-card-body{
+                                      .content-body{
+                                          .content-group-panel{
+                                              .content-data-table-group{
+                                                  .ui-table{
+                                                      .ui-table-wrapper{
+                                                          .ui-table-thead{
+                                                              th{
+                                                                  &:nth-child(1){
+                                                                      width: 35%;
+                                                                      text-align: left;
+                                                                  }
 
-.mh-card {
-  min-height: 162px;
-}
+                                                                  &:nth-child(2){
+                                                                      width: 25%;
+                                                                      text-align: center;
+                                                                  }
 
-.color-white {
-  color: white;
-}
+                                                                  &:nth-child(3){
+                                                                      width: 20%;
+                                                                      text-align: center;
+                                                                  }
 
-.bg-success {
-  background: #39B062 !important;
-}
+                                                                  &:nth-child(4){
+                                                                      width: 20%;
+                                                                      text-align: center;
+                                                                  }
+                                                              }
+                                                          }
 
-.tab-active {
-  border-bottom: 5px solid #39B062;
-}
+                                                          .ui-table-tbody{
+                                                            tr{
+                                                              td{
+                                                                &:nth-child(1){
+                                                                  text-align: left;
+                                                                }
 
+                                                                &:nth-child(2){
+                                                                    text-align: center;
+                                                                }
 
-.card {
-  background-color: unset !important;
-  border: unset !important;
-  border-radius: unset !important;
+                                                                &:nth-child(3){
+                                                                    text-align: center;
+                                                                }
 
-  &.tab-survey-card{
-    padding-left: 0px;
-    width: 100%;
-  }
-}
-
-.card-body {
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, .125);
-  box-shadow: 1px 3px 5px 1px rgba(0,0,0,.05);
-  border-radius: 4px;
-  margin-bottom: $layout-card-margin-bottom;
-
-  &.form-survey-card-body{
-    background-color: #FFFFFF;
-    border: none;
-    box-shadow: none;
-    border-radius: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-    .text-box-panel{
-      padding-bottom: 30px !important;
-      .form-group-panel{
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-        margin-bottom: 25px;
-        .data-table-group{
-          padding-left: 0px !important;
-          padding-right: 0px !important;
-          .ui-table{
-              .ui-table-caption{
-                  padding-top: 15px;
-                  padding-bottom: 15px;
-                  background: $datatable-caption-bg;
-                  font-size: $datatable-caption-font-size;
-                  font-family: $datatable-caption-font-family;
-                  color: $datatable-caption-font-color;
-              }
-
-              .ui-table-wrapper{
-                  .ui-table-thead{
-                      th{
-                          text-align: center;
-                          background: $datatable-thead-bg;
-                          font-size: $datatable-thead-font-size;
-                          font-family: $datatable-thead-font-family;
-                          color: $datatable-thead-font-color;
-                      }
-                  }
-
-                  .ui-table-tbody{
-                      tr{
-                          td{
-                              padding-top: 10px;
-                              padding-bottom: 10px;
-                              text-align: left;
-                              font-size: $datatable-tbody-font-size;
-                              font-family: $datatable-tbody-font-family;
-                              color: $datatable-tbody-font-color;
-
-                              &.emptymessage{
-                                  padding-top: 20px;
-                                  padding-bottom: 20px;
-                                  text-align: center;
-                                  font-size: $datatable-tbody-font-size;
-                                  font-family: $datatable-tbody-font-family;
-                                  color: $datatable-tbody-font-color;
-                              }
-
-                              &.col-btn-group{
-                                text-align: center;
-                                .btn-content{
-                                  cursor: pointer;
-                                  display: inline-block;
-                                }
-
-                                .btn-icon{
-                                  font-size:22px;
-                                }
+                                                                &:nth-child(4){
+                                                                    text-align: center;
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
                               }
                           }
                       }
                   }
-              }
-
-              .ui-paginator-bottom{
-                  &.ui-paginator{
-                      text-align: right;
-                      .ui-paginator-element{
-                          font-size: $datatable-tbody-font-size;
-                          font-family: $datatable-tbody-font-family;
-                          color: $datatable-tbody-font-color;
-                      }
-                  }
+                }
               }
           }
         }
       }
     }
-  }
-
-  &.tab-survey-card-body{
-    margin-bottom: 0px;
-    border: none;
-    border-radius:0px;
-    border-bottom: none;
-    .tab-body{
-        padding-left: 15px;
-        padding-right: 15px;
-        .nav{
-            border-bottom: 1px solid #DDDDDD;
-            .nav-item{
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 13px;
-                padding-bottom: 8px;
-                cursor: pointer;
-                .nav-link{
-                    font-family: $ff-title-med;
-                    font-size: 19px;
-                    padding-left: 0px;
-                    &.active{
-                        color: #39B062;
-                    }
-                }
-            }
-        }
-    }
-
-    .tab-content{
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 40px;
-        .tab-pane{
-            .content-container{
-                
-            }
-        }
-    }
-  }
 }
-
-
 
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */

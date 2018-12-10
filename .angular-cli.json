@@ -25,7 +25,8 @@
         "../node_modules/primeng/resources/primeng.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "assets/fonts/theme.fonts.scss",
-        "styles.scss"
+        "styles.scss",
+        "app/app.style.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

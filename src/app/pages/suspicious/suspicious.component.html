@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid suspicious-component breadcrumb">
     <nav class="nav-breadcrumb" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">แจ้งพบสัตว์</li>
@@ -8,37 +8,133 @@
 
     <div class="container-body">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-suspicious-card">
-                <div class="card-body tab-suspicious-card-body">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-component-card">
+                <div class="card-body tab-component-card-body">
                     <div class="tab-body">
                         <ul class="nav text-center" role="tablist">
-                            <li class="nav-item tab-item tab-header" [ngClass]="tab === 'suspicious-list' ? 'tab-active' : ''">
+                            <li class="nav-item tab-item tab-header">
+                                <span class="nav-link" href="#search-group" role="tab" data-toggle="tab">ค้นหาข้อมูล</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="search-group">
+                            <form class="form-content mt-3" name="searchForm" [formGroup]="searchForm">
+                                <div class="content-container content-body-form">
+                                    <div class="card-body content-card-body content-data-search">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body">
+                                                <!-- Row 1 -->
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-group-panel form-group-body-panel">  
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="notifierName" class="form-label">ชื่อ-นามสกุล ผู้แจ้ง</label>
+                                                                    <input type="text" formControlName="notifierName" class="form-control" id="notifierName" placeholder="ชื่อ-นามสกุล ผู้แจ้ง">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="notifierMobileNumber" class="form-label">เบอร์โทรศัพท์ ผู้แจ้ง</label>
+                                                                    <input type="text" formControlName="notifierMobileNumber" class="form-control" id="notifierMobileNumber" placeholder="เบอร์โทรศัพท์ ผู้แจ้ง">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="startDate" class="form-label">ตั้งแต่วันที่</label>
+                                                                    <p-calendar [locale]="lacaleTH" formControlName="startDate" [maxDate]="searchForm.controls['endDate'].value"  placeholder="ตั้งแต่วันที่" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="startDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="endDate" class="form-label">ถึงวันที่</label>
+                                                                    <p-calendar [locale]="lacaleTH" formControlName="endDate" [minDate]="searchForm.controls['startDate'].value"  placeholder="ถึงวันที่" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="endDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="animalCategory" class="form-label">ประเภทสัตว์</label>
+                                                                    <p-dropdown formControlName="animalCategory" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalCategory"></p-dropdown>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="provinceNotifier" class="form-label">จังหวัด</label>
+                                                                    <p-dropdown formControlName="provinceNotifier" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="provinceNotifier"></p-dropdown>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="districtNotifier" class="form-label">อำเภอ</label>
+                                                                    <p-dropdown formControlName="districtNotifier" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="districtNotifier"></p-dropdown>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                <div class="form-group clear-fix">
+                                                                    <label for="subDistrictNotifier" class="form-label">ตำบล</label>
+                                                                    <p-dropdown formControlName="subDistrictNotifier" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrictNotifier"></p-dropdown>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Row 1 -->
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-group-panel form-group-footer-panel">  
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+                                                                <div class="form-group clear-fix">
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-button-panel one-btn button-panel">  
+                                                                            <button type="submit" class="btn btn-block btn-light btn-search">ค้นหาข้อมูล</button>
+
+                                                                            <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item tab-header">
                                 <span class="nav-link" href="#suspicious-list" role="tab" data-toggle="tab" (click)="tabSelected('suspicious-list')">ข้อมูลสัตว์ต้องสงสัย</span>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="suspicious-list">
-                            <div class="content-container">
-                                <div class="card-body suspicious-card-body">
+                            <div class="content-container content-body-form">
+                                <div class="card-body content-card-body content-data-grid">
                                     <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel"> 
-                                            <div class="form-group-panel clear-fix">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body"> 
+                                            <div class="content-group-panel clear-fix">
                                                 <div class="row">
                                                     <div class="col-12 col-sm-12 col-md-12 col-lg-3 searchbar">
-                                                        <button type="submit" class="btn btn-block btn-light btn-insert-animal-info" (click)="ManageAnimalSuspicious()">
+                                                        
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar button-panel"> 
+                                                        <button type="submit" class="btn btn-block btn-light btn-display-dialog-add-content" (click)="ManageAnimalSuspicious()">
                                                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูลสัตว์ต้องสงสัย
                                                         </button>
                                                     </div>
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar text-box-panel"> 
-                                                        <div class="form-group clear-fix">
-                                                            <label for="filterAnimal" class="form-label sr-only">เลือกประเภทของสัตว์</label>
-                                                            <p-dropdown placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-dropdown-filter" selectId="filterAnimal"></p-dropdown>
-                                                        </div>  
-                                                    </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 data-table-group">  
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-data-table-group">  
                                                         <p-table [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
                                                             <ng-template pTemplate="caption">
                                                                 ข้อมูลสัตว์ต้องสงสัย
@@ -47,9 +143,8 @@
                                                                 <tr>
                                                                     <th>ลำดับ</th>
                                                                     <th>วันที่แจ้งพบสัตว์</th>
-                                                                    <th>สถานที่พบสัตว์</th>
-                                                                    <th>ชื่อ/การติดต่อ ผู้แจ้ง</th>
                                                                     <th>ประเภท/ลักษณะ สัตว์</th>
+                                                                    <th>สถานที่พบสัตว์</th>
                                                                     <th>ลักษณะอาการ</th>
                                                                     <th>สถานะ</th>
                                                                     <th>จัดการ</th>
@@ -64,13 +159,10 @@
                                                                         <span class="ui-column-title">วันที่แจ้งพบสัตว์</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="ui-column-title">สถานที่พบสัตว์</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="ui-column-title">ชื่อ/การติดต่อ ผู้แจ้ง</span>
-                                                                    </td>
-                                                                    <td>
                                                                         <span class="ui-column-title">ประเภท/ลักษณะ สัตว์</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">สถานที่พบสัตว์</span>
                                                                     </td>
                                                                     <td>
                                                                         <span class="ui-column-title">ลักษณะอาการ</span>
@@ -85,7 +177,7 @@
                                                             </ng-template>
                                                             <ng-template pTemplate="emptymessage">
                                                                 <tr>
-                                                                    <td colspan="8" class="emptymessage">
+                                                                    <td colspan="7" class="emptymessage">
                                                                         ไม่มีรายการ
                                                                     </td>
                                                                 </tr>

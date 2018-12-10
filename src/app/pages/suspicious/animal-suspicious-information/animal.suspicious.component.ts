@@ -103,15 +103,12 @@ export class AnimalSuspiciousComponent implements OnInit {
     }
 
     handleFileInput(file) {
-      debugger;
     }
 
     clearFileInput() {
-      debugger;
     }
 
     removeFileInput(file) {
-      debugger;
     }
 
     duplicateAddress(event) {

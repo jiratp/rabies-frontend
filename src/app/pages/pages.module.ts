@@ -11,17 +11,25 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
+import { StepsModule } from 'primeng/steps';
+import { MenuItem } from 'primeng/api';
 
 import { EsriMapComponent } from './../components/esri-map/esri-map.component';
 
 import { HomeComponent } from './home/home.component';
 import { PagesComponent } from './pages.component';
 
-import { InformationComponent } from './information/information.component';
 import { AnimalInfomationComponent } from './animal-information/animal.information.component';
 
-// import { ViewInformationComponent } from './information/modals/view-information/view-information.component';
-// import { AddEditInformationComponent } from './information/modals/add-edit-information/add-edit-information.component';
+
+import { IndividualRegisterComponent } from './information-register/individual-register/individual.register.component';
+import { IndividualPetRegisterComponent } from './information-register/individual-register/pet/individual.pet.register.component';
+
+import { ClinicRegisterComponent } from './information-register/clinic-register/clinic.register.component';
+import { ClinicIndividualRegisterComponent } from './information-register/clinic-register/individual/clinic.individual.register.component';
+import { ClinicPetRegisterComponent } from './information-register/clinic-register/pet/clinic.pet.register.component';
+
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -47,8 +55,6 @@ import { NoOwnerInformationListComponent } from './survey-no-owner/no-owner-info
 import { NoOwnerInformationComponent } from './survey-no-owner/no-owner-information/noowner.information.component';
 
 import { SurveyAnimalInformationComponent } from './survey-no-owner/survey-animal-information/survey.animal.information.component';
-import { SurveyAnimalSuspiciousComponent } from './survey-no-owner/survey-animal-suspicious/survey.animal.suspicious.component';
-
 /******** End Survey ****** */
 
 /******** Suspicious ****** */
@@ -61,13 +67,22 @@ import { ReportHasOwnerComponent } from './report-has-owner/report.hasowner.comp
 import { ReportNoOwnerComponent } from './report-no-owner/report.noowner.component';
 
 
-import { SimpleDashboardComponent } from './animal-simple-dashboard/simple.dashboard.component';
-import { SimpleAnimalListComponent } from './animal-simple-list/simple.animallist.component';
-
-import { LaboratoryDashboardComponent } from './laboratory-dashboard/laboratory.dashboard.component';
-import { LaboratorySimplelistComponent } from './laboratory-simple-list/laboratory.simplelist.component';
+import { SampleListComponent } from './animal-sample/sample-list/sample.list.component';
+import { SampleFormComponent } from './animal-sample/sample-form/sample.form.component';
 
 import { DialogAlertComponent } from './../components/dialog-alert/dialog.alert.component';
+
+
+/******** Setting ****** */
+import { UserManagementComponent } from './setting/user-management/user.management.component';
+import { PermissionManagementComponent } from './setting/permission-management/permission.management.component';
+import { AccessTransactionComponent } from './setting/access/transaction/access.transaction.component';
+import { RegionManagementComponent } from './setting/region-management/region.management.component';
+import { ProvinceManagementComponent } from './setting/province-management/province.management.component';
+import { DistrictManagementComponent } from './setting/district-management/district.management.component';
+import { SubdistrictManagementComponent } from './setting/subdistrict-management/subdistrict.management.component';
+import { DepartmentManagementComponent } from './setting/department-management/department.management.component';
+
 
 
 const routes: Routes = [
@@ -83,10 +98,6 @@ const routes: Routes = [
             {
                 path: 'home',
                 component: HomeComponent
-            },
-            {
-                path: 'information',
-                component: InformationComponent
             },
             {
                 path: 'login',
@@ -165,21 +176,67 @@ const routes: Routes = [
                 component: ReportNoOwnerComponent
             },
             {
-                path: 'simple/dashboard',
-                component: SimpleDashboardComponent
+                path: 'sample/animal-sample-list',
+                component: SampleListComponent
             },
             {
-                path: 'simple/animal-simple-list',
-                component: SimpleAnimalListComponent
+                path: 'sample/animal-sample-form',
+                component: SampleFormComponent
             },
             {
-                path: 'laboratory/dashboard',
-                component: LaboratoryDashboardComponent
+                path: 'information/individual',
+                component: IndividualRegisterComponent
             },
             {
-                path: 'laboratory/laboratory-simple-list',
-                component: LaboratorySimplelistComponent
-            }
+                path: 'information/clinic',
+                component: ClinicRegisterComponent
+            },
+            {
+                path: 'information/clinic/individual',
+                component: ClinicIndividualRegisterComponent
+            },
+            {
+                path: 'information/clinic/individual/register',
+                component: ClinicPetRegisterComponent
+            },
+            {
+                path: 'information/individual/register',
+                component: IndividualPetRegisterComponent
+            },
+
+//
+            {
+                path: 'setting/user-management',
+                component: UserManagementComponent
+            },
+            {
+                path: 'setting/permission-management',
+                component: PermissionManagementComponent
+            },
+            {
+                path: 'setting/access-transaction',
+                component: AccessTransactionComponent
+            },
+            {
+                path: 'setting/region-management',
+                component: RegionManagementComponent
+            },
+            {
+                path: 'setting/province-management',
+                component: ProvinceManagementComponent
+            },
+            {
+                path: 'setting/district-management',
+                component: DistrictManagementComponent
+            },
+            {
+                path: 'setting/subdistrict-management',
+                component: SubdistrictManagementComponent
+            },
+            {
+                path: 'setting/department-management',
+                component: DepartmentManagementComponent
+            },
         ]
     }
 ];
@@ -201,10 +258,8 @@ const routes: Routes = [
         ReportDashboardComponent,
         ReportHasOwnerComponent,
         ReportNoOwnerComponent,
-        SimpleDashboardComponent,
-        SimpleAnimalListComponent,
-        LaboratoryDashboardComponent,
-        LaboratorySimplelistComponent,
+        SampleListComponent,
+        SampleFormComponent,
         ProfileComponent,
         NewsListComponent,
         NewsDetailComponent,
@@ -213,11 +268,23 @@ const routes: Routes = [
         RenewPasswordComponent,
         DialogAlertComponent,
         EsriMapComponent,
-        InformationComponent,
         AnimalInfomationComponent,
         SurveyAnimalInformationComponent,
-        SurveyAnimalSuspiciousComponent,
         AnimalSuspiciousComponent,
+        IndividualRegisterComponent,
+        ClinicRegisterComponent,
+        IndividualPetRegisterComponent,
+        ClinicIndividualRegisterComponent,
+        ClinicPetRegisterComponent,
+
+        UserManagementComponent,
+        PermissionManagementComponent,
+        AccessTransactionComponent,
+        RegionManagementComponent,
+        ProvinceManagementComponent,
+        DistrictManagementComponent,
+        SubdistrictManagementComponent,
+        DepartmentManagementComponent,
     ],
     imports: [
         BrowserModule,
@@ -229,6 +296,7 @@ const routes: Routes = [
         CalendarModule,
         InputTextareaModule,
         FileUploadModule,
+        StepsModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot(routes)
@@ -244,18 +312,9 @@ const routes: Routes = [
         EsriMapComponent,
         AnimalInfomationComponent,
         SurveyAnimalInformationComponent,
-        SurveyAnimalSuspiciousComponent,
         AnimalSuspiciousComponent,
     ]
 })
 
-
-/*
-        ChangeMapComponent
-
-        ViewInformationComponent,
-        AddEditInformationComponent,
-    ]
-*/
 
 export class PagesModule { }

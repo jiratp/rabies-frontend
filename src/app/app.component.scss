@@ -1,22 +1,6 @@
 @import "themes/styles/variables";
 
-* {
-    /* personal preference */
-    margin: 0;
-    padding: 0;
-}
 
-html, body{
-    font-family: $ff-content-narmal;
-    background: $body-bg;
-    font-size: 16px;
-    font-weight: 400;
-    color: #4d545a;
-    overflow-x: hidden;
-    line-height: 1.42857143;
-    height: 100%;
-    width: 100%;
-}
 
 #wrapper{
     background: $wrapper-bg;
@@ -47,23 +31,14 @@ html, body{
     }
 }
 
-.clear-fix{
-    clear: both;
-}
-  
-.item-center {
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    display: flex;
-}
-
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 /* Portrait and Landscape */
 @media only screen 
   and (min-width: 320px) 
   and (max-width: 667px) { 
+     
+    // PAGE MAIN
     #wrapper{
         background: $wrapper-bg;
         min-height: 100%;
@@ -85,6 +60,8 @@ html, body{
 @media only screen 
   and (min-width: 414px) 
   and (max-width: 736px) { 
+    
+    // PAGE MAIN
     #wrapper{
         background: $wrapper-bg;
         min-height: 100%;
@@ -105,6 +82,8 @@ html, body{
 @media only screen 
   and (min-width: 768px) 
   and (max-width: 1024px) {
+
+    // PAGE MAIN
     #wrapper{
         background: $wrapper-bg;
         min-height: 100%;
@@ -126,6 +105,8 @@ html, body{
 @media only screen 
   and (min-width: 834px) 
   and (max-width: 1112px) {
+
+    // PAGE MAIN
     #wrapper{
         background: $wrapper-bg;
         min-height: 100%;
@@ -148,6 +129,8 @@ html, body{
 @media only screen 
   and (min-width: 1024px) 
   and (max-width: 1366px) {
+
+    // PAGE MAIN
     #wrapper{
         background: $wrapper-bg;
         min-height: 100%;

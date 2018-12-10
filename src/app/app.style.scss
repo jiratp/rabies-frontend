@@ -1,0 +1,773 @@
+@import "./themes/styles/variables";
+
+/*********************************  SETTING *************************/
+* {
+    /* personal preference */
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    font-family: $ff-content-narmal;
+    background: $body-bg;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4d545a;
+    overflow-x: hidden;
+    line-height: 1.42857143;
+    height: 100%;
+    width: 100%;
+}
+
+
+/******** GLOBAL SETTING *******/
+.clear-fix{
+    clear: both;
+}
+  
+.item-center {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+}
+
+.mh-card {
+    min-height: 162px;
+}
+
+.color-white {
+    color: white;
+}
+
+.bg-success {
+    background: #39B062 !important;
+}
+
+.tab-active {
+    border-bottom: 5px solid #39B062;
+}
+
+.btn-custom {
+    background: #F88957;
+}
+
+.btn-success {
+    background: #63CDAA !important;
+    border-color: #63CDAA !important;
+}
+
+.btn-info {
+    background: #92C8E9 !important;
+    border-color: #92C8E9 !important;
+}
+
+.btn-warning {
+    background: #EDC936 !important;
+    border-color: #EDC936 !important;
+}
+
+.btn-danger {
+    background: #F05241 !important;
+    border-color: #F05241 !important;
+}
+
+.tab-active {
+    border-bottom: 5px solid #39B062;
+}
+
+/********************** NAV BREADCRUMB **********************/
+.container-fluid{
+    &.no-breadcrumb{
+        padding-top: $layout-page-top;
+    }
+
+    .nav-breadcrumb{
+        width:100%;
+        margin-bottom: 20px;
+        .breadcrumb{
+            
+          padding: 0px;
+          margin: 0px;
+          padding-top: 10px;
+          color: rgba(0,0,0,.4);
+          font-size: $layout-page-breadcrum-fontsize;
+          font-family: $ff-title-med;
+          .breadcrumb-item{
+            &:not(:first-child){
+              &::before{
+                content: ">";
+              }
+            }
+
+            &.breadcrumb-link{
+                cursor: pointer;
+            }
+      
+            &.active{
+              color: $main-color;
+              &::before{
+                color: $main-color;
+              }
+            }
+          }
+        }
+    }
+}
+
+/********************** MODAL CUSTOM WIDTH **********************/
+.modal-dialog{
+    &.modal-lg{
+        &.custom-width{
+            max-width: 80%;
+        }
+    }
+
+
+    .modal-content{
+        .modal-header{
+            
+        }
+
+        .modal-body{
+            .dialog-content-body-form{
+                .dialog-card-body-form{
+                    padding-top: 0px;
+                    border: none;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+/********************** END MODAL CUSTOM WIDTH **********************/
+
+/********************** TAB **********************/
+.card{
+    background-color: unset !important;
+    border: unset !important;
+    border-radius: unset !important;
+
+    &.tab-component-card{
+        padding-left: 15px;
+        width: 100%;
+        .card-body {
+            background-color: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, .125);
+            box-shadow: 1px 3px 5px 1px rgba(0,0,0,.05);
+            border-radius: 4px;
+            margin-bottom: $layout-card-margin-bottom;
+
+            &.tab-component-card-body{
+                padding-top: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+
+                .tab-body{
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    .nav{
+                        border-bottom: 1px solid #DDDDDD;
+                        .nav-item{
+                            &.tab-header{
+                                padding-left: 0px;
+                                padding-right: 10px;
+                                padding-top: 13px;
+                                padding-bottom: 8px;
+
+                                .nav-link{
+                                    padding-left: 0px;
+                                    &.active{
+                                        color: #39B062;
+                                    }
+                                }
+                            }
+
+                            &.tab-no-header{
+                                padding-left: 20px;
+                                padding-right: 20px;
+                                padding-top: 13px;
+                                padding-bottom: 8px;
+
+                                .nav-link{
+                                    padding-left: 15px;
+                                    &.active{
+                                        color: #39B062;
+                                    }
+                                }
+                            }
+            
+                            cursor: pointer;
+                            .nav-link{
+                                font-family: $ff-title-med;
+                                font-size: 19px;
+                                &.active{
+                                    color: #39B062;
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+    
+                .tab-content{
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: 20px;
+                    .tab-pane{
+                        .content-body-form{
+                            .content-card-body{
+                                &.content-data-search{
+                                    border: none;
+                                    -webkit-box-shadow: none;
+                                    box-shadow: none;
+                                    padding-top: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    margin-bottom: 0px;
+                                    .content-body{
+                                        padding-bottom: 0px !important;
+                                    }
+                                }
+
+                                &.content-data-grid{
+                                    border: none;
+                                    -webkit-box-shadow: none;
+                                    box-shadow: none;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/********************** END TAB **********************/
+
+/********************** START DATATABLE **********************/
+.content-data-table-group{
+    .ui-table{
+        .ui-table-caption{
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background: $datatable-caption-bg;
+            font-size: $datatable-caption-font-size;
+            font-family: $datatable-caption-font-family;
+            color: $datatable-caption-font-color;
+        }
+
+        .ui-table-wrapper{
+            .ui-table-thead{
+                th{
+                    text-align: center;
+                    background: $datatable-thead-bg;
+                    font-size: $datatable-thead-font-size;
+                    font-family: $datatable-thead-font-family;
+                    color: $datatable-thead-font-color;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                }
+            }
+
+            .ui-table-tbody{
+                tr{
+                    td{
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        text-align: left;
+                        font-size: $datatable-tbody-font-size;
+                        font-family: $datatable-tbody-font-family;
+                        color: $datatable-tbody-font-color;
+
+                        &.emptymessage{
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            text-align: center;
+                            font-size: $datatable-tbody-font-size;
+                            font-family: $datatable-tbody-font-family;
+                            color: $datatable-tbody-font-color;
+                        }
+
+                        &.col-btn-group{
+                          text-align: center;
+                          .btn-content{
+                            cursor: pointer;
+                            display: inline-block;
+                          }
+
+                          .btn-icon{
+                            font-size:22px;
+                          }
+                        }
+                    }
+                }
+            }
+        }
+
+        .ui-paginator-bottom{
+            &.ui-paginator{
+                text-align: right;
+                .ui-paginator-element{
+                    font-size: $datatable-tbody-font-size;
+                    font-family: $datatable-tbody-font-family;
+                    color: $datatable-tbody-font-color;
+                }
+            }
+        }
+    }
+}
+/********************** END DATATABLE **********************/
+
+/********************** START LAYOUT SEARCH **********************/
+.content-body{
+    padding-bottom: 30px !important;
+    .content-group-panel{
+        margin-bottom: 25px;
+        .searchbar{
+            &.form-component{
+                text-align: left;
+                padding-bottom: 0px !important;
+                .form-group{
+                    width: auto;
+                    float: right;
+                    padding-top: 4px;
+                    .form-control{
+                        width: 35%;
+                    }
+                }
+            }
+
+            &.button-panel{
+                padding-top: 0px;
+                padding-left: 0px;
+                padding-right: 15px;
+            }
+        }
+
+        &.form-group-footer-panel{
+            margin-bottom: 0px;
+        }
+    }
+}
+/********************** END LAYOUT SEARCH  **********************/
+
+/********************** START BUTTON PANEL  **********************/
+.button-panel{
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 30px;
+    button{
+        display: inline-block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: $ff-title-narmal;
+        font-size: $form-control-size;
+
+        -webkit-box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+
+        i{
+            margin-right: 5px !important;
+        }
+
+        &.btn-block{
+            width: auto;
+            margin-top: 0px;
+        }
+
+        &.btn-light{
+            border-color: #EEEEEE !important;
+
+            &.btn-display-dialog-add-content{
+                margin-left: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-family: $ff-title-narmal;
+                font-size: $form-control-size;
+  
+                -webkit-box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.05);
+                box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.05);
+                border-radius: 4px;
+  
+                background: rgba(57, 176, 99, 1);
+                color: #FFFFFF;
+                float: left;
+            }
+
+            &.btn-register{
+                background: rgba(57, 176, 99, 1);
+                color: #FFFFFF;
+            } 
+
+            &.btn-forget-password{
+                background: rgba(57, 176, 99, 1);
+                color: #FFFFFF; 
+            }
+
+            &.btn-renew-password{
+                background: rgba(57, 176, 99, 1);
+                color: #FFFFFF; 
+            }
+
+            &.btn-search{
+                background: rgba(57, 176, 99, 1);
+                color: #FFFFFF; 
+            }
+
+            &.btn-save{
+                background: rgba(57, 176, 99, 1);
+                color: #FFFFFF; 
+            }
+
+            &.btn-cancel{
+                background: #EEEEEE;
+                color: #222222;
+            }
+
+            &:hover{
+                background: rgba(57, 176, 99, 0.7);
+                color: #FFFFFF;
+            }
+        }
+    }
+}
+/********************** END BUTTON PANEL  **********************/
+
+
+/********************** START FORM GROUP FIELDSET  **********************/
+.form-group-fieldset{
+    margin-bottom: 28px;
+    .form-group-title{
+        border-right: 3px solid #EEEEEE;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        h3{
+            font-family: $form-title-font-family;
+            font-size: $form-title-font-size;
+        }
+    }
+}
+
+/********************** END FORM GROUP FIELDSET  **********************/
+
+
+
+/********************** START FORM  **********************/
+.form-component{
+    .form-group{
+        width: 100%;
+        display: inline-block;
+        padding-top:0px;
+        
+        &.no-header-field{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .ui-chkbox-label{
+            font-family: $form-body-font-family;
+            font-size: $form-body-font-size;
+            color: $form-body-font-color;
+            line-height: $form-line-height;
+        }
+
+        .form-label{
+            font-family: $form-body-font-family;
+            font-size: $form-body-font-size;
+            color: $form-body-font-color;
+            line-height: $form-line-height;
+        }
+
+        .checkbox-group{
+            p-checkbox{
+                display: inline-block;
+                width: 32%;
+                margin-bottom: 10px;
+            }
+        }
+
+        .form-button-panel{
+            padding-bottom: 15px;
+            button{
+                width: 50%;
+            }
+
+            &.one-btn{
+                &.button-panel{
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    text-align: center;
+
+                    button{
+                        width: 20%;
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+            &.two-btn{
+                &:nth-child(1){
+                    button{
+                       float: right;
+                    }
+                }
+
+                &:nth-child(2){
+                    button{
+                       float: left;
+                    }
+                }
+            }
+        }
+
+        .form-control{
+            font-family: $ff-title-narmal;
+            font-size: $form-body-font-size;
+            color: $form-body-font-color;
+            height: auto;
+            line-height: 26px;
+
+            // text area
+            &.custom-textarea{
+                height: 100px;
+                width: 100%;
+                float: none;
+                text-align: left;
+                margin-bottom: 0px;
+                padding: 15px;
+                border: 1px solid #ced4da;
+                outline:0px !important;
+
+                &:hover{
+                    border: 1px solid #ced4da;
+                    outline:0px !important;
+                    -webkit-appearance:none;
+                }
+            }
+
+            // drop down
+            &.form-dropdown-panel{
+                width: 100%;
+                padding-left: 10px;
+                border-radius: 4px;
+                border: 1px solid #ced4da;
+      
+                .form-dropdown-filter{
+                    -webkit-box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.05);
+                    box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.05);
+                }
+      
+                &.form-control{
+                    width: 100% !important;
+                    padding: 0px;
+                    padding-left: 4px;
+                    padding-top: 3px;
+                }
+      
+                .ui-dropdown-label{
+                    font-family: $ff-title-narmal;
+                    font-size: $form-body-font-size;
+                    color: $form-body-font-color;
+                    
+                }
+      
+                .ui-dropdown-items-wrapper{
+                    .ui-dropdown-items{
+                        .ui-dropdown-item{
+                            font-family: $ff-title-narmal;
+                            font-size: $form-control-size;
+                        }
+                    }
+                }
+            }
+
+            // upload
+            &.content-upload-form{
+                padding: 0px;
+                height: auto;
+                border: none;
+                border-radius: .25rem;
+                -webkit-transition: none;
+                transition: none;
+                
+                .ui-fileupload-buttonbar{
+                    .ui-button{
+                        font-family: $ff-title-narmal;
+                        font-size: 14px;
+                        
+                        &:nth-child(2){
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+
+            // calendar
+            &.form-calendar-panel{
+                border: none;
+
+                .form-calendar-text{
+                  padding-left: 10px;
+                  border-radius: 4px;
+                  border: 1px solid #ced4da;
+                  width: 100% !important;
+
+                  font-family: $ff-title-narmal;
+                  font-size: $form-body-font-size;
+                  color: $form-body-font-color;
+
+                  line-height: 26px;
+                }
+
+                .ui-calendar-button{
+                  margin-left: -2.357em;
+                }
+
+                &.form-control{
+                  width: 100% !important;
+                  height: 100%;
+                  padding: 0px;
+                  padding-left: 0px;
+                  padding-top: 0px;
+                }
+
+                .form-calendar-group{
+                  .ui-datepicker-group{
+                    .ui-datepicker-header{
+                      font-family: $ff-title-narmal;
+                      color: $form-body-font-color;
+                    }
+
+                    .ui-datepicker-calendar-container{
+                      .ui-datepicker-calendar{
+                        thead{
+                          font-family: $ff-title-med;
+                        }
+
+                        tbody{
+                          font-family: $ff-title-narmal;
+                        }
+                        
+                        color: $form-body-font-color;
+                      }
+                    }
+                  }
+                }
+              }
+
+            &.form-control-radio{
+                cursor: pointer;
+                text-align: left;
+    
+                .ui-radiobutton-box{
+                    &.ui-state-active{
+                        border-color: #39B062 !important;
+                        background-color: #39B062 !important;
+                    }
+                }
+            }
+    
+            &.form-control-radio-label{
+                cursor: pointer;
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+/********************** END FORM  **********************/
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    
+    .container-body-form{
+        // FORM
+        .form-text-box-panel{
+            padding-left: 20px;
+            padding-right: 20px;
+
+            // HEADER 
+            .form-header{
+                h3{
+                    font-size: $form-header-font-size-responsive;
+                }
+            }
+
+            .form-group{
+                &.label-inline{
+
+                    // TITLE 
+                    .form-label{
+                        &::after{
+                          content: "";
+                        }
+        
+                        width: 100%;
+                        float: none;
+                        text-align: left;
+                    }
+        
+                    &.form-control{
+                        border: none;
+                    }
+        
+                    // BODY
+                    .form-control{
+                        width: 100%;
+                        float: none;
+                        text-align: left;
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+    
+        // BUTTON
+        .button-panel{
+            margin-bottom: 10px;
+            padding-left: 34px;
+            padding-right: 34px;
+        }
+    }
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+
+}

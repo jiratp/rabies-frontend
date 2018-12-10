@@ -25,16 +25,6 @@ export class SurveyAnimalInformationComponent implements OnInit {
     SAIForm: FormGroup;
     titleModal: string;
 
-
-    animalRegisterShow: SelectItem[];
-    masterProvinceShow: SelectItem[];
-    masterDistrictShow: SelectItem[];
-    masterSubDistrictShow: SelectItem[];
-    masterPlaceIDShow: SelectItem[];
-    masterSupportIDShow: SelectItem[];
-    masterAnimalRegisterShow: SelectItem[];
-
-
     constructor(
       public modalRef: BsModalRef,
       private ModalService: BsModalService,
@@ -54,16 +44,19 @@ export class SurveyAnimalInformationComponent implements OnInit {
     }
 
     setupFormGroup() {
-      this.SAIForm = new FormGroup({});
+      this.SAIForm = new FormGroup({
+        animalCategory: new FormControl('', Validators.required),
+        animalAmount: new FormControl('', Validators.required),
+      });
     }
 
     setupModalHeader() {
       switch (this.actionForm) {
         case 'add':
-          this.titleModal = 'เพิ่มข้อมูลการสำรวจ';
+          this.titleModal = 'เพิ่มข้อมูลสัตว์ไม่มีเจ้าของ';
           break;
         default:
-          this.titleModal = 'จัดการข้อมูลสัตว์';
+          this.titleModal = 'จัดการข้อมูลสัตว์ไม่มีเจ้าของ';
       }
     }
     modalClose() {

@@ -1,18 +1,14 @@
-import { Component, OnInit, Output, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LazyLoadEvent } from 'primeng/primeng';
-import { SelectItem } from 'primeng/api';
 
-import { MasterDropdownStatic } from './../../../model/master.dropdown.model';
+import * as moment from 'moment';
 
 import { ConfigService } from './../../../core/config.service';
 
 import { SurveyAnimalInformationComponent } from './../survey-animal-information/survey.animal.information.component';
-import { SurveyAnimalSuspiciousComponent } from './../survey-animal-suspicious/survey.animal.suspicious.component';
-
-
 
 @Component({
   selector: 'app-noowner-information',
@@ -21,95 +17,98 @@ import { SurveyAnimalSuspiciousComponent } from './../survey-animal-suspicious/s
   encapsulation: ViewEncapsulation.None
 })
 export class NoOwnerInformationComponent implements OnInit {
+  actionForm: string;
+
   modalSAInRef: BsModalRef;
   modalSASnRef: BsModalRef;
 
-  informationForm: FormGroup;
-  tab: string;
+  SVNoOwnerForm: FormGroup;
+  titleModal: string;
+  dateTimeFormat: string;
+  dateNow: string = moment().format('DD/MM/YYYY');
+  lacaleTH: any;
+
   loading: Boolean;
   totalRecords: number;
-
-  animalRegisterShow: SelectItem[];
-  masterProvinceShow: SelectItem[];
-  masterDistrictShow: SelectItem[];
-  masterSubDistrictShow: SelectItem[];
-  masterPlaceIDShow: SelectItem[];
-  masterSupportIDShow: SelectItem[];
-  masterAnimalRegisterShow: SelectItem[];
+  uploadedFiles: any[] = [];
+  fileToUpload: File = null;
 
   constructor(
-    private router: Router,
     private ModalService: BsModalService,
+    private router: Router,
+    private route: ActivatedRoute,
     private themeConfig: ConfigService
   ) { }
 
   ngOnInit() {
-    this.informationForm = new FormGroup({
-        customerType: new FormControl('corporation-customer'),
-    });
+    this.actionForm = this.route.snapshot.queryParams.action;
 
-
-    this.configMasterData();
-
-    /****** Layout ******/
-    this.tab = 'surveyer-info';
     /****** dataTable ******/
     this.totalRecords = 0;
     this.loading = true;
+
+    this.setupHeader();
+    this.setupFormGroup();
+    this.setupCalendar();
   }
 
-  configMasterData() {
-    this.animalRegisterShow = [
-        {label: 'Select City', value: null},
-        {label: 'New York', value: {id: 1, name: 'New York', code: 'NY'}},
-        {label: 'Rome', value: {id: 2, name: 'Rome', code: 'RM'}},
-        {label: 'London', value: {id: 3, name: 'London', code: 'LDN'}},
-        {label: 'Istanbul', value: {id: 4, name: 'Istanbul', code: 'IST'}},
-        {label: 'Paris', value: {id: 5, name: 'Paris', code: 'PRS'}}
-    ];
+  setupHeader() {
+    switch (this.actionForm) {
+        case 'add':
+            this.titleModal = 'เพิ่มข้อมูลสัตว์ไม่มีเจ้าของ';
+            break;
+        default:
+            this.titleModal = 'จัดการข้อมูลสัตว์ไม่มีเจ้าของ';
+    }
+  }
 
-    this.masterAnimalRegisterShow = this.animalRegisterShow;
-    this.masterProvinceShow = this.animalRegisterShow;
-    this.masterDistrictShow = this.animalRegisterShow;
-    this.masterSubDistrictShow = this.animalRegisterShow;
-    this.masterPlaceIDShow = this.animalRegisterShow;
-    this.masterSupportIDShow = this.animalRegisterShow;
+  setupCalendar() {
+    this.dateTimeFormat = this.themeConfig.defaultSettings.dateTimeFormat;
+    this.lacaleTH = this.themeConfig.defaultSettings.lacaleTH;
+  }
 
+  setupFormGroup() {
+
+      this.SVNoOwnerForm = new FormGroup({
+        surveyDate: new FormControl(this.dateNow, Validators.required),
+        surveyerName: new FormControl('', Validators.required),
+        surveyerIDCard: new FormControl('', Validators.required),
+        surveyerPhoneNumber: new FormControl('', Validators.required),
+        surveyerDepartmentName: new FormControl(''),
+        provinceSurvey: new FormControl('', Validators.required),
+        districtSurvey: new FormControl('', Validators.required),
+        subDistrictSurvey: new FormControl('', Validators.required),
+        areaLocation: new FormControl('', Validators.required),
+        moo: new FormControl(''),
+        soi: new FormControl(''),
+        street: new FormControl(''),
+        province: new FormControl('', Validators.required),
+        district: new FormControl('', Validators.required),
+        subDistrict: new FormControl('', Validators.required),
+        title: new FormControl('', Validators.required),
+        fullname: new FormControl('', Validators.required),
+        mobileNumber: new FormControl('', Validators.required),
+      });
   }
 
   LoadContentLazy(event: LazyLoadEvent) {
-    this.loading = true;
+      this.loading = true;
 
-    setTimeout(() => {
-      this.loading = false;
-    }, 1000);
-  }
-
-  tabSelected(tab) {
-    this.tab = tab;
-  }
-
-  ManageSurveyAnimalSuspicious() {
-    const initialState = { actionForm: 'add'};
-    const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
-    // dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
-    this.modalSASnRef = this.ModalService.show(
-      SurveyAnimalSuspiciousComponent,
-      Object.assign({}, dialogFormSetting, { initialState })
-    );
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
   }
 
   ManageSurveyAnimalInformation() {
     const initialState = { actionForm: 'add'};
     const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
-    // dialogFormSetting.class = 'modal-lg modal-dialog-centered custom-width';
     this.modalSAInRef = this.ModalService.show(
       SurveyAnimalInformationComponent,
       Object.assign({}, dialogFormSetting, { initialState })
     );
   }
 
-  formAnimalInformation(actionForm: string) {
-
+  breadcrumbLink (link: string) {
+    this.router.navigate([link]);
   }
 }
