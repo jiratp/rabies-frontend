@@ -1,38 +1,121 @@
 @import "../../themes/styles/variables";
 
-
 .container-fluid {
-  &.register-component{
-    width: 100%;
-    min-height: calc(100vh - 20vh);
-    padding-top: $layout-page-top;
-    padding-right: $layout-page-right;
-    padding-left: $layout-page-left;
-    padding-bottom: $layout-page-bottom;
-    margin-right: auto;
-    margin-left: auto;
-    
-    .form-register{
-      width: 100%;
-      max-width: 615px;
-      padding: 50px;
-      padding-left: 25px;
-      padding-right: 25px;
-      padding-bottom: 20px;
-      margin: 0 auto;
-      background: #FFFFFF;
-  
-      .container-body{
-        .row{
-          margin-left: 0px;
-          margin-right: 0px;
-          .register-card{
-            padding-bottom: 20px !important;
+
+
+    &.register-component{
+        width: 100%;
+        padding-right: $layout-page-right;
+        padding-left: $layout-page-left;
+        padding-bottom: $layout-page-bottom;
+        margin-right: auto;
+        margin-left: auto;
+        
+        .container-body{
+          width: 45%;
+          .row{
+            .card {
+                &.tab-component-card{
+                  .card-body {
+                    &.tab-component-card-body{
+                      width: 100%;
+                        .tab-content{
+                            .tab-pane{
+                                .content-body-form{
+                                    .content-card-body{
+                                        .content-body{
+                                            .content-group-panel{
+                                                &.form-group-body-panel{
+                                                  .row{
+                                                    .form-component{
+                                                      .form-group{
+                                                        &.label-inline{
+                                                          .form-label{
+                                                            display: inline-block;
+                                                            float: left;
+                                                            width: 25%;
+                                                            line-height: 32px;
+                                                            &:after{
+                                                              content: ' : ';
+                                                            }
+                                                          }
+
+                                                          .form-control{
+                                                            display: inline-block;
+                                                            width: 75%;
+                                                            float: left;
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+
+                                                .content-data-table-group{
+                                                    .ui-table{
+                                                        .ui-table-wrapper{
+                                                            .ui-table-thead{
+                                                                th{
+                                                                    &:nth-child(1){
+                                                                        width: 10%;
+                                                                        text-align: center;
+                                                                    }
+
+                                                                    &:nth-child(2){
+                                                                        width: 15%;
+                                                                        text-align: center;
+                                                                    }
+
+                                                                    &:nth-child(3){
+                                                                        width: 25%;
+                                                                        text-align: left;
+                                                                    }
+
+                                                                    &:nth-child(4){
+                                                                        width: 25%;
+                                                                        text-align: left;
+                                                                    }
+
+                                                                    &:nth-child(5){
+                                                                        width: 15%;
+                                                                        text-align: left;
+                                                                    }
+
+                                                                    &:nth-child(6){
+                                                                        width: 10%;
+                                                                        text-align: center;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                &.form-group-footer-panel{
+                                                  .form-component{
+                                                    .form-group{
+                                                      .form-button-panel{
+                                                        button{
+                                                          width: 40%;
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                  }
+                }
+            }
           }
         }
-      }
     }
-  }
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -42,7 +125,6 @@
   and (max-width: 667px) { 
 
     .container-fluid {
-      &.register-component{
         width: 100%;
         padding-top: $layout-page-top-sm;
         padding-right: $layout-page-right-sm;
@@ -50,7 +132,15 @@
         padding-bottom: $layout-page-bottom-sm;
         margin-right: auto;
         margin-left: auto;
-      }
+    }
+    
+    .card {
+
+    }
+
+    .card-body {
+        margin-bottom: $layout-card-margin-bottom-sm;
+
     }
 }
 
@@ -61,7 +151,6 @@
   and (max-width: 736px) { 
     
     .container-fluid {
-      &.register-component{
         width: 100%;
         padding-top: $layout-page-top-sm;
         padding-right: $layout-page-right-sm;
@@ -69,8 +158,16 @@
         padding-bottom: $layout-page-bottom-sm;
         margin-right: auto;
         margin-left: auto;
-      }
-    } 
+    }
+    
+    .card {
+
+    }
+
+    .card-body {
+        margin-bottom: $layout-card-margin-bottom-sm;
+
+    }
 }
 
 /* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */

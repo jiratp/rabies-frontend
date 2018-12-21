@@ -8,12 +8,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./forget.password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit {
-
+  forgetPasswordForm: FormGroup;
   constructor(
     private router: Router,
   ) { }
 
   ngOnInit() {
+    this.forgetPasswordForm = new FormGroup({});
   }
 
   RenewPassword() {

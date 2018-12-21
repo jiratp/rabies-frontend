@@ -74,7 +74,6 @@ export class HeaderComponent implements OnInit {
           case 'suspicious':
             this.currentPage = 'suspicious';
             break;
-
           case 'setting/user-management':
             this.currentPage = 'setting/user-management';
             break;
@@ -98,6 +97,18 @@ export class HeaderComponent implements OnInit {
             break;
           case 'setting/department-management':
             this.currentPage = 'setting/department-management';
+            break;
+          case 'login':
+            this.currentPage = 'login';
+            break;
+          case 'register':
+            this.currentPage = 'register';
+            break;
+          case 'forget-password':
+            this.currentPage = 'forget-password';
+            break;
+          case 'renew-password':
+            this.currentPage = 'renew-password';
             break;
           default:
             this.currentPage = 'home';

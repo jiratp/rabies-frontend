@@ -97,9 +97,98 @@
                 padding:0px;
         
                 .map-filter-panel{
-                    img{
-                        height: 100%;
-                        width: 100%;
+                    .mapsRefSummary{
+                        .ol-viewport{
+                            .ol-overlaycontainer-stopevent{
+                                height: 0px;
+
+                                .ol-zoom{
+                                    float: left;
+                                    left: .5em;
+
+                                    &.ol-control{
+                                        position: absolute;
+                                        background-color: rgba(255,255,255,0.4);
+                                        border-radius: 4px;
+                                        padding: 2px;
+    
+                                        top: .5em;
+    
+                                        
+    
+                                        button{
+                                            display: block;
+                                            margin: 1px;
+                                            padding: 0;
+                                            color: white;
+                                            font-size: 1.5em;
+                                            font-weight: bold;
+                                            text-decoration: none;
+                                            text-align: center;
+                                            height: 1.5em;
+                                            width: 1.5em;
+                                            line-height: .4em;
+                                            background-color: rgba(0,60,136,0.5);
+                                            border: none;
+                                            border-radius: 2px;
+                                            margin-bottom: 5px;
+                                        }
+                                    }
+                                }
+
+                                .return-home{
+                                    float: right;
+                                    right: .5em;
+
+                                    &.ol-control{
+                                        position: absolute;
+                                        background-color: rgba(255,255,255,0.4);
+                                        border-radius: 4px;
+                                        padding: 2px;
+    
+                                        top: .5em;
+    
+                                        
+    
+                                        button{
+                                            display: block;
+                                            margin: 1px;
+                                            padding: 0;
+                                            color: white;
+                                            font-size: 1.5em;
+                                            font-weight: bold;
+                                            text-decoration: none;
+                                            text-align: center;
+                                            height: 1.5em;
+                                            width: 1.5em;
+                                            line-height: .4em;
+                                            background-color: rgba(0,60,136,0.5);
+                                            border: none;
+                                            border-radius: 2px;
+                                            margin-bottom: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        
+                        /*
+                        .ol-popup {
+                            position: absolute;
+                            background-color: rgba(255, 255, 255, 0.8);
+                            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+                            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+                            padding: 0px;
+                            border-radius: 2px;
+                            border: 1px solid rgba(255, 255, 255, 0.8);
+                            bottom: 12px;
+                            left: -50px;
+                            min-width: 230px;
+                            opacity: 1;
+                            color: #000;
+                        }
+                        */
                     }
                 }
                 

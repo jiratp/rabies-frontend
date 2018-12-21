@@ -102,24 +102,32 @@
                     <li><a data-x-sig="ST-PET-02" href="setting/permission-management">สิทธิการใช้งาน</a></li>
                     <li><a data-x-sig="ST-PET-03" href="setting/access-transaction">ประวัติการใช้งานระบบ</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a data-x-sig="ST-PET-04" href="setting/region-management">เขตของปศุสัตว์</a></li>
-                    <li><a data-x-sig="ST-PET-05" href="setting/province-management">จังหวัด</a></li>
-                    <li><a data-x-sig="ST-PET-06" href="setting/district-management">อำเภอ</a></li>
-                    <li><a data-x-sig="ST-PET-07" href="setting/subdistrict-management">ตำบล</a></li>
+                    <li><a data-x-sig="ST-PET-04" href="setting/region-management">เขตปศุสัตว์</a></li>
                     <li><a data-x-sig="ST-PET-08" href="setting/department-management">หน่วยงาน</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a data-x-sig="ST-PET-09" href="#">จัดการรายการขึ้นทะเบียนสัตว์</a></li>
+                    <li><a data-x-sig="ST-PET-09" href="#">จัดการประเภทสัตว์</a></li>
+                    <li><a data-x-sig="ST-PET-09" href="#">จัดการสายพันธ์สัตว์</a></li>
                     <li><a data-x-sig="ST-PET-10" href="#">จัดการอาการผิดปกติของสัตว์</a></li>
+                    <li><a data-x-sig="ST-PET-10" href="#">จัดการวัตถุประสงค์การเก็บตัวอย่าง</a></li>
+                    <li><a data-x-sig="ST-PET-09" href="#">จัดการช่วงเวลาการขึ้นทะเบียนสัตว์</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a data-x-sig="ST-PET-11" href="#">จัดการข่าว</a></li>
-                    <li><a data-x-sig="ST-PET-12" href="#">จัดการไฟล์</a></li>
-                    <li><a data-x-sig="ST-PET-13" href="#">จัดการ VDO</a></li>
+                    <li><a data-x-sig="ST-PET-11" href="#">จัดการข่าวประชาสัมพันธ์</a></li>
+                    <li><a data-x-sig="ST-PET-12" href="#">จัดการไฟล์เอกสาร</a></li>
+                    <li><a data-x-sig="ST-PET-13" href="#">จัดการคลิปวิดีโอ</a></li>
                     <li><a data-x-sig="ST-PET-14" href="#">จัดการหมวดหมู่</a></li>
                 </ul>
             </li>
-            <li class="nav-item bg-white-menu user-access" [ngClass]="currentPage == 'login' ? 'active' : ''" (click)="navigation('login')">
+            <li class="nav-item bg-white-menu user-access" [ngClass]="
+            currentPage == 'login'
+            || currentPage == 'register'
+            || currentPage == 'forget-password'
+            || currentPage == 'renew-password' ? 'active' : ''" (click)="navigation('login')">
+
+
+
                 <img class="icon" src="./assets/images/icon-menu-7-gr.png" alt="">
                 <p>เข้าสู่ระบบ</p>
+
             </li>
         </ul>
     </div>

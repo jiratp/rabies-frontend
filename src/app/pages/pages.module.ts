@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { Routes, RouterModule } from '@angular/router';
 
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -13,6 +12,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
 import { StepsModule } from 'primeng/steps';
 import { MenuItem } from 'primeng/api';
+
+import { StorageServiceModule } from 'ngx-webstorage-service';
+import { CookieService } from 'ngx-cookie-service';
 
 import { EsriMapComponent } from './../components/esri-map/esri-map.component';
 
@@ -33,14 +35,13 @@ import { ClinicPetRegisterComponent } from './information-register/clinic-regist
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { LoginService } from '../providers/login/login.service';
+// import { LoginService } from '../providers/login/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsListComponent } from './news-list/news.list.component';
 import { NewsDetailComponent } from './news-detail/news.detail.component';
 import { ForgetPasswordComponent } from './forget-password/forget.password.component';
 import { RenewPasswordComponent } from './renew-password/renew.password.component';
 import { ChangePasswordComponent } from './change-password/change.password.component';
-// import { ChangeMapComponent } from './profile/modals/change-map/change-map.component';
 import { SuspiciousComponent } from './suspicious/suspicious.component';
 
 /******** Survey ****** */
@@ -299,10 +300,11 @@ const routes: Routes = [
         StepsModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        StorageServiceModule,
     ],
     providers: [
-        LoginService
+        CookieService,
     ],
     exports: [
         PagesComponent

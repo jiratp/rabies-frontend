@@ -176,8 +176,13 @@ html, body{
                                 padding-right: 10px;
                                 padding-top: 13px;
                                 padding-bottom: 8px;
+                                
 
                                 .nav-link{
+                                    &.nav-header{
+                                        font-size: 23px;
+                                    }
+
                                     padding-left: 0px;
                                     &.active{
                                         color: #39B062;

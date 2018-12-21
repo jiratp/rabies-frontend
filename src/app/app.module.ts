@@ -8,24 +8,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { SidebarModule } from 'primeng/sidebar';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-// import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesModule } from './pages/pages.module';
 import { FooterComponent } from './components/footer/footer.component';
 
-
-/*
-import {
-  NgbModule,
-  NgbTypeaheadModule,
-  NgbDropdownModule,
-  NgbAlertModule,
-  NgbDatepickerModule,
-  NgbTabsetModule,
-  NgbTooltipModule,
-  NgbProgressbarModule
-} from '@ng-bootstrap/ng-bootstrap';
-*/
 import { ConfigService } from './core/config.service';
 import { Platform } from '@angular/cdk/platform';
 
@@ -55,14 +41,3 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-/*
-    NgbModule.forRoot(),
-    NgbTypeaheadModule,
-    NgbDropdownModule,
-    NgbAlertModule,
-    NgbDatepickerModule,
-    NgbTabsetModule,
-    NgbTooltipModule,
-    NgbProgressbarModule,
-*/
