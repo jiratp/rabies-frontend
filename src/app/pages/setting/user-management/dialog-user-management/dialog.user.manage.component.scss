@@ -1,0 +1,98 @@
+@import "../../../../themes/styles/variables";
+
+.modal-header{
+    .dialog-form-header-body{
+        width: 100%;
+        .modal-title{
+            display: inline-block;
+            font-family: $modal-header-font-family;
+            font-size: $modal-header-font-size;
+        }
+    }
+    
+    button{
+        font-size: 40px;
+        &.close{
+            padding: 0px;
+            padding-top: 12px !important;
+            padding-right: 20px;
+        }
+    }
+}
+
+.modal-body{
+    .dialog-content-body-form{
+
+    }
+}
+
+.modal-footer{
+    .dialog-form-footer-body{
+        width: 100%;
+        .form-component{
+            .form-group{
+                .form-button-panel{
+                    padding-bottom: 0px;
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 667px) { 
+    
+    .container-fluid {
+      width: 100%;
+      padding-top: $layout-page-top-sm;
+      padding-right: $layout-page-right-sm;
+      padding-left: $layout-page-left-sm;
+      padding-bottom: $layout-page-bottom-sm;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  
+  
+}
+
+/* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) { 
+    
+  
+}
+
+/* ----------- iPad 1, 2, Mini, Air,  3, 4 and Pro 9.7" ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) {
+    
+}
+
+/* ----------- iPad Pro 10.5" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 834px) 
+  and (max-width: 1112px) {
+
+}
+
+
+/* ----------- iPad Pro 12.9" ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1366px) {
+
+}

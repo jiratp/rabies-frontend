@@ -33,6 +33,7 @@ export class ConfigService {
                 backdrop: true,
                 ignoreBackdropClick: true,
                 class: 'modal-dialog-centered',
+                content: {}
             },
             dialogFormSetting : {
                 animated: true,
@@ -40,6 +41,23 @@ export class ConfigService {
                 show: true,
                 ignoreBackdropClick: true,
                 class: 'modal-lg modal-dialog-centered',
+            },
+            dialogInitialStateSetting : {
+                status: 'success',
+                title: '',
+                description: '',
+                btnOK : {
+                    isActive: true,
+                    name: 'ตกลง',
+                    isRefresh: false,
+                    redirectURI: ''
+                },
+                btnCancel : {
+                    isActive: false,
+                    name: 'ยกเลิก',
+                    isRefresh: false,
+                    redirectURI: ''
+                }
             },
             lacaleTH : {
                 firstDayOfWeek: 0,

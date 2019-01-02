@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -76,7 +77,7 @@ import { DialogAlertComponent } from './../components/dialog-alert/dialog.alert.
 
 /******** Setting ****** */
 import { UserManagementComponent } from './setting/user-management/user.management.component';
-import { PermissionManagementComponent } from './setting/permission-management/permission.management.component';
+import { RoleManagementComponent } from './setting/role-management/role.management.component';
 import { AccessTransactionComponent } from './setting/access/transaction/access.transaction.component';
 import { RegionManagementComponent } from './setting/region-management/region.management.component';
 import { ProvinceManagementComponent } from './setting/province-management/province.management.component';
@@ -84,6 +85,12 @@ import { DistrictManagementComponent } from './setting/district-management/distr
 import { SubdistrictManagementComponent } from './setting/subdistrict-management/subdistrict.management.component';
 import { DepartmentManagementComponent } from './setting/department-management/department.management.component';
 
+
+import { DialogRoleManageComponent } from './setting/role-management/dialog-role-management/dialog.role.manage.component';
+
+
+
+import { CallApiService } from './../providers/request.providers';
 
 
 const routes: Routes = [
@@ -121,8 +128,12 @@ const routes: Routes = [
                 component: ProfileComponent
             },
             {
-                path: 'profile/change-password',
+                path: 'change-password',
                 component: ChangePasswordComponent
+            },
+            {
+                path: 'access-transaction',
+                component: AccessTransactionComponent
             },
             {
                 path: 'news',
@@ -204,15 +215,13 @@ const routes: Routes = [
                 path: 'information/individual/register',
                 component: IndividualPetRegisterComponent
             },
-
-//
             {
                 path: 'setting/user-management',
                 component: UserManagementComponent
             },
             {
-                path: 'setting/permission-management',
-                component: PermissionManagementComponent
+                path: 'setting/role-management',
+                component: RoleManagementComponent
             },
             {
                 path: 'setting/access-transaction',
@@ -279,13 +288,15 @@ const routes: Routes = [
         ClinicPetRegisterComponent,
 
         UserManagementComponent,
-        PermissionManagementComponent,
+        RoleManagementComponent,
         AccessTransactionComponent,
         RegionManagementComponent,
         ProvinceManagementComponent,
         DistrictManagementComponent,
         SubdistrictManagementComponent,
         DepartmentManagementComponent,
+
+        DialogRoleManageComponent,
     ],
     imports: [
         BrowserModule,
@@ -302,9 +313,11 @@ const routes: Routes = [
         ReactiveFormsModule,
         RouterModule.forRoot(routes),
         StorageServiceModule,
+        HttpClientModule,
     ],
     providers: [
         CookieService,
+        CallApiService,
     ],
     exports: [
         PagesComponent
@@ -315,6 +328,8 @@ const routes: Routes = [
         AnimalInfomationComponent,
         SurveyAnimalInformationComponent,
         AnimalSuspiciousComponent,
+
+        DialogRoleManageComponent,
     ]
 })
 

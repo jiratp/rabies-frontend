@@ -1,49 +1,67 @@
 @import "../../themes/styles/variables";
 
 .container-fluid {
-    width: 100%;
-    padding-top: $layout-page-breadcrum-top;
-    padding-right: $layout-page-right;
-    padding-left: $layout-page-left;
-    padding-bottom: $layout-page-bottom;
-    margin-right: auto;
-    margin-left: auto;
-    
-    .container-body{
-      .row{
-        margin-left: 0px;
-        margin-right: 0px;
-      }
+    &.breadcrumb{
+        padding-top: $layout-page-breadcrum-top;
+    }
+
+    &.profile-component{
+        width: 100%;
+        padding-right: $layout-page-right;
+        padding-left: $layout-page-left;
+        padding-bottom: $layout-page-bottom;
+        margin-right: auto;
+        margin-left: auto;
+        
+        .container-body{
+          width: 100%;
+          .row{
+            .card {
+                &.tab-component-card{
+                  .card-body {
+                    &.tab-component-card-body{
+                        .tab-content{
+                            .tab-pane{
+                                .content-body-form{
+                                    .content-card-body{
+                                        .content-body{
+                                            .content-group-panel{
+                                                .searchbar{
+                                                    padding-bottom: 10px;
+                                                    &.form-component{
+                                                        text-align: left;
+                                                        padding-bottom: 0px !important;
+                                                        .form-group{
+                                                            width: auto;
+                                                            float: left;
+                                                            padding-top: 4px;
+                                                            .form-control{
+                                                                width: 35%;
+                                                            }
+                                                        }
+                                                    }
+                                        
+                                                    &.button-panel{
+                                                        button{
+                                                            float: right;
+                                                            width: auto;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                  }
+                }
+            }
+          }
+        }
     }
 }
-
-.nav-breadcrumb{
-  margin-bottom: 20px;
-  .breadcrumb{
-    padding: 0px;
-    margin: 0px;
-    padding-top: 10px;
-    color: rgba(0,0,0,.4);
-    font-size: $layout-page-breadcrum-fontsize;
-    font-family: $ff-title-med;
-    .breadcrumb-item{
-      &:not(:first-child){
-        &::before{
-          content: ">";
-        }
-      }
-
-      &.active{
-        color: $main-color;
-        &::before{
-          color: $main-color;
-        }
-      }
-    }
-  }
-}
-
-
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 /* Portrait and Landscape */
@@ -60,7 +78,6 @@
         margin-right: auto;
         margin-left: auto;
     }
-    
 }
 
 /* ----------- iPhone 6+, 7+, 8+, iPhone X ----------- */

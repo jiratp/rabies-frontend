@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -8,16 +9,36 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   encapsulation: ViewEncapsulation.None,
 })
 export class DialogAlertComponent implements OnInit {
-  responseStatus: string;
+  @Output() action = new EventEmitter();
+
+  status: any;
+  title: any;
+  description: any;
+  btnOK: any;
+  btnCancel: any;
   constructor(
+    private router: Router,
     public modalRef: BsModalRef
   ) { }
 
-  ngOnInit() {
-    this.responseStatus = 'success'; // success || error
+  ngOnInit() { }
+
+  endProcessOk() {
+    this.action.emit({status: true});
+    this.modalRef.hide();
   }
 
-  endProcessClose() {
+  endProcessCancel() {
+    this.action.emit({status: false});
     this.modalRef.hide();
+  }
+
+  redirectURL(uri: any) {
+    this.modalRef.hide();
+    window.location.href = uri;
+  }
+
+  refreshPages() {
+    window.location.reload();
   }
 }

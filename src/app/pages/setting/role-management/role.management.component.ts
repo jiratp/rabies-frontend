@@ -1,30 +1,34 @@
-import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ViewEncapsulation, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
 import { LazyLoadEvent } from 'primeng/primeng';
 import { SelectItem } from 'primeng/api';
 import * as moment from 'moment';
 
+import { ConfigService } from './../../../core/config.service';
+
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { CookieService } from 'ngx-cookie-service';
 
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { DialogAlertComponent } from './../../../../components/dialog-alert/dialog.alert.component';
-import { ConfigService } from './../../../../core/config.service';
+import { DialogAlertComponent } from './../../../components/dialog-alert/dialog.alert.component';
 
-import { CallApiService } from './../../../../providers/request.providers';
-import { Utility } from './../../../../api/utility';
-import { User } from './../../../../api/user';
+import { CallApiService } from './../../../providers/request.providers';
+import { Utility } from './../../../api/utility';
+import { User } from './../../../api/user';
+
+
+import { DialogRoleManageComponent } from './dialog-role-management/dialog.role.manage.component';
+
 
 @Component({
-  selector: 'app-access-transaction',
-  templateUrl: './access.transaction.component.html',
-  styleUrls: ['./access.transaction.component.scss'],
+  selector: 'app-role-management',
+  templateUrl: './role.management.component.html',
+  styleUrls: ['./role.management.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [CallApiService]
 })
-export class AccessTransactionComponent implements OnInit {
+export class RoleManagementComponent implements OnInit {
   modalRef: BsModalRef;
   searchForm: FormGroup;
   authenticationToken: any;
@@ -53,7 +57,7 @@ export class AccessTransactionComponent implements OnInit {
 
 
   ngOnInit() {
-    this.tab = 'access-transaction-list';
+    this.tab = 'role-management-list';
     /****** dataTable ******/
     this.pages = 1;
     this.totalRecords = 0;
@@ -93,7 +97,7 @@ export class AccessTransactionComponent implements OnInit {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = User.Access.Transaction;
+      const endpoint = Utility.Role.Inquiry.ByList.List;
       const newEndpoint = endpoint.url.replace('{page_number}', pages);
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
@@ -107,10 +111,6 @@ export class AccessTransactionComponent implements OnInit {
           const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
       });
     }
-  }
-
-  ManageAnimalSuspicious() {
-
   }
 
   paginate(event) {
@@ -127,5 +127,21 @@ export class AccessTransactionComponent implements OnInit {
     setTimeout(() => {
       this.loading = false;
     }, 1000);
+  }
+
+  ContentManagement() {
+    const initialState = { actionForm: 'add'};
+    const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
+    dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
+    const modalASnRef = this.ModalService.show(
+      DialogRoleManageComponent,
+      Object.assign({}, dialogFormSetting, { initialState })
+    );
+
+    modalASnRef.content.action.subscribe(result => {
+      if (result.status) {
+        alert(1111);
+      }
+    });
   }
 }

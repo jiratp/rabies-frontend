@@ -1,0 +1,189 @@
+<div class="container-fluid profile-component breadcrumb">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">ข้อมูลผู้ใช้งาน</li>
+            <li class="breadcrumb-item active" aria-current="page">ข้อมูลส่วนตัว</li>
+        </ol>
+    </nav>     
+
+    <div class="container-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-component-card">
+                <div class="card-body tab-component-card-body">
+
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item tab-header">
+                                <span class="nav-link" href="#access-transaction-list" role="tab" data-toggle="tab">ข้อมูลผู้ใช้งาน</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="access-transaction-list">
+                            <div class="content-container content-body-form">
+                                <form class="form-profile mt-3" name="profileForm" [formGroup]="profileForm">
+                                    <div class="card-body content-card-body content-data-grid">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body"> 
+                                                <div class="form-group-fieldset clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> ช้อมูลส่วนตัว </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <!-- Row 1 -->
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="title" class="form-label">คำนำหน้าชื่อ</label>
+                                                                                <p-dropdown [options]="lookupTitle" formControlName="title" placeholder="เลิอกคำนำหน้าชื่อ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="TitleChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <input type="text" formControlName="titleOther" class="form-control form-control-other" id="titleOther" placeholder="อื่นๆ" *ngIf="titleOtherBoolean">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="name" class="form-label">ชื่อ-นามสกุล</label>
+                                                                                <input type="text" formControlName="name" class="form-control" id="name" placeholder="ชื่อ-นามสกุล">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="idCard" class="form-label">เลขที่บัตรประชาชน</label>
+                                                                                <input type="text" formControlName="idCard" class="form-control" id="idCard" placeholder="เลขที่บัตรประชาชน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Row 1 -->
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="mobileNumber" class="form-label">เบอร์โทรศัพท์</label>
+                                                                                <input type="text" formControlName="mobileNumber" class="form-control" id="mobileNumber" placeholder="เบอร์โทรศัพท์">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="email" class="form-label">อีเมลล์</label>
+                                                                                <input type="text" formControlName="email" class="form-control" id="email" placeholder="อีเมลล์">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group-fieldset clear-fix">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                            <h3> ข้อมูลที่อยู่ </h3>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                                            <!-- Row 1 -->
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="addressNo" class="form-label">บ้านเลขที่</label>
+                                                                                <input type="text" formControlName="addressNo" class="form-control" id="addressNo" placeholder="บ้านเลขที่">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="moo" class="form-label">หมู่ที่</label>
+                                                                                <input type="text" formControlName="moo" class="form-control" id="moo" placeholder="หมู่ที่">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="soi" class="form-label">ซอย</label>
+                                                                                <input type="text" formControlName="soi" class="form-control" id="soi" placeholder="ซอย">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="street" class="form-label">ถนน</label>
+                                                                                <input type="text" formControlName="street" class="form-control" id="street" placeholder="ถนน">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Row 2 -->
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="province" class="form-label">จังหวัด</label>
+                                                                                <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="ProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="district" class="form-label">อำเภอ</label>
+                                                                                <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="DistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="subDistrict" class="form-label">ตำบล</label>
+                                                                                <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="SubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="zipcode" class="form-label">รหัสไปรษณีย์</label>
+                                                                                <input type="text" formControlName="zipcode" class="form-control" id="zipcode" placeholder="รหัสไปรษณีย์">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 1 -->
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-group-panel form-group-footer-panel">  
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+                                                        <div class="form-group clear-fix">
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-button-panel one-btn button-panel">  
+                                                                    <button type="submit" class="btn btn-block btn-light btn-save" (click)="UpdateProfile()">บันทึก</button>
+
+                                                                    <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ResetForm()">ยกเลิก</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>              
+</div>

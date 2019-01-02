@@ -14,120 +14,112 @@
 
     <div class="collapse navbar-collapse menu-lg-panel">
         <ul class="navbar-nav">
-            <li class="nav-item" [ngClass]="currentPage == 'home' ? 'active' : ''" (click)="navigation('home')">
-                <img class="icon" src="./assets/images/icon-menu-1.png" alt="">
-                <p>หน้าหลัก</p>
+            <!-- START HOME -->
+            <li class="nav-item" [ngClass]="pageGroup == 'HOME' ? 'active' : ''">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-HOME"  (click)="navigation('home')">
+                    <img class="icon" src="./assets/images/icon-menu-1.png" alt="">
+                    <p>หน้าหลัก</p>
+                </a>
             </li>
-            <li class="nav-item dropdown" [ngClass]="
-            currentPage == 'information/clinic' 
-            || currentPage == 'information/clinic/individual'
-            || currentPage == 'information/clinic/individual/register'
-            || currentPage == 'information/individual'
-            || currentPage == 'information/individual/register' ? 'active' : ''">
-                
-                
-                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" class="dropdown-toggle" data-toggle="dropdown">
+            <!-- END HOME -->
+
+            <!-- START INFORMATION -->
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''" *ngIf="memberRole == 'GENERAL_MEMBER'">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" (click)="navigation('information/individual')">
                     <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
                     <p>ลงทะเบียน</p>
                 </a>
-
-                <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="REG-PET-02" (click)="navigation('information/individual')">ลงทะเบียนบุคคลทั่วไป</a></li>
-                    <li><a data-x-sig="REG-PET-03" (click)="navigation('information/clinic')">ลงทะเบียนสถานประกอบการ</a></li>
-                </ul>
             </li>
-            <li class="nav-item dropdown" [ngClass]="
-            currentPage == 'survey/dashboard' 
-            || currentPage == 'survey/animal-has-owner' 
-            || currentPage == 'survey/animal-no-owner' 
-            || currentPage == 'survey/animal-has-owner/owner-information' 
-            || currentPage == 'survey/animal-no-owner/noowner-information-list' 
-            || currentPage == 'survey/animal-has-owner/owner-information-list'
-            || currentPage == 'survey/animal-no-owner/noowner-information'  ? 'active' : ''"> 
 
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''" *ngIf="memberRole == 'CLINIC_MEMBER'">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" (click)="navigation('information/clinic')">
+                    <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
+                    <p>ลงทะเบียน</p>
+                </a>
+            </li>
+            <!-- END INFORMATION -->
+
+            <!-- START SURVEY -->
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SURVEY' ? 'active' : ''" *ngIf="memberRole == 'SURVEYER_MEMBER' || memberRole == 'STAFF_MEMBER' || memberRole == 'VETERINARY_MEMBER'"> 
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SURVEY" class="dropdown-toggle" data-toggle="dropdown">
                     <img class="icon" src="./assets/images/icon-menu-3.png" alt="">
                     <p>แบบสำรวจ</p>
                 </a>
 
-                <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="SV-PET-02" (click)="navigation('survey/animal-has-owner')">สัตว์มีเจ้าของ</a></li>
-                    <li><a data-x-sig="SV-PET-03" (click)="navigation('survey/animal-no-owner')">สัตว์ไม่มีเจ้าของ</a></li>
+                <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                    <li><a data-x-sig="SV-SURVEY-02" (click)="navigation('survey/animal-has-owner')">สัตว์มีเจ้าของ</a></li>
+                    <li><a data-x-sig="SV-SURVEY-03" (click)="navigation('survey/animal-no-owner')">สัตว์ไม่มีเจ้าของ</a></li>
                 </ul>
             </li>
+            <!-- END SURVEY -->
 
-
-            <li class="nav-item" [ngClass]="
-                currentPage == 'suspicious'  ? 'active' : ''"> 
-            
+            <!-- START SUSPICIOUS -->
+            <li class="nav-item" [ngClass]="pageGroup == 'SUSPICIOUS' ? 'active' : ''" *ngIf="memberRole == 'GENERAL_MEMBER' || memberRole == 'CLINIC_MEMBER' || memberRole == 'SURVEYER_MEMBER' || memberRole == 'STAFF_MEMBER' || memberRole == 'VETERINARY_MEMBER'" > 
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SUSPICIOUS"  (click)="navigation('suspicious')">
                     <img class="icon" src="./assets/images/icon-menu-4.png" alt="">
                     <p>แจ้งพบสัตว์</p>
                 </a>
             </li>
-            <li class="nav-item dropdown" [ngClass]="
-            currentPage == 'sample/animal-sample-list' 
-            || currentPage == 'sample/animal-sample-form' ? 'active' : ''">
+            <!-- END SUSPICIOUS -->
 
 
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SAMPLE' ? 'active' : ''" *ngIf="memberRole == 'CLINIC_MEMBER' || memberRole == 'RESEARCHER_MEMBER' || memberRole == 'STAFF_MEMBER' || memberRole == 'VETERINARY_MEMBER'">
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SIMPLE" class="dropdown-toggle" data-toggle="dropdown">
                     <img class="icon" src="./assets/images/icon-menu-5.png" alt="">
                     <p>ส่งตัวอย่าง</p>
                 </a>
 
-                <ul role="menu" class="dropdown-menu">
+                <ul role="menu" class="dropdown-menu dropdown-menu-left">
                     <li><a data-x-sig="SP-PET-02" (click)="navigation('sample/animal-sample-list')">รายการส่งตัวอย่าง</a></li>
                 </ul>
-
             </li>    
-            <li class="nav-item dropdown" [ngClass]="
-            currentPage == 'setting/user-management' 
-            || currentPage == 'setting/permission-management'
-            || currentPage == 'setting/access-transaction'
-            || currentPage == 'setting/region-management'
-            || currentPage == 'setting/province-management'
-            || currentPage == 'setting/district-management'
-            || currentPage == 'setting/subdistrict-management'
-            || currentPage == 'setting/department-management'
-            || currentPage == 'sample/animal-sample-formaaa' ? 'active' : ''">
-
-
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SITTING' ? 'active' : ''" *ngIf="memberRole == 'ADMINISTRATOR'">
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SETTING" href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-cogs"> </i>
                     <p>ตั้งค่าระบบ </p>
                 </a>
                 
-                <ul role="menu" class="dropdown-menu">
-                    <li><a data-x-sig="ST-PET-01" href="setting/user-management">ผู้ใช้งาน</a></li>
-                    <li><a data-x-sig="ST-PET-02" href="setting/permission-management">สิทธิการใช้งาน</a></li>
-                    <li><a data-x-sig="ST-PET-03" href="setting/access-transaction">ประวัติการใช้งานระบบ</a></li>
+                <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                    <li><a data-x-sig="ST-SETTING-01" (click)="navigation('setting/user-management')">ผู้ใช้งาน</a></li>
+                    <li><a data-x-sig="ST-SETTING-02" (click)="navigation('setting/role-management')">สิทธิการใช้งาน</a></li>
+                    <li><a data-x-sig="ST-SETTING-03" (click)="navigation('setting/access-transaction')">ประวัติการใช้งานระบบ</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a data-x-sig="ST-PET-04" href="setting/region-management">เขตปศุสัตว์</a></li>
-                    <li><a data-x-sig="ST-PET-08" href="setting/department-management">หน่วยงาน</a></li>
+                    <li><a data-x-sig="ST-SETTING-04" (click)="navigation('setting/region-management')">เขตปศุสัตว์</a></li>
+                    <li><a data-x-sig="ST-SETTING-05" (click)="navigation('setting/department-management')">หน่วยงาน</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a data-x-sig="ST-PET-09" href="#">จัดการประเภทสัตว์</a></li>
-                    <li><a data-x-sig="ST-PET-09" href="#">จัดการสายพันธ์สัตว์</a></li>
-                    <li><a data-x-sig="ST-PET-10" href="#">จัดการอาการผิดปกติของสัตว์</a></li>
-                    <li><a data-x-sig="ST-PET-10" href="#">จัดการวัตถุประสงค์การเก็บตัวอย่าง</a></li>
-                    <li><a data-x-sig="ST-PET-09" href="#">จัดการช่วงเวลาการขึ้นทะเบียนสัตว์</a></li>
+                    <li><a data-x-sig="ST-SETTING-06" href="#">จัดการประเภทสัตว์</a></li>
+                    <li><a data-x-sig="ST-SETTING-07" href="#">จัดการสายพันธ์สัตว์</a></li>
+                    <li><a data-x-sig="ST-SETTING-08" href="#">จัดการอาการผิดปกติของสัตว์</a></li>
+                    <li><a data-x-sig="ST-SETTING-09" href="#">จัดการวัตถุประสงค์การเก็บตัวอย่าง</a></li>
+                    <li><a data-x-sig="ST-SETTING-10" href="#">จัดการช่วงเวลาการขึ้นทะเบียนสัตว์</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a data-x-sig="ST-PET-11" href="#">จัดการข่าวประชาสัมพันธ์</a></li>
-                    <li><a data-x-sig="ST-PET-12" href="#">จัดการไฟล์เอกสาร</a></li>
-                    <li><a data-x-sig="ST-PET-13" href="#">จัดการคลิปวิดีโอ</a></li>
-                    <li><a data-x-sig="ST-PET-14" href="#">จัดการหมวดหมู่</a></li>
+                    <li><a data-x-sig="ST-SETTING-11" href="#">จัดการข่าวประชาสัมพันธ์</a></li>
+                    <li><a data-x-sig="ST-SETTING-12" href="#">จัดการไฟล์เอกสาร</a></li>
+                    <li><a data-x-sig="ST-SETTING-13" href="#">จัดการคลิปวิดีโอ</a></li>
+                    <li><a data-x-sig="ST-SETTING-14" href="#">จัดการหมวดหมู่</a></li>
                 </ul>
             </li>
-            <li class="nav-item bg-white-menu user-access" [ngClass]="
-            currentPage == 'login'
-            || currentPage == 'register'
-            || currentPage == 'forget-password'
-            || currentPage == 'renew-password' ? 'active' : ''" (click)="navigation('login')">
 
+            <li class="nav-item bg-white-menu user-access before-sign-on" [ngClass]="pageGroup == 'BEFORE_SIGN_ON' ? 'active' : ''" *ngIf="memberRole == ''">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-BEFORE-SIGN-ON"  (click)="navigation('login')">
+                    <img class="icon" src="./assets/images/icon-menu-7.png" alt="">
+                    <p>เข้าสู่ระบบ</p>
+                </a>
+            </li>
 
+            <li class="nav-item dropdown bg-white-menu user-access after-sign-on" [ngClass]="pageGroup == 'AFTER_SIGN_ON' ? 'active' : ''" *ngIf="memberRole != ''">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-AFTER-SIGN-ON" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img class="icon" src="./assets/images/user-defualt.png" alt="">
+                    <p>{{userProfile.username}}</p>
+                </a>
 
-                <img class="icon" src="./assets/images/icon-menu-7-gr.png" alt="">
-                <p>เข้าสู่ระบบ</p>
-
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li><a data-x-sig="ST-AFTER-SIGN-ON-01" (click)="navigation('profile')">ข้อมูลส่วนตัว</a></li>
+                    <li><a data-x-sig="ST-AFTER-SIGN-ON-02" (click)="navigation('change-password')">เปลี่ยนรหัสผ่าน</a></li>
+                    <li><a data-x-sig="ST-AFTER-SIGN-ON-03" (click)="navigation('access-transaction')">ประวัติการใช้งานระบบ</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a data-x-sig="ST-AFTER-SIGN-ON-04" (click)="signOut()">ออกจากระบบ</a></li>
+                </ul>
             </li>
         </ul>
     </div>

@@ -291,6 +291,18 @@ html, body{
                         font-family: $datatable-tbody-font-family;
                         color: $datatable-tbody-font-color;
 
+                        &.text-center{
+                            text-align: center;
+                        }
+
+                        &.text-left{
+                            text-align: left;
+                        }
+
+                        .text-value{
+                            
+                        }
+
                         &.emptymessage{
                             padding-top: 20px;
                             padding-bottom: 20px;
@@ -468,6 +480,10 @@ html, body{
 
 
 /********************** START FORM  **********************/
+.form-require{
+    color: red;
+}
+
 .form-component{
     .form-group{
         width: 100%;
@@ -543,6 +559,10 @@ html, body{
             height: auto;
             line-height: 26px;
 
+            &.form-control-other{
+                margin-top: 10px;
+            }
+
             // text area
             &.custom-textarea{
                 height: 100px;
@@ -586,12 +606,25 @@ html, body{
                     color: $form-body-font-color;
                     
                 }
+
+                .ui-dropdown-filter-container{
+                    .ui-dropdown-filter{
+                        font-family: $ff-title-narmal;
+                        font-size: 14px;
+                    }
+                }
       
                 .ui-dropdown-items-wrapper{
                     .ui-dropdown-items{
-                        .ui-dropdown-item{
+                        li{
                             font-family: $ff-title-narmal;
-                            font-size: $form-control-size;
+                            font-size: 14px;
+
+                            &:not(.ui-dropdown-item){
+                                text-align: center;
+                                padding-top: 15px;
+                                padding-bottom: 15px;
+                            }
                         }
                     }
                 }

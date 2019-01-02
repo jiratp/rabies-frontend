@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { PlatformLocation } from '@angular/common';
 
 import * as OL from 'ol';
 import Map from 'ol/Map.js';
@@ -14,15 +15,20 @@ import Overlay from 'ol/Overlay';
 
 import PluggableMap from 'ol/PluggableMap';
 
+import { CallApiService } from './../../providers/request.providers';
+import { Utility } from './../../api/utility';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [CallApiService]
 })
 export class HomeComponent implements OnInit {
   @ViewChild('mapsRef') mapsRef: ElementRef;
-
+  private platformLocation: any;
+  Api: any;
   window: any = {};
   mapFeatureObj: any;
   mapSelectOverlaySource: any = new VectorSource();
@@ -38,15 +44,20 @@ export class HomeComponent implements OnInit {
   dogChecked: Boolean = true;
   tab: string;
   constructor(
+    platformLocation: PlatformLocation,
+    Api: CallApiService,
     private router: Router,
   ) {
     this.tab = 'news';
+    this.Api = Api;
+    this.platformLocation = platformLocation;
+
   }
 
   ngOnInit() {
     this.configMapFunc ();
   }
-
+  
   configMapParam () {
     this.__CURR_PROV_ID = {
       val: null
@@ -83,7 +94,7 @@ export class HomeComponent implements OnInit {
     const self = this;
 
     const mapVectorSource = new VectorSource({
-      url :  './../../../assets/maps/thailand.json',
+      url : this.platformLocation.location.origin + '/assets/maps/thailand.json',
       format: new GeoJSON(),
     });
 
