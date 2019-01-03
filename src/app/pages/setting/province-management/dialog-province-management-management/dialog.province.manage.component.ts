@@ -18,13 +18,13 @@ import { Utility } from './../../../../api/utility';
 import { User } from './../../../../api/user';
 
 @Component({
-  selector: 'app-dialog-region-manage',
-  templateUrl: './dialog.region.manage.component.html',
-  styleUrls: ['./dialog.region.manage.component.scss'],
+  selector: 'app-dialog-province-manage',
+  templateUrl: './dialog.province.manage.component.html',
+  styleUrls: ['./dialog.province.manage.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [CallApiService]
 })
-export class DialogRegionManageComponent implements OnInit {
+export class DialogProvinceManageComponent implements OnInit {
   @Input() actionForm: string;
   @Input() dataObj: any;
   @Output() action = new EventEmitter();
@@ -40,6 +40,8 @@ export class DialogRegionManageComponent implements OnInit {
 
 
   defaultIsActive: Boolean = true;
+
+  lookupRegionCode: any = [];
 
   constructor(
     private Api: CallApiService,
@@ -64,11 +66,16 @@ export class DialogRegionManageComponent implements OnInit {
 
   LoadConfigForm() {
     this.ContentForm = new FormGroup({
-      nameTH: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      isActive: new FormControl(this.defaultIsActive , Validators.required),
-      geoName: new FormControl(''),
+      regionCode: new FormControl('', Validators.required),
       code: new FormControl(''),
+      nameTH: new FormControl('', Validators.required),
+      nameEN: new FormControl('', Validators.required),
+      geoName: new FormControl(''),
+      latitude: new FormControl(''),
+      longitude: new FormControl(''),
+      description: new FormControl('', Validators.required),
+      geoObject: new FormControl(''),
+      isActive: new FormControl(this.defaultIsActive , Validators.required),
     });
   }
 
@@ -87,18 +94,18 @@ export class DialogRegionManageComponent implements OnInit {
   LoadModalHeader() {
     switch (this.actionForm) {
       case 'add':
-        this.titleModal = 'เพิ่มข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'เพิ่มข้อมูลจังหวัด';
         break;
       case 'edit':
-        this.titleModal = 'แก้ไขข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'แก้ไขข้อมูลจังหวัด';
         this.ContentSelect(this.dataObj, false);
         break;
       case 'view':
-        this.titleModal = 'แสดงข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'แสดงข้อมูลจังหวัด';
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'จัดการข้อมูลจังหวัด';
     }
   }
 
@@ -112,27 +119,47 @@ export class DialogRegionManageComponent implements OnInit {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Utility.Region.Inquiry.ById;
+      const endpoint = Utility.Province.Inquiry.ById;
       const newEndpoint = endpoint.url.replace('{content_id}', contentObj.code);
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
 
+        this.ContentForm.controls['regionCode'].setValue(res.region.tName);
         this.ContentForm.controls['geoName'].setValue(res.geoName);
+        this.ContentForm.controls['latitude'].setValue(res.latitude);
+        this.ContentForm.controls['longitude'].setValue(res.longitude);
+        this.ContentForm.controls['geoObject'].setValue(res.geoObject);
+
         this.ContentForm.controls['code'].setValue(res.code);
         this.ContentForm.controls['nameTH'].setValue(res.nameTH);
+        this.ContentForm.controls['nameEN'].setValue(res.nameEN);
         this.ContentForm.controls['description'].setValue(res.description);
         this.ContentForm.controls['isActive'].setValue(res.isActive);
 
         if (disabled) {
+
+          this.ContentForm.controls['regionCode'].disable();
           this.ContentForm.controls['geoName'].disable();
+          this.ContentForm.controls['latitude'].disable();
+          this.ContentForm.controls['longitude'].disable();
+          this.ContentForm.controls['geoObject'].disable();
+
           this.ContentForm.controls['code'].disable();
           this.ContentForm.controls['nameTH'].disable();
+          this.ContentForm.controls['nameEN'].disable();
           this.ContentForm.controls['description'].disable();
           this.ContentForm.controls['isActive'].disable();
         } else {
+
+          this.ContentForm.controls['regionCode'].enable();
           this.ContentForm.controls['geoName'].enable();
+          this.ContentForm.controls['latitude'].enable();
+          this.ContentForm.controls['longitude'].enable();
+          this.ContentForm.controls['geoObject'].enable();
+
           this.ContentForm.controls['code'].enable();
           this.ContentForm.controls['nameTH'].enable();
+          this.ContentForm.controls['nameEN'].enable();
           this.ContentForm.controls['description'].enable();
           this.ContentForm.controls['isActive'].enable();
         }
@@ -163,9 +190,9 @@ export class DialogRegionManageComponent implements OnInit {
         let endpoint = null;
 
         if (this.actionForm === 'add') {
-          endpoint = Utility.Region.Create;
+          endpoint = Utility.Province.Create;
         } else if (this.actionForm === 'edit') {
-          endpoint = Utility.Region.Update;
+          endpoint = Utility.Province.Update;
         }
 
         this.Api.callWithOutScope(endpoint.url, endpoint.method, contentParams,  'Authorization', authorization).then((response) => {
@@ -207,7 +234,7 @@ export class DialogRegionManageComponent implements OnInit {
       } else {
         initialState.status = 'error';
         initialState.title = 'ข้อความจากระบบ';
-        initialState.description = 'กรุณากรอกข้อมูลเขตปศุสัตว์ให้ครบ';
+        initialState.description = 'กรุณากรอกข้อมูลจังหวัดให้ครบ';
         const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
         bsModalRefObj.content.action.subscribe(result => {
           if (result.status) {
@@ -238,7 +265,11 @@ export class DialogRegionManageComponent implements OnInit {
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'จัดการข้อมูลจังหวัด';
     }
+  }
+
+  regionCodeChange(event: any) {
+
   }
 }

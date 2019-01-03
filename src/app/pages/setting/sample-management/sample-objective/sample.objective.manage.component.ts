@@ -6,28 +6,30 @@ import { LazyLoadEvent } from 'primeng/primeng';
 import { SelectItem } from 'primeng/api';
 import * as moment from 'moment';
 
-import { ConfigService } from './../../../core/config.service';
+import { ConfigService } from './../../../../core/config.service';
 
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { CookieService } from 'ngx-cookie-service';
 
-import { DialogAlertComponent } from './../../../components/dialog-alert/dialog.alert.component';
+import { DialogAlertComponent } from './../../../../components/dialog-alert/dialog.alert.component';
 
-import { CallApiService } from './../../../providers/request.providers';
-import { Utility } from './../../../api/utility';
-import { User } from './../../../api/user';
+import { CallApiService } from './../../../../providers/request.providers';
+import { Utility } from './../../../../api/utility';
+import { Sample } from './../../../../api/sample';
+import { Animal } from './../../../../api/animal';
+import { User } from './../../../../api/user';
 
 
-import { DialogRegionManageComponent } from './dialog-region-management/dialog.region.manage.component';
+import { DialogSampleObjectiveManageComponent } from './dialog-sample-objective-management/dialog.sample.objective.manage.component';
 
 @Component({
-  selector: 'app-region-management',
-  templateUrl: './region.management.component.html',
-  styleUrls: ['./region.management.component.scss'],
+  selector: 'app-sample-objective-manage',
+  templateUrl: './sample.objective.manage.component.html',
+  styleUrls: ['./sample.objective.manage.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [CallApiService]
 })
-export class RegionManagementComponent implements OnInit {
+export class SampleObjectiveManageComponent implements OnInit {
   modalRef: BsModalRef;
   searchForm: FormGroup;
   authenticationToken: any;
@@ -96,7 +98,7 @@ export class RegionManagementComponent implements OnInit {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Utility.Region.Inquiry.ByList.List;
+      const endpoint = Sample.Objective.Inquiry.ByList.List;
       const newEndpoint = endpoint.url.replace('{page_number}', pages);
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
@@ -134,7 +136,7 @@ export class RegionManagementComponent implements OnInit {
     const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
     dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
     const modalASnRef = this.ModalService.show(
-      DialogRegionManageComponent,
+      DialogSampleObjectiveManageComponent,
       Object.assign({}, dialogFormSetting, { initialState })
     );
 
@@ -150,7 +152,7 @@ export class RegionManagementComponent implements OnInit {
     const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
     dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
     const modalASnRef = this.ModalService.show(
-      DialogRegionManageComponent,
+      DialogSampleObjectiveManageComponent,
       Object.assign({}, dialogFormSetting, { initialState })
     );
 
@@ -166,7 +168,7 @@ export class RegionManagementComponent implements OnInit {
     const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
     dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
     const modalASnRef = this.ModalService.show(
-      DialogRegionManageComponent,
+      DialogSampleObjectiveManageComponent,
       Object.assign({}, dialogFormSetting, { initialState })
     );
 
@@ -192,7 +194,7 @@ export class RegionManagementComponent implements OnInit {
         initialState.btnCancel.isActive = false;
         if (result.status) {
           const authorization = 'Bearer ' + this.authenticationToken;
-          const endpoint = Utility.Region.Delete;
+          const endpoint = Sample.Objective.Delete;
           const newEndpoint = endpoint.url.replace('{content_id}', dataContent.code);
           this.Api.callWithOutScope(newEndpoint, endpoint.method, endpoint.param, 'Authorization', authorization).then((response) => {
             const res = response;

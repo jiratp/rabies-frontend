@@ -44,7 +44,7 @@ export const Utility = {
                     param: {}
                 },
                 List: {
-                    url: '/title/inquiry/content-list',
+                    url: '/title/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -197,7 +197,7 @@ export const Utility = {
                     param: {}
                 },
                 List: {
-                    url: '/province/inquiry/content-list',
+                    url: '/province/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -242,7 +242,7 @@ export const Utility = {
                     param: {}
                 },
                 List: {
-                    url: '/district/inquiry/content-list',
+                    url: '/district/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -294,7 +294,7 @@ export const Utility = {
                     param: {}
                 },
                 List: {
-                    url: '/subdistrict/inquiry/content-list',
+                    url: '/subdistrict/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }

@@ -8,7 +8,7 @@ export const Survey = {
                     param: {}
                 },
                 List: {
-                    url: '/survey-round/inquiry/content-list',
+                    url: '/survey-round/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }

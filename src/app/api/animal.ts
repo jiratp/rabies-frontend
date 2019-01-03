@@ -8,7 +8,7 @@ export const Animal = {
                     param: {}
                 },
                 List: {
-                    url: '/animal-color/inquiry/content-list',
+                    url: '/animal-color/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -39,12 +39,12 @@ export const Animal = {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/animal-type/inquiry/content-list/active',
+                    url: '/animal-type/pages/{page_number}/active',
                     method: 'POST',
                     param: {}
                 },
                 List: {
-                    url: '/animal-type/inquiry/content-list',
+                    url: '/animal-type/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -80,7 +80,7 @@ export const Animal = {
                     param: {}
                 },
                 List: {
-                    url: '/animal-husbandry/inquiry/content-list',
+                    url: '/animal-husbandry/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -116,7 +116,7 @@ export const Animal = {
                     param: {}
                 },
                 List: {
-                    url: '/animal-shelter/inquiry/content-list',
+                    url: '/animal-shelter/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -152,7 +152,7 @@ export const Animal = {
                     param: {}
                 },
                 List: {
-                    url: '/animal-symptom/inquiry/content-list',
+                    url: '/animal-symptom/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
@@ -188,7 +188,7 @@ export const Animal = {
                     param: {}
                 },
                 List: {
-                    url: '/animal-species/{animal_type_code}/inquiry/content-list',
+                    url: '/animal-species/{animal_type_code}/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }

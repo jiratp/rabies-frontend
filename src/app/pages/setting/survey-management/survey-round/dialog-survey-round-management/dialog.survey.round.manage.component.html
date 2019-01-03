@@ -1,0 +1,136 @@
+<div class="modal-header">
+    <div class="dialog-form-header-body">
+        <h4 class="modal-title">{{titleModal}}</h4>
+    </div> 
+    <button type="button" class="close dialog-form-close pull-right" aria-label="Close" (click)="modalClose()">
+        <span aria-hidden="true">&times;</span> 
+    </button>
+</div>
+<div class="modal-body">
+    <div class="dialog-content-body-form dialog-content-information">
+        <form class="form-dialog mt-3" name="ContentForm" [formGroup]="ContentForm">
+            <div class="card-body dialog-card-body-form">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">  
+                        <div class="form-group-fieldset clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> ข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์ </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="nameTH" class="form-label">ชื่อช่วงเวลาการขึ้นทะเบียนสัตว์ (TH)</label>
+                                                        <input type="text" formControlName="nameTH" class="form-control" id="nameTH" placeholder="ชื่อช่วงเวลาการขึ้นทะเบียนสัตว์ (TH)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="nameEN" class="form-label">ชื่อช่วงเวลาการขึ้นทะเบียนสัตว์ (EN)</label>
+                                                        <input type="text" formControlName="nameEN" class="form-control" id="nameEN" placeholder="ชื่อช่วงเวลาการขึ้นทะเบียนสัตว์ (EN)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="description" class="form-label">รายละเอียด</label>
+                                                        <textarea [rows]="5"  formControlName="description" class="form-control custom-textarea" id="description" placeholder="รายละเอียด" pInputTextarea autoResize="false"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="roundYear" class="form-label">ปีของช่วงเวลาการขึ้นทะเบียนสัตว์</label>
+                                                        <p-dropdown [options]="lookupRoundYear" formControlName="roundYear" placeholder="ปีของช่วงเวลาการขึ้นทะเบียนสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="roundYearChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="roundNo" class="form-label">ลำดับของช่วงเวลาการขึ้นทะเบียนสัตว์</label>
+                                                        <input type="text" formControlName="roundNo" class="form-control" id="roundNo" placeholder="ลำดับของช่วงเวลาการขึ้นทะเบียนสัตว์">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="roundStartDate" class="form-label">วันที่เริ่มต้น</label>
+                                                        <p-calendar [locale]="lacaleTH" formControlName="roundStartDate"  placeholder="วันที่เริ่มต้น" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="roundStartDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="c-100:c+100" navigator="true"></p-calendar>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                     <div class="form-group clear-fix">
+                                                        <label for="roundEndDate" class="form-label">วันที่สิ้นสุด</label>
+                                                        <p-calendar [locale]="lacaleTH" formControlName="roundEndDate"  placeholder="วันที่สิ้นสุด" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="roundEndDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="c-100:c+100" navigator="true"></p-calendar>
+                                                    </div>                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="isActive" class="form-label">สถานะการใช้งาน</label>
+                                                        <div>
+                                                            <p-checkbox name="isActive" id="isActive" binary="true" value="true" label="สามารถใช้งานได้" [formControl]="ContentForm.controls['isActive']"></p-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="dialog-form-footer-body">
+       <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+            <div class="form-group clear-fix">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm == 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentViewToEdit()">แก้ไข</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm != 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

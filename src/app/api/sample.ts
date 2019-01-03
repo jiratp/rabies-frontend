@@ -8,7 +8,7 @@ export const Sample = {
                     param: {}
                 },
                 List: {
-                    url: '/sample-objective/inquiry/content-list',
+                    url: '/sample-objective/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }

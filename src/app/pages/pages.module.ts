@@ -87,7 +87,7 @@ import { DepartmentManagementComponent } from './setting/department-management/d
 
 
 import { DialogRoleManageComponent } from './setting/role-management/dialog-role-management/dialog.role.manage.component';
-
+import { DialogRegionManageComponent } from './setting/region-management/dialog-region-management/dialog.region.manage.component';
 
 
 import { CallApiService } from './../providers/request.providers';
@@ -297,6 +297,7 @@ const routes: Routes = [
         DepartmentManagementComponent,
 
         DialogRoleManageComponent,
+        DialogRegionManageComponent,
     ],
     imports: [
         BrowserModule,
@@ -330,6 +331,7 @@ const routes: Routes = [
         AnimalSuspiciousComponent,
 
         DialogRoleManageComponent,
+        DialogRegionManageComponent,
     ]
 })
 

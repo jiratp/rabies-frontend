@@ -144,6 +144,26 @@ export class HeaderComponent implements OnInit {
             this.currentPage = 'setting/department-management';
             this.pageGroup = 'SITTING';
             break;
+          case 'setting/animal-management/animal-type':
+            this.currentPage = 'setting/animal-management/animal-type';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/animal-management/animal-species':
+            this.currentPage = 'setting/animal-management/animal-species';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/animal-management/animal-symptom':
+            this.currentPage = 'setting/animal-management/animal-symptom';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/sample-management/sample-objective':
+            this.currentPage = 'setting/sample-management/sample-objective';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/survey-management/survey-round':
+            this.currentPage = 'setting/survey-management/survey-round';
+            this.pageGroup = 'SITTING';
+            break;
           case 'login':
             this.currentPage = 'login';
             this.pageGroup = 'BEFORE_SIGN_ON';

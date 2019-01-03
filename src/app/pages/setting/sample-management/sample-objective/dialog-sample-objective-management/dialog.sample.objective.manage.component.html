@@ -15,17 +15,23 @@
                         <div class="form-group-fieldset clear-fix">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
-                                    <h3> ข้อมูลเขตปศุสัตว์ </h3>
+                                    <h3> ข้อมูลวัตถุประสงค์การเก็บตัวอย่าง </h3>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
                                     <!-- Row 1 -->
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                             <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="nameTH" class="form-label">ชื่อเขตปศุสัตว์</label>
-                                                        <input type="text" formControlName="nameTH" class="form-control" id="nameTH" placeholder="ชื่อเขตปศุสัตว์">
+                                                        <label for="nameTH" class="form-label">ชื่อวัตถุประสงค์การเก็บตัวอย่าง (TH)</label>
+                                                        <input type="text" formControlName="nameTH" class="form-control" id="nameTH" placeholder="ชื่อวัตถุประสงค์การเก็บตัวอย่าง (TH)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="nameEN" class="form-label">ชื่อวัตถุประสงค์การเก็บตัวอย่าง (EN)</label>
+                                                        <input type="text" formControlName="nameEN" class="form-control" id="nameEN" placeholder="ชื่อวัตถุประสงค์การเก็บตัวอย่าง (EN)">
                                                     </div>
                                                 </div>
                                             </div>
@@ -48,11 +54,19 @@
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                             <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
                                                     <div class="form-group clear-fix">
                                                         <label for="isActive" class="form-label">สถานะการใช้งาน</label>
                                                         <div>
                                                             <p-checkbox name="isActive" id="isActive" binary="true" value="true" label="สามารถใช้งานได้" [formControl]="ContentForm.controls['isActive']"></p-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="hasExtValue" class="form-label">สามารถกรอกข้อมูลเพิ่มเติม</label>
+                                                        <div>
+                                                            <p-checkbox name="hasExtValue" id="hasExtValue" binary="true" value="true" label="สามารถกรอกข้อมูลเพิ่มเติม" [formControl]="ContentForm.controls['hasExtValue']"></p-checkbox>
                                                         </div>
                                                     </div>
                                                 </div>

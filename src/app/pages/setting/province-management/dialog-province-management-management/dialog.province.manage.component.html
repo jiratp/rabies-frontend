@@ -1,0 +1,159 @@
+<div class="modal-header">
+    <div class="dialog-form-header-body">
+        <h4 class="modal-title">{{titleModal}}</h4>
+    </div> 
+    <button type="button" class="close dialog-form-close pull-right" aria-label="Close" (click)="modalClose()">
+        <span aria-hidden="true">&times;</span> 
+    </button>
+</div>
+<div class="modal-body">
+    <div class="dialog-content-body-form dialog-content-information">
+        <form class="form-dialog mt-3" name="ContentForm" [formGroup]="ContentForm">
+            <div class="card-body dialog-card-body-form">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">  
+                        <div class="form-group-fieldset clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> ข้อมูลจังหวัด </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="regionCode" class="form-label">ชื่อเขตปศุสัตว์</label>
+                                                        <p-dropdown [options]="lookupRegionCode" formControlName="regionCode" placeholder="เลิอกชื่อเขตปศุสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="regionCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="nameTH" class="form-label">ชื่อจังหวัด (TH)</label>
+                                                        <input type="text" formControlName="nameTH" class="form-control" id="nameTH" placeholder="ชื่อจังหวัด (TH)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="nameEN" class="form-label">ชื่อจังหวัด (EN)</label>
+                                                        <input type="text" formControlName="nameEN" class="form-control" id="nameEN" placeholder="ชื่อจังหวัด (EN)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="latitude" class="form-label">Latitude</label>
+                                                        <input type="text" formControlName="latitude" class="form-control" id="latitude" placeholder="Latitude">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="longitude" class="form-label">Longitude</label>
+                                                        <input type="text" formControlName="longitude" class="form-control" id="longitude" placeholder="Longitude">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="geoName" class="form-label">GEO Name</label>
+                                                        <textarea [rows]="5"  formControlName="geoName" class="form-control custom-textarea" id="geoName" placeholder="GEO Name" pInputTextarea autoResize="false"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="geoObject" class="form-label">GEO Object</label>
+                                                        <textarea [rows]="5"  formControlName="geoObject" class="form-control custom-textarea" id="geoObject" placeholder="GEO Object" pInputTextarea autoResize="false"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="description" class="form-label">รายละเอียด</label>
+                                                        <textarea [rows]="5"  formControlName="description" class="form-control custom-textarea" id="description" placeholder="รายละเอียด" pInputTextarea autoResize="false"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="isActive" class="form-label">สถานะการใช้งาน</label>
+                                                        <div>
+                                                            <p-checkbox name="isActive" id="isActive" binary="true" value="true" label="สามารถใช้งานได้" [formControl]="ContentForm.controls['isActive']"></p-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="dialog-form-footer-body">
+       <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+            <div class="form-group clear-fix">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm == 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentViewToEdit()">แก้ไข</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm != 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

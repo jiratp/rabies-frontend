@@ -6,25 +6,30 @@ import { LazyLoadEvent } from 'primeng/primeng';
 import { SelectItem } from 'primeng/api';
 import * as moment from 'moment';
 
-import { ConfigService } from './../../../../core/config.service';
+import { ConfigService } from './../../../../../core/config.service';
 
 
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { CookieService } from 'ngx-cookie-service';
 
-import { DialogAlertComponent } from './../../../../components/dialog-alert/dialog.alert.component';
-import { CallApiService } from './../../../../providers/request.providers';
-import { Utility } from './../../../../api/utility';
-import { User } from './../../../../api/user';
+import { DialogAlertComponent } from './../../../../../components/dialog-alert/dialog.alert.component';
+import { CallApiService } from './../../../../../providers/request.providers';
+import { Utility } from './../../../../../api/utility';
+import { Sample } from './../../../../../api/sample';
+import { Survey } from './../../../../../api/survey';
+import { Animal } from './../../../../../api/animal';
+import { User } from './../../../../../api/user';
+
+
 
 @Component({
-  selector: 'app-dialog-region-manage',
-  templateUrl: './dialog.region.manage.component.html',
-  styleUrls: ['./dialog.region.manage.component.scss'],
+  selector: 'app-dialog-survey-round-manage',
+  templateUrl: './dialog.survey.round.manage.component.html',
+  styleUrls: ['./dialog.survey.round.manage.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [CallApiService]
 })
-export class DialogRegionManageComponent implements OnInit {
+export class DialogSurveyRoundManageComponent implements OnInit {
   @Input() actionForm: string;
   @Input() dataObj: any;
   @Output() action = new EventEmitter();
@@ -40,6 +45,7 @@ export class DialogRegionManageComponent implements OnInit {
 
 
   defaultIsActive: Boolean = true;
+  lookupRoundYear: any = [];
 
   constructor(
     private Api: CallApiService,
@@ -65,9 +71,13 @@ export class DialogRegionManageComponent implements OnInit {
   LoadConfigForm() {
     this.ContentForm = new FormGroup({
       nameTH: new FormControl('', Validators.required),
+      nameEN: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       isActive: new FormControl(this.defaultIsActive , Validators.required),
-      geoName: new FormControl(''),
+      roundNo: new FormControl('' , Validators.required),
+      roundYear: new FormControl('' , Validators.required),
+      roundStartDate: new FormControl('' , Validators.required),
+      roundEndDate: new FormControl('' , Validators.required),
       code: new FormControl(''),
     });
   }
@@ -87,18 +97,18 @@ export class DialogRegionManageComponent implements OnInit {
   LoadModalHeader() {
     switch (this.actionForm) {
       case 'add':
-        this.titleModal = 'เพิ่มข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'เพิ่มข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์';
         break;
       case 'edit':
-        this.titleModal = 'แก้ไขข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'แก้ไขข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์';
         this.ContentSelect(this.dataObj, false);
         break;
       case 'view':
-        this.titleModal = 'แสดงข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'แสดงข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์';
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'จัดการข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์';
     }
   }
 
@@ -112,27 +122,43 @@ export class DialogRegionManageComponent implements OnInit {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Utility.Region.Inquiry.ById;
+      const endpoint = Survey.Round.Inquiry.ById;
       const newEndpoint = endpoint.url.replace('{content_id}', contentObj.code);
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
 
-        this.ContentForm.controls['geoName'].setValue(res.geoName);
         this.ContentForm.controls['code'].setValue(res.code);
         this.ContentForm.controls['nameTH'].setValue(res.nameTH);
+        this.ContentForm.controls['nameEN'].setValue(res.nameEN);
         this.ContentForm.controls['description'].setValue(res.description);
         this.ContentForm.controls['isActive'].setValue(res.isActive);
+        this.ContentForm.controls['roundNo'].setValue(res.roundNo);
+        this.ContentForm.controls['roundYear'].setValue(res.roundYear);
+        this.ContentForm.controls['roundStartDate'].setValue(res.roundStartDate);
+        this.ContentForm.controls['roundEndDate'].setValue(res.roundEndDate);
 
         if (disabled) {
-          this.ContentForm.controls['geoName'].disable();
+
+          this.ContentForm.controls['roundNo'].disable();
+          this.ContentForm.controls['roundYear'].disable();
+          this.ContentForm.controls['roundStartDate'].disable();
+          this.ContentForm.controls['roundEndDate'].disable();
+
           this.ContentForm.controls['code'].disable();
           this.ContentForm.controls['nameTH'].disable();
+          this.ContentForm.controls['nameEN'].disable();
           this.ContentForm.controls['description'].disable();
           this.ContentForm.controls['isActive'].disable();
         } else {
-          this.ContentForm.controls['geoName'].enable();
+
+          this.ContentForm.controls['roundNo'].enable();
+          this.ContentForm.controls['roundYear'].enable();
+          this.ContentForm.controls['roundStartDate'].enable();
+          this.ContentForm.controls['roundEndDate'].enable();
+
           this.ContentForm.controls['code'].enable();
           this.ContentForm.controls['nameTH'].enable();
+          this.ContentForm.controls['nameEN'].enable();
           this.ContentForm.controls['description'].enable();
           this.ContentForm.controls['isActive'].enable();
         }
@@ -163,9 +189,9 @@ export class DialogRegionManageComponent implements OnInit {
         let endpoint = null;
 
         if (this.actionForm === 'add') {
-          endpoint = Utility.Region.Create;
+          endpoint = Survey.Round.Create;
         } else if (this.actionForm === 'edit') {
-          endpoint = Utility.Region.Update;
+          endpoint = Survey.Round.Update;
         }
 
         this.Api.callWithOutScope(endpoint.url, endpoint.method, contentParams,  'Authorization', authorization).then((response) => {
@@ -207,7 +233,7 @@ export class DialogRegionManageComponent implements OnInit {
       } else {
         initialState.status = 'error';
         initialState.title = 'ข้อความจากระบบ';
-        initialState.description = 'กรุณากรอกข้อมูลเขตปศุสัตว์ให้ครบ';
+        initialState.description = 'กรุณากรอกข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์ให้ครบ';
         const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
         bsModalRefObj.content.action.subscribe(result => {
           if (result.status) {
@@ -238,7 +264,11 @@ export class DialogRegionManageComponent implements OnInit {
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลเขตปศุสัตว์';
+        this.titleModal = 'จัดการข้อมูลช่วงเวลาการขึ้นทะเบียนสัตว์';
     }
+  }
+
+  roundYearChange(event: any) {
+
   }
 }

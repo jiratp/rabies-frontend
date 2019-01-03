@@ -2,7 +2,7 @@
     <nav class="nav-breadcrumb" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ตั้งค่าระบบ</li>
-            <li class="breadcrumb-item active" aria-current="page">เขตปศุสัตว์</li>
+            <li class="breadcrumb-item active" aria-current="page">ช่วงเวลาการขึ้นทะเบียนสัตว์</li>
         </ol>
     </nav>     
 
@@ -14,7 +14,7 @@
                     <div class="tab-body">
                         <ul class="nav text-center" role="tablist">
                             <li class="nav-item tab-item tab-header">
-                                <span class="nav-link" href="#region-management-list" role="tab" data-toggle="tab">เขตปศุสัตว์</span>
+                                <span class="nav-link" href="#region-management-list" role="tab" data-toggle="tab">ช่วงเวลาการขึ้นทะเบียนสัตว์</span>
                             </li>
                         </ul>
                     </div>
@@ -31,7 +31,7 @@
                                                     </div>
                                                     <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar button-panel"> 
                                                         <button type="submit" class="btn btn-block btn-light btn-display-dialog-add-content" (click)="ActionCreateContent()">
-                                                           <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มเขตปศุสัตว์
+                                                           <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มช่วงเวลาการขึ้นทะเบียนสัตว์
                                                         </button>
                                                     </div>
                                                 </div>
@@ -39,12 +39,15 @@
                                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-data-table-group">  
                                                         <p-table [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
                                                             <ng-template pTemplate="caption">
-                                                                เขตปศุสัตว์
+                                                                ช่วงเวลาการขึ้นทะเบียนสัตว์
                                                             </ng-template>
                                                             <ng-template pTemplate="header">
                                                                 <tr>
                                                                     <th>ลำดับ</th>
-                                                                    <th>เขตปศุสัตว์</th>
+                                                                    <th>ชื่อช่วงเวลาการขึ้นทะเบียนสัตว์</th>
+                                                                    <th>ปีของช่วงเวลาการขึ้นทะเบียนสัตว์</th>
+                                                                    <th>ลำดับของช่วงเวลาการขึ้นทะเบียนสัตว์</th>
+                                                                    <th>วันที่เริ่มต้น - วันที่สิ้นสุด</th>
                                                                     <th>รายละเอียด</th>
                                                                     <th>สถานะการใช้งาน</th>
                                                                     <th>จัดการ</th>
@@ -57,9 +60,26 @@
                                                                         <span class="text-value">{{index + 1}}</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="ui-column-title">เขตปศุสัตว์</span>
+                                                                        <span class="ui-column-title">ชื่อช่วงเวลาการขึ้นทะเบียนสัตว์</span>
                                                                         <span class="text-value" *ngIf="rowData.nameTH != null">{{rowData.nameTH}}</span>
                                                                         <span class="text-value" *ngIf="rowData.nameTH == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ปีของช่วงเวลาการขึ้นทะเบียนสัตว์</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundYear != null">{{rowData.roundYear}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundYear == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ลำดับของช่วงเวลาการขึ้นทะเบียนสัตว์</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundNo != null">{{rowData.roundNo}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundNo == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">วันที่เริ่มต้น - วันที่สิ้นสุด</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundStartDate != null &&  rowData.roundEndDate != null">{{rowData.roundStartDate}} - {{rowData.roundEndDate}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundStartDate == null &&  rowData.roundEndDate == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundStartDate != null &&  rowData.roundEndDate == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.roundStartDate == null &&  rowData.roundEndDate != null">-</span>
                                                                     </td>
                                                                     <td>
                                                                         <span class="ui-column-title">รายละเอียด</span>
@@ -80,7 +100,7 @@
                                                             </ng-template>
                                                             <ng-template pTemplate="emptymessage">
                                                                 <tr>
-                                                                    <td colspan="5" class="emptymessage">
+                                                                    <td colspan="8" class="emptymessage">
                                                                         ไม่มีรายการ
                                                                     </td>
                                                                 </tr>
