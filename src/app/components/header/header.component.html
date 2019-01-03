@@ -40,7 +40,7 @@
             <!-- END INFORMATION -->
 
             <!-- START SURVEY -->
-            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SURVEY' ? 'active' : ''" *ngIf="memberRole == 'SURVEYER_MEMBER' || memberRole == 'STAFF_MEMBER' || memberRole == 'VETERINARY_MEMBER'"> 
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SURVEY' ? 'active' : ''" *ngIf="memberRole == 'SAO_MEMBER' || memberRole == 'LIVESTOCK_MEMBER' || memberRole == 'VETERINARY_MEMBER'"> 
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SURVEY" class="dropdown-toggle" data-toggle="dropdown">
                     <img class="icon" src="./assets/images/icon-menu-3.png" alt="">
                     <p>แบบสำรวจ</p>
@@ -54,7 +54,7 @@
             <!-- END SURVEY -->
 
             <!-- START SUSPICIOUS -->
-            <li class="nav-item" [ngClass]="pageGroup == 'SUSPICIOUS' ? 'active' : ''" *ngIf="memberRole == 'GENERAL_MEMBER' || memberRole == 'CLINIC_MEMBER' || memberRole == 'SURVEYER_MEMBER' || memberRole == 'STAFF_MEMBER' || memberRole == 'VETERINARY_MEMBER'" > 
+            <li class="nav-item" [ngClass]="pageGroup == 'SUSPICIOUS' ? 'active' : ''" *ngIf="memberRole == 'GENERAL_MEMBER' || memberRole == 'CLINIC_MEMBER' || memberRole == 'SAO_MEMBER' || memberRole == 'LIVESTOCK_MEMBER' || memberRole == 'VETERINARY_MEMBER'" > 
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SUSPICIOUS"  (click)="navigation('suspicious')">
                     <img class="icon" src="./assets/images/icon-menu-4.png" alt="">
                     <p>แจ้งพบสัตว์</p>
@@ -63,7 +63,7 @@
             <!-- END SUSPICIOUS -->
 
 
-            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SAMPLE' ? 'active' : ''" *ngIf="memberRole == 'CLINIC_MEMBER' || memberRole == 'RESEARCHER_MEMBER' || memberRole == 'STAFF_MEMBER' || memberRole == 'VETERINARY_MEMBER'">
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SAMPLE' ? 'active' : ''" *ngIf="memberRole == 'CLINIC_MEMBER' || memberRole == 'LABORATORY_MEMBER' || memberRole == 'LIVESTOCK_MEMBER' || memberRole == 'VETERINARY_MEMBER'">
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SIMPLE" class="dropdown-toggle" data-toggle="dropdown">
                     <img class="icon" src="./assets/images/icon-menu-5.png" alt="">
                     <p>ส่งตัวอย่าง</p>

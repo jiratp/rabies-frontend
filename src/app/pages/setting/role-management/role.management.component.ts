@@ -43,6 +43,7 @@ export class RoleManagementComponent implements OnInit {
   loading: Boolean;
   totalRecords: number;
   dataTableObj: any = [];
+  recordNo: any = 1;
   pages: any;
   pageRows: any;
 
@@ -114,6 +115,7 @@ export class RoleManagementComponent implements OnInit {
   }
 
   paginate(event) {
+    this.pages = (event.first / event.rows);
     this.LoadData((event.first / event.rows));
   }
 
@@ -129,7 +131,7 @@ export class RoleManagementComponent implements OnInit {
     }, 1000);
   }
 
-  ContentManagement() {
+  ActionCreateContent() {
     const initialState = { actionForm: 'add'};
     const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
     dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
@@ -140,8 +142,98 @@ export class RoleManagementComponent implements OnInit {
 
     modalASnRef.content.action.subscribe(result => {
       if (result.status) {
-        alert(1111);
+        this.LoadData((this.pages - 1));
       }
     });
+  }
+
+  ActionViewContent(dataContent: any) {
+    const initialState = { actionForm: 'view', dataObj: dataContent};
+    const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
+    dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
+    const modalASnRef = this.ModalService.show(
+      DialogRoleManageComponent,
+      Object.assign({}, dialogFormSetting, { initialState })
+    );
+
+    modalASnRef.content.action.subscribe(result => {
+      if (result.status) {
+        this.LoadData((this.pages - 1));
+      }
+    });
+  }
+
+  ActionEditContent(dataContent: any) {
+    const initialState = { actionForm: 'edit', dataObj: dataContent};
+    const dialogFormSetting = this.themeConfig.defaultSettings.dialogFormSetting;
+    dialogFormSetting.class = dialogFormSetting.class + ' custom-width';
+    const modalASnRef = this.ModalService.show(
+      DialogRoleManageComponent,
+      Object.assign({}, dialogFormSetting, { initialState })
+    );
+
+    modalASnRef.content.action.subscribe(result => {
+      if (result.status) {
+        this.LoadData((this.pages - 1));
+      }
+    });
+  }
+
+  ActionDeleteContent(dataContent: any) {
+    if (this.authenticationToken != null) {
+      const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
+      const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
+
+      initialState.status = 'info';
+      initialState.title = 'ข้อความจากระบบ';
+      initialState.description = 'คุณต้องการลบข้อมูลนี้ใช่หรือไม่ ?';
+      initialState.btnOK.isActive = true;
+      initialState.btnCancel.isActive = true;
+      const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+      bsModalRefObj.content.action.subscribe(result => {
+        initialState.btnCancel.isActive = false;
+        if (result.status) {
+          const authorization = 'Bearer ' + this.authenticationToken;
+          const endpoint = Utility.Role.Delete;
+          const newEndpoint = endpoint.url.replace('{content_id}', dataContent.code);
+          this.Api.callWithOutScope(newEndpoint, endpoint.method, endpoint.param, 'Authorization', authorization).then((response) => {
+            const res = response;
+            if (res.code === 1) {
+              initialState.status = 'success';
+              initialState.title = res.message;
+              initialState.description = res.description;
+              const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+              modalRef.content.action.subscribe(resultObj => {
+                if (resultObj.status) {
+                  this.LoadData((this.pages - 1));
+                }
+              });
+            } else {
+              initialState.status = 'error';
+              initialState.title = res.message;
+              initialState.description = res.description;
+              const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+              modalRef.content.action.subscribe(resultObj => {
+                if (resultObj.status) {
+                  this.LoadData((this.pages - 1));
+                }
+              });
+            }
+          }).catch((error) => {
+            initialState.status = 'error';
+            initialState.title = error.error.error.message;
+            initialState.description = error.error.error.description;
+            initialState.btnOK.isActive = true;
+            initialState.btnCancel.isActive = false;
+            const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+            modalRef.content.action.subscribe(resultObj => {
+              if (resultObj.status) {
+                this.LoadData((this.pages - 1));
+              }
+            });
+          });
+        }
+      });
+    }
   }
 }

@@ -30,7 +30,7 @@
                                                         
                                                     </div>
                                                     <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar button-panel"> 
-                                                        <button type="submit" class="btn btn-block btn-light btn-display-dialog-add-content" (click)="ContentManagement()">
+                                                        <button type="submit" class="btn btn-block btn-light btn-display-dialog-add-content" (click)="ActionCreateContent()">
                                                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสิทธิ์การใช้งานระบบ
                                                         </button>
                                                     </div>
@@ -43,31 +43,48 @@
                                                             </ng-template>
                                                             <ng-template pTemplate="header">
                                                                 <tr>
+                                                                    <!--
                                                                     <th style="width: 3em">
                                                                         <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                                                     </th>
+                                                                    -->
                                                                     <th>ลำดับ</th>
-                                                                    <th>ชื่อสิทธิ์</th>
-                                                                    <th>สถานะ</th>
+                                                                    <th>ชื่อสิทธิ์การใช้งาน</th>
+                                                                    <th>สถานะการตั้งค่าระบบ</th>
+                                                                    <th>สถานะการใช้งาน</th>
                                                                     <th>จัดการ</th>
                                                                 </tr>
                                                             </ng-template>
-                                                            <ng-template pTemplate="body" let-rowData>
+                                                            <ng-template pTemplate="body" let-rowData let-index="rowIndex">
                                                                 <tr [pSelectableRow]="rowData">
-                                                                    <td>
+                                                                <!--
+                                                                    <td class="text-center">
                                                                         <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                                                     </td>
-                                                                    <td>
+                                                                -->
+                                                                    <td class="text-center">
                                                                         <span class="ui-column-title">ลำดับ</span>
+                                                                        <span class="text-value">{{index + 1}}</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="ui-column-title">ชื่อสิทธิ์</span>
+                                                                        <span class="ui-column-title">ชื่อสิทธิ์การใช้งาน</span>
+                                                                        <span class="text-value" *ngIf="rowData.name != null">{{rowData.name}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.name == null">-</span>
                                                                     </td>
-                                                                    <td>
-                                                                        <span class="ui-column-title">สถานะ</span>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">สถานะการตั้งค่าระบบ</span>
+                                                                        <span class="text-value" *ngIf="rowData.isSystem"><img src="./assets/images/iconfinder_bullet_green.png" alt="ใช้งาน" class="bullet-status"/></span>
+                                                                        <span class="text-value" *ngIf="!rowData.isSystem"><img src="./assets/images/iconfinder_bullet_red.png" alt="ไม่ใช้งาน" class="bullet-status"/></span>
                                                                     </td>
-                                                                    <td>
-                                                                       
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">สถานะการใช้งาน</span>
+                                                                        <span class="text-value" *ngIf="rowData.isActive"><img src="./assets/images/iconfinder_bullet_green.png" alt="ใช้งาน" class="bullet-status"/></span>
+                                                                        <span class="text-value" *ngIf="!rowData.isActive"><img src="./assets/images/iconfinder_bullet_red.png" alt="ไม่ใช้งาน" class="bullet-status"/></span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="text-value" (click)="ActionViewContent(rowData)"><img src="./assets/images/iconfinder_view_bw.png" alt="ดูรายละเอียด" class="datatable-icon-action"/></span>
+                                                                        <span class="text-value" (click)="ActionEditContent(rowData)"><img src="./assets/images/iconfinder_note_edit_bw.png" alt="แก้ไขข้อมูล" class="datatable-icon-action"/></span>
+                                                                        <span class="text-value" (click)="ActionDeleteContent(rowData)"><img src="./assets/images/iconfinder_delete_bw.png" alt="ลบข้อมูล" class="datatable-icon-action"/></span>
                                                                     </td>
                                                                 </tr>
                                                             </ng-template>

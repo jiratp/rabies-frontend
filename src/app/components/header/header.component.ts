@@ -210,7 +210,17 @@ export class HeaderComponent implements OnInit {
           initialState.status = 'error';
           initialState.title = error.error.error.message;
           initialState.description = error.error.error.description;
-          this.modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+          const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+          modalRef.content.action.subscribe(result => {
+            if (result.status) {
+              const cookieExists: boolean = this.cookieService.check('AuthenticationToken');
+              if (cookieExists) {
+                this.cookieService.delete('AuthenticationToken');
+              }
+              this.storage.remove('AuthenticationToken');
+              this.authenticationToken = null;
+            }
+          });
       });
     }
   }

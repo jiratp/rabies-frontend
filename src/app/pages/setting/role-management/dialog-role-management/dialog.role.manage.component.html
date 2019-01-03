@@ -82,7 +82,10 @@
        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
             <div class="form-group clear-fix">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm == 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentViewToEdit()">แก้ไข</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm != 'view'">  
                         <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
