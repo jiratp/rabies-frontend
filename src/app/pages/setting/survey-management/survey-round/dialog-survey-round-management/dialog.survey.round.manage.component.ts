@@ -20,8 +20,6 @@ import { Survey } from './../../../../../api/survey';
 import { Animal } from './../../../../../api/animal';
 import { User } from './../../../../../api/user';
 
-
-
 @Component({
   selector: 'app-dialog-survey-round-manage',
   templateUrl: './dialog.survey.round.manage.component.html',
@@ -29,6 +27,7 @@ import { User } from './../../../../../api/user';
   encapsulation: ViewEncapsulation.None,
   providers: [CallApiService]
 })
+
 export class DialogSurveyRoundManageComponent implements OnInit {
   @Input() actionForm: string;
   @Input() dataObj: any;
@@ -61,6 +60,7 @@ export class DialogSurveyRoundManageComponent implements OnInit {
     this.LoadConfigForm();
     this.LoadSessionPage();
     this.LoadModalHeader();
+    this.LoadLookup();
   }
 
   LoadConfigCalendar() {
@@ -112,6 +112,20 @@ export class DialogSurveyRoundManageComponent implements OnInit {
     }
   }
 
+  LoadLookup() {
+    this.LookupRoundYear();
+  }
+
+  LookupRoundYear (roundYear: any = '') {
+    for (let i = 2010; i <= 2040; i++) {
+      this.lookupRoundYear.push({ value: i, label: i });
+    }
+
+    if (roundYear !== '') {
+      this.ContentForm.controls['roundYear'].setValue(roundYear);
+    }
+  }
+
   modalClose() {
     this.modalRef.hide();
     this.action.emit({ status: false, process: false});
@@ -136,6 +150,11 @@ export class DialogSurveyRoundManageComponent implements OnInit {
         this.ContentForm.controls['roundYear'].setValue(res.roundYear);
         this.ContentForm.controls['roundStartDate'].setValue(res.roundStartDate);
         this.ContentForm.controls['roundEndDate'].setValue(res.roundEndDate);
+
+        if (res.roundYear != null) {
+          this.ContentForm.controls['roundYear'].setValue(res.roundYear);
+          this.LookupRoundYear(res.roundYear);
+        }
 
         if (disabled) {
 

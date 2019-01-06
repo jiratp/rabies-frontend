@@ -1,0 +1,142 @@
+<div class="modal-header">
+    <div class="dialog-form-header-body">
+        <h4 class="modal-title">{{titleModal}}</h4>
+    </div> 
+    <button type="button" class="close dialog-form-close pull-right" aria-label="Close" (click)="modalClose()">
+        <span aria-hidden="true">&times;</span> 
+    </button>
+</div>
+<div class="modal-body">
+    <div class="dialog-content-body-form dialog-content-information">
+        <form class="form-dialog mt-3" name="ContentForm" [formGroup]="ContentForm">
+            <div class="card-body dialog-card-body-form">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">  
+                        <div class="form-group-fieldset clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> ข้อมูลรายชื่อหน่วยงาน </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="departmentTypeCode" class="form-label">ประเภทหน่วยงาน</label>
+                                                        <p-dropdown [options]="lookupDepartmentTypeCode" formControlName="departmentTypeCode" placeholder="เลิอกประเภทหน่วยงาน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="departmentTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="agencyCode" class="form-label">รหัสหน่วยงาน</label>
+                                                        <input type="text" formControlName="agencyCode" class="form-control" id="agencyCode" placeholder="รหัสหน่วยงาน">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="nameTH" class="form-label">ชื่อหน่วยงาน</label>
+                                                        <input type="text" formControlName="nameTH" class="form-control" id="nameTH" placeholder="ชื่อหน่วยงาน">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="description" class="form-label">รายละเอียด</label>
+                                                        <textarea [rows]="5"  formControlName="description" class="form-control custom-textarea" id="description" placeholder="รายละเอียด" pInputTextarea autoResize="false"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <!-- Row 1 -->
+                                    <div class="row" *ngIf="departmentTypeObj != null">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
+                                                    <div class="form-group clear-fix" *ngIf="departmentTypeObj.isProvince">
+                                                        <label for="provinceCode" class="form-label">จังหวัด</label>
+                                                        <p-dropdown [options]="lookupProvinceCode" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="provinceCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
+                                                    <div class="form-group clear-fix" *ngIf="departmentTypeObj.isDistrict">
+                                                        <label for="districtCode" class="form-label">อำเภอ</label>
+                                                        <p-dropdown [options]="lookupDistrictCode" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="districtCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
+                                                    <div class="form-group clear-fix" *ngIf="departmentTypeObj.isSubdistrict">
+                                                        <label for="subdistrictCode" class="form-label">ตำบล</label>
+                                                        <p-dropdown [options]="lookupSubDistrictCode" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="subDistrictCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="isActive" class="form-label">สถานะการใช้งาน</label>
+                                                        <div>
+                                                            <p-checkbox name="isActive" id="isActive" binary="true" value="true" label="สามารถใช้งานได้" [formControl]="ContentForm.controls['isActive']"></p-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="dialog-form-footer-body">
+       <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+            <div class="form-group clear-fix">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm == 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentViewToEdit()">แก้ไข</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm != 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

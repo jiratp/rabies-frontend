@@ -67,7 +67,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
     this.setupFormGroup();
     this.setupCalendar();
     this.LoadSessionPage();
-    this.LoadData((this.pages - 1));
+    this.LoadData((this.pages - 1), 'all');
   }
 
   setupFormGroup() {
@@ -92,13 +92,15 @@ export class AnimalSpeciesManageComponent implements OnInit {
     }
   }
 
-  LoadData(pages: any) {
+  LoadData(pages: any, animalTypeCode: any) {
     if (this.authenticationToken != null) {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
       const endpoint = Animal.Species.Inquiry.ByList.List;
-      const newEndpoint = endpoint.url.replace('{page_number}', pages);
+      let newEndpoint = endpoint.url.replace('{page_number}', pages);
+      newEndpoint = newEndpoint.replace('{animal_type_code}', animalTypeCode);
+
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
         this.pageRows = res.pageRows;
@@ -115,7 +117,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
 
   paginate(event) {
     this.pages = (event.first / event.rows);
-    this.LoadData((event.first / event.rows));
+    this.LoadData((event.first / event.rows), 'all');
   }
 
   tabSelected(tab) {
@@ -141,7 +143,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
 
     modalASnRef.content.action.subscribe(result => {
       if (result.status) {
-        this.LoadData((this.pages - 1));
+        this.LoadData((this.pages - 1), 'all');
       }
     });
   }
@@ -157,7 +159,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
 
     modalASnRef.content.action.subscribe(result => {
       if (result.status) {
-        this.LoadData((this.pages - 1));
+        this.LoadData((this.pages - 1), 'all');
       }
     });
   }
@@ -173,7 +175,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
 
     modalASnRef.content.action.subscribe(result => {
       if (result.status) {
-        this.LoadData((this.pages - 1));
+        this.LoadData((this.pages - 1), 'all');
       }
     });
   }
@@ -204,7 +206,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
               const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
               modalRef.content.action.subscribe(resultObj => {
                 if (resultObj.status) {
-                  this.LoadData((this.pages - 1));
+                  this.LoadData((this.pages - 1), 'all');
                 }
               });
             } else {
@@ -214,7 +216,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
               const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
               modalRef.content.action.subscribe(resultObj => {
                 if (resultObj.status) {
-                  this.LoadData((this.pages - 1));
+                  this.LoadData((this.pages - 1), 'all');
                 }
               });
             }
@@ -227,7 +229,7 @@ export class AnimalSpeciesManageComponent implements OnInit {
             const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
             modalRef.content.action.subscribe(resultObj => {
               if (resultObj.status) {
-                this.LoadData((this.pages - 1));
+                this.LoadData((this.pages - 1), 'all');
               }
             });
           });

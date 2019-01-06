@@ -19,7 +19,7 @@ import { Animal } from './../../../api/animal';
 import { User } from './../../../api/user';
 
 
-import { DialogProvinceManageComponent } from './dialog-province-management-management/dialog.province.manage.component';
+import { DialogProvinceManageComponent } from './dialog-province-management/dialog.province.manage.component';
 
 @Component({
   selector: 'app-province-manage',

@@ -59,6 +59,7 @@ export class DialogAnimalSpeciesManageComponent implements OnInit {
     this.LoadConfigForm();
     this.LoadSessionPage();
     this.LoadModalHeader();
+    this.LoadLookup();
   }
 
   LoadConfigCalendar() {
@@ -108,6 +109,36 @@ export class DialogAnimalSpeciesManageComponent implements OnInit {
     }
   }
 
+
+  LoadLookup() {
+    this.LookupAnimalType();
+  }
+
+  LookupAnimalType(animalTypeCode: any = '') {
+    this.lookupAnimalTypeCode = [];
+    if (this.authenticationToken != null) {
+      const authorization = 'Bearer ' + this.authenticationToken;
+      const endpoint = Animal.Type.Inquiry.ByList.ListActive;
+      this.Api.callWithOutScope(endpoint.url, endpoint.method, {},  'Authorization', authorization).then((response) => {
+        if (response != null) {
+          response.forEach(element => {
+            this.lookupAnimalTypeCode.push({ value: element.code, label: element.nameTH });
+          });
+
+          if (animalTypeCode !== '') {
+            this.ContentForm.controls['animalTypeCode'].setValue(animalTypeCode);
+          }
+        } else {
+          this.lookupAnimalTypeCode = [];
+        }
+      }).catch((error) => {
+        this.lookupAnimalTypeCode = [];
+      });
+    } else {
+      this.lookupAnimalTypeCode = [];
+    }
+  }
+
   modalClose() {
     this.modalRef.hide();
     this.action.emit({ status: false, process: false});
@@ -120,6 +151,7 @@ export class DialogAnimalSpeciesManageComponent implements OnInit {
       const authorization = 'Bearer ' + this.authenticationToken;
       const endpoint = Animal.Species.Inquiry.ById;
       const newEndpoint = endpoint.url.replace('{content_id}', contentObj.code);
+
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
 
@@ -129,6 +161,11 @@ export class DialogAnimalSpeciesManageComponent implements OnInit {
         this.ContentForm.controls['description'].setValue(res.description);
         this.ContentForm.controls['isActive'].setValue(res.isActive);
         this.ContentForm.controls['hasExtValue'].setValue(res.hasExtValue);
+
+        if (res.animalType != null) {
+          this.ContentForm.controls['animalTypeCode'].setValue(res.animalType.code);
+          this.LookupAnimalType(res.animalType.code);
+        }
 
         if (disabled) {
           this.ContentForm.controls['hasExtValue'].disable();
@@ -171,13 +208,16 @@ export class DialogAnimalSpeciesManageComponent implements OnInit {
         const authorization = 'Bearer ' + this.authenticationToken;
         let endpoint = null;
 
+        let newEndpoint = null;
+
         if (this.actionForm === 'add') {
           endpoint = Animal.Species.Create;
+          newEndpoint = endpoint.url.replace('{animal_type_code}', contentParams.animalTypeCode);
         } else if (this.actionForm === 'edit') {
           endpoint = Animal.Species.Update;
+          newEndpoint = endpoint.url;
         }
-
-        this.Api.callWithOutScope(endpoint.url, endpoint.method, contentParams,  'Authorization', authorization).then((response) => {
+        this.Api.callWithOutScope(newEndpoint, endpoint.method, contentParams,  'Authorization', authorization).then((response) => {
           const res = response;
           if (res.code === 1) {
             initialState.status = 'success';

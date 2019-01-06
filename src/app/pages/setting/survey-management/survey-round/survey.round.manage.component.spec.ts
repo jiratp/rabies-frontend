@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SampleObjectiveManageComponent } from './sample.objective.manage.component';
+import { SurveyRoundManageComponent } from './survey.round.manage.component';
 
-describe('SampleObjectiveManageComponent', () => {
-  let component: SampleObjectiveManageComponent;
-  let fixture: ComponentFixture<SampleObjectiveManageComponent>;
+describe('SurveyRoundManageComponent', () => {
+  let component: SurveyRoundManageComponent;
+  let fixture: ComponentFixture<SurveyRoundManageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SampleObjectiveManageComponent ]
+      declarations: [ SurveyRoundManageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SampleObjectiveManageComponent);
+    fixture = TestBed.createComponent(SurveyRoundManageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

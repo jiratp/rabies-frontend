@@ -1,0 +1,156 @@
+<div class="container-fluid setting-department-name-management-component breadcrumb">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">ตั้งค่าระบบ</li>
+            <li class="breadcrumb-item active" aria-current="page">รายชื่อหน่วยงาน</li>
+        </ol>
+    </nav>     
+
+    <div class="container-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 card mb-3 tab-component-card">
+                <div class="card-body tab-component-card-body">
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item tab-header">
+                                <span class="nav-link" href="#search-group" role="tab" data-toggle="tab">ค้นหาข้อมูล</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="search-group">
+                            <form class="form-content mt-3" name="searchForm" [formGroup]="searchForm">
+                                <div class="content-container content-body-form">
+                                    <div class="card-body content-card-body content-data-search">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body">
+                                                
+
+                                                <!-- Row 1 -->
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-group-panel form-group-footer-panel">  
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
+                                                                <div class="form-group clear-fix">
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-button-panel one-btn button-panel">  
+                                                                            <button type="submit" class="btn btn-block btn-light btn-search">ค้นหาข้อมูล</button>
+
+                                                                            <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-body">
+                        <ul class="nav text-center" role="tablist">
+                            <li class="nav-item tab-item tab-header">
+                                <span class="nav-link" href="#region-management-list" role="tab" data-toggle="tab">รายชื่อหน่วยงาน</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="region-management-list">
+                            <div class="content-container content-body-form">
+                                <div class="card-body content-card-body content-data-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body"> 
+                                            <div class="content-group-panel clear-fix">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 searchbar">
+                                                        
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 searchbar button-panel"> 
+                                                        <button type="submit" class="btn btn-block btn-light btn-display-dialog-add-content" (click)="ActionCreateContent()">
+                                                           <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มรายชื่อหน่วยงาน
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-data-table-group">  
+                                                        <p-table [value]="dataTableObj" (onPage)="paginate($event)" [rows]="pageRows" [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
+                                                            <ng-template pTemplate="caption">
+                                                                รายชื่อหน่วยงาน
+                                                            </ng-template>
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                    <th>ลำดับ</th>
+                                                                    <th>จังหวัด</th>
+                                                                    <th>อำเภอ</th>
+                                                                    <th>ตำบล</th>
+                                                                    <th>ชื่อหน่วยงาน</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th>จัดการ</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                                                                <tr [pSelectableRow]="rowData">
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ลำดับ</span>
+                                                                        <span class="text-value">{{index + 1}}</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">จังหวัด</span>
+                                                                        <span class="text-value" *ngIf="rowData.province != null">{{rowData.province.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.province == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">อำเภอ</span>
+                                                                        <span class="text-value" *ngIf="rowData.district != null">{{rowData.district.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.district == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ตำบล</span>
+                                                                        <span class="text-value" *ngIf="rowData.subdistrict != null">{{rowData.subdistrict.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.subdistrict == null">-</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="ui-column-title">ชื่อหน่วยงาน</span>
+                                                                        <span class="text-value" *ngIf="rowData.nameTH != null">({{rowData.agencyCode}}) {{rowData.nameTH}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.nameTH == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">สถานะการใช้งาน</span>
+                                                                        <span class="text-value" *ngIf="rowData.isActive"><img src="./assets/images/iconfinder_bullet_green.png" alt="ใช้งาน" class="bullet-status"/></span>
+                                                                        <span class="text-value" *ngIf="!rowData.isActive"><img src="./assets/images/iconfinder_bullet_red.png" alt="ไม่ใช้งาน" class="bullet-status"/></span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="text-value" (click)="ActionViewContent(rowData)"><img src="./assets/images/iconfinder_view_bw.png" alt="ดูรายละเอียด" class="datatable-icon-action"/></span>
+                                                                        <span class="text-value" (click)="ActionEditContent(rowData)"><img src="./assets/images/iconfinder_note_edit_bw.png" alt="แก้ไขข้อมูล" class="datatable-icon-action"/></span>
+                                                                        <span class="text-value" (click)="ActionDeleteContent(rowData)"><img src="./assets/images/iconfinder_delete_bw.png" alt="ลบข้อมูล" class="datatable-icon-action"/></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="emptymessage">
+                                                                <tr>
+                                                                    <td colspan="7" class="emptymessage">
+                                                                        ไม่มีรายการ
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>              
+</div>

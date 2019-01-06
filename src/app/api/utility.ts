@@ -71,42 +71,6 @@ export const Utility = {
             param: {}
         }
     },
-    Department: {
-        Inquiry: {
-            ByList: {
-                ListActive: {
-                    url: '/department/inquiry/content-list/active',
-                    method: 'POST',
-                    param: {}
-                },
-                List: {
-                    url: '/department/inquiry/content-list/pages/{page_number}',
-                    method: 'POST',
-                    param: {}
-                }
-            },
-            ById: {
-                url: '/department/inquiry/content/{content_id}',
-                method: 'GET',
-                param: {}
-            }
-        },
-        Create: {
-            url: '/department/create',
-            method: 'POST',
-            param: {}
-        },
-        Update: {
-            url: '/department/update',
-            method: 'POST',
-            param: {}
-        },
-        Delete: {
-            url: '/department/delete/{content_id}',
-            method: 'GET',
-            param: {}
-        }
-    },
     Role: {
         Inquiry: {
             ByList: {

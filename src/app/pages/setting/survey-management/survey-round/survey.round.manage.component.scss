@@ -1,11 +1,11 @@
-@import "../../../themes/styles/variables";
+@import "./../../../../themes/styles/variables";
 
 .container-fluid {
     &.breadcrumb{
         padding-top: $layout-page-breadcrum-top;
     }
 
-    &.setting-region-management-component{
+    &.setting-survey-round-management-component{
         width: 100%;
         padding-right: $layout-page-right;
         padding-left: $layout-page-left;
@@ -64,12 +64,12 @@
                                                                     }
 
                                                                     &:nth-child(3){
-                                                                        width: 10%;
+                                                                        width: 8%;
                                                                         text-align: center;
                                                                     }
 
                                                                     &:nth-child(4){
-                                                                        width: 10%;
+                                                                        width: 7%;
                                                                         text-align: center;
                                                                     }
 
@@ -84,7 +84,7 @@
                                                                     }
 
                                                                     &:nth-child(7){
-                                                                        width: 10%;
+                                                                        width: 15%;
                                                                         text-align: center;
                                                                     }
 

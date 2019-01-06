@@ -140,8 +140,12 @@ export class HeaderComponent implements OnInit {
             this.currentPage = 'setting/subdistrict-management';
             this.pageGroup = 'SITTING';
             break;
-          case 'setting/department-management':
-            this.currentPage = 'setting/department-management';
+          case 'setting/department-management/department-type':
+            this.currentPage = 'setting/department-management/department-type';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/department-management/department-name':
+            this.currentPage = 'setting/department-management/department-name';
             this.pageGroup = 'SITTING';
             break;
           case 'setting/animal-management/animal-type':

@@ -80,14 +80,39 @@ import { UserManagementComponent } from './setting/user-management/user.manageme
 import { RoleManagementComponent } from './setting/role-management/role.management.component';
 import { AccessTransactionComponent } from './setting/access/transaction/access.transaction.component';
 import { RegionManagementComponent } from './setting/region-management/region.management.component';
-import { ProvinceManagementComponent } from './setting/province-management/province.management.component';
+import { ProvinceManageComponent } from './setting/province-management/province.manage.component';
 import { DistrictManagementComponent } from './setting/district-management/district.management.component';
 import { SubdistrictManagementComponent } from './setting/subdistrict-management/subdistrict.management.component';
-import { DepartmentManagementComponent } from './setting/department-management/department.management.component';
 
+import { DepartmentTypeManageComponent } from './setting/department-management/department-type/department.type.manage.component';
+import { DepartmentNameManageComponent } from './setting/department-management/department-name/department.name.manage.component';
+
+import { AnimalTypeManageComponent } from './setting/animal-management/animal-type/animal.type.manage.component';
+import { AnimalSpeciesManageComponent } from './setting/animal-management/animal-species/animal.species.manage.component';
+import { AnimalSymptomManageComponent } from './setting/animal-management/animal-symptom/animal.symptom.manage.component';
+import { SampleObjectiveManageComponent } from './setting/sample-management/sample-objective/sample.objective.manage.component';
+import { SurveyRoundManageComponent } from './setting/survey-management/survey-round/survey.round.manage.component';
 
 import { DialogRoleManageComponent } from './setting/role-management/dialog-role-management/dialog.role.manage.component';
 import { DialogRegionManageComponent } from './setting/region-management/dialog-region-management/dialog.region.manage.component';
+import { DialogProvinceManageComponent } from './setting/province-management/dialog-province-management/dialog.province.manage.component';
+
+
+// tslint:disable-next-line:max-line-length
+import { DialogDepartmentTypeManageComponent } from './setting/department-management/department-type/dialog-department-type-management/dialog.department.type.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogDepartmentNameManageComponent } from './setting/department-management/department-name/dialog-department-name-management/dialog.department.name.manage.component';
+
+// tslint:disable-next-line:max-line-length
+import { DialogAnimalTypeManageComponent } from './setting/animal-management/animal-type/dialog-animal-type-management/dialog.animal.type.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogAnimalSpeciesManageComponent } from './setting/animal-management/animal-species/dialog-animal-species-management/dialog.animal.species.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogAnimalSymptomManageComponent } from './setting/animal-management/animal-symptom/dialog-animal-symptom-management/dialog.animal.symptom.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogSampleObjectiveManageComponent } from './setting/sample-management/sample-objective/dialog-sample-objective-management/dialog.sample.objective.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogSurveyRoundManageComponent } from './setting/survey-management/survey-round/dialog-survey-round-management/dialog.survey.round.manage.component';
 
 
 import { CallApiService } from './../providers/request.providers';
@@ -233,7 +258,7 @@ const routes: Routes = [
             },
             {
                 path: 'setting/province-management',
-                component: ProvinceManagementComponent
+                component: ProvinceManageComponent
             },
             {
                 path: 'setting/district-management',
@@ -244,12 +269,37 @@ const routes: Routes = [
                 component: SubdistrictManagementComponent
             },
             {
-                path: 'setting/department-management',
-                component: DepartmentManagementComponent
+                path: 'setting/department-management/department-type',
+                component: DepartmentTypeManageComponent
+            },
+            {
+                path: 'setting/department-management/department-name',
+                component: DepartmentNameManageComponent
+            },
+            {
+                path: 'setting/animal-management/animal-type',
+                component: AnimalTypeManageComponent
+            },
+            {
+                path: 'setting/animal-management/animal-species',
+                component: AnimalSpeciesManageComponent
+            },
+            {
+                path: 'setting/animal-management/animal-symptom',
+                component: AnimalSymptomManageComponent
+            },
+            {
+                path: 'setting/sample-management/sample-objective',
+                component: SampleObjectiveManageComponent
+            },
+            {
+                path: 'setting/survey-management/survey-round',
+                component: SurveyRoundManageComponent
             },
         ]
     }
 ];
+
 
 @NgModule({
     declarations: [
@@ -291,13 +341,30 @@ const routes: Routes = [
         RoleManagementComponent,
         AccessTransactionComponent,
         RegionManagementComponent,
-        ProvinceManagementComponent,
+        ProvinceManageComponent,
         DistrictManagementComponent,
         SubdistrictManagementComponent,
-        DepartmentManagementComponent,
+        DepartmentTypeManageComponent,
+        DepartmentNameManageComponent,
+
+        AnimalTypeManageComponent,
+        AnimalSpeciesManageComponent,
+        AnimalSymptomManageComponent,
+        SampleObjectiveManageComponent,
+        SurveyRoundManageComponent,
 
         DialogRoleManageComponent,
         DialogRegionManageComponent,
+        DialogProvinceManageComponent,
+
+        DialogDepartmentTypeManageComponent,
+        DialogDepartmentNameManageComponent,
+
+        DialogAnimalTypeManageComponent,
+        DialogAnimalSpeciesManageComponent,
+        DialogAnimalSymptomManageComponent,
+        DialogSampleObjectiveManageComponent,
+        DialogSurveyRoundManageComponent,
     ],
     imports: [
         BrowserModule,
@@ -332,6 +399,15 @@ const routes: Routes = [
 
         DialogRoleManageComponent,
         DialogRegionManageComponent,
+        DialogProvinceManageComponent,
+
+        DialogDepartmentTypeManageComponent,
+        DialogDepartmentNameManageComponent,
+        DialogAnimalTypeManageComponent,
+        DialogAnimalSpeciesManageComponent,
+        DialogAnimalSymptomManageComponent,
+        DialogSampleObjectiveManageComponent,
+        DialogSurveyRoundManageComponent,
     ]
 })
 

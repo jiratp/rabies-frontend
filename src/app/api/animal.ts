@@ -39,7 +39,7 @@ export const Animal = {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/animal-type/pages/{page_number}/active',
+                    url: '/animal-type/inquiry/content-list/active',
                     method: 'POST',
                     param: {}
                 },
@@ -193,8 +193,13 @@ export const Animal = {
                     param: {}
                 }
             },
-            ById: {
+            ByIdAndType: {
                 url: '/animal-species/{animal_type_code}/inquiry/content/{content_id}',
+                method: 'GET',
+                param: {}
+            },
+            ById: {
+                url: '/animal-species/inquiry/content/{content_id}',
                 method: 'GET',
                 param: {}
             }
@@ -205,12 +210,12 @@ export const Animal = {
             param: {}
         },
         Update: {
-            url: '/animal-species/{animal_type_code}/update',
+            url: '/animal-species/update',
             method: 'POST',
             param: {}
         },
         Delete: {
-            url: '/animal-species/{animal_type_code}/delete/{content_id}',
+            url: '/animal-species/delete/{content_id}',
             method: 'GET',
             param: {}
         }

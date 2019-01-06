@@ -1,11 +1,11 @@
-@import "../../../themes/styles/variables";
+@import "./../../../../themes/styles/variables";
 
 .container-fluid {
     &.breadcrumb{
         padding-top: $layout-page-breadcrum-top;
     }
 
-    &.setting-region-management-component{
+    &.setting-sample-objective-management-component{
         width: 100%;
         padding-right: $layout-page-right;
         padding-left: $layout-page-left;
@@ -59,7 +59,7 @@
                                                                     }
                                                                     
                                                                     &:nth-child(2){
-                                                                        width: 15%;
+                                                                        width: 45%;
                                                                         text-align: center;
                                                                     }
 
@@ -74,16 +74,6 @@
                                                                     }
 
                                                                     &:nth-child(5){
-                                                                        width: 15%;
-                                                                        text-align: center;
-                                                                    }
-
-                                                                    &:nth-child(6){
-                                                                        width: 15%;
-                                                                        text-align: center;
-                                                                    }
-
-                                                                    &:nth-child(7){
                                                                         width: 15%;
                                                                         text-align: center;
                                                                     }

@@ -30,7 +30,8 @@ import { DialogSurveyRoundManageComponent } from './dialog-survey-round-manageme
   encapsulation: ViewEncapsulation.None,
   providers: [CallApiService]
 })
-export class SampleObjectiveManageComponent implements OnInit {
+
+export class SurveyRoundManageComponent implements OnInit {
   modalRef: BsModalRef;
   searchForm: FormGroup;
   authenticationToken: any;

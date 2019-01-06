@@ -75,7 +75,7 @@
             </li>    
             <li class="nav-item dropdown" [ngClass]="pageGroup == 'SITTING' ? 'active' : ''" *ngIf="memberRole == 'ADMINISTRATOR'">
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SETTING" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-cogs"> </i>
+                    <img class="icon" src="./assets/images/icon-menu-9.png" alt="">
                     <p>ตั้งค่าระบบ </p>
                 </a>
                 
@@ -86,7 +86,8 @@
                     <li class="dropdown-divider"></li>
                     <li><a data-x-sig="ST-SETTING-04" (click)="navigation('setting/region-management')">เขตปศุสัตว์</a></li>
                     <li><a data-x-sig="ST-SETTING-04" (click)="navigation('setting/province-management')">จังหวัด</a></li>
-                    <li><a data-x-sig="ST-SETTING-05" (click)="navigation('setting/department-management')">หน่วยงาน</a></li>
+                    <li><a data-x-sig="ST-SETTING-05" (click)="navigation('setting/department-management/department-type')">ประเภทหน่วยงาน</a></li>
+                    <li><a data-x-sig="ST-SETTING-05" (click)="navigation('setting/department-management/department-name')">หน่วยงาน</a></li>
                     <li class="dropdown-divider"></li>
                     <li><a data-x-sig="ST-SETTING-06" (click)="navigation('setting/animal-management/animal-type')">จัดการประเภทสัตว์</a></li>
                     <li><a data-x-sig="ST-SETTING-07" (click)="navigation('setting/animal-management/animal-species')">จัดการสายพันธ์สัตว์</a></li>
