@@ -168,6 +168,22 @@ export class HeaderComponent implements OnInit {
             this.currentPage = 'setting/survey-management/survey-round';
             this.pageGroup = 'SITTING';
             break;
+          case 'setting/content-management/content-category':
+            this.currentPage = 'setting/content-management/content-category';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/content-management/content-video':
+            this.currentPage = 'setting/content-management/content-video';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/content-management/content-document':
+            this.currentPage = 'setting/content-management/content-document';
+            this.pageGroup = 'SITTING';
+            break;
+          case 'setting/content-management/content-news':
+            this.currentPage = 'setting/content-management/content-news';
+            this.pageGroup = 'SITTING';
+            break;
           case 'login':
             this.currentPage = 'login';
             this.pageGroup = 'BEFORE_SIGN_ON';

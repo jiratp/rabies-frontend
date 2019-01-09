@@ -16,6 +16,7 @@ import { MenuItem } from 'primeng/api';
 
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { CookieService } from 'ngx-cookie-service';
+import { NgxEditorModule } from 'ngx-editor';
 
 import { EsriMapComponent } from './../components/esri-map/esri-map.component';
 
@@ -93,6 +94,18 @@ import { AnimalSymptomManageComponent } from './setting/animal-management/animal
 import { SampleObjectiveManageComponent } from './setting/sample-management/sample-objective/sample.objective.manage.component';
 import { SurveyRoundManageComponent } from './setting/survey-management/survey-round/survey.round.manage.component';
 
+// tslint:disable-next-line:max-line-length
+import { ContentDocumentTypeManageComponent } from './setting/content-management/content-document-type/content.document.type.manage.component';
+// tslint:disable-next-line:max-line-length
+import { ContentVideoManageComponent } from './setting/content-management/content-video/content.video.manage.component';
+// tslint:disable-next-line:max-line-length
+import { ContentDocumentManageComponent } from './setting/content-management/content-document/content.document.manage.component';
+// tslint:disable-next-line:max-line-length
+import { ContentNewsManageComponent } from './setting/content-management/content-news/content.news.manage.component';
+
+
+
+
 import { DialogRoleManageComponent } from './setting/role-management/dialog-role-management/dialog.role.manage.component';
 import { DialogRegionManageComponent } from './setting/region-management/dialog-region-management/dialog.region.manage.component';
 import { DialogProvinceManageComponent } from './setting/province-management/dialog-province-management/dialog.province.manage.component';
@@ -113,6 +126,16 @@ import { DialogAnimalSymptomManageComponent } from './setting/animal-management/
 import { DialogSampleObjectiveManageComponent } from './setting/sample-management/sample-objective/dialog-sample-objective-management/dialog.sample.objective.manage.component';
 // tslint:disable-next-line:max-line-length
 import { DialogSurveyRoundManageComponent } from './setting/survey-management/survey-round/dialog-survey-round-management/dialog.survey.round.manage.component';
+
+
+// tslint:disable-next-line:max-line-length
+import { DialogContentDocumentTypeManageComponent } from './setting/content-management/content-document-type/dialog-content-document-type-management/dialog.content.document.type.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogContentVideoManageComponent } from './setting/content-management/content-video/dialog-content-video-management/dialog.content.video.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogContentDocumentManageComponent } from './setting/content-management/content-document/dialog-content-document-management/dialog.content.document.manage.component';
+// tslint:disable-next-line:max-line-length
+import { DialogContentNewsManageComponent } from './setting/content-management/content-news/dialog-content-news-management/dialog.content.news.manage.component';
 
 
 import { CallApiService } from './../providers/request.providers';
@@ -296,10 +319,25 @@ const routes: Routes = [
                 path: 'setting/survey-management/survey-round',
                 component: SurveyRoundManageComponent
             },
+            {
+                path: 'setting/content-management/content-category',
+                component: ContentDocumentTypeManageComponent
+            },
+            {
+                path: 'setting/content-management/content-video',
+                component: ContentVideoManageComponent
+            },
+            {
+                path: 'setting/content-management/content-document',
+                component: ContentDocumentManageComponent
+            },
+            {
+                path: 'setting/content-management/content-news',
+                component: ContentNewsManageComponent
+            },
         ]
     }
 ];
-
 
 @NgModule({
     declarations: [
@@ -353,6 +391,11 @@ const routes: Routes = [
         SampleObjectiveManageComponent,
         SurveyRoundManageComponent,
 
+        ContentDocumentTypeManageComponent,
+        ContentVideoManageComponent,
+        ContentDocumentManageComponent,
+        ContentNewsManageComponent,
+
         DialogRoleManageComponent,
         DialogRegionManageComponent,
         DialogProvinceManageComponent,
@@ -365,6 +408,12 @@ const routes: Routes = [
         DialogAnimalSymptomManageComponent,
         DialogSampleObjectiveManageComponent,
         DialogSurveyRoundManageComponent,
+
+        DialogContentDocumentTypeManageComponent,
+        DialogContentVideoManageComponent,
+        DialogContentDocumentManageComponent,
+        DialogContentNewsManageComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -382,6 +431,7 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
         StorageServiceModule,
         HttpClientModule,
+        NgxEditorModule,
     ],
     providers: [
         CookieService,
@@ -408,6 +458,11 @@ const routes: Routes = [
         DialogAnimalSymptomManageComponent,
         DialogSampleObjectiveManageComponent,
         DialogSurveyRoundManageComponent,
+
+        DialogContentDocumentTypeManageComponent,
+        DialogContentVideoManageComponent,
+        DialogContentDocumentManageComponent,
+        DialogContentNewsManageComponent,
     ]
 })
 

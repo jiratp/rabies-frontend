@@ -498,6 +498,28 @@ html, body{
         display: inline-block;
         padding-top:0px;
         
+        .ngx-wrapper{
+            &.show-placeholder{
+                font-family: $form-body-font-family;
+                font-size: $form-body-font-size;
+                color: $form-body-font-color;
+            }
+
+            .ngx-editor-textarea{
+                font-family: $form-body-font-family;
+                font-size: $form-body-font-size;
+                color: $form-body-font-color;
+                padding: 15px !important;
+                line-height: 26px !important;
+            }
+
+            .ngx-editor-placeholder{
+                font-family: $form-body-font-family;
+                font-size: $form-body-font-size;
+                color: $form-body-font-color;
+            }
+        }
+
         &.no-header-field{
             padding-top: 10px;
             padding-bottom: 10px;

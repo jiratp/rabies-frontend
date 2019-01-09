@@ -37,15 +37,13 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
   ContentForm: FormGroup;
   titleModal: string;
 
+  referenceCode: any = 'ContentType';
+
   authenticationToken: any;
 
-
-  defaultisProvince: Boolean = false;
-  defaultIsDistrict: Boolean = false;
-  defaultIsSubdistrict: Boolean = false;
   defaultIsActive: Boolean = true;
 
-  lookupRoleCode: any = [];
+  lookupContentTypeCode: any = [];
 
   constructor(
     private Api: CallApiService,
@@ -71,13 +69,11 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
 
   LoadConfigForm() {
     this.ContentForm = new FormGroup({
-      roleCode: new FormControl('', Validators.required),
       code: new FormControl(''),
+      contentTypeCode: new FormControl('', Validators.required),
       nameTH: new FormControl('', Validators.required),
+      nameEN: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      isProvince: new FormControl(this.defaultisProvince , Validators.required),
-      isDistrict: new FormControl(this.defaultIsDistrict , Validators.required),
-      isSubdistrict: new FormControl(this.defaultIsSubdistrict , Validators.required),
       isActive: new FormControl(this.defaultIsActive , Validators.required),
     });
   }
@@ -97,52 +93,51 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
   LoadModalHeader() {
     switch (this.actionForm) {
       case 'add':
-        this.titleModal = 'เพิ่มข้อมูลหมวดหมู่ของไฟล์';
+        this.titleModal = 'เพิ่มข้อมูลหมวดหมู่';
         break;
       case 'edit':
-        this.titleModal = 'แก้ไขข้อมูลหมวดหมู่ของไฟล์';
+        this.titleModal = 'แก้ไขข้อมูลหมวดหมู่';
         this.ContentSelect(this.dataObj, false);
         break;
       case 'view':
-        this.titleModal = 'แสดงข้อมูลหมวดหมู่ของไฟล์';
+        this.titleModal = 'แสดงข้อมูลหมวดหมู่';
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลหมวดหมู่ของไฟล์';
+        this.titleModal = 'จัดการข้อมูลหมวดหมู่';
     }
   }
 
 
   LoadLookup() {
-    // this.LookupRole();
+    this.LookupContentType();
   }
 
-  /*
-  LookupRole(roleCode: any = '') {
-    this.lookupRoleCode = [];
+  LookupContentType(contentTypeCode: any = '') {
+    this.lookupContentTypeCode = [];
     if (this.authenticationToken != null) {
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Utility.Role.Inquiry.ByList.ListActive;
-      this.Api.callWithOutScope(endpoint.url, endpoint.method, {},  'Authorization', authorization).then((response) => {
+      const endpoint = Utility.ReferenceType.Inquiry.ByList.ListActive;
+      const newEndpoint = endpoint.url.replace('{reference_code}', this.referenceCode);
+      this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         if (response != null) {
           response.forEach(element => {
-            this.lookupRoleCode.push({ value: element.code, label: element.name });
+            this.lookupContentTypeCode.push({ value: element.code, label: element.nameTH });
           });
 
-          if (roleCode !== '') {
-            this.ContentForm.controls['roleCode'].setValue(roleCode);
+          if (contentTypeCode !== '') {
+            this.ContentForm.controls['contentTypeCode'].setValue(contentTypeCode);
           }
         } else {
-          this.lookupRoleCode = [];
+          this.lookupContentTypeCode = [];
         }
       }).catch((error) => {
-        this.lookupRoleCode = [];
+        this.lookupContentTypeCode = [];
       });
     } else {
-      this.lookupRoleCode = [];
+      this.lookupContentTypeCode = [];
     }
   }
-  */
 
   modalClose() {
     this.modalRef.hide();
@@ -154,42 +149,36 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Content.DocumentType.Inquiry.ById;
+      const endpoint = Content.Category.Inquiry.ById;
       const newEndpoint = endpoint.url.replace('{content_id}', contentObj.code);
 
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
         this.ContentForm.controls['code'].setValue(res.code);
         this.ContentForm.controls['nameTH'].setValue(res.nameTH);
+        this.ContentForm.controls['nameEN'].setValue(res.nameEN);
         this.ContentForm.controls['description'].setValue(res.description);
-        this.ContentForm.controls['isProvince'].setValue(res.isProvince);
-        this.ContentForm.controls['isDistrict'].setValue(res.isDistrict);
-        this.ContentForm.controls['isSubdistrict'].setValue(res.isSubdistrict);
         this.ContentForm.controls['isActive'].setValue(res.isActive);
 
-        if (res.role != null) {
-          this.ContentForm.controls['roleCode'].setValue(res.role.code);
-          // this.LookupRole(res.role.code);
+        if (res.contentType != null) {
+          this.ContentForm.controls['contentTypeCode'].setValue(res.contentType.code);
+          this.LookupContentType(res.contentType.code);
         }
 
         if (disabled) {
           this.ContentForm.controls['code'].disable();
           this.ContentForm.controls['nameTH'].disable();
+          this.ContentForm.controls['nameEN'].disable();
           this.ContentForm.controls['description'].disable();
-          this.ContentForm.controls['isProvince'].disable();
-          this.ContentForm.controls['isDistrict'].disable();
-          this.ContentForm.controls['isSubdistrict'].disable();
           this.ContentForm.controls['isActive'].disable();
-          this.ContentForm.controls['roleCode'].disable();
+          this.ContentForm.controls['contentTypeCode'].disable();
         } else {
           this.ContentForm.controls['code'].enable();
           this.ContentForm.controls['nameTH'].enable();
+          this.ContentForm.controls['nameEN'].enable();
           this.ContentForm.controls['description'].enable();
-          this.ContentForm.controls['isProvince'].enable();
-          this.ContentForm.controls['isDistrict'].enable();
-          this.ContentForm.controls['isSubdistrict'].enable();
           this.ContentForm.controls['isActive'].enable();
-          this.ContentForm.controls['roleCode'].enable();
+          this.ContentForm.controls['contentTypeCode'].enable();
         }
       }).catch((error) => {
           initialState.status = 'error';
@@ -219,10 +208,10 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
         let newEndpoint = null;
 
         if (this.actionForm === 'add') {
-          endpoint = Content.DocumentType.Create;
+          endpoint = Content.Category.Create;
           newEndpoint = endpoint.url;
         } else if (this.actionForm === 'edit') {
-          endpoint = Content.DocumentType.Update;
+          endpoint = Content.Category.Update;
           newEndpoint = endpoint.url;
         }
 
@@ -265,7 +254,7 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
       } else {
         initialState.status = 'error';
         initialState.title = 'ข้อความจากระบบ';
-        initialState.description = 'กรุณากรอกข้อมูลหมวดหมู่ของไฟล์ให้ครบ';
+        initialState.description = 'กรุณากรอกข้อมูลหมวดหมู่ให้ครบ';
         const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
         bsModalRefObj.content.action.subscribe(result => {
           if (result.status) {
@@ -288,9 +277,6 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
       case 'add':
         this.ContentForm.reset();
         this.ContentForm.controls['isActive'].setValue(this.defaultIsActive);
-        this.ContentForm.controls['isProvince'].setValue(this.defaultisProvince);
-        this.ContentForm.controls['isDistrict'].setValue(this.defaultIsDistrict);
-        this.ContentForm.controls['isSubdistrict'].setValue(this.defaultIsSubdistrict);
         break;
       case 'edit':
         this.ContentSelect(this.dataObj, false);
@@ -299,11 +285,11 @@ export class DialogContentDocumentTypeManageComponent implements OnInit {
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลหมวดหมู่ของไฟล์';
+        this.titleModal = 'จัดการข้อมูลหมวดหมู่';
     }
   }
 
-  roleCodeChange(event: any) {
+  contentTypeCodeChange(event: any) {
 
   }
 }

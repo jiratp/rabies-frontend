@@ -30,6 +30,8 @@ export class DialogContentVideoManageComponent implements OnInit {
   @Input() dataObj: any;
   @Output() action = new EventEmitter();
 
+  editorConfig: any = {};
+
   dateTimeFormat: string;
   dateNow: string = moment().format('DD/MM/YYYY');
   lacaleTH: any;
@@ -39,13 +41,16 @@ export class DialogContentVideoManageComponent implements OnInit {
 
   authenticationToken: any;
 
-
-  defaultisProvince: Boolean = false;
-  defaultIsDistrict: Boolean = false;
-  defaultIsSubdistrict: Boolean = false;
+  defaultIsPinned: Boolean = false;
   defaultIsActive: Boolean = true;
+  isContentCategory: Boolean = false;
 
-  lookupRoleCode: any = [];
+  PageLoadData: any = null;
+  referenceCode: any = 'ContentType';
+  contentTypeCode: any = 'Video';
+  contentCategory: any = [];
+  lookupContentTypeCode: any = [];
+  lookupContentCategoryCode: any = [];
 
   constructor(
     private Api: CallApiService,
@@ -57,12 +62,38 @@ export class DialogContentVideoManageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.LoadConfigEditor();
     this.LoadConfigCalendar();
     this.LoadConfigForm();
     this.LoadSessionPage();
     this.LoadModalHeader();
     this.LoadLookup();
   }
+
+  LoadConfigEditor() {
+    this.editorConfig = {};
+    this.editorConfig.editable = true;
+    this.editorConfig.spellcheck = true;
+    this.editorConfig.height = '';
+    this.editorConfig.minHeight = '200px';
+    this.editorConfig.width = 'auto';
+    this.editorConfig.minWidth = '0';
+    this.editorConfig.translate = 'yes';
+    this.editorConfig.enableToolbar = true;
+    this.editorConfig.showToolbar = true;
+    this.editorConfig.imageEndPoint = '';
+    this.editorConfig.toolbar = true;
+    this.editorConfig.placeholder = '';
+    this.editorConfig.toolbar = [
+      ['bold', 'italic', 'underline', 'strikeThrough', 'superscript', 'subscript'],
+      ['fontSize', 'color'],
+      ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent'],
+      ['cut', 'copy', 'delete', 'removeFormat', 'undo', 'redo'],
+      ['paragraph', 'blockquote', 'removeBlockquote', 'horizontalLine', 'orderedList', 'unorderedList'],
+      ['link', 'unlink']
+    ];
+  }
+
 
   LoadConfigCalendar() {
     this.dateTimeFormat = this.themeConfig.defaultSettings.dateTimeFormat;
@@ -71,13 +102,15 @@ export class DialogContentVideoManageComponent implements OnInit {
 
   LoadConfigForm() {
     this.ContentForm = new FormGroup({
-      roleCode: new FormControl('', Validators.required),
-      code: new FormControl(''),
+      contentTypeCode: new FormControl(this.contentTypeCode, Validators.required),
+      contentCategoryCode: new FormControl(''),
       nameTH: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      isProvince: new FormControl(this.defaultisProvince , Validators.required),
-      isDistrict: new FormControl(this.defaultIsDistrict , Validators.required),
-      isSubdistrict: new FormControl(this.defaultIsSubdistrict , Validators.required),
+      shortText: new FormControl('', Validators.required),
+      longText: new FormControl('', Validators.required),
+      id: new FormControl(''),
+      linkUrl: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      isPinned: new FormControl(this.defaultIsPinned , Validators.required),
       isActive: new FormControl(this.defaultIsActive , Validators.required),
     });
   }
@@ -97,48 +130,86 @@ export class DialogContentVideoManageComponent implements OnInit {
   LoadModalHeader() {
     switch (this.actionForm) {
       case 'add':
-        this.titleModal = 'เพิ่มข้อมูลข่าวประชาสัมพันธ์';
+        this.titleModal = 'เพิ่มข้อมูลคลิปวีดีโอ';
         break;
       case 'edit':
-        this.titleModal = 'แก้ไขข้อมูลข่าวประชาสัมพันธ์';
+        this.titleModal = 'แก้ไขข้อมูลคลิปวีดีโอ';
         this.ContentSelect(this.dataObj, false);
         break;
       case 'view':
-        this.titleModal = 'แสดงข้อมูลข่าวประชาสัมพันธ์';
+        this.titleModal = 'แสดงข้อมูลคลิปวีดีโอ';
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลข่าวประชาสัมพันธ์';
+        this.titleModal = 'จัดการข้อมูลคลิปวีดีโอ';
     }
   }
 
-
   LoadLookup() {
-    this.LookupRole();
+    this.LookupContentType(this.contentTypeCode);
+    this.LookupContentCategory(this.contentTypeCode);
+    this.ContentForm.controls['contentTypeCode'].disable();
   }
 
-  LookupRole(roleCode: any = '') {
-    this.lookupRoleCode = [];
+  LookupContentType(contentTypeCode: any = '') {
+    this.lookupContentTypeCode = [];
     if (this.authenticationToken != null) {
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Utility.Role.Inquiry.ByList.ListActive;
-      this.Api.callWithOutScope(endpoint.url, endpoint.method, {},  'Authorization', authorization).then((response) => {
+      const endpoint = Utility.ReferenceType.Inquiry.ByList.ListActive;
+      const newEndpoint = endpoint.url.replace('{reference_code}', this.referenceCode);
+      this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         if (response != null) {
           response.forEach(element => {
-            this.lookupRoleCode.push({ value: element.code, label: element.name });
+            this.lookupContentTypeCode.push({ value: element.code, label: element.nameTH });
           });
 
-          if (roleCode !== '') {
-            this.ContentForm.controls['roleCode'].setValue(roleCode);
+          if (contentTypeCode !== '') {
+            this.ContentForm.controls['contentTypeCode'].setValue(contentTypeCode);
           }
         } else {
-          this.lookupRoleCode = [];
+          this.lookupContentTypeCode = [];
         }
       }).catch((error) => {
-        this.lookupRoleCode = [];
+        this.lookupContentTypeCode = [];
       });
     } else {
-      this.lookupRoleCode = [];
+      this.lookupContentTypeCode = [];
+    }
+  }
+
+  LookupContentCategory(contentTypeCode: any, contentCategoryCode: any = '') {
+    this.lookupContentCategoryCode = [];
+    if (this.authenticationToken != null) {
+      const authorization = 'Bearer ' + this.authenticationToken;
+      const endpoint = Content.Category.Inquiry.ByList.ListActive;
+      const newEndpoint = endpoint.url.replace('{content_type_code}', this.contentTypeCode);
+      this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
+        if (response != null) {
+          this.contentCategory = response;
+          this.isContentCategory = (response.length > 0) ? true : false;
+          response.forEach(element => {
+            this.lookupContentCategoryCode.push({ value: element.code, label: element.nameTH });
+          });
+
+          if (contentCategoryCode !== '') {
+            this.ContentForm.controls['contentCategoryCode'].setValue(contentCategoryCode);
+          }
+
+          if (this.isContentCategory) {
+            this.ContentForm.controls['contentCategoryCode'].setValidators([Validators.required]);
+          } else {
+            this.ContentForm.controls['contentCategoryCode'].clearValidators();
+          }
+
+          this.ContentForm.controls['contentCategoryCode'].updateValueAndValidity();
+        } else {
+          this.lookupContentCategoryCode = [];
+        }
+      }).catch((error) => {
+        this.lookupContentCategoryCode = [];
+      });
+    } else {
+      this.lookupContentCategoryCode = [];
     }
   }
 
@@ -153,41 +224,54 @@ export class DialogContentVideoManageComponent implements OnInit {
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
       const endpoint = Content.Video.Inquiry.ById;
-      const newEndpoint = endpoint.url.replace('{content_id}', contentObj.code);
+      let newEndpoint = endpoint.url.replace('{content_id}', contentObj.id);
+      newEndpoint = newEndpoint.replace('{content_type_code}', contentObj.contentTypeCode);
 
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
-        this.ContentForm.controls['code'].setValue(res.code);
+        this.PageLoadData = res;
+        this.ContentForm.controls['id'].setValue(res.id);
         this.ContentForm.controls['nameTH'].setValue(res.nameTH);
         this.ContentForm.controls['description'].setValue(res.description);
-        this.ContentForm.controls['isProvince'].setValue(res.isProvince);
-        this.ContentForm.controls['isDistrict'].setValue(res.isDistrict);
-        this.ContentForm.controls['isSubdistrict'].setValue(res.isSubdistrict);
+        this.ContentForm.controls['shortText'].setValue(res.shortText);
+        this.ContentForm.controls['longText'].setValue(res.longText);
+        this.ContentForm.controls['linkUrl'].setValue(res.linkUrl);
+        this.ContentForm.controls['isPinned'].setValue(res.isPinned);
         this.ContentForm.controls['isActive'].setValue(res.isActive);
 
-        if (res.role != null) {
-          this.ContentForm.controls['roleCode'].setValue(res.role.code);
-          this.LookupRole(res.role.code);
+        if (res.contentType != null) {
+          this.ContentForm.controls['contentTypeCode'].setValue(res.contentType.code);
+          this.LookupContentType(res.contentType.code);
+          this.LookupContentCategory(res.contentType.code);
+        }
+
+        if (res.contentCategory != null) {
+          this.ContentForm.controls['contentCategoryCode'].setValue(res.contentCategory.code);
+          this.LookupContentCategory(res.contentType.code, res.contentCategory.code);
         }
 
         if (disabled) {
-          this.ContentForm.controls['code'].disable();
+          this.editorConfig.editable = false;
+          this.editorConfig.enableToolbar = false;
+
           this.ContentForm.controls['nameTH'].disable();
           this.ContentForm.controls['description'].disable();
-          this.ContentForm.controls['isProvince'].disable();
-          this.ContentForm.controls['isDistrict'].disable();
-          this.ContentForm.controls['isSubdistrict'].disable();
+          this.ContentForm.controls['shortText'].disable();
+          this.ContentForm.controls['longText'].disable();
+          this.ContentForm.controls['linkUrl'].disable();
+          this.ContentForm.controls['isPinned'].disable();
           this.ContentForm.controls['isActive'].disable();
-          this.ContentForm.controls['roleCode'].disable();
         } else {
-          this.ContentForm.controls['code'].enable();
+          this.editorConfig.editable = true;
+          this.editorConfig.enableToolbar = true;
+
           this.ContentForm.controls['nameTH'].enable();
           this.ContentForm.controls['description'].enable();
-          this.ContentForm.controls['isProvince'].enable();
-          this.ContentForm.controls['isDistrict'].enable();
-          this.ContentForm.controls['isSubdistrict'].enable();
+          this.ContentForm.controls['shortText'].enable();
+          this.ContentForm.controls['longText'].enable();
+          this.ContentForm.controls['linkUrl'].enable();
+          this.ContentForm.controls['isPinned'].enable();
           this.ContentForm.controls['isActive'].enable();
-          this.ContentForm.controls['roleCode'].enable();
         }
       }).catch((error) => {
           initialState.status = 'error';
@@ -212,6 +296,10 @@ export class DialogContentVideoManageComponent implements OnInit {
 
       if (this.ContentForm.valid) {
         const contentParams = this.ContentForm.value;
+        contentParams.contentTypeCode = this.contentTypeCode;
+        if (!this.isContentCategory) {
+          contentParams.contentCategoryCode = '';
+        }
         const authorization = 'Bearer ' + this.authenticationToken;
         let endpoint = null;
         let newEndpoint = null;
@@ -263,7 +351,7 @@ export class DialogContentVideoManageComponent implements OnInit {
       } else {
         initialState.status = 'error';
         initialState.title = 'ข้อความจากระบบ';
-        initialState.description = 'กรุณากรอกข้อมูลข่าวประชาสัมพันธ์ให้ครบ';
+        initialState.description = 'กรุณากรอกข้อมูลคลิปวีดีโอให้ครบ';
         const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
         bsModalRefObj.content.action.subscribe(result => {
           if (result.status) {
@@ -286,9 +374,8 @@ export class DialogContentVideoManageComponent implements OnInit {
       case 'add':
         this.ContentForm.reset();
         this.ContentForm.controls['isActive'].setValue(this.defaultIsActive);
-        this.ContentForm.controls['isProvince'].setValue(this.defaultisProvince);
-        this.ContentForm.controls['isDistrict'].setValue(this.defaultIsDistrict);
-        this.ContentForm.controls['isSubdistrict'].setValue(this.defaultIsSubdistrict);
+        this.ContentForm.controls['isPinned'].setValue(this.defaultIsPinned);
+        this.LookupContentType(this.contentTypeCode);
         break;
       case 'edit':
         this.ContentSelect(this.dataObj, false);
@@ -297,7 +384,7 @@ export class DialogContentVideoManageComponent implements OnInit {
         this.ContentSelect(this.dataObj, true);
         break;
       default:
-        this.titleModal = 'จัดการข้อมูลข่าวประชาสัมพันธ์';
+        this.titleModal = 'จัดการข้อมูลคลิปวีดีโอ';
     }
   }
 

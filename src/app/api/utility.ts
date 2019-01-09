@@ -3,34 +3,34 @@ export const Utility = {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/reference/group/{group_code}/inquiry/content-list/active',
+                    url: '/reference/{reference_code}/inquiry/content-list/active',
                     method: 'POST',
                     param: {}
                 },
                 List: {
-                    url: '/reference/group/{group_code}/inquiry/content-list',
+                    url: '/reference/{reference_code}/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
             },
             ById: {
-                url: '/reference/group/{group_code}/inquiry/content/{content_id}',
+                url: '/reference/{reference_code}/inquiry/content/{content_id}',
                 method: 'GET',
                 param: {}
             }
         },
         Create: {
-            url: '/reference/group/{group_code}/create',
+            url: '/reference/{reference_code}/create',
             method: 'POST',
             param: {}
         },
         Update: {
-            url: '/reference/group/{group_code}/update',
+            url: '/reference/{reference_code}/update',
             method: 'POST',
             param: {}
         },
         Delete: {
-            url: '/reference/group/{group_code}/delete/{content_id}',
+            url: '/reference/{reference_code}/delete/{content_id}',
             method: 'GET',
             param: {}
         }

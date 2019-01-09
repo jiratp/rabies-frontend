@@ -98,7 +98,7 @@ export class ContentDocumentTypeManageComponent implements OnInit {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
-      const endpoint = Content.DocumentType.Inquiry.ByList.List;
+      const endpoint = Content.Category.Inquiry.ByList.List;
       let newEndpoint = endpoint.url.replace('{page_number}', pages);
       newEndpoint = newEndpoint.replace('{animal_type_code}', animalTypeCode);
 
@@ -196,7 +196,7 @@ export class ContentDocumentTypeManageComponent implements OnInit {
         initialState.btnCancel.isActive = false;
         if (result.status) {
           const authorization = 'Bearer ' + this.authenticationToken;
-          const endpoint = Content.DocumentType.Delete;
+          const endpoint = Content.Category.Delete;
           const newEndpoint = endpoint.url.replace('{content_id}', dataContent.code);
           this.Api.callWithOutScope(newEndpoint, endpoint.method, endpoint.param, 'Authorization', authorization).then((response) => {
             const res = response;

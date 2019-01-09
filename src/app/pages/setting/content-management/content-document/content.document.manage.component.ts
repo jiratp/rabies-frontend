@@ -47,6 +47,8 @@ export class ContentDocumentManageComponent implements OnInit {
   pages: any;
   pageRows: any;
 
+  contentTypeCode: any = 'Document';
+
   constructor(
     private Api: CallApiService,
     private ModalService: BsModalService,
@@ -92,14 +94,14 @@ export class ContentDocumentManageComponent implements OnInit {
     }
   }
 
-  LoadData(pages: any, animalTypeCode: any) {
+  LoadData(pages: any, contentTypeCode: any) {
     if (this.authenticationToken != null) {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;
       const endpoint = Content.Document.Inquiry.ByList.List;
       let newEndpoint = endpoint.url.replace('{page_number}', pages);
-      newEndpoint = newEndpoint.replace('{animal_type_code}', animalTypeCode);
+      newEndpoint = newEndpoint.replace('{content_type_code}', this.contentTypeCode);
 
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
@@ -196,7 +198,8 @@ export class ContentDocumentManageComponent implements OnInit {
         if (result.status) {
           const authorization = 'Bearer ' + this.authenticationToken;
           const endpoint = Content.Document.Delete;
-          const newEndpoint = endpoint.url.replace('{content_id}', dataContent.code);
+          let newEndpoint = endpoint.url.replace('{content_id}', dataContent.id);
+          newEndpoint = newEndpoint.replace('{content_type_code}', dataContent.contentTypeCode);
           this.Api.callWithOutScope(newEndpoint, endpoint.method, endpoint.param, 'Authorization', authorization).then((response) => {
             const res = response;
             if (res.code === 1) {

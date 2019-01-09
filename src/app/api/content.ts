@@ -3,34 +3,34 @@ export const Content = {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/content-news/inquiry/content-list/active',
+                    url: '/content/{content_type_code}/inquiry/content-list/active',
                     method: 'POST',
                     param: {}
                 },
                 List: {
-                    url: '/content-news/inquiry/content-list/pages/{page_number}',
+                    url: '/content/{content_type_code}/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
             },
             ById: {
-                url: '/content-news/inquiry/content/{content_id}',
+                url: '/content/{content_type_code}/inquiry/content/{content_id}',
                 method: 'GET',
                 param: {}
             }
         },
         Create: {
-            url: '/content-news/create',
+            url: '/content/{content_type_code}/create',
             method: 'POST',
             param: {}
         },
         Update: {
-            url: '/content-news/update',
+            url: '/content/{content_type_code}/update',
             method: 'POST',
             param: {}
         },
         Delete: {
-            url: '/content-news/delete/{content_id}',
+            url: '/content/{content_type_code}/delete/{content_id}',
             method: 'GET',
             param: {}
         }
@@ -39,70 +39,70 @@ export const Content = {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/content-document/inquiry/content-list/active',
+                    url: '/content/{content_type_code}/inquiry/content-list/active',
                     method: 'POST',
                     param: {}
                 },
                 List: {
-                    url: '/content-document/inquiry/content-list/pages/{page_number}',
+                    url: '/content/{content_type_code}/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
             },
             ById: {
-                url: '/content-document/inquiry/content/{content_id}',
+                url: '/content/{content_type_code}/inquiry/content/{content_id}',
                 method: 'GET',
                 param: {}
             }
         },
         Create: {
-            url: '/content-document/create',
+            url: '/content/{content_type_code}/create',
             method: 'POST',
             param: {}
         },
         Update: {
-            url: '/content-document/update',
+            url: '/content/{content_type_code}/update',
             method: 'POST',
             param: {}
         },
         Delete: {
-            url: '/content-document/delete/{content_id}',
+            url: '/content/{content_type_code}/delete/{content_id}',
             method: 'GET',
             param: {}
         }
     },
-    DocumentType: {
+    Category: {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/content-document-type/inquiry/content-list/active',
+                    url: '/content-category/{content_type_code}/inquiry/content-list/active',
                     method: 'POST',
                     param: {}
                 },
                 List: {
-                    url: '/content-document-type/inquiry/content-list/pages/{page_number}',
+                    url: '/content-category/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
             },
             ById: {
-                url: '/content-document-type/inquiry/content/{content_id}',
+                url: '/content-category/inquiry/content/{content_id}',
                 method: 'GET',
                 param: {}
             }
         },
         Create: {
-            url: '/content-document-type/create',
+            url: '/content-category/create',
             method: 'POST',
             param: {}
         },
         Update: {
-            url: '/content-document-type/update',
+            url: '/content-category/update',
             method: 'POST',
             param: {}
         },
         Delete: {
-            url: '/content-document-type/delete/{content_id}',
+            url: '/content-category/delete/{content_id}',
             method: 'GET',
             param: {}
         }
@@ -111,34 +111,34 @@ export const Content = {
         Inquiry: {
             ByList: {
                 ListActive: {
-                    url: '/content-video/inquiry/content-list/active',
+                    url: '/content/{content_type_code}/inquiry/content-list/active',
                     method: 'POST',
                     param: {}
                 },
                 List: {
-                    url: '/content-video/inquiry/content-list/pages/{page_number}',
+                    url: '/content/{content_type_code}/inquiry/content-list/pages/{page_number}',
                     method: 'POST',
                     param: {}
                 }
             },
             ById: {
-                url: '/content-video/inquiry/content/{content_id}',
+                url: '/content/{content_type_code}/inquiry/content/{content_id}',
                 method: 'GET',
                 param: {}
             }
         },
         Create: {
-            url: '/content-video/create',
+            url: '/content/{content_type_code}/create',
             method: 'POST',
             param: {}
         },
         Update: {
-            url: '/content-video/update',
+            url: '/content/{content_type_code}/update',
             method: 'POST',
             param: {}
         },
         Delete: {
-            url: '/content-video/delete/{content_id}',
+            url: '/content/{content_type_code}/delete/{content_id}',
             method: 'GET',
             param: {}
         }

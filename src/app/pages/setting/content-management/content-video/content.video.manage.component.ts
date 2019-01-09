@@ -47,6 +47,8 @@ export class ContentVideoManageComponent implements OnInit {
   pages: any;
   pageRows: any;
 
+  contentTypeCode: any = 'Video';
+
   constructor(
     private Api: CallApiService,
     private ModalService: BsModalService,
@@ -99,7 +101,7 @@ export class ContentVideoManageComponent implements OnInit {
       const authorization = 'Bearer ' + this.authenticationToken;
       const endpoint = Content.Video.Inquiry.ByList.List;
       let newEndpoint = endpoint.url.replace('{page_number}', pages);
-      newEndpoint = newEndpoint.replace('{animal_type_code}', animalTypeCode);
+      newEndpoint = newEndpoint.replace('{content_type_code}', this.contentTypeCode);
 
       this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
         const res = response;
@@ -196,7 +198,8 @@ export class ContentVideoManageComponent implements OnInit {
         if (result.status) {
           const authorization = 'Bearer ' + this.authenticationToken;
           const endpoint = Content.Video.Delete;
-          const newEndpoint = endpoint.url.replace('{content_id}', dataContent.code);
+          let newEndpoint = endpoint.url.replace('{content_id}', dataContent.id);
+          newEndpoint = newEndpoint.replace('{content_type_code}', dataContent.contentTypeCode);
           this.Api.callWithOutScope(newEndpoint, endpoint.method, endpoint.param, 'Authorization', authorization).then((response) => {
             const res = response;
             if (res.code === 1) {
