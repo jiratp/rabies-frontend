@@ -158,6 +158,33 @@ export class AnimalInfomationComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  ContentSave() {
+    if (this.authenticationToken != null) {
+      const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
+      const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
+
+      if (this.AIForm.valid) {
+        const contentParams = this.AIForm.value;
+        const authorization = 'Bearer ' + this.authenticationToken;
+        contentParams.actionForm = '';
+        if (this.actionForm === 'add') {
+          contentParams.actionForm = 'add';
+        } else if (this.actionForm === 'edit') {
+          contentParams.actionForm = 'edit';
+        }
+        
+        this.action.emit({status: true, contentObj: contentParams});
+      } else {
+        initialState.status = 'error';
+        initialState.title = 'ข้อความจากระบบ';
+        initialState.description = 'กรุณากรอกข้อมูลสายพันธ์สัตว์ให้ครบ';
+        const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+      }
+    } else {
+      this.modalRef.hide();
+    }
+  }
+
   LookupAnimalType(contetCode: any = '') {
     this.lookupAnimalType = [];
     if (this.authenticationToken != null) {
