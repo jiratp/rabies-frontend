@@ -22,7 +22,7 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="individual-information">
 
-                            <form class="form-content mt-3" name="PetInfoForm" [formGroup]="PetInfoForm">
+                            <form class="form-content mt-3" name="ContentForm" [formGroup]="ContentForm">
                                 <div class="content-container content-body-form">
                                     <div class="card-body content-card-body content-data-search">
                                         <div class="row">
@@ -30,7 +30,7 @@
                                                 <div class="form-group-fieldset clear-fix">
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
-                                                            <h3> ข้อมูลสถานที่เลี้ยงสัตว์ </h3>
+                                                            <h3> ลักษณะการเลี้ยงสัตว์ </h3>
                                                         </div>
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
                                                             <!-- Row 0 -->
@@ -39,7 +39,35 @@
                                                                     <div class="row">
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
                                                                             <div class="form-group no-header-field clear-fix">
-                                                                                <p-checkbox name="isAddress" binary="true" value="true" label="ที่อยู่เดียวกันกับที่อยู่หลัก" [formControl]="PetInfoForm.controls['isAddress']" (onChange)="DuplicateAddress($event)"></p-checkbox>
+                                                                                <p-checkbox name="isSameAddress" binary="true" value="true" label="ที่อยู่เดียวกันกับที่อยู่หลัก" [formControl]="ContentForm.controls['isSameAddress']" (onChange)="DuplicateAddress($event)"></p-checkbox>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Row 2 -->
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="placeName" class="form-label">สถานที่เลี้ยงสัตว์</label>
+                                                                                <input type="text" formControlName="placeName" class="form-control" id="placeName" placeholder="สถานที่เลี้ยงสัตว์">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="shelterCode" class="form-label">ประเภทสถานที่เลี้ยง</label>
+                                                                                <p-dropdown [options]="lookupShelter" formControlName="shelterCode" placeholder="เลิอกประเภทสถานที่เลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupShelterChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <input type="text" formControlName="shelterOther" class="form-control form-control-other" id="shelterOther" placeholder="อื่นๆ" *ngIf="shelterOtherBoolean">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="husbandryCode" class="form-label">ลักษณะการเลี้ยง</label>
+                                                                                <p-dropdown [options]="lookupHusbandry" formControlName="husbandryCode" placeholder="เลิอกลักษณะการเลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupHusbandryChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <input type="text" formControlName="husbandryOther" class="form-control form-control-other" id="husbandryOther" placeholder="อื่นๆ" *ngIf="husbandryOtherBoolean">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -78,26 +106,26 @@
                                                                 </div>
                                                             </div>
 
-                                                            <!-- Row 3 -->
+                                                            <!-- Row 2 -->
                                                             <div class="row">
                                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                                                     <div class="row">
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="province" class="form-label">จังหวัด</label>
-                                                                                <p-dropdown formControlName="province" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="province"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="ProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="district" class="form-label">อำเภอ</label>
-                                                                                <p-dropdown formControlName="district" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="district"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="DistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="subDistrict" class="form-label">ตำบล</label>
-                                                                                <p-dropdown formControlName="subDistrict" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrict"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="SubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
@@ -105,32 +133,6 @@
                                                                                 <label for="zipcode" class="form-label">รหัสไปรษณีย์</label>
                                                                                 <input type="text" formControlName="zipcode" class="form-control" id="zipcode" placeholder="รหัสไปรษณีย์">
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- Row 4 -->
-                                                            <div class="row">
-                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
-                                                                    <div class="row">
-                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                                            <div class="form-group clear-fix">
-                                                                                <label for="shelterCategory" class="form-label">ประเภทสถานที่เลี้ยง</label>
-                                                                                <p-dropdown formControlName="shelterCategory" placeholder="เลิอกประเภทสถานที่เลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="shelterCategory"></p-dropdown>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                                            <div class="form-group clear-fix">
-                                                                                <label for="shelterStyle" class="form-label">ลักษณะการเลี้ยง</label>
-                                                                                <p-dropdown formControlName="shelterStyle" placeholder="เลิอกลักษณะการเลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="shelterStyle"></p-dropdown>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                                            
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                                           
                                                                         </div>
                                                                     </div>
                                                                 </div>

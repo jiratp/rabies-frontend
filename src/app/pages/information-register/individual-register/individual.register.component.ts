@@ -15,7 +15,7 @@ import { ConfigService } from './../../../core/config.service';
 import { CallApiService } from './../../../providers/request.providers';
 import { Utility } from './../../../api/utility';
 import { User } from './../../../api/user';
-
+import { Registration } from './../../../api/registration';
 
 @Component({
   selector: 'app-individual-register',
@@ -27,6 +27,8 @@ import { User } from './../../../api/user';
 export class IndividualRegisterComponent implements OnInit {
   modalRef: BsModalRef;
   userProfile: any;
+  animalOwnerProfileCode: any;
+
   IDVInfoForm: FormGroup;
   authenticationToken: any;
 
@@ -50,6 +52,7 @@ export class IndividualRegisterComponent implements OnInit {
   loading: Boolean;
   totalRecords: number;
   dataTableObj: any = [];
+  recordNo: any = 1;
   pages: any;
   pageRows: any;
 
@@ -64,25 +67,29 @@ export class IndividualRegisterComponent implements OnInit {
 
   ngOnInit() {
     /****** dataTable ******/
+    this.pages = 1;
     this.totalRecords = 0;
+    this.pageRows = 0;
     this.loading = true;
+
 
     this.LoadConfigCalendar();
     this.LoadConfigForm();
     this.LoadSessionPage();
     this.LoadLookup();
-    this.LoadProfileFromSession();
-
+    this.LoadAnimalOwnerProfile();
+    this.LoadData((this.pages - 1));
   }
 
   LoadConfigForm() {
     this.IDVInfoForm = new FormGroup({
-      title: new FormControl('', Validators.required),
+      code: new FormControl(''),
+      titleCode: new FormControl('', Validators.required),
       titleOther: new FormControl(''),
       name: new FormControl('', Validators.required),
-      idCard: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       mobileNumber: new FormControl('', Validators.required),
+      idCard: new FormControl('', Validators.required),
       addressNo: new FormControl('', Validators.required),
       moo: new FormControl(''),
       soi: new FormControl(''),
@@ -93,6 +100,7 @@ export class IndividualRegisterComponent implements OnInit {
       zipcode: new FormControl('', Validators.required),
     });
   }
+
 
   LoadSessionPage() {
     const cookieExists: boolean = this.cookieService.check('AuthenticationToken');
@@ -151,8 +159,89 @@ export class IndividualRegisterComponent implements OnInit {
     }
   }
 
+  LoadData(pages: any) {
+    if (this.authenticationToken != null) {
+      const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
+      const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
+      const authorization = 'Bearer ' + this.authenticationToken;
+      const endpoint = Registration.MySelf.Inquiry.AnimalOwnerAddress;
+      let newEndpoint = endpoint.url.replace('{page_number}', pages);
+      newEndpoint = newEndpoint.replace('{myself_code}', this.animalOwnerProfileCode);
+
+      this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((response) => {
+        const res = response;
+        this.pageRows = res.pageRows;
+        this.totalRecords = res.totalRecords;
+        this.dataTableObj = res.contentObj;
+      }).catch((error) => {
+          initialState.status = 'error';
+          initialState.title = error.error.error.message;
+          initialState.description = error.error.error.description;
+          const bsModalRefObj = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+      });
+    }
+  }
+
+  LoadAnimalOwnerProfile() {
+    if (this.authenticationToken != null) {
+      const authorization = 'Bearer ' + this.authenticationToken;
+      const endpoint = Registration.MySelf.Inquiry.AnimalOwnerProfile;
+      this.Api.callWithOutScope(endpoint.url, endpoint.method, {},  'Authorization', authorization).then((res) => {
+        if(res.contentObj != null){
+          let response = res.contentObj;
+          this.animalOwnerProfileCode = response.code;
+          this.IDVInfoForm.controls['code'].setValue(response.code);
+          this.IDVInfoForm.controls['titleCode'].setValue(response.titleCode);
+          this.IDVInfoForm.controls['titleOther'].setValue(response.titleOther);
+          this.IDVInfoForm.controls['name'].setValue(response.name);
+          this.IDVInfoForm.controls['idCard'].setValue(response.idCard);
+          this.IDVInfoForm.controls['mobileNumber'].setValue(response.mobileNumber);
+          this.IDVInfoForm.controls['email'].setValue(response.email);
+          this.IDVInfoForm.controls['addressNo'].setValue(response.addressNo);
+          this.IDVInfoForm.controls['moo'].setValue(response.moo);
+          this.IDVInfoForm.controls['soi'].setValue(response.soi);
+          this.IDVInfoForm.controls['street'].setValue(response.street);
+          this.IDVInfoForm.controls['provinceCode'].setValue(response.provinceCode);
+          this.IDVInfoForm.controls['districtCode'].setValue(response.districtCode);
+          this.IDVInfoForm.controls['subdistrictCode'].setValue(response.subdistrictCode);
+          this.IDVInfoForm.controls['zipcode'].setValue(response.zipcode);
+
+          if (response.titleCode !== '' && response.titleCode !== null) {
+            this.LookupTitle(response.titleCode);
+          }
+      
+          if (response.provinceCode !== '' && response.provinceCode !== null) {
+            this.LookupProvince(response.provinceCode);
+          }
+      
+          if (response.districtCode !== '' && response.districtCode !== null) {
+            this.LookupDistrict(response.provinceCode, response.districtCode);
+          }
+      
+          if (response.subdistrictCode !== '' && response.subdistrictCode !== null) {
+            this.LookupSubDistrict(response.districtCode, response.subdistrictCode);
+          }
+      
+          if (response.titleCode === 'Other') {
+            this.titleOtherBoolean = true;
+          }
+          
+        }else{
+          this.LoadProfileFromSession();
+        }
+
+
+
+      }).catch((error) => {
+        this.LoadProfileFromSession();
+      });
+    } else {
+      this.LoadProfileFromSession();
+    }
+  }
+
   DefaultProfileFromSession(userProfile: any) {
-    this.IDVInfoForm.controls['title'].setValue(userProfile.title);
+    this.IDVInfoForm.controls['titleCode'].setValue(userProfile.title);
     this.IDVInfoForm.controls['titleOther'].setValue(userProfile.titleOther);
     this.IDVInfoForm.controls['name'].setValue(userProfile.name);
     this.IDVInfoForm.controls['idCard'].setValue(userProfile.idCard);
@@ -302,14 +391,48 @@ export class IndividualRegisterComponent implements OnInit {
 
   // ========================== End of Load Profile && Config Lookup ========================== //
 
-
+  ManageAnimalAddress(animalOwnerProfileCode: any) {
+    const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
+    const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
+        
+    if(animalOwnerProfileCode != ""){
+      const authorization = 'Bearer ' + this.authenticationToken;
+      const endpoint = Registration.MySelf.Inquiry.AnimalOwnerProfileById;
+      const newEndpoint = endpoint.url.replace('{animal_owner_profile_code}', animalOwnerProfileCode);
+      this.Api.callWithOutScope(newEndpoint, endpoint.method, {},  'Authorization', authorization).then((res) => {
+        if(res.contentObj != null){
+          let response = res.contentObj;
+          this.router.navigate(['/information/individual/register',{profileCode: animalOwnerProfileCode}]);
+        }else{
+          initialState.status = 'error';
+          initialState.title = "ข้อความจากระบบ";
+          initialState.description = "ไม่สามารถเพิ่มข้อมูลสถานที่เลี้ยงสัตว์ได้ เนื่องจากไม่มีข้อมูลในระบบ";
+          const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));    
+        }
+      }).catch((error) => {
+        initialState.status = 'error';
+        initialState.title = "ข้อความจากระบบ";
+        initialState.description = "ไม่สามารถเพิ่มข้อมูลสถานที่เลี้ยงสัตว์ได้ เนื่องจากไม่มีข้อมูลในระบบ";
+        const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));  
+      });
+    }else{
+      initialState.status = 'error';
+      initialState.title = "ข้อความจากระบบ";
+      initialState.description = "กรุณาบันทึกข้อมูลเจ้าของสัตว์ให้เรียบร้อยก่อน";
+      const modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+    }
+  }
 
   breadcrumbLink (link: string) {
     this.router.navigate([link]);
   }
 
-  ManagePetRegister() {
-    this.router.navigate(['/information/individual/register']);
+  ActionEditContent(dataContent: any) {
+    this.router.navigate(['/information/individual/register',{profileCode: dataContent.registrationAnimalOwnerCode, addressCode: dataContent.code}]);
+  }
+
+  ActionDeleteContent(){
+    
   }
 
   LoadContentLazy(event: LazyLoadEvent) {

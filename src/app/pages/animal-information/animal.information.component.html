@@ -26,14 +26,15 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalCategory" class="form-label">ประเภทสัตว์</label>
-                                                        <p-dropdown formControlName="animalCategory" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalCategory"></p-dropdown>
+                                                        <label for="animalTypeCode" class="form-label">ประเภทสัตว์</label>
+                                                        <p-dropdown [options]="lookupAnimalType" formControlName="animalTypeCode" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="animalTypeOther" class="form-control form-control-other" id="animalTypeOther" placeholder="อื่นๆ" *ngIf="animalTypeOtherBoolean">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalIdentity" class="form-label">ชื่อ/อัตลักษณ์ ของสัตว์</label>
-                                                        <input type="text" formControlName="animalIdentity" class="form-control" id="animalIdentity" placeholder="ชื่อ/อัตลักษณ์ ของสัตว์">
+                                                        <label for="animalName" class="form-label">ชื่อ/อัตลักษณ์ ของสัตว์</label>
+                                                        <input type="text" formControlName="animalName" class="form-control" id="animalIdentity" placeholder="ชื่อ/อัตลักษณ์ ของสัตว์">
                                                     </div>
                                                 </div>
                                             </div>
@@ -46,82 +47,39 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalGender" class="form-label">เพศของสัตว์</label>
-                                                        <p-dropdown formControlName="animalGender" placeholder="เลือกเพศของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalGender"></p-dropdown>
+                                                        <label for="animalGenderTypeCode" class="form-label">เพศของสัตว์</label>
+                                                        <p-dropdown [options]="lookupAnimalGenderType" formControlName="animalGenderTypeCode" placeholder="เลิอกเพศของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalGenderTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalSpecies" class="form-label">สายพันธ์ุของสัตว์</label>
-                                                        <p-dropdown formControlName="animalSpecies" placeholder="เลือกสายพันธ์ุของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalSpecies"></p-dropdown>
+                                                        <label for="animalSpeciesCode" class="form-label">สายพันธ์ุของสัตว์</label>
+                                                        <p-dropdown [options]="lookupAnimalSpecies" formControlName="animalSpeciesCode" placeholder="เลิอกสายพันธ์ุของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalSpeciesCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="animalSpeciesOther" class="form-control form-control-other" id="animalSpeciesOther" placeholder="อื่นๆ" *ngIf="animalSpeciesOtherBoolean">
+                                                    
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalColor" class="form-label">สีของสัตว์</label>
-                                                        <p-dropdown formControlName="animalColor" placeholder="เลือกสีของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalColor"></p-dropdown>
+                                                        <label for="animalColorCode" class="form-label">สีของสัตว์</label>
+                                                        <p-dropdown [options]="lookupAnimalColor" formControlName="animalColorCode" placeholder="เลิอกสีของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalColorCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="animalColorOther" class="form-control form-control-other" id="animalColorOther" placeholder="อื่นๆ" *ngIf="animalColorOtherBoolean">
+        
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Row 3 -->
+                                    <!-- Row 2 -->
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="vaccination" class="form-label">การฉีดวัคซีน</label>
-                                                        <p-dropdown formControlName="vaccination" placeholder="เลือกการฉีดวัคซีน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="vaccination"></p-dropdown>
+                                                    <div class="form-group no-header-field custom-middle-row clear-fix">
+                                                        <p-checkbox name="isUnknownAge" binary="true" value="true" label="ไม่สามารถระบุอายุได้" [formControl]="AIForm.controls['isUnknownAge']" (onChange)="IsUnknownAgeChange($event)"></p-checkbox>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="vaccinationDate" class="form-label">วัคซีนครั้งล่าสุดประมาณ</label>
-                                                        <p-calendar [locale]="lacaleTH" formControlName="vaccinationDate"  placeholder="วัคซีนครั้งล่าสุดประมาณ" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="vaccinationDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="shelterCategory" class="form-label">ประเภทของสถานที่เลี้ยง</label>
-                                                        <p-dropdown formControlName="shelterCategory" placeholder="เลือกประเภทของสถานที่เลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="shelterCategory"></p-dropdown>
-                                                    </div>                                            
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-
-                                    <!-- Row 3 -->
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
-                                            <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="sterilization" class="form-label">การทำหมัน</label>
-                                                        <p-dropdown formControlName="sterilization" placeholder="เลือกการทำหมัน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="sterilization"></p-dropdown>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="sterilizationDate" class="form-label">การทำหมันครั้งล่าสุดประมาณ</label>
-                                                        <p-calendar [locale]="lacaleTH" formControlName="sterilizationDate"  placeholder="การทำหมันครั้งล่าสุดประมาณ" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="sterilizationDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="animalBehavior" class="form-label">ลักษณะการเลี้ยง</label>
-                                                        <p-dropdown formControlName="animalBehavior" placeholder="เลือกลักษณะการเลี้ยง" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalBehavior"></p-dropdown>
-                                                    </div>                                         
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-
-                                    <!-- Row 3 -->
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
-                                            <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="animalAgeYear" class="form-label">อายุสัตว์ (ปี)</label>
@@ -134,12 +92,61 @@
                                                         <input type="text" formControlName="animalAgeMonth" class="form-control" id="animalAgeMonth" placeholder="อายุสัตว์ (เดือน)">
                                                     </div>                                                    
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
-                                                    
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalVaccineHistoryTypeCode" class="form-label">ประวัติการฉีดวัคซีน</label>
+                                                        <p-dropdown [options]="lookupVaccineHistoryType" formControlName="animalVaccineHistoryTypeCode" placeholder="เลิอกประวัติการฉีดวัคซีน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalVaccineHistoryTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalVaccineAmount" class="form-label">จำนวนครั้งการฉีดวัคซีน</label>
+                                                        <input type="text" formControlName="animalVaccineAmount" class="form-control" id="animalVaccineAmount" placeholder="จำนวนครั้งการฉีดวัคซีน">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalLastVaccineDate" class="form-label">วัคซีนครั้งล่าสุดประมาณ</label>
+                                                        <p-calendar [locale]="lacaleTH" formControlName="animalLastVaccineDate"  placeholder="วัคซีนครั้งล่าสุดประมาณ" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="animalLastVaccineDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>    
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalCastratedHistoryTypeCode" class="form-label">ประวัติการทำหมัน</label>
+                                                        <p-dropdown [options]="lookupCastratedHistoryType" formControlName="animalCastratedHistoryTypeCode" placeholder="เลิอกประวัติการทำหมัน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalCastratedHistoryTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalCastratedAmount" class="form-label">จำนวนครั้งการทำหมัน</label>
+                                                        <input type="text" formControlName="animalCastratedAmount" class="form-control" id="animalCastratedAmount" placeholder="จำนวนครั้งการทำหมัน">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalLastCastratedDate" class="form-label">การทำหมันครั้งล่าสุดประมาณ</label>
+                                                        <p-calendar [locale]="lacaleTH" formControlName="animalLastCastratedDate"  placeholder="การทำหมันครั้งล่าสุดประมาณ" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="animalLastCastratedDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div> 

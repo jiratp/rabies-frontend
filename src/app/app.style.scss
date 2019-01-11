@@ -523,6 +523,10 @@ html, body{
         &.no-header-field{
             padding-top: 10px;
             padding-bottom: 10px;
+            &.custom-middle-row{
+                padding-top: 30px !important;
+                padding-bottom: 10px !important;
+            }
         }
 
         .ui-chkbox-label{

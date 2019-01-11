@@ -24,7 +24,7 @@
             <!-- END HOME -->
 
             <!-- START INFORMATION -->
-            <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''" *ngIf="memberRole == 'GENERAL_MEMBER'">
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''"> <!--  *ngIf="memberRole == 'GENERAL_MEMBER'" -->
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" (click)="navigation('information/individual')">
                     <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
                     <p>ลงทะเบียน</p>
