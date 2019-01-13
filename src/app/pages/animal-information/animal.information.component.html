@@ -8,7 +8,7 @@
 </div>
 <div class="modal-body">
     <div class="dialog-content-body-form dialog-animal-suspicious-information">
-        <form class="form-dialog mt-3" name="AIForm" [formGroup]="AIForm">
+        <form class="form-dialog mt-3" name="ContentForm" [formGroup]="ContentForm">
             <div class="card-body dialog-card-body-form">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">  
@@ -27,7 +27,7 @@
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
                                                     <div class="form-group clear-fix">
                                                         <label for="animalTypeCode" class="form-label">ประเภทสัตว์</label>
-                                                        <p-dropdown [options]="lookupAnimalType" formControlName="animalTypeCode" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <p-dropdown [options]="lookupAnimalType" formControlName="animalTypeCode" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                         <input type="text" formControlName="animalTypeOther" class="form-control form-control-other" id="animalTypeOther" placeholder="อื่นๆ" *ngIf="animalTypeOtherBoolean">
                                                     </div>
                                                 </div>
@@ -48,13 +48,13 @@
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="animalGenderTypeCode" class="form-label">เพศของสัตว์</label>
-                                                        <p-dropdown [options]="lookupAnimalGenderType" formControlName="animalGenderTypeCode" placeholder="เลิอกเพศของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalGenderTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <p-dropdown [options]="lookupAnimalGenderType" formControlName="animalGenderTypeCode" placeholder="เลิอกเพศของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalGenderTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="animalSpeciesCode" class="form-label">สายพันธ์ุของสัตว์</label>
-                                                        <p-dropdown [options]="lookupAnimalSpecies" formControlName="animalSpeciesCode" placeholder="เลิอกสายพันธ์ุของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalSpeciesCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <p-dropdown [options]="lookupAnimalSpecies" formControlName="animalSpeciesCode" placeholder="เลิอกสายพันธ์ุของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalSpeciesCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                         <input type="text" formControlName="animalSpeciesOther" class="form-control form-control-other" id="animalSpeciesOther" placeholder="อื่นๆ" *ngIf="animalSpeciesOtherBoolean">
                                                     
                                                     </div>
@@ -62,7 +62,7 @@
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="animalColorCode" class="form-label">สีของสัตว์</label>
-                                                        <p-dropdown [options]="lookupAnimalColor" formControlName="animalColorCode" placeholder="เลิอกสีของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalColorCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <p-dropdown [options]="lookupAnimalColor" formControlName="animalColorCode" placeholder="เลิอกสีของสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalColorCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                         <input type="text" formControlName="animalColorOther" class="form-control form-control-other" id="animalColorOther" placeholder="อื่นๆ" *ngIf="animalColorOtherBoolean">
         
                                                     </div>
@@ -77,7 +77,7 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group no-header-field custom-middle-row clear-fix">
-                                                        <p-checkbox name="isUnknownAge" binary="true" value="true" label="ไม่สามารถระบุอายุได้" [formControl]="AIForm.controls['isUnknownAge']" (onChange)="IsUnknownAgeChange($event)"></p-checkbox>
+                                                        <p-checkbox name="isUnknownAge" binary="true" value="true" label="ไม่สามารถระบุอายุได้" [formControl]="ContentForm.controls['isUnknownAge']" (onChange)="IsUnknownAgeChange($event)"></p-checkbox>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
@@ -103,7 +103,7 @@
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="animalVaccineHistoryTypeCode" class="form-label">ประวัติการฉีดวัคซีน</label>
-                                                        <p-dropdown [options]="lookupVaccineHistoryType" formControlName="animalVaccineHistoryTypeCode" placeholder="เลิอกประวัติการฉีดวัคซีน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalVaccineHistoryTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <p-dropdown [options]="lookupVaccineHistoryType" formControlName="animalVaccineHistoryTypeCode" placeholder="เลิอกประวัติการฉีดวัคซีน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalVaccineHistoryTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
@@ -129,7 +129,7 @@
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="animalCastratedHistoryTypeCode" class="form-label">ประวัติการทำหมัน</label>
-                                                        <p-dropdown [options]="lookupCastratedHistoryType" formControlName="animalCastratedHistoryTypeCode" placeholder="เลิอกประวัติการทำหมัน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="AnimalCastratedHistoryTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <p-dropdown [options]="lookupCastratedHistoryType" formControlName="animalCastratedHistoryTypeCode" placeholder="เลิอกประวัติการทำหมัน" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalCastratedHistoryTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component">  
@@ -206,7 +206,7 @@
                         <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
-                        <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
                     </div>
                 </div>
             </div>

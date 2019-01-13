@@ -42,6 +42,10 @@ export class ConfigService {
                 ignoreBackdropClick: true,
                 class: 'modal-lg modal-dialog-centered',
             },
+            formInitialStateSetting : {
+                actionFormObj: 'add',
+                dataObj: {}
+            },
             dialogInitialStateSetting : {
                 status: 'success',
                 title: '',

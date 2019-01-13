@@ -28,6 +28,7 @@ export class AccessTransactionComponent implements OnInit {
   modalRef: BsModalRef;
   searchForm: FormGroup;
   authenticationToken: any;
+  memberRole: any;
 
   dateTimeFormat: string;
   dateNow: string = moment().format('DD/MM/YYYY');
@@ -63,6 +64,7 @@ export class AccessTransactionComponent implements OnInit {
     this.setupFormGroup();
     this.setupCalendar();
     this.LoadSessionPage();
+    this.LoadProfileFromSession();
     this.LoadData((this.pages - 1));
   }
 
@@ -74,6 +76,25 @@ export class AccessTransactionComponent implements OnInit {
   setupCalendar() {
     this.dateTimeFormat = this.themeConfig.defaultSettings.dateTimeFormat;
     this.lacaleTH = this.themeConfig.defaultSettings.lacaleTH;
+  }
+
+  LoadProfileFromSession() {
+    if (this.authenticationToken != null) {
+      const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
+      const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
+      const authorization = 'Bearer ' + this.authenticationToken;
+      const endpoint = User.Profile.Inquiry;
+      this.Api.callWithOutScope(endpoint.url, endpoint.method, endpoint.param, 'Authorization', authorization).then((response) => {
+        if (response !== null) {
+          this.memberRole = response.userType;
+        }
+      }).catch((error) => {
+        initialState.status = 'error';
+        initialState.title = error.error.error.message;
+        initialState.description = error.error.error.description;
+        this.modalRef = this.ModalService.show(DialogAlertComponent, Object.assign({}, configModal , { initialState }));
+      });
+    }
   }
 
   LoadSessionPage() {

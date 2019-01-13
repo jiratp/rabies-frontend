@@ -27,13 +27,17 @@
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-body"> 
                                                 <div class="form-group-fieldset clear-fix">
                                                     <div class="row">
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title" *ngIf="memberRole !== 'CLINIC_MEMBER'">  
                                                             <h3> ช้อมูลส่วนตัว </h3>
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title" *ngIf="memberRole === 'CLINIC_MEMBER'">  
+                                                            <h3> ข้อมูลสถานประกอบการ </h3>
                                                         </div>
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
                                                             <!-- Row 1 -->
-                                                            <div class="row">
-                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                            <div class="row" *ngIf="memberRole !== 'CLINIC_MEMBER'">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel" >  
                                                                     <div class="row">
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                                             <div class="form-group clear-fix">
@@ -58,21 +62,44 @@
                                                                 </div>
                                                             </div>
 
-                                                            <!-- Row 1 -->
-                                                            <div class="row">
-                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                            <div class="row" *ngIf="memberRole === 'CLINIC_MEMBER'">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel" >  
                                                                     <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="name" class="form-label">ชื่อสถานประกอบการ</label>
+                                                                                <input type="text" formControlName="name" class="form-control" id="name" placeholder="ชื่อสถานประกอบการ">
+                                                                           
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                                            <div class="form-group clear-fix">
+                                                                                <label for="licenseId" class="form-label">เลขที่ใบอนุญาติ</label>
+                                                                                <input type="text" formControlName="licenseId" class="form-control" id="licenseId" placeholder="เลขที่ใบอนุญาติ">
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="mobileNumber" class="form-label">เบอร์โทรศัพท์</label>
                                                                                 <input type="text" formControlName="mobileNumber" class="form-control" id="mobileNumber" placeholder="เบอร์โทรศัพท์">
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Row 1 -->
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                                                    <div class="row">
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="email" class="form-label">อีเมลล์</label>
                                                                                 <input type="text" formControlName="email" class="form-control" id="email" placeholder="อีเมลล์">
                                                                             </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                                            
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                                             

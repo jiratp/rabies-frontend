@@ -8,7 +8,7 @@
 </div>
 <div class="modal-body">
     <div class="dialog-content-body-form dialog-animal-suspicious-information">
-        <form class="form-dialog mt-3" name="ASForm" [formGroup]="ASForm">
+        <form class="form-dialog mt-3" name="ContentForm" [formGroup]="ContentForm">
             <div class="card-body dialog-card-body-form">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">  
@@ -26,7 +26,7 @@
                                                     <div class="form-group clear-fix">
                                                         <label for="notificationDate" class="form-label">วันที่แจ้ง</label>
                                                         <p-calendar [locale]="lacaleTH" formControlName="notificationDate"  placeholder="วันที่แจ้ง" inputStyleClass="form-calendar-text" panelStyleClass="form-calendar-group" styleClass="form-calendar-panel form-control" inputId="notificationDate" showIcon="true" [dateFormat]="dateTimeFormat" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2040"></p-calendar>
-                                                        <input type="hidden" formControlName="notificationDate" />
+                                                        <input type="hidden" formControlName="notificationDateHidden" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-component"> 
@@ -52,14 +52,15 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="title" class="form-label">คำนำหน้าชื่อ</label>
-                                                        <p-dropdown formControlName="title" placeholder="เลิอกคำนำหน้าชื่อ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="title"></p-dropdown>
+                                                        <label for="titleCode" class="form-label">คำนำหน้าชื่อ</label>
+                                                        <p-dropdown [options]="lookupTitle" formControlName="titleCode" placeholder="เลิอกคำนำหน้าชื่อ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupTitleChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="titleOther" class="form-control form-control-other" id="titleOther" placeholder="อื่นๆ" *ngIf="titleOtherBoolean">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="fullname" class="form-label">ชื่อ-นามสกุล</label>
-                                                        <input type="text" formControlName="fullname" class="form-control" id="fullname" placeholder="ชื่อ-นามสกุล">
+                                                        <label for="name" class="form-label">ชื่อ-นามสกุล</label>
+                                                        <input type="text" formControlName="name" class="form-control" id="name" placeholder="ชื่อ-นามสกุล">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
@@ -68,11 +69,17 @@
                                                         <input type="text" formControlName="mobileNumber" class="form-control" id="mobileNumber" placeholder="เบอร์โทรศัพท์">
                                                     </div>
                                                 </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="email" class="form-label">อีเมลล์</label>
+                                                        <input type="text" formControlName="email" class="form-control" id="email" placeholder="อีเมลล์">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Row 2 -->
+                                    <!-- Row 1 -->
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                             <div class="row">
@@ -104,26 +111,26 @@
                                         </div>
                                     </div>
 
-                                    <!-- Row 3 -->
+                                    <!-- Row 2 -->
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="province" class="form-label">จังหวัด</label>
-                                                        <p-dropdown formControlName="province" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="province"></p-dropdown>
+                                                        <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="district" class="form-label">อำเภอ</label>
-                                                        <p-dropdown formControlName="district" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="district"></p-dropdown>
+                                                        <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
                                                         <label for="subDistrict" class="form-label">ตำบล</label>
-                                                        <p-dropdown formControlName="subDistrict" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrict"></p-dropdown>
+                                                        <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupSubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
@@ -151,7 +158,61 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component"> 
                                                     <div class="form-group no-header-field clear-fix">
-                                                        <p-checkbox name="isAddressNotifier" binary="true" value="true" label="ที่อยู่เดียวกันกับผู้แจ้ง" [formControl]="ASForm.controls['isAddressNotifier']" (onChange)="duplicateAddress($event)"></p-checkbox>
+                                                        <p-checkbox name="isSameAddress" binary="true" value="true" label="ที่อยู่เดียวกันกับผู้แจ้ง" [formControl]="ContentForm.controls['isSameAddress']" (onChange)="DuplicateAddress($event)"></p-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fnPlaceName" class="form-label">สถานที่พบสัตว์สงสัย</label>
+                                                        <input type="text" formControlName="fnPlaceName" class="form-control" id="fnPlaceName" placeholder="สถานที่พบสัตว์สงสัย">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fnShelterCode" class="form-label">ประเภทสถานที่พบสัตว์สงสัย</label>
+                                                        <p-dropdown [options]="lookupShelter" formControlName="fnShelterCode" placeholder="เลิอกประเภทสถานที่พบสัตว์สงสัย" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupShelterChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="fnshelterOther" class="form-control form-control-other" id="fnshelterOther" placeholder="อื่นๆ" *ngIf="shelterOtherBoolean">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Row 2 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fnAddressNo" class="form-label">บ้านเลขที่</label>
+                                                        <input type="text" formControlName="fnAddressNo" class="form-control" id="fnAddressNo" placeholder="บ้านเลขที่">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fnMoo" class="form-label">หมู่ที่</label>
+                                                        <input type="text" formControlName="fnMoo" class="form-control" id="fnMoo" placeholder="หมู่ที่">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fnSoi" class="form-label">ซอย</label>
+                                                        <input type="text" formControlName="fnSoi" class="form-control" id="fnSoi" placeholder="ซอย">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
+                                                    <div class="form-group clear-fix">
+                                                        <label for="fnStreet" class="form-label">ถนน</label>
+                                                        <input type="text" formControlName="fnStreet" class="form-control" id="fnStreet" placeholder="ถนน">
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,58 +225,26 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="addressNoNotifier" class="form-label">บ้านเลขที่</label>
-                                                        <input type="text" formControlName="addressNoNotifier" class="form-control" id="addressNoNotifier" placeholder="บ้านเลขที่">
+                                                        <label for="fnProvince" class="form-label">จังหวัด</label>
+                                                        <p-dropdown [options]="lookupFnProvince" formControlName="fnProvinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupFnProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="mooNotifier" class="form-label">หมู่ที่</label>
-                                                        <input type="text" formControlName="mooNotifier" class="form-control" id="mooNotifier" placeholder="หมู่ที่">
+                                                        <label for="fnDistrict" class="form-label">อำเภอ</label>
+                                                        <p-dropdown [options]="lookupFnDistrict" formControlName="fnDistrictCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupFnDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="soiNotifier" class="form-label">ซอย</label>
-                                                        <input type="text" formControlName="soiNotifier" class="form-control" id="soiNotifier" placeholder="ซอย">
+                                                        <label for="fnSubDistrict" class="form-label">ตำบล</label>
+                                                        <p-dropdown [options]="lookupFnSubDistrict" formControlName="fnSubdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupFnSubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                     <div class="form-group clear-fix">
-                                                        <label for="streetNotifier" class="form-label">ถนน</label>
-                                                        <input type="text" formControlName="streetNotifier" class="form-control" id="streetNotifier" placeholder="ถนน">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Row 3 -->
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
-                                            <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="provinceNotifier" class="form-label">จังหวัด</label>
-                                                        <p-dropdown formControlName="provinceNotifier" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="provinceNotifier"></p-dropdown>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="districtNotifier" class="form-label">อำเภอ</label>
-                                                        <p-dropdown formControlName="districtNotifier" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="districtNotifier"></p-dropdown>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="subDistrictNotifier" class="form-label">ตำบล</label>
-                                                        <p-dropdown formControlName="subDistrictNotifier" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="subDistrictNotifier"></p-dropdown>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
-                                                    <div class="form-group clear-fix">
-                                                        <label for="zipcodeNotifier" class="form-label">รหัสไปรษณีย์</label>
-                                                        <input type="text" formControlName="zipcodeNotifier" class="form-control" id="zipcodeNotifier" placeholder="รหัสไปรษณีย์">
+                                                        <label for="fnZipcode" class="form-label">รหัสไปรษณีย์</label>
+                                                        <input type="text" formControlName="fnZipcode" class="form-control" id="fnZipcode" placeholder="รหัสไปรษณีย์">
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,6 +253,37 @@
                                 </div>
                             </div>
                         </div>  
+
+                        <div class="form-group-fieldset clear-fix">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
+                                    <h3> ข้อมูลสัตว์ต้องสงสัย </h3>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
+
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalTypeCode" class="form-label">ประเภทสัตว์</label>
+                                                        <p-dropdown [options]="lookupAnimalType" formControlName="animalTypeCode" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="animalTypeOther" class="form-control form-control-other" id="animalTypeOther" placeholder="อื่นๆ" *ngIf="animalTypeOtherBoolean">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalName" class="form-label">ชื่อ/อัตลักษณ์ ของสัตว์</label>
+                                                        <input type="text" formControlName="animalName" class="form-control" id="animalIdentity" placeholder="ชื่อ/อัตลักษณ์ ของสัตว์">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group-fieldset clear-fix">
                             <div class="row">
@@ -289,11 +349,14 @@
        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-component">  
             <div class="form-group clear-fix">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
-                        <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm !== 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
-                        <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm !== 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel" *ngIf="actionForm === 'view'">  
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="modalClose()">ปิดหน้าจอ</button>
                     </div>
                 </div>
             </div>

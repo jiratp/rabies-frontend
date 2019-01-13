@@ -391,4 +391,8 @@ export class DialogContentVideoManageComponent implements OnInit {
   roleCodeChange(event: any) {
 
   }
+
+  contentTypeCodeChange (event: any) {
+
+  }
 }

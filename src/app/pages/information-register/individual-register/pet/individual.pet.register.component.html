@@ -3,7 +3,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ลงทะเบียน</li>
             <li class="breadcrumb-item breadcrumb-link" (click)="breadcrumbLink('/information/individual')">ข้อมูลเจ้าของสัตว์</li>
-            <li class="breadcrumb-item active" aria-current="page">ข้อมูลสัตว์เลี้ยง</li>
+            <li class="breadcrumb-item active" aria-current="page">ข้อมูลการเลี้ยงสัตว์</li>
             
         </ol>
     </nav>     
@@ -15,7 +15,7 @@
                     <div class="tab-body">
                         <ul class="nav text-center" role="tablist">
                             <li class="nav-item tab-item tab-header">
-                                <span class="nav-link" href="#individual-information" role="tab" data-toggle="tab">ข้อมูลสัตว์เลี้ยง</span>
+                                <span class="nav-link" href="#individual-information" role="tab" data-toggle="tab">ข้อมูลการเลี้ยงสัตว์</span>
                             </li>
                         </ul>
                     </div>
@@ -30,7 +30,7 @@
                                                 <div class="form-group-fieldset clear-fix">
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
-                                                            <h3> ลักษณะการเลี้ยงสัตว์ </h3>
+                                                            <h3> ข้อมูลการเลี้ยงสัตว์ </h3>
                                                         </div>
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-9 form-group-body"> 
                                                             <!-- Row 0 -->
@@ -74,6 +74,7 @@
                                                                 </div>
                                                             </div>
 
+
                                                             <!-- Row 2 -->
                                                             <div class="row">
                                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
@@ -113,19 +114,19 @@
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="province" class="form-label">จังหวัด</label>
-                                                                                <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="ProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="district" class="form-label">อำเภอ</label>
-                                                                                <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="DistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="subDistrict" class="form-label">ตำบล</label>
-                                                                                <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="SubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupSubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
@@ -153,9 +154,9 @@
                                                         <div class="form-group clear-fix">
                                                             <div class="row">
                                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-button-panel one-btn button-panel">  
-                                                                    <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                                                                    <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
 
-                                                                    <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                                    <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -195,7 +196,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 content-data-table-group">  
-                                                        <p-table [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
+                                                        <p-table [value]="dataTableObj" (onPage)="paginate($event)" [rows]="pageRows" [lazy]="true" (onLazyLoad)="LoadContentLazy($event)" [paginator]="true" [totalRecords]="totalRecords" [loading]="loading" [responsive]="true">
                                                             <ng-template pTemplate="caption">
                                                                 สัตว์เลี้ยง
                                                             </ng-template>
@@ -203,33 +204,64 @@
                                                                 <tr>
                                                                     <th>ลำดับ</th>
                                                                     <th>วันที่เพิ่มข้อมูล</th>
-                                                                    <th>ชื่อ/อัตลักษณ์ สัตว์</th>
-                                                                    <th>ประเภท/จำนวน สัตว์</th>
+                                                                    <th>ประเภทสัตว์</th>
+                                                                    <th>ชื่อ/อัตลักษณ์ ของสัตว์</th>
+                                                                    <th>สายพันธ์ุของสัตว์</th>
+                                                                    <th>อายุสัตว์</th>
+                                                                    <th>ประวัติการฉีดวัคซีน</th>
+                                                                    <th>ประวัติการทำหมัน</th>
                                                                     <th>จัดการ</th>
                                                                 </tr>
                                                             </ng-template>
-                                                            <ng-template pTemplate="body" let-rowData>
+                                                            <ng-template pTemplate="body" let-rowData let-index="rowIndex">
                                                                 <tr>
-                                                                    <td>
+                                                                     <td class="text-center">
                                                                         <span class="ui-column-title">ลำดับ</span>
+                                                                        <span class="text-value">{{index + 1}}</span>
                                                                     </td>
-                                                                    <td>
+                                                                     <td class="text-center">
                                                                         <span class="ui-column-title">วันที่เพิ่มข้อมูล</span>
+                                                                        <span class="text-value" *ngIf="rowData.registrationDate != null">{{rowData.registrationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.registrationDate == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ประเภทสัตว์</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalType != null">{{rowData.animalType.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalType == null">-</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="ui-column-title">ชื่อ/อัตลักษณ์ สัตว์</span>
+                                                                        <span class="ui-column-title">ชื่อ/อัตลักษณ์ ของสัตว์</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalName != null">{{rowData.animalName}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalName == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">สายพันธ์ุของสัตว์</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalSpecies != null">{{rowData.animalSpecies.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalSpecies == null">-</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="ui-column-title">ประเภท/จำนวน สัตว์</span>
+                                                                        <span class="ui-column-title">อายุสัตว์</span>
+                                                                        <span class="text-value" *ngIf="!rowData.isUnknownAge">{{rowData.animalAgeYear}} ปี {{rowData.animalAgeMonth}} เดือน</span>
+                                                                        <span class="text-value" *ngIf="rowData.isUnknownAge">-</span>
                                                                     </td>
-                                                                    <td>
-                                                                       
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ประวัติการฉีดวัคซีน</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalVaccineHistoryType != null">{{rowData.animalVaccineHistoryType.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalVaccineHistoryType == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="ui-column-title">ประวัติการทำหมัน</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalCastratedHistoryType != null">{{rowData.animalCastratedHistoryType.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.animalCastratedHistoryType == null">-</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span class="text-value" (click)="ActionEditContent(rowData)"><img src="./assets/images/iconfinder_note_edit_bw.png" alt="แก้ไขข้อมูล" class="datatable-icon-action"/></span>
                                                                     </td>
                                                                 </tr>
                                                             </ng-template>
                                                             <ng-template pTemplate="emptymessage">
                                                                 <tr>
-                                                                    <td colspan="5" class="emptymessage">
+                                                                    <td colspan="9" class="emptymessage">
                                                                         ไม่มีรายการ
                                                                     </td>
                                                                 </tr>

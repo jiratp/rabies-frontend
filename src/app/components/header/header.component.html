@@ -24,15 +24,15 @@
             <!-- END HOME -->
 
             <!-- START INFORMATION -->
-            <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''"> <!--  *ngIf="memberRole == 'GENERAL_MEMBER'" -->
-                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" (click)="navigation('information/individual')">
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''" *ngIf="memberRole == 'GENERAL_MEMBER'">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER-MYSELF" (click)="navigation('information/individual')">
                     <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
                     <p>ลงทะเบียน</p>
                 </a>
             </li>
 
             <li class="nav-item dropdown" [ngClass]="pageGroup == 'INFORMATION' ? 'active' : ''" *ngIf="memberRole == 'CLINIC_MEMBER'">
-                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER" (click)="navigation('information/clinic')">
+                <a aria-expanded="false" role="button" data-x-sig="PETREG-REGISTER-AGENT" (click)="navigation('information/clinic')">
                     <img class="icon" src="./assets/images/icon-menu-2.png" alt="">
                     <p>ลงทะเบียน</p>
                 </a>
@@ -40,7 +40,7 @@
             <!-- END INFORMATION -->
 
             <!-- START SURVEY -->
-            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SURVEY' ? 'active' : ''" *ngIf="memberRole == 'SAO_MEMBER' || memberRole == 'LIVESTOCK_MEMBER' || memberRole == 'VETERINARY_MEMBER'"> 
+            <li class="nav-item dropdown" [ngClass]="pageGroup == 'SURVEY' ? 'active' : ''" *ngIf="memberRole == 'SAO_MEMBER' || memberRole == 'LIVESTOCK_MEMBER' || memberRole == 'VETERINARY_MEMBER' || memberRole == 'CLINIC_MEMBER'"> 
                 <a aria-expanded="false" role="button" data-x-sig="PETREG-SURVEY" class="dropdown-toggle" data-toggle="dropdown">
                     <img class="icon" src="./assets/images/icon-menu-3.png" alt="">
                     <p>แบบสำรวจ</p>

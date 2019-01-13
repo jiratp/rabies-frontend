@@ -106,6 +106,9 @@ import { ContentNewsManageComponent } from './setting/content-management/content
 
 
 
+import { DialogUserManageComponent } from './setting/user-management/dialog-user-management/dialog.user.manage.component';
+
+
 import { DialogRoleManageComponent } from './setting/role-management/dialog-role-management/dialog.role.manage.component';
 import { DialogRegionManageComponent } from './setting/region-management/dialog-region-management/dialog.region.manage.component';
 import { DialogProvinceManageComponent } from './setting/province-management/dialog-province-management/dialog.province.manage.component';
@@ -396,6 +399,7 @@ const routes: Routes = [
         ContentDocumentManageComponent,
         ContentNewsManageComponent,
 
+        DialogUserManageComponent,
         DialogRoleManageComponent,
         DialogRegionManageComponent,
         DialogProvinceManageComponent,
@@ -447,6 +451,7 @@ const routes: Routes = [
         SurveyAnimalInformationComponent,
         AnimalSuspiciousComponent,
 
+        DialogUserManageComponent,
         DialogRoleManageComponent,
         DialogRegionManageComponent,
         DialogProvinceManageComponent,

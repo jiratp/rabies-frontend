@@ -23,6 +23,7 @@ import { User } from './../../api/user';
 export class ProfileComponent implements OnInit {
   modalRef: BsModalRef;
   userProfile: any;
+  memberRole: any;
   profileForm: FormGroup;
   authenticationToken: any;
 
@@ -54,10 +55,11 @@ export class ProfileComponent implements OnInit {
 
   LoadConfigForm() {
     this.profileForm = new FormGroup({
-      title: new FormControl('', Validators.required),
+      title: new FormControl(''),
       titleOther: new FormControl(''),
       name: new FormControl('', Validators.required),
-      idCard: new FormControl('', Validators.required),
+      idCard: new FormControl(''),
+      licenseId: new FormControl(''),
       email: new FormControl('', Validators.required),
       mobileNumber: new FormControl('', Validators.required),
       addressNo: new FormControl('', Validators.required),
@@ -125,10 +127,12 @@ export class ProfileComponent implements OnInit {
   }
 
   DefaultProfileFromSession(userProfile: any) {
+    this.memberRole = userProfile.userType;
     this.profileForm.controls['title'].setValue(userProfile.title);
     this.profileForm.controls['titleOther'].setValue(userProfile.titleOther);
     this.profileForm.controls['name'].setValue(userProfile.name);
     this.profileForm.controls['idCard'].setValue(userProfile.idCard);
+    this.profileForm.controls['licenseId'].setValue(userProfile.licenseId);
     this.profileForm.controls['mobileNumber'].setValue(userProfile.mobileNumber);
     this.profileForm.controls['email'].setValue(userProfile.email);
     this.profileForm.controls['addressNo'].setValue(userProfile.addressNo);
@@ -149,6 +153,7 @@ export class ProfileComponent implements OnInit {
 
 
   LookupTitle(titleCode: any = '') {
+    this.lookupTitle = [];
     if (this.authenticationToken != null) {
       const authorization = 'Bearer ' + this.authenticationToken;
       const endpoint = Utility.Title.Inquiry.ByList.ListActive;

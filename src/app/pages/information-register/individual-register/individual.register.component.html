@@ -14,7 +14,7 @@
                     <div class="row summary-card-body-row">
                         <div class="col-12 color-white summary-body">
                             <h3>สรุปจำนวนสัตว์ที่ลงทะเบียน</h3>
-                                <span class="mt-0">4,339,210 ตัว</span>
+                                <span class="mt-0">{{SummaryReport.RegistrationDisplayTotel}} ตัว</span>
                             <hr/>
 
                             <div class="row">
@@ -22,7 +22,7 @@
                                     <h3>ลงทะเบียนทั้งหมด (ตัว)</h3>
                                 </div>
                                 <div class="col-5 col-sm-5 col-md-5 col-lg-5 summary-card-data">
-                                    <span class="summary">4,208,276</span>
+                                    <span class="summary">{{SummaryReport.RegistrationDisplayTotel}}</span>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                     <h3> ลงทะเบียน (ตัว) </h3>
                                 </div>
                                 <div class="col-12 animal-summary-data">
-                                    <span>39,210</span>
+                                    <span>{{SummaryReport.RegistrationDogTotel}}</span>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                     <h3> ลงทะเบียน (ตัว) </h3>
                                 </div>
                                 <div class="col-12 animal-summary-data">
-                                    <span>39,210</span>
+                                    <span>{{SummaryReport.RegistrationCatTotel}}</span>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component"> 
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="titleCode" class="form-label">คำนำหน้าชื่อ</label>
-                                                                                <p-dropdown [options]="lookupTitle" formControlName="titleCode" placeholder="เลิอกคำนำหน้าชื่อ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="TitleChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupTitle" formControlName="titleCode" placeholder="เลิอกคำนำหน้าชื่อ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupTitleChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                                 <input type="text" formControlName="titleOther" class="form-control form-control-other" id="titleOther" placeholder="อื่นๆ" *ngIf="titleOtherBoolean">
                                                                             </div>
                                                                         </div>
@@ -196,19 +196,19 @@
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="province" class="form-label">จังหวัด</label>
-                                                                                <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="ProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupProvince" formControlName="provinceCode" placeholder="เลิอกจังหวัด" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupProviceChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="district" class="form-label">อำเภอ</label>
-                                                                                <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="DistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupDistrict" formControlName="districtCode" placeholder="เลิอกอำเภอ" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
                                                                             <div class="form-group clear-fix">
                                                                                 <label for="subDistrict" class="form-label">ตำบล</label>
-                                                                                <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="SubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                                                <p-dropdown [options]="lookupSubDistrict" formControlName="subdistrictCode" placeholder="เลิอกตำบล" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupSubDistrictChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-component">  
@@ -233,9 +233,9 @@
                                                         <div class="form-group clear-fix">
                                                             <div class="row">
                                                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-button-panel one-btn button-panel">  
-                                                                    <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                                                                    <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
 
-                                                                    <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                                                                    <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -287,7 +287,6 @@
                                                                     <th>จังหวัด</th>
                                                                     <th>อำเภอ</th>
                                                                     <th>ตำบล</th>
-                                                                    <th>ประเภท/จำนวน สัตว์</th>
                                                                     <th>จัดการ</th>
                                                                 </tr>
                                                             </ng-template>
@@ -299,37 +298,41 @@
                                                                     </td>
                                                                     <td class="text-center">
                                                                         <span class="ui-column-title">วันที่เพิ่มข้อมูล</span>
-                                                                        <span class="text-value" *ngIf="rowData.createDate != null">{{rowData.createDate | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
-                                                                        <span class="text-value" *ngIf="rowData.createDate == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.registrationDate != null">{{rowData.registrationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.registrationDate == null">-</span>
                                                                     </td>
                                                                     <td>
                                                                         <span class="ui-column-title">สถานที่เลี้ยงสัตว์</span>
-                                                                        <span class="text-value" *ngIf="rowData.placeName != null || rowData.addressNo != null">{{rowData.placeName}}, {{rowData.addressNo}} {{rowData.moo}} {{rowData.soi}} {{rowData.street}}</span>
-                                                                        <span class="text-value" *ngIf="rowData.createDate == null && rowData.addressNo == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.placeName != null || rowData.addressNo != null">
+                                                                            <div class="content-description"><b>สถานที่เลี้ยงสัตว์ : {{rowData.placeName}}</b></div>
+                                                                            <div class="content-description"><b>บ้านเลขที่ : {{rowData.addressNo}}</b></div>
+                                                                            <div class="content-description"><b>ถนน : {{rowData.street}}</b></div>
+                                                                        </span>
+                                                                        <span class="text-value" *ngIf="rowData.placeName == null && rowData.addressNo == null">-</span>
                                                                     </td>
-                                                                    <td>
+                                                                    <td class="text-center">
                                                                         <span class="ui-column-title">จังหวัด</span>
-                                                                        <span class="text-value" *ngIf="rowData.provinceCode != null">{{rowData.provinceCode}}</span>
-                                                                        <span class="text-value" *ngIf="rowData.provinceCode == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.province != null">{{rowData.province.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.province == null">-</span>
                                                                     </td>
-                                                                    <td>
+                                                                    <td class="text-center">
                                                                         <span class="ui-column-title">อำเภอ</span>
-                                                                        <span class="text-value" *ngIf="rowData.districtCode != null">{{rowData.districtCode}}</span>
-                                                                        <span class="text-value" *ngIf="rowData.districtCode == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.district != null">{{rowData.district.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.district == null">-</span>
                                                                     </td>
-                                                                    <td>
+                                                                    <td class="text-center">
                                                                         <span class="ui-column-title">ตำบล</span>
-                                                                        <span class="text-value" *ngIf="rowData.subdistrictCode != null">{{rowData.subdistrictCode}}</span>
-                                                                        <span class="text-value" *ngIf="rowData.subdistrictCode == null">-</span>
+                                                                        <span class="text-value" *ngIf="rowData.subdistrict != null">{{rowData.subdistrict.tname}}</span>
+                                                                        <span class="text-value" *ngIf="rowData.subdistrict == null">-</span>
                                                                     </td>
-                                                                    <td>
+                                                                    <td class="text-center">
                                                                         <span class="text-value" (click)="ActionEditContent(rowData)"><img src="./assets/images/iconfinder_note_edit_bw.png" alt="แก้ไขข้อมูล" class="datatable-icon-action"/></span>
                                                                     </td>
                                                                 </tr>
                                                             </ng-template>
                                                             <ng-template pTemplate="emptymessage">
                                                                 <tr>
-                                                                    <td colspan="8" class="emptymessage">
+                                                                    <td colspan="7" class="emptymessage">
                                                                         ไม่มีรายการ
                                                                     </td>
                                                                 </tr>

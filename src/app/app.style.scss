@@ -309,6 +309,12 @@ html, body{
                             .bullet-status{
                                 cursor: pointer;
                             }
+
+                            .content-description{
+                                font-size: 14;
+                                font-family: $datatable-tbody-font-family;
+                                color: $datatable-tbody-font-color;
+                            }
                         }
 
                         &.emptymessage{

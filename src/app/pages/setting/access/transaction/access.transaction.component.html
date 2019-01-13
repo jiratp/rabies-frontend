@@ -1,12 +1,12 @@
 <div class="container-fluid setting-access-transaction-component breadcrumb">
-    <nav class="nav-breadcrumb" aria-label="breadcrumb" *ngIf="memberRole == 'ADMINISTRATOR'">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb" *ngIf="memberRole === 'ADMINISTRATOR'">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ตั้งค่าระบบ</li>
             <li class="breadcrumb-item active" aria-current="page">ประวัติการเข้าใช้งานระบบ</li>
         </ol>
     </nav>    
 
-    <nav class="nav-breadcrumb" aria-label="breadcrumb" *ngIf="memberRole != 'ADMINISTRATOR'">
+    <nav class="nav-breadcrumb" aria-label="breadcrumb" *ngIf="memberRole !== 'ADMINISTRATOR'">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ข้อมูลผู้ใช้งาน</li>
             <li class="breadcrumb-item active" aria-current="page">ประวัติการเข้าใช้งานระบบ</li>
