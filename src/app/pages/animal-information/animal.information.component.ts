@@ -612,11 +612,64 @@ export class AnimalInfomationComponent implements OnInit {
           this.ContentForm.controls['animalLastCastratedDate'].setValue(animalLastCastratedDate);
         }
         this.ContentForm.controls['code'].setValue(this.moduleContent.recordObj.code);
+      }
+
+      if (this.moduleContent.method === 'survey-owner') {
+
+        this.LookupAnimalType(this.moduleContent.recordObj.animalTypeCode);
+        this.LookupAnimalGenderType(this.moduleContent.recordObj.animalGenderTypeCode);
+        this.LookupAnimalColor(this.moduleContent.recordObj.animalColorCode);
+        this.LookupAnimalSpecies(this.moduleContent.recordObj.animalTypeCode, this.moduleContent.recordObj.animalSpeciesCode);
+        this.LookupVaccineHistoryType(this.moduleContent.recordObj.animalVaccineHistoryTypeCode);
+        this.LookupCastratedHistoryType(this.moduleContent.recordObj.animalCastratedHistoryTypeCode);
+
+        this.LookupAnimalTypeCodeChange({value: this.moduleContent.recordObj.animalTypeCode});
+        this.LookupAnimalGenderTypeCodeChange({value: this.moduleContent.recordObj.animalGenderTypeCode});
+        this.LookupAnimalColorCodeChange({value: this.moduleContent.recordObj.animalColorCode});
+        this.LookupAnimalSpeciesCodeChange({value: this.moduleContent.recordObj.animalSpeciesCode});
+        this.LookupAnimalVaccineHistoryTypeCodeChange({value: this.moduleContent.recordObj.animalVaccineHistoryTypeCode});
+        this.LookupAnimalCastratedHistoryTypeCodeChange({value: this.moduleContent.recordObj.animalCastratedHistoryTypeCode});
+        this.IsUnknownAgeChange(this.moduleContent.recordObj.isUnknownAge);
+
+        this.ContentForm.controls['animalTypeCode'].setValue(this.moduleContent.recordObj.animalTypeCode);
+        this.ContentForm.controls['animalTypeOther'].setValue(this.moduleContent.recordObj.animalTypeOther);
+        this.ContentForm.controls['animalName'].setValue(this.moduleContent.recordObj.animalName);
+        this.ContentForm.controls['animalGenderTypeCode'].setValue(this.moduleContent.recordObj.animalGenderTypeCode);
+        this.ContentForm.controls['animalSpeciesCode'].setValue(this.moduleContent.recordObj.animalSpeciesCode);
+        this.ContentForm.controls['animalSpeciesOther'].setValue(this.moduleContent.recordObj.animalSpeciesOther);
+        this.ContentForm.controls['animalColorCode'].setValue(this.moduleContent.recordObj.animalColorCode);
+        this.ContentForm.controls['animalColorOther'].setValue(this.moduleContent.recordObj.animalColorOther);
+        this.ContentForm.controls['isUnknownAge'].setValue(this.moduleContent.recordObj.isUnknownAge);
+        if (this.moduleContent.recordObj.animalAgeYear !== 0) {
+          this.ContentForm.controls['animalAgeYear'].setValue(this.moduleContent.recordObj.animalAgeYear);
+        }
+        if (this.moduleContent.recordObj.animalAgeMonth !== 0) {
+          this.ContentForm.controls['animalAgeMonth'].setValue(this.moduleContent.recordObj.animalAgeMonth);
+        }
+        this.ContentForm.controls['animalVaccineHistoryTypeCode'].setValue(this.moduleContent.recordObj.animalVaccineHistoryTypeCode);
+        if (this.moduleContent.recordObj.animalVaccineAmount !== 0) {
+          this.ContentForm.controls['animalVaccineAmount'].setValue(this.moduleContent.recordObj.animalVaccineAmount);
+        }
+        if (this.moduleContent.recordObj.animalLastVaccineDate !== null) {
+          const animalLastVaccineDate = new Date(this.moduleContent.recordObj.animalLastVaccineDate);
+          this.ContentForm.controls['animalLastVaccineDate'].setValue(animalLastVaccineDate);
+        }
+        this.ContentForm.controls['animalCastratedHistoryTypeCode'].setValue(this.moduleContent.recordObj.animalCastratedHistoryTypeCode);
+        if (this.moduleContent.recordObj.animalCastratedAmount !== 0) {
+          this.ContentForm.controls['animalCastratedAmount'].setValue(this.moduleContent.recordObj.animalCastratedAmount);
+        }
+        if (this.moduleContent.recordObj.animalLastCastratedDate !== null) {
+          const animalLastCastratedDate = new Date(this.moduleContent.recordObj.animalLastCastratedDate);
+          this.ContentForm.controls['animalLastCastratedDate'].setValue(animalLastCastratedDate);
+        }
+        this.ContentForm.controls['code'].setValue(this.moduleContent.recordObj.code);
 
 
       }
     }
 
+
+    
 
     this.ContentForm.controls['action'].setValue(this.actionFormObj);
   }
@@ -644,6 +697,12 @@ export class AnimalInfomationComponent implements OnInit {
         if (this.moduleContent.method === 'registration') {
           contentParams.registrationAnimalOwnerCode = this.moduleContent.contentObj.registrationAnimalOwnerCode;
           contentParams.registrationAnimalAddressCode = this.moduleContent.contentObj.registrationAnimalAddressCode;
+        }
+
+        if (this.moduleContent.method === 'survey-owner') {
+          contentParams.surveyCode = this.moduleContent.contentObj.surveyCode;
+          contentParams.surveyRoundCode = this.moduleContent.contentObj.surveyRoundCode;
+          contentParams.surveyOwnerInformationCode = this.moduleContent.contentObj.surveyOwnerInformationCode;
         }
 
         const authorization = 'Bearer ' + this.authenticationToken;

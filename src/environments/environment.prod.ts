@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  apiEndpoint: 'http://18.136.49.46:10201/rabies/service/v1/api',
 
 };
 

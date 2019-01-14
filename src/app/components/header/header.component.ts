@@ -238,7 +238,7 @@ export class HeaderComponent implements OnInit {
   }
 
   LoadProfileFromSession() {
-    if (this.authenticationToken != null) {
+    if (this.authenticationToken !== null && this.authenticationToken !== undefined && this.authenticationToken !== '') {
       const initialState = this.themeConfig.defaultSettings.dialogInitialStateSetting;
       const configModal = this.themeConfig.defaultSettings.dialogAlertSetting;
       const authorization = 'Bearer ' + this.authenticationToken;

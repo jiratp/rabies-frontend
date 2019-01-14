@@ -7,11 +7,12 @@
     </button>
 </div>
 <div class="modal-body">
-    <div class="dialog-content-body-form dialog-survey-animal-information">
-        <form class="form-dialog mt-3" name="SAIForm" [formGroup]="SAIForm">
+    <div class="dialog-content-body-form dialog-animal-suspicious-information">
+        <form class="form-dialog mt-3" name="ContentForm" [formGroup]="ContentForm">
             <div class="card-body dialog-card-body-form">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-box-panel dialog-panel-form">  
+
                         <div class="form-group-fieldset clear-fix">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 form-group-title">  
@@ -23,25 +24,48 @@
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
                                             <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalCategory" class="form-label">ประเภทสัตว์</label>
-                                                        <p-dropdown formControlName="animalCategory" placeholder="เลือกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label,value.name" styleClass="form-dropdown-panel form-control" selectId="animalCategory"></p-dropdown>
+                                                        <label for="animalTypeCode" class="form-label">ประเภทสัตว์</label>
+                                                        <p-dropdown [options]="lookupAnimalType" formControlName="animalTypeCode" placeholder="เลิอกประเภทสัตว์" [autoWidth]="true" emptyFilterMessage="ไม่มีข้อมูล" [filter]="true" filterBy="label" (onChange)="LookupAnimalTypeCodeChange($event)" styleClass="form-dropdown-panel form-control"></p-dropdown>
+                                                        <input type="text" formControlName="animalTypeOther" class="form-control form-control-other" id="animalTypeOther" placeholder="อื่นๆ" *ngIf="animalTypeOtherBoolean">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-component"> 
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-8 form-component"> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 1 -->
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group-body-panel">  
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
                                                     <div class="form-group clear-fix">
-                                                        <label for="animalAmount" class="form-label">จำนวนสัตว์ (ตัว)</label>
+                                                        <label for="animalAmount" class="form-label">จำนวนสัตว์ทั้งหมด (ตัว) </label>
                                                         <input type="text" formControlName="animalAmount" class="form-control" id="animalAmount" placeholder="จำนวนสัตว์ (ตัว)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalVaccineAmount" class="form-label">จำนวนสัตว์ฉีดวัคซีนทั้งหมด (ตัว)</label>
+                                                        <input type="text" formControlName="animalVaccineAmount" class="form-control" id="animalVaccineAmount" placeholder="จำนวนสัตว์ฉีดวัคซีนทั้งหมด (ตัว)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 form-component"> 
+                                                    <div class="form-group clear-fix">
+                                                        <label for="animalCastratedAmount" class="form-label">จำนวนสัตว์ทำหมันทั้งหมด (ตัว)</label>
+                                                        <input type="text" formControlName="animalCastratedAmount" class="form-control" id="animalCastratedAmount" placeholder="จำนวนสัตว์ทำหมันทั้งหมด (ตัว)">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                
                                 </div>
                             </div>
-                        </div>
+                        </div>       
                     </div>
                 </div>
             </div>
@@ -54,10 +78,10 @@
             <div class="form-group clear-fix">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
-                        <button type="submit" class="btn btn-block btn-light btn-save">บันทึก</button>
+                        <button type="submit" class="btn btn-block btn-light btn-save" (click)="ContentSave()">บันทึก</button>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-button-panel two-btn button-panel">  
-                        <button type="submit" class="btn btn-block btn-light btn-cancel">ยกเลิก</button>
+                        <button type="submit" class="btn btn-block btn-light btn-cancel" (click)="ContentReset()">ยกเลิก</button>
                     </div>
                 </div>
             </div>

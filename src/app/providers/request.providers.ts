@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Request, RequestOptions } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from './../../environments/environment';
+
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -9,7 +11,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CallApiService {
-    public HOST: String = 'http://localhost:10201/rabies/service/v1/api';
+    public HOST: String = '';
     private errorObserver: any;
     public error: any;
 
@@ -18,6 +20,12 @@ export class CallApiService {
         this.error = Observable.create(observer => {
             this.errorObserver = observer;
         });
+
+        if (environment.production) {
+            this.HOST = environment.apiEndpoint;
+        } else {
+            this.HOST = environment.apiEndpoint;
+        }
     }
 
     public callWithOutScope(
